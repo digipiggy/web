@@ -95,8 +95,8 @@ module.exports = async (req, res) => {
       return res.end();
     }
   } catch (err) {
-    console.error(err);
+    console.log(err);
     res.statusCode = 500;
-    return res.end('Unexpected Error');
+    return res.end(err);
   }
 };
