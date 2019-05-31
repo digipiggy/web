@@ -3,7 +3,7 @@ const shared = require('./shared');
 module.exports = async (req, res) => {
     try {
         shared.cors.setStandardHeaders(res);
-
+console.log('hellllloooo');
         if (req.method === 'OPTIONS') {
             res.statusCode = 204;
             res.setHeader('Content-Length', '0');
