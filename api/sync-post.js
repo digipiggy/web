@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
             let payload = {
                 temp: process.env.PIGGY_API_KEY
             };
-
+//test
             return res.end(JSON.stringify(payload));
         }
     } catch (err) {
