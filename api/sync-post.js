@@ -1,3 +1,5 @@
+const shared = require('./shared');
+
 module.exports = async (req, res) => {
     try {
         shared.cors.setStandardHeaders(res);
