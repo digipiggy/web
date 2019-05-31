@@ -38,6 +38,10 @@
     {
       "src": "api/device-put.js",
       "use": "@now/node"
+    },
+    {
+      "src": "api/sync-post.js",
+      "use": "@now/node"
     }
   ],
   "alias": [
