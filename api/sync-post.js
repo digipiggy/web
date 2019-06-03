@@ -18,7 +18,8 @@ module.exports = async (req, res) => {
                 return res.end('Unauthorized');
             }
 
-            return res.end(JSON.stringify("hello"));
+            const device = await shared.device.getById(req.body.coreid);
+            return res.end(JSON.stringify(device));
         }
     } catch (err) {
         console.error(err);
