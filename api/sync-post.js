@@ -40,7 +40,7 @@ module.exports = async (req, res) => {
 
             let piggySleepString = '0|00:00|00:00|0|0';
             if (device.piggySleep) {
-                payload = `${device.piggySleep.enabled ? 1 : 0}|${device.piggySleep.wakeupTime || '00:00'}|${device.piggySleep.sleepTime || '00:00'}|${device.piggySleep.timezone || 0}|${device.piggySleep.observeDaylightSavings ? 1 : 0}`
+                piggySleepString = `${device.piggySleep.enabled ? 1 : 0}|${device.piggySleep.wakeupTime || '00:00'}|${device.piggySleep.sleepTime || '00:00'}|${device.piggySleep.timezone || 0}|${device.piggySleep.observeDaylightSavings ? 1 : 0}`
             }
 
 
