@@ -1,4 +1,5 @@
 const shared = require('./shared');
+const parseBody = require('co-body');
 
 module.exports = async (req, res) => {
     try {
@@ -18,7 +19,8 @@ module.exports = async (req, res) => {
                 return res.end('Unauthorized');
             }
 
-            const device = await shared.device.getById(req.body.coreid);
+            const requestBody = await parseBody.json(req);
+            const device = await shared.device.getById(requestBody.coreid);
             return res.end(JSON.stringify(device));
         }
     } catch (err) {
