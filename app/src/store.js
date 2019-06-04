@@ -3,9 +3,9 @@ import Vuex from 'vuex';
 import axios from 'axios';
 import qs from 'qs';
 import Auth from './auth';
-const jsonToString = require('../../shared/jsonToString');
 
 const cloneDevice = device => JSON.parse(JSON.stringify(device));
+const coalesce = (total, value) => total > 0 ? (value / total).toFixed(2) : '0.00';
 
 Vue.use(Vuex);
 
@@ -144,7 +144,7 @@ export default new Vuex.Store({
       try {
         const response = await axios.post(`https://api.particle.io/v1/devices/${state.device.deviceId}/toggle`,
           qs.stringify({
-            arg: jsonToString.toggles(toggles)
+            arg: toggles.map(t => t ? 1 : 0).join('|')
           }), {
             headers: { Authorization: `Bearer ${Auth.accessToken}` }
           });
@@ -167,7 +167,7 @@ export default new Vuex.Store({
       try {
         const response = await axios.post(`https://api.particle.io/v1/devices/${state.device.deviceId}/update`,
           qs.stringify({
-            arg: jsonToString.values(values)
+            arg: values.map(v => `${coalesce(v.total, v.current)},${coalesce(v.total, v.promise)}`).join('|')
           }), {
             headers: { Authorization: `Bearer ${Auth.accessToken}` }
           });
@@ -195,7 +195,7 @@ export default new Vuex.Store({
       try {
         const response = await axios.post(`https://api.particle.io/v1/devices/${state.device.deviceId}/color`,
           qs.stringify({
-            arg: jsonToString.colors(colors)
+            arg: colors.join('|')
           }), {
             headers: { Authorization: `Bearer ${Auth.accessToken}` }
           });
@@ -329,9 +329,16 @@ export default new Vuex.Store({
       return await dispatch('updateDevice', updatedDevice);
     },
     async updatePiggySleep({state, commit}, piggySleep){
+      let payload = null;
+      if (!piggySleep) {
+        payload = '0|00:00|00:00|0|0';
+      } else {
+        payload = `${piggySleep.enabled ? 1 : 0}|${piggySleep.wakeupTime || '00:00'}|${piggySleep.sleepTime || '00:00'}|${piggySleep.timezone || 0}|${piggySleep.observeDaylightSavings ? 1 : 0}`
+      }
+
       try {
         const response = await axios.post(`https://api.particle.io/v1/devices/${state.device.deviceId}/piggysleep`,
-            {arg: jsonToString.piggySleep(piggySleep)}, {
+            {arg: payload}, {
               headers: { Authorization: `Bearer ${Auth.accessToken}` }
             });
 
