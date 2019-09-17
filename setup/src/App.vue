@@ -41,7 +41,7 @@
                   v-show="showPassword"
                   label="Password"
                   type="password"
-                  box
+                  filled
                   prepend-icon="lock"
                   v-model="password"
                   :disabled="busy"
