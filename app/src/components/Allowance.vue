@@ -14,7 +14,7 @@
           item-text="label"
           item-value="value"
           filled
-          label="Deposit Schedule"
+          label="Schedule"
           v-model="allowance.depositSchedule"
           :disabled="!allowance.enabled  || busy"
           :rules="[rules.depositScheduleRequired]"
@@ -39,50 +39,6 @@
         </v-btn>
       </v-card-actions>
     </v-card-text>
-<!--    <v-card-text>-->
-<!--      <v-form ref="form" lazy-validation>-->
-<!--        <v-text-field-->
-<!--          v-model="piggySleep.wakeupTime"-->
-<!--          label="Wakeup at:"-->
-<!--          type="time"-->
-<!--          filled-->
-<!--          :disabled="!piggySleep.enabled || busy"-->
-<!--          :rules="[rules.wakeupTimeRequired, rules.wakeupBeforeSleep]"-->
-<!--        ></v-text-field>-->
-<!--        <v-text-field-->
-<!--          v-model="piggySleep.sleepTime"-->
-<!--          label="Sleep at:"-->
-<!--          type="time"-->
-<!--          filled-->
-<!--          :disabled="!piggySleep.enabled  || busy"-->
-<!--          :rules="[rules.sleepTimeRequired, rules.wakeupBeforeSleep]"-->
-<!--        ></v-text-field>-->
-<!--        <v-select-->
-<!--          :items="timezones"-->
-<!--          item-text="label"-->
-<!--          item-value="value"-->
-<!--          filled-->
-<!--          label="Timezone"-->
-<!--          v-model="piggySleep.timezone"-->
-<!--          :disabled="!piggySleep.enabled  || busy"-->
-<!--          :rules="[rules.timezoneRequired]"-->
-<!--        ></v-select>-->
-<!--        <v-checkbox-->
-<!--          v-model="piggySleep.observeDaylightSavings"-->
-<!--          label="Do you observe daylight savings?"-->
-<!--          :disabled="!piggySleep.enabled  || busy"-->
-<!--        ></v-checkbox>-->
-<!--      </v-form>-->
-<!--    </v-card-text>-->
-<!--    <v-card-actions>-->
-<!--      <v-spacer></v-spacer>-->
-<!--      <v-btn-->
-<!--        color="primary"-->
-<!--        @click="onSave"-->
-<!--      >Save Sleep-->
-<!--        <v-icon right dark>cloud_upload</v-icon>-->
-<!--      </v-btn>-->
-<!--    </v-card-actions>-->
   </v-card>
 </template>
 
@@ -114,9 +70,9 @@
         this.busy = true;
         if (this.$refs.form.validate()) {
           if (await this.saveAllowance(this.allowance)){
-            this.displayMessage({ text: 'Sleep settings saved', color: 'info' });
+            this.displayMessage({ text: 'Allowance settings saved', color: 'info' });
           } else {
-            this.displayMessage({ text: 'Sleep settings save failed', color: 'error' });
+            this.displayMessage({ text: 'Allowance settings save failed', color: 'error' });
           }
         }
         this.busy = false;
@@ -126,7 +82,7 @@
           this.allowance = this.device.allowance;
         } else {
           this.allowance = {
-            allowance: false,
+            enabled: false,
             amount: null,
             depositSchedule: null
           }

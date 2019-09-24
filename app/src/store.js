@@ -248,7 +248,6 @@ export default new Vuex.Store({
       }
 
       const updatedDevice = cloneDevice(state.device);
-      updatedDevice.goals.forEach((g, i) => g.current += deposits[i]);
       try {
         await axios.put(`${state.baseUrl}/api/device/${state.device.deviceId}`, updatedDevice, {
           headers: { Authorization: `Bearer ${Auth.idToken}` }
@@ -323,13 +322,12 @@ export default new Vuex.Store({
 
       return await dispatch('updateDevice', updatedDevice);
     },
-    async saveAllowance({state, commit}, allowance) {
+    async saveAllowance({state, dispatch}, allowance) {
       const updatedDevice = cloneDevice(state.device);
 
       updatedDevice.allowance = allowance;
 
-      Vue.ls.set('device', updatedDevice);
-      commit('setDevice', updatedDevice);
+      return await dispatch('updateDevice', updatedDevice);
     },
     async savePiggySleep({state, dispatch}, piggySleep) {
       const updatedDevice = cloneDevice(state.device);
