@@ -323,6 +323,14 @@ export default new Vuex.Store({
 
       return await dispatch('updateDevice', updatedDevice);
     },
+    async saveAllowance({state, commit}, allowance) {
+      const updatedDevice = cloneDevice(state.device);
+
+      updatedDevice.allowance = allowance;
+
+      Vue.ls.set('device', updatedDevice);
+      commit('setDevice', updatedDevice);
+    },
     async savePiggySleep({state, dispatch}, piggySleep) {
       const updatedDevice = cloneDevice(state.device);
       updatedDevice.piggySleep = piggySleep;
