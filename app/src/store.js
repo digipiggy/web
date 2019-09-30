@@ -219,20 +219,34 @@ export default new Vuex.Store({
       let remainder = amount;
       do {
         remainder = state.device.goals.reduce((r, g, i) => {
-          if (g.enabled && g.total > g.current + deposits[i]) {
-            const deposit = Math.round(g.percentage * remainder);
+          //use original remainder to make sure percents are calculated accurately.
+          let deposit = Math.round(g.percentage * remainder);
+
+          //if deposit is calculated to zero ( like 25% of $3), set deposit to the running remainder
+          //if deposit is more then running remainder, set deposit to the running remainder
+          if (r > 0 && (deposit === 0 || r < deposit)) {
+            deposit = r;
+          }
+
+          //if the goal has been reached, skip it.
+          //if the goal is disabled, skip it.
+          //if the remainder is zero, skip the goal.
+          if (r > 0 && g.enabled && g.total > g.current + deposits[i]) {
             const runningTotal = g.current + deposits[i];
+            //if the deposit is more than the goal total, calculate the diff and deposit that.
             if (runningTotal + deposit > g.total) {
               const diff = g.total - runningTotal;
               deposits[i] += diff;
-              r += deposit - diff;
+              r -= diff;
             } else {
               deposits[i] += deposit;
+              r -= deposit;
             }
           }
 
           return r;
-        }, 0);
+        }, remainder);
+        //keep looping until money is gone or all goals are met.
       } while (remainder > 0 && !state.device.goals.every((d, i) => d.total === d.current + deposits[i]));
 
       const values = state.device.goals.map((g, i) => {
