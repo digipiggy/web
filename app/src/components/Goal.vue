@@ -21,7 +21,7 @@
         :disabled="busy"
       ></v-text-field>
       <v-text-field
-        label="Current amount saved"
+        label="Current amount"
         :rules="[rules.currentValue]"
         prefix="$"
         filled
