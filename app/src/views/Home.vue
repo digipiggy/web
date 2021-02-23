@@ -32,6 +32,13 @@
             <v-container fluid >
               <v-layout align-center justify-center>
                 <v-flex xs10 >
+                  <v-card-text>Access the AppiPig</v-card-text>
+                  <v-card class="mx-4 mb-4" to="/appiPig"> 
+                      <v-img
+                        :src="require('@/assets/PT-Coin.png')"
+                        contain
+                      ></v-img>
+                  </v-card>
                   <v-card-text>Access Stories</v-card-text>
                   <v-card class="mx-4" to="/story"> 
                       <v-img

@@ -5,6 +5,7 @@ import Setup from './views/Setup';
 import Callback from './views/Callback';
 import PigDashboard from './views/PigDashboard';
 import PigSettings from './views/PigSettings';
+import AppiPig from './views/AppiPig';
 import Home from './views/Home';
 import Story from './views/Story';
 import Chapter from './views/Chapter';
@@ -38,6 +39,11 @@ const router = new Router({
       path: '/pigSettings',
       name: 'pigSettings',
       component: PigSettings
+    },
+    {
+      path: '/appiPig',
+      name: 'appiPig',
+      component: AppiPig
     },
     {
       path: '/story',
