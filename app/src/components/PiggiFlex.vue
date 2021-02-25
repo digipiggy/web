@@ -2,13 +2,12 @@
     <div>
       <h3>Piggy</h3>
       <v-card>
-        <v-container fluid class="wrapper">
+        <v-container fluid class="wrapper fill-height">
             <!-- <v-layout align-start justify-center> -->
-                <v-flex> <!--  xs3 offset-xs9 align-end (moved to end) -->
-                    <!-- <v-layout column justify-space-between>
-                        <v-card width=500px>
-                        empty spacer
-                        </v-card> -->
+                <v-flex> <!--  xs3 offset-xs9 align-end (moved to end of column) -->
+                  <v-row>
+                    <!-- <v-layout column md="12"> -->
+                    <v-col cols="2">
                         <v-card class="wrapper coinstack"
                             @drop='onDrop($event,1)'
                             @dragover.prevent
@@ -26,33 +25,35 @@
                                 </v-img> -->
                             </div>
                         </v-card>
+                    </v-col>
+                    <v-col cols="10">
+                        <v-card class="wrapper piggi"
+                            @drop='onDrop($event,2)'
+                            @dragover.prevent
+                            @dragenter.prevent
+                        >
+                                <div 
+                                    v-for="(coin, i) in piggyCoin" 
+                                    :key="i"
+                                    class="acoin"
+                                    draggable
+                                    @dragstart="startDrag($event, coin)"
+                                >
+                                    <v-img class="acoin" src="../assets/Coin.svg" contain></v-img>
+                                    {{coin.title}}
+                                    <!-- <v-img
+                                        src="../assets/CoinStack.svg">
+                                    </v-img> -->
+                                </div>
+                            <!-- REMOVE "piggi" class to v-card and include v-img here instead
+                                to have the image take render appropriately
+                                <v-img contain
+                                src="../assets/Piggy.svg">
+                            </v-img> -->
+                        </v-card>
+                    </v-col>
                     <!-- </v-layout> -->
-                </v-flex>
-                <v-flex>
-                    <v-card class="wrapper piggi"
-                        @drop='onDrop($event,2)'
-                        @dragover.prevent
-                        @dragenter.prevent
-                    >
-                            <div 
-                                v-for="(coin, i) in piggyCoin" 
-                                :key="i"
-                                class="acoin"
-                                draggable
-                                @dragstart="startDrag($event, coin)"
-                            >
-                                <v-img class="acoin" src="../assets/Coin.svg"></v-img>
-                                {{coin.title}}
-                                <!-- <v-img
-                                    src="../assets/CoinStack.svg">
-                                </v-img> -->
-                            </div>
-                        <!-- REMOVE "piggi" class to v-card and include v-img here instead
-                            to have the image take render appropriately
-                             <v-img contain
-                            src="../assets/Piggy.svg">
-                        </v-img> -->
-                    </v-card>
+                  </v-row>
                 </v-flex>
             <!-- </v-layout> -->
         </v-container>
@@ -80,10 +81,6 @@
                         title: 'Item c',
                         list: 1
                     }
-                ],
-                lists: [
-                    ['A', 'B', 'C'],
-                    ['D', 'E', 'F'],
                 ],
 			};
 		},
@@ -122,13 +119,11 @@
 
 <style scoped>
     .acoin {
-        display: inline-block;
+        /* display: inline-block;
         width: auto;
-        height: auto;
+        height: auto; */
+        max-height: 100px;
     }
-    /* .wrapper {
-        position: relative;
-    } */
     .piggi {
         top: 0;
         left: 0;
@@ -137,7 +132,7 @@
         background-color: darkgreen;
     }
    .coinstack {
-        top: 75%;
+        top: 0;
         left: 0;
         background-image: url(../assets/CoinStack.svg);
         background-size: contain;
