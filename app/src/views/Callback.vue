@@ -1,17 +1,19 @@
 <template>
-  <v-layout align-center justify-center row>
-    <loader color="#1976d2"/>
-  </v-layout>
+  <v-container>
+    <v-row align="center" justify="center">
+      <loader color="#9367E6"/>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import { PropagateLoader } from '@saeris/vue-spinners';
+import { HashLoader } from '@saeris/vue-spinners';
 import Auth from '../auth';
 
 export default {
   components: {
-    loader: PropagateLoader
+    loader: HashLoader
   },
   computed: {
     ...mapState(['baseUrl'])

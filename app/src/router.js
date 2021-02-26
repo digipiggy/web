@@ -7,6 +7,10 @@ import PigDashboard from './views/PigDashboard';
 import PigSettings from './views/PigSettings';
 import Home from './views/Home';
 import Story from './views/Story';
+import Lessons from './views/Lessons';
+import Newsletter from './views/Newsletter';
+import FAQ from './views/Faq';
+import ContactUs from './views/ContactUs';
 import Chapter from './views/Chapter';
 
 Vue.use(Router);
@@ -48,6 +52,26 @@ const router = new Router({
       path: '/chapter/:title',
       name: 'chapter',
       component: Chapter,
+    },
+    {
+      path: '/lessons',
+      name: 'lessons',
+      component: Lessons
+    },
+    {
+      path: '/newsletter',
+      name: 'newsletter',
+      component: Newsletter
+    },
+    {
+      path: '/faq',
+      name: 'faq',
+      component: FAQ
+    },
+    {
+      path: '/contactUs',
+      name: 'contactUs',
+      component: ContactUs
     },
     {
       path: '*',
