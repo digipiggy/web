@@ -13,7 +13,7 @@
       :src="require(`@/assets/${welcomeMessage.icon}.gif`)" 
       width="30px" >
     </v-img>
-    <p class="text-h3 mb-0" style="display: inline-block; padding-left: 5px; color: white;">{{welcomeMessage.text}}</p>
+    <p class="text-h5 mb-0" style="display: inline-block; padding-left: 5px; color: white;">{{welcomeMessage.text}}</p>
 
   </v-card>
 </template>

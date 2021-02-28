@@ -9,7 +9,7 @@ import Home from './views/Home';
 import Story from './views/Story';
 import Lessons from './views/Lessons';
 import Lesson from './views/Lesson';
-import Newsletter from './views/Newsletter';
+import Articles from './views/Articles';
 import FAQ from './views/Faq';
 import ContactUs from './views/ContactUs';
 import Chapter from './views/Chapter';
@@ -65,9 +65,9 @@ const router = new Router({
       component: Lesson
     },
     {
-      path: '/newsletter',
-      name: 'newsletter',
-      component: Newsletter
+      path: '/articles',
+      name: 'articles',
+      component: Articles
     },
     {
       path: '/faq',

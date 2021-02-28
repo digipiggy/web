@@ -70,11 +70,18 @@
             <v-list-item-title>Digi Pig Settings</v-list-item-title>
           </v-list-item>
 
-          <v-list-item to="/newsletter">
+          <v-list-item to="/values">
+            <v-list-item-icon>
+              <v-icon>mdi-heart</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>My Values</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item to="/articles">
             <v-list-item-icon>
               <v-icon>mdi-newspaper</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Newsletter</v-list-item-title>
+            <v-list-item-title>Articles</v-list-item-title>
           </v-list-item>
 
           <v-divider ></v-divider>
@@ -95,11 +102,11 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-    <v-content >
+    <v-main >
       <transition name="component-fade" mode="out-in">
         <router-view/>
       </transition>
-    </v-content>
+    </v-main>
     <v-snackbar v-model="notification" :multi-line="true" :timeout="3000">
       {{ notificationText }}
       <v-btn text :color="notificationColor" @click="notification = false">Close</v-btn>

@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="pt-12">
     <v-row align="center" justify="center">
       <loader color="#9367E6"/>
     </v-row>

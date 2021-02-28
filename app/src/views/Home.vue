@@ -1,15 +1,15 @@
 <template>
   <v-container fluid >
     <v-row justify="center">
-      <v-col cols="10" offset="1">
+      <v-col cols="12" md="10">
         <welcomeCard />
       </v-col>
     </v-row>
-    <v-row  justify="center">
-      <v-col cols="10" offset="1" md="4" offset-md="1" >
+    <v-row justify="center">
+      <v-col cols="12" md="4">
         <lessonCard />
       </v-col>
-      <v-col cols="10" offset="1" md="6" offset-md="0">
+      <v-col cols="12" md="6">
         <digiStatusCard />
       </v-col>
     </v-row>

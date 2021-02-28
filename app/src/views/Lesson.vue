@@ -1,16 +1,14 @@
 <template>
   <v-container 
-    style="border: 2px solid green" 
-    class="py-0"
+    class=" snap-container"
     fluid>
     <!--TODO Maybe add a min height to the row? 30%???-->
     <v-row 
       :style="{
-        border: '2px solid blue',
-        minHeight: '100vh',
-        backgroundColor: page.backgroundColor,
+        minHeight: '95vh',
+        backgroundColor: page.backgroundColor
       }"
-      class=""
+      class="snap-child"
       align="center" 
       justify="center"
       v-for="page in lesson.pages" 
@@ -161,3 +159,16 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .snap-container {
+    border: 6px solid green;
+    height: 95vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+  }
+  .snap-child {
+    border: 2px solid blue;
+    scroll-snap-align: start;
+  }
+</style>
