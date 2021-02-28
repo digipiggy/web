@@ -77,6 +77,8 @@
             <v-list-item-title>Newsletter</v-list-item-title>
           </v-list-item>
 
+          <v-divider ></v-divider>
+
           <v-list-item to="/faq">
             <v-list-item-icon>
               <v-icon>mdi-help</v-icon>

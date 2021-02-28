@@ -1,11 +1,11 @@
 <template>
   <v-container fluid >
-    <v-row align-center justify-center>
+    <v-row justify="center">
       <v-col cols="10" offset="1">
         <welcomeCard />
       </v-col>
     </v-row>
-    <v-row align-center justify-center>
+    <v-row  justify="center">
       <v-col cols="10" offset="1" md="4" offset-md="1" >
         <lessonCard />
       </v-col>

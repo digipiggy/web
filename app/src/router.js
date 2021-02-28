@@ -8,6 +8,7 @@ import PigSettings from './views/PigSettings';
 import Home from './views/Home';
 import Story from './views/Story';
 import Lessons from './views/Lessons';
+import Lesson from './views/Lesson';
 import Newsletter from './views/Newsletter';
 import FAQ from './views/Faq';
 import ContactUs from './views/ContactUs';
@@ -57,6 +58,11 @@ const router = new Router({
       path: '/lessons',
       name: 'lessons',
       component: Lessons
+    },
+    {
+      path: '/lessons/lesson/:title',
+      name: 'lesson',
+      component: Lesson
     },
     {
       path: '/newsletter',

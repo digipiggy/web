@@ -8,7 +8,7 @@
     ></v-img>
     <p>Lesson One - Goals</p>
     <p>Set your goals with help from the piggles family.</p>
-    <v-btn color="#A0E667" dark>
+    <v-btn color="#A0E667" dark to="/story">
       Start Lesson
     </v-btn>
   </v-card>

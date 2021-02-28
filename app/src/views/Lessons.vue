@@ -1,11 +1,11 @@
 <template>
   <v-container fluid >
-    <v-row align-center justify="center">
+    <v-row  justify="center">
       <v-col cols="11" md="10">
         <lessonStatusIndicator />
       </v-col>
     </v-row>
-    <v-row align-center justify="center">
+    <v-row  justify="center">
       <v-col 
         cols="11" 
         md="5" 
