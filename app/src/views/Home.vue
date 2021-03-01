@@ -7,7 +7,11 @@
     </v-row>
     <v-row justify="center">
       <v-col cols="12" md="4">
-        <lessonCard />
+        <lessonCard 
+          :lesson="lesson"
+        />
+        <div class="mb-6"></div>
+        <articleCard />
       </v-col>
       <v-col cols="12" md="6">
         <digiStatusCard />
@@ -18,14 +22,28 @@
 
 <script>
 import LessonCard from '@/components/LessonCard';
+import ArticleCard from '@/components/ArticleCard';
 import WelcomeCard from '@/components/WelcomeCard';
 import DigiStatusCard from '@/components/DigiStatusCard';
+
+const lesson = {
+  title: "Lesson 1",
+  image: "kitchenEnter.jpg",
+  subtitle: "Let's talk about Goals",
+  body: "Set your goals with help from the piggles family."
+}
 
 export default {
   components: {
     lessonCard: LessonCard,
     welcomeCard: WelcomeCard,
-    digiStatusCard: DigiStatusCard
+    digiStatusCard: DigiStatusCard,
+    articleCard: ArticleCard
   },
+  data() {
+    return {
+      lesson
+    }
+  }
 };
 </script>

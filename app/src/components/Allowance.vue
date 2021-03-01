@@ -1,6 +1,6 @@
 <template>
   <v-card class="elevation-12">
-    <v-toolbar dark color="primary">
+    <v-toolbar dark color="#9367E6">
       <v-toolbar-title>Allowance</v-toolbar-title>
       <v-spacer></v-spacer>
       <div>
@@ -32,7 +32,8 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
-          color="primary"
+          dark
+          color="#9367E6"
           @click="onSave"
         >Save Allowance
           <v-icon right dark>cloud_upload</v-icon>

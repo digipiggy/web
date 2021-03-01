@@ -4,7 +4,7 @@ import Auth from './auth';
 import Setup from './views/Setup';
 import Callback from './views/Callback';
 import PigDashboard from './views/PigDashboard';
-import PigSettings from './views/PigSettings';
+import PigSettings from './views/PigSettingsNew';
 import Home from './views/Home';
 import Story from './views/Story';
 import Lessons from './views/Lessons';
@@ -13,6 +13,7 @@ import Articles from './views/Articles';
 import FAQ from './views/Faq';
 import ContactUs from './views/ContactUs';
 import Chapter from './views/Chapter';
+import Values from './views/Values';
 
 Vue.use(Router);
 
@@ -78,6 +79,11 @@ const router = new Router({
       path: '/contactUs',
       name: 'contactUs',
       component: ContactUs
+    },
+    {
+      path: '/values',
+      name: 'values',
+      component: Values
     },
     {
       path: '*',

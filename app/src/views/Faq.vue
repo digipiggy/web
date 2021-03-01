@@ -2,9 +2,7 @@
   <v-container fluid>
     <v-row justify="center">
       <v-col cols="12" md="10">
-        <v-card class="elevation-4 pa-5" color="#A0E667">
-          <p class="text-h4 mb-0" style="color: white;">Frequently asked questions</p>
-        </v-card>
+        <p class="text-h4 my-5">Frequently asked questions</p>
       </v-col>
     </v-row>
     <v-row justify="center">

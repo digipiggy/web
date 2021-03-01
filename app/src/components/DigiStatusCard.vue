@@ -1,11 +1,13 @@
 <template>
   <v-card class="elevation-3 pa-5">
     <p>My Digi Pig - {{device.deviceCode}} </p>
-    <v-img 
-      :src="require('@/assets/logoLightGreen.png')" 
-      aspect-ratio="1.4"
-      class="mb-4"
-    ></v-img>
+    <v-sheet class="mb-4 px-14">
+      <v-img 
+        :src="require('@/assets/logoLightGreen.png')" 
+        aspect-ratio="1.4"
+
+      ></v-img>
+    </v-sheet>
      <v-list-item
         v-for="(g) in enabledGoals"
         :key="g.name"
@@ -33,8 +35,8 @@
         </v-btn>
       </v-list-item-action>
     </v-list-item>
-    <v-btn color="#A0E667" dark>
-    Update Goals
+    <v-btn color="#9367E6" dark to="/pigSettings">
+      Update My Goals
     </v-btn>
   </v-card>
 </template>

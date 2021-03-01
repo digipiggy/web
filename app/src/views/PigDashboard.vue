@@ -83,7 +83,6 @@
               ></v-text-field>
             </v-card-text>
           </v-card>
-
           <Promises/>
         </div>
       </v-flex>

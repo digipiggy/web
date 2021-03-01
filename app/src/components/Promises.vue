@@ -1,6 +1,6 @@
 <template>
   <v-card class="elevation-12">
-    <v-toolbar dark color="primary">
+    <v-toolbar dark color="#9367E6">
       <v-toolbar-title>Promises</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>

@@ -8,7 +8,7 @@
     ></v-img>
     <p class="text-caption">Published 1/19/21 </p>
     <p>We've all been there: your in the toy isle at target, and the latest paw patrol plushy catches your daughters eye. Unfortunatley for her, she's... </p>
-    <v-btn color="#48A182" dark to="/">
+    <v-btn color="white" to="/">
       Continue Reading
     </v-btn>  
   </v-card>
