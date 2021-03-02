@@ -13,7 +13,7 @@ import Articles from './views/Articles';
 import FAQ from './views/Faq';
 import ContactUs from './views/ContactUs';
 import Chapter from './views/Chapter';
-import Values from './views/Values';
+import Preferences from './views/Preferences';
 
 Vue.use(Router);
 
@@ -81,9 +81,9 @@ const router = new Router({
       component: ContactUs
     },
     {
-      path: '/values',
-      name: 'values',
-      component: Values
+      path: '/preferences',
+      name: 'preferences',
+      component: Preferences
     },
     {
       path: '*',

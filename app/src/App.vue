@@ -70,11 +70,11 @@
             <v-list-item-title>Digi Pig Settings</v-list-item-title>
           </v-list-item>
 
-          <v-list-item to="/values">
+          <v-list-item to="/preferences">
             <v-list-item-icon>
               <v-icon>mdi-heart</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>My Values</v-list-item-title>
+            <v-list-item-title>Preferences</v-list-item-title>
           </v-list-item>
 
           <v-list-item to="/articles">
