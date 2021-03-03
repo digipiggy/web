@@ -2,176 +2,95 @@
   <v-container 
     class=" snap-container"
     fluid>
-    <!--TODO Maybe add a min height to the row? 30%???-->
     <v-row 
       :style="{
         minHeight: '95vh',
-        background: page.backgroundColor,
-        color: page.textPrimaryColor
+        backgroundImage: `url(${require(`@/assets/${lesson.pages.titlePage.backgroundImage}`)})`,
+        color: lesson.pages.titlePage.textPrimaryColor,
+        backgroundPosition: 'center'
       }"
       class="snap-child"
-      align="center" 
       justify="center"
-      v-for="(page, i) in lesson.pages" 
-      :key="i"
     >
       <!--TODO componitize the contents of the if/else here-->
-      <!--title-->
+
+      <!--newTitlePage-->
       <template
-        v-if="page.type == 'title'"
-      >
-        <v-col
-          cols="11"
-          md="10"
-          class="pa-7"
-        >
-          <p class="text-h2 font-weight-bold">
-            {{page.title}}
-          </p>
-          <p class="text-h4 font-weight-medium">
-            {{page.subtitle}}
-          </p>
-          <p class="text-body-1 font-weight-medium">
-            {{page.completionTime}} minutes
-          </p>
-        </v-col>
-      </template>
-      <!--textWithPictureRight-->
-      <template
-        v-else-if="page.type == 'textWithPictureRight'"
-      >
-        <v-col
-          cols="11"
-          md="5"
-        >
-          <p>
-            {{page.text}}
-          </p>
-        </v-col>
-        <v-col
-          cols="11"
-          md="5"
-        >
-          <v-img 
-            :src="require(`@/assets/rex&Penny.jpg`)" 
-            aspect-ratio="1.4"
-          ></v-img>        
-        </v-col>
-      </template>
-      <!--textWithPictureLeft-->
-      <template
-        v-else-if="page.type == 'textWithPictureLeft'"
-      >
-        <v-col
-          cols="11"
-          md="5"
-        >
-          <v-img 
-            :src="require(`@/assets/rex&Penny.jpg`)" 
-            aspect-ratio="1.4"
-          ></v-img>        
-        </v-col>
-        <v-col
-          cols="11"
-          md="5"
-        >
-          <p>
-            {{page.text}}
-          </p>
-        </v-col>
-      </template>
-      <!--text-->
-      <template
-        v-else-if="page.type == 'text'"
-      >
+        
+      > 
         <v-col
           cols="11"
           md="6"
         >
-          <p class="text-h5">
-            {{page.text}}
+          <p class="text-h3 text-uppercase text-center">
+            {{lesson.pages.titlePage.title}}
+          </p>
+          <p class="text-h1 text-uppercase text-center font-weight-bold">
+            {{lesson.pages.titlePage.subtitle}}
+          </p>
+          <p class="text-h6 text-center ">
+            <v-icon>mdi-timer</v-icon>{{lesson.pages.titlePage.readTime}} mins
+          </p>
+          <p class="text-h6 text-center">
+            <v-icon>mdi-book</v-icon>{{lesson.pages.titlePage.audience}}
+          </p>
+          <p class="text-h6 text-center">
+            <v-icon>mdi-chevron-down</v-icon>
           </p>
         </v-col>
       </template>
-      <!--textWithTitle-->
+    
+    </v-row>
+    <v-row 
+      :style="{
+        minHeight: '95vh',
+        color: page.textPrimaryColor,
+        backgroundPosition: 'center'
+      }"
+      class="snap-child backback"
+      v-for="(page, i) in lesson.pages.contentPages" 
+      :key="i"
+    >
       <template
-        v-else-if="page.type == 'textWithTitle'"
-      >
+        v-if="page.type == 'newTextPage'"
+      > 
         <v-col
           cols="11"
-          md="6"
+          md="4"
         >
-          <p class="text-h3">
+          <p class="text-h6 text-center">
+            <v-icon>mdi-{{page.instructionIcon}}</v-icon>{{page.instructions}}
+          </p>
+          <p class="text-h6 text-uppercase text-center">
             {{page.title}}
           </p>
-          <p class="text-h5">
-            {{page.text}}
+          <p 
+            class="text-body-1 text-uppercase font-weight-bold"
+            v-for="paragraph in page.text"
+            :key="paragraph"
+          >
+            {{paragraph}}
           </p>
+          <v-container >
+            <v-row>
+              <v-col cols="4">
+                <v-img 
+                  :src="require(`@/assets/${page.quoteImg}`)" 
+                  style="border-radius: 50%; border: 1px solid #9367E6"
+                  aspect-ratio="1"
+                  width="100"
+                ></v-img>
+              </v-col>
+              <v-col cols="8">
+                <p>
+                  {{page.quote}}
+                </p>
+              </v-col>
+            </v-row>
+          </v-container >
         </v-col>
       </template>
-      <!--title-->
-      <template
-        v-else-if="page.type == 'heading'"
-      >
-        <v-col
-          cols="11"
-          md="6"
-        >
-          <p class="text-h3">
-            {{page.title}}
-          </p>
-        </v-col>
-      </template>
-      <!--question--->
-      <template
-        v-else-if="page.type == 'question'"
-      >
-        <v-col
-          cols="11"
-          md="5"
-        >
-          <p v-for="question in page.questions" :key="question">
-            {{question}}
-          </p>
-        </v-col>
-        <v-col
-          cols="11"
-          md="5"
-        >
-          <v-img 
-            :src="require(`@/assets/rex&Penny.jpg`)" 
-            aspect-ratio="1.4"
-          ></v-img>        
-        </v-col>
-      </template>
-      <!--cta-->
-      <template
-        v-else-if="page.type == 'cta'"
-      >
-        <v-col
-          cols="11"
-          md="5"
-        >
-          <v-img 
-            :src="require(`@/assets/rex&Penny.jpg`)" 
-            aspect-ratio="1.4"
-          ></v-img>        
-        </v-col>
-        <v-col
-          cols="11"
-          md="5"
-        >
-          <p>
-            {{page.text}}
-          </p>
-          <v-btn 
-            color="#A0E667" 
-            dark 
-            to="/pigSettings">
-            Set your goals
-          </v-btn>
-        </v-col>
-      </template>
+      
     </v-row>
   </v-container>
 </template>
@@ -188,7 +107,7 @@ export default {
       lesson: {}
     }
   },
-  async mounted() {
+  async created() {
     try {
       const title = this.$route.params.title
       this.lesson = this.lessons.find( lesson => lesson.title == title)
@@ -208,5 +127,8 @@ export default {
   }
   .snap-child {
     scroll-snap-align: start;
+  }
+  .backback {
+    background-image: linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(../assets/PennyGoal.png)
   }
 </style>

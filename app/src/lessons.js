@@ -75,20 +75,55 @@ const ctaPage = {
   textPrimaryColor: '#2C2C2C'
 }
 
+const newTitlePage = {
+  type: "newTitlePage",
+  title: "Lesson 1",
+  subtitle: "Goals",
+  readTime: "15",
+  audience: "Family reads together.",
+  backgroundImage: "familyKitchen.jpg",
+  textPrimaryColor: "#FFFFFF"
+}
+
+const newTextPage = {
+  type: "newTextPage",
+  title: "What is a goal?",
+  text: [
+    "A goal is something you’d like to do or have someday. It’s usually something you don’t get right away. You work for and wait to earn a goal. It takes planning and careful choices to reach a goal.",
+    "You hear about goals in sports, because a team is working to get points to win a game. The goal of soccer is to get the ball into the net."
+  ],
+  audience: "kid",
+  instructions: "Family reads",
+  instructionIcon: "book-open",
+  backgroundImage: 'linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(../assets/PennyGoal.png)',
+  backgroundColor: "#FFFFFF",
+  quote: "I try to make goals when I play soccer - Penny Piggle",
+  quoteImg: "PennyHeadshotSquare.png",
+  textPrimaryColor: "#9367E6"
+}
+
 const lessons = [
     {
       title: "1",
       coverImage: "",
-      pages: [
-        titlePage,
-        headingPage,
-        textPage,
-        textWithTitlePage,
-        textWithPictureLeftPage,
-        textWithPictureRightPage,
-        questionPage,
-        ctaPage
-      ]
+      pages: {
+        titlePage: newTitlePage,
+        contentPages: [
+          newTextPage
+        ],
+        finalPage: {
+
+        }
+        // titlePage,
+        // headingPage,
+        // textPage,
+        // textWithTitlePage,
+        // textWithPictureLeftPage,
+        // textWithPictureRightPage,
+        // questionPage,
+        // ctaPage
+        
+      }
     }
   ]
 
