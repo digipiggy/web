@@ -4,7 +4,7 @@
       <v-col cols="11">
         <p class="text-h5 my-10" style="color: #9367E6">This guide will customize the Digi-Pig experience to your familiy's unique situation and values. Let's get started!</p>
         
-        <p class="text-h6 font-weight-regular mb-0">How many of your kids will you use the Digi-Pig experience with?</p>
+        <!-- <p class="text-h6 font-weight-regular mb-0">How many of your kids will you use the Digi-Pig experience with?</p>
         <p class="text-body-2 font-weight-regular mb-8">Currently, we support up to 4 kids in the system at a time.</p>
         <v-row justify="center">
           <v-col
@@ -69,7 +69,43 @@
             solo
             dense
             :disabled="isKidInputDisabled(4)"
-          ></v-text-field>
+          ></v-text-field> -->
+
+        <p class="text-h6 font-weight-regular mb-0">Enter your kids names.</p>
+        <v-text-field
+          label="Kid one"
+          v-model="kid.name"
+          solo
+          dense
+          v-for="(kid, i) in kids"
+          :key="`kid-${i}`"
+        ></v-text-field>
+        <v-btn
+          color="#A0E667"
+          class="ma-2 white--text"
+          @click="addKiddo"
+        >
+          Add another kiddo
+          <v-icon
+            right
+            dark
+          >
+            mdi-plus
+          </v-icon>
+        </v-btn>
+        <v-btn
+          color="red"
+          class="ma-2 white--text"
+          @click="removeKiddo"
+        >
+          Remove last kiddo
+          <v-icon
+            right
+            dark
+          >
+            mdi-minus
+          </v-icon>
+        </v-btn>
         
         <p class="text-h6 font-weight-regular mt-10 mb-0">Lets set up your family's earning framework.</p>
         <p class="text-body-2 font-weight-regular mb-8">Parents, let’s think about how you want your kids to receive Piggles coins, which is our fake currency, represented in the app and by lights appearing on the Digipig. Below are three common frameworks to choose from. Pick one and we will help you set it up.</p>
@@ -289,11 +325,7 @@ export default {
   components: {},
   data() {
     return {
-      numberOfKids: 0,
-      kid1Name: "",
-      kid2Name: "",
-      kid3Name: "",
-      kid4Name: "",
+      kids: [],
       rewardMethod: null,
       rewardMethods,
       tasks,
@@ -346,6 +378,13 @@ export default {
     //     this.kids.push(newKid);
     //   }
     // },
+    addKiddo() {
+      const newKid = {name: ""};
+      this.kids.push(newKid);
+    },
+    removeKiddo() {
+      this.kids.pop();
+    },
     isKidInputDisabled: function(num) {
       return this.numberOfKids < num ? true : false
     },
@@ -401,15 +440,23 @@ export default {
       this.goals.push({name: "New Goal", description: "Happy little description", targetAmount: 8})
     },
     async saveKids() {
+      let kids = this.kids.map((kid, i) => {
+        return {
+          name: kid.name,
+          goalIndex: i,
+          behaviors: this.selectedBehaviors,
+          tasks: this.selectedTasks
+        }
+      })
+
+      kids = kids.filter(kid => kid.name != "")     
+
       const device = {
         deviceId: this.device.deviceId,
         deviceCode: this.device.deviceCode,
         piggySleep: this.device.piggySleep,
         goals: this.device.goals,
-        kids: {
-          kidOne: {name: "Jeff"},
-          kidTwo: {name: "Geoff"}
-        }
+        kids
       }
 
       if (await this.updateDevice(device)) {
@@ -417,7 +464,17 @@ export default {
       } else {
         this.displayMessage({ text: 'Failed to add kids', color: 'error' });
       }
+    },
+    initialize() {
+      if (this.device.kids) {
+        this.kids = this.device.kids;
+      } else {
+        this.kids = [];
+      }
     }
+  },
+  mounted() {
+    this.initialize();
   }
 
 };

@@ -4,7 +4,8 @@ import Auth from './auth';
 import Setup from './views/Setup';
 import Callback from './views/Callback';
 import PigDashboard from './views/PigDashboard';
-import PigSettings from './views/PigSettingsNew';
+import PigSettingsNew from './views/PigSettingsNew';
+import PigSettings from './views/PigSettings';
 import Home from './views/Home';
 import Story from './views/Story';
 import Lessons from './views/Lessons';
@@ -41,9 +42,14 @@ const router = new Router({
       component: PigDashboard
     },
     {
+      path: '/goals',
+      name: 'goals',
+      component: PigSettings
+    },
+    {
       path: '/pigSettings',
       name: 'pigSettings',
-      component: PigSettings
+      component: PigSettingsNew
     },
     {
       path: '/story',

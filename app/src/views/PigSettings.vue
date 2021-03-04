@@ -118,6 +118,7 @@ export default {
       this.allGoalsValid = this.valid.every(x => x);
     },
     onPercentage() {
+      console.log("onPercentage has been called")
       const enabledGoals = this.goals.filter(g => g.enabled);
       if (!enabledGoals.length) {
         this.totalPercentageValid = true;
@@ -180,7 +181,9 @@ export default {
         };
       });
 
+      console.log("in the initialize: ", this.goals)
       for (let index in this.goals) {
+        console.log("index", index)
         this.$watch(['goals', index, 'percentage'].join('.'), this.onPercentage);
         this.$watch(['goals', index, 'enabled'].join('.'), this.onPercentage);
       }
