@@ -27,7 +27,21 @@ const schema = Joi.object().keys({
     current: Joi.number().min(0).max(Joi.ref('total')).required(),
     promise: Joi.number().min(0).max(Joi.ref('total')).required(),
     promises: Joi.array()
-  }))
+  })),
+  kids: Joi.array().items(Joi.object().keys({
+    name: Joi.string(),
+    goalIndex: Joi.number().integer().min(0).max(4),
+    behaviors: Joi.array().items(Joi.string().allow(null).empty()),
+    tasks: Joi.array().items(Joi.string().allow(null).empty())
+  })),
+  rewards: Joi.array().items(Joi.object().keys({
+    name: Joi.string(),
+    description: Joi.string(),
+    coins: Joi.number().integer()
+  })),
+  preferences: Joi.object().keys({
+    rewardDay: Joi.string()
+  })
 });
 
 module.exports = async (req, res) => {
