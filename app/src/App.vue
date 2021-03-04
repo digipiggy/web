@@ -74,7 +74,7 @@
             <v-list-item-icon>
               <v-icon>mdi-heart</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Preferences</v-list-item-title>
+            <v-list-item-title>My Family</v-list-item-title>
           </v-list-item>
 
           <v-list-item to="/pigSettings">

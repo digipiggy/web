@@ -4,7 +4,7 @@
     <v-row justify="center">
       <v-col cols="12" md="5">
         <!--Goals-->
-        <v-card class="elevation-12 mb-4">
+        <!-- <v-card class="elevation-12 mb-4">
           <v-toolbar dark color="#9367E6">
             <v-toolbar-title>My Goals</v-toolbar-title>
           </v-toolbar>
@@ -118,7 +118,7 @@
               <v-icon right>cloud_upload</v-icon>
             </v-btn>
           </v-card-actions>
-        </v-card>
+        </v-card> -->
         <sleep class="mb-4" />
       </v-col>
     </v-row>

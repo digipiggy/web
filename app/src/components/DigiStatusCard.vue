@@ -16,7 +16,6 @@
         <v-progress-circular
           class="align-center"
           :rotate="270"
-          :size="50"
           :width="15"
           :value="getCirclePercent(g.current, g.total)"
           :color="$color(g.color)"
