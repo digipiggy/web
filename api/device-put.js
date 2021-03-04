@@ -2,6 +2,7 @@ const { parse } = require('url');
 const parseBody = require('co-body');
 const Joi = require('joi');
 const shared = require('./shared');
+const { join } = require('path');
 
 const schema = Joi.object().keys({
   deviceId: Joi.string().alphanum().required(),
@@ -40,7 +41,12 @@ const schema = Joi.object().keys({
     coins: Joi.number().integer()
   })),
   preferences: Joi.object().keys({
-    rewardDay: Joi.string()
+    rewardDay: Joi.string(),
+    earningSystem: Joi.string()
+  }),
+  status: Joi.object().keys({
+    firstLogin: Joi.boolean(),
+    completedPreferences: Joi.boolean()
   })
 });
 
