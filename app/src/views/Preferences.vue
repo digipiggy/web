@@ -1,6 +1,12 @@
 <template>
-  <v-container>
-    <v-row justify="center">
+  <v-container class=" snap-container" fluid>
+    <v-row 
+      :style="{
+        minHeight: '93vh',
+      }"
+      class="snap-child"
+      justify="center"
+    >
       <v-col cols="11">
         <p class="text-h5 my-10" style="color: #9367E6">This guide will customize the Digi-Pig experience to your familiy's unique situation and values. Let's get started!</p>
         
@@ -106,9 +112,18 @@
             mdi-minus
           </v-icon>
         </v-btn>
-        
+      </v-col>  
+    </v-row>
+    <v-row 
+      :style="{
+        minHeight: '93vh',
+      }"
+      class="snap-child"
+      justify="center"
+    >
+      <v-col cols="11">
         <p class="text-h6 font-weight-regular mt-10 mb-0">Lets set up your family's earning framework.</p>
-        <p class="text-body-2 font-weight-regular mb-8">Parents, let’s think about how you want your kids to receive Piggles coins, which is our fake currency, represented in the app and by lights appearing on the Digipig. Below are three common frameworks to choose from. Pick one and we will help you set it up.</p>
+        <p class="text-body-2 font-weight-regular mb-8">Parents, let’s think about how you want your kids to receive Piggles coins, which is our in-app currency, represented by lights appearing on the Digipig. Below are three common frameworks to choose from. Pick one and we will help you set it up.</p>
         <v-container class="mb-10">
           <v-row justify="center">
             <v-col 
@@ -130,8 +145,18 @@
             </v-col>
           </v-row>
         </v-container>
-
-        <template v-if="showTasksAndBehaviors">
+      </v-col>  
+    </v-row>
+    <v-row 
+      :style="{
+        minHeight: '93vh',
+      }"
+      class="snap-child"
+      justify="center"
+      v-if="showTasksAndBehaviors"
+    >
+      <v-col cols="11">
+        <template >
           <p class="text-h6 font-weight-regular">Select tasks and/or behaviors you would like your kid(s) to acheive.</p>
           <v-container 
             class="mb-10"
@@ -209,7 +234,16 @@
             </v-row>
           </v-container>
         </template>
-
+      </v-col>  
+    </v-row>
+    <v-row 
+      :style="{
+        minHeight: '93vh',
+      }"
+      class="snap-child"
+      justify="center"
+    >
+      <v-col cols="11">
 
         <p class="text-h6 font-weight-regular">Create your Goal Catalog. </p>
         <p class="text-body-2 font-weight-regular mb-8">The Goal Catalog is a list of goals that you would like your kids to work towards. In lesson 1, your kids will choose their own goal from your customized Goal. </p>
@@ -249,7 +283,16 @@
             </v-col>
           </v-row>
         </v-container>
-
+      </v-col>  
+    </v-row>
+    <v-row 
+      :style="{
+        minHeight: '93vh',
+      }"
+      class="snap-child"
+      justify="center"
+    >
+      <v-col cols="11">
         <p class="text-h6 font-weight-regular">Pick your payday.</p>
         <p class="text-body-2 font-weight-regular mb-8">We recommond you sit down with your kids on this day each week to review their progress towards their goals.</p>
         <v-select
@@ -516,3 +559,14 @@ export default {
 
 };
 </script>
+
+<style scoped>
+  .snap-container {
+    height: 95vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+  }
+  .snap-child {
+    scroll-snap-align: start;
+  }
+</style>

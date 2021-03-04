@@ -109,7 +109,7 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-    <v-main >
+    <v-main style="background-color: #F7F8FA">
       <transition name="component-fade" mode="out-in">
         <router-view/>
       </transition>

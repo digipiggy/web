@@ -46,16 +46,16 @@
           cols="12"
           md="6"
         >
-          <v-card class="pa-5" color="#F7F8FA" height="100%">
+          <v-card class="pa-5" height="100%">
             <!-- <v-avatar rounded="circle" :color="goal.enabled ? $color(goal.color) : 'grey'" size="36"></v-avatar> -->
             <!-- <span> {{goal.kidsName}}'s Goal</span> -->
             <p class="text-h6 text-center">{{goal.kidsName}}'s Goal</p>
-            <!-- <v-select
+            <v-select
               :items="goalCatalog"
               :label="goal.name"
               solo
               v-model="goal.name"
-            ></v-select> -->
+            ></v-select>
             <p class="text-h3 font-weight-bold text-center" :style="{color: $color(goal.color)}">
               {{goal.name}}
               <v-icon @click="editGoal">

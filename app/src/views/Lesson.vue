@@ -15,9 +15,7 @@
       <!--TODO componitize the contents of the if/else here-->
 
       <!--newTitlePage-->
-      <template
-        
-      > 
+      <template> 
         <v-col
           cols="11"
           md="6"
@@ -45,9 +43,10 @@
       :style="{
         minHeight: '95vh',
         color: page.textPrimaryColor,
+        backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${page.backgroundImage}`)})`,
         backgroundPosition: 'center'
       }"
-      class="snap-child backback"
+      class="snap-child"
       v-for="(page, i) in lesson.pages.contentPages" 
       :key="i"
     >
