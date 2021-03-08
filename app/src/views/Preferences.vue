@@ -1,97 +1,34 @@
 <template>
-  <v-container class=" snap-container" fluid>
-    <v-row 
-      :style="{
-        minHeight: '93vh',
-      }"
-      class="snap-child"
-      justify="center"
-    >
+  <v-container >
+    <v-row justify="center">
       <v-col cols="11">
-        <p class="text-h5 my-10" style="color: #9367E6">This guide will customize the Digi-Pig experience to your familiy's unique situation and values. Let's get started!</p>
+        <p class="text-h5 font-weight-regular my-10">👋 Hi there! We're excited you're on this journey with us. </p>
+        <p class="text-h5 font-weight-regular my-10" >This guide will help you customize the Digi-Pig experience to your familiy's unique situation and values. </p>
+        <p class="text-h5 font-weight-regular my-10" style="color: #A0E667;">Let's get started!</p>
         
-        <!-- <p class="text-h6 font-weight-regular mb-0">How many of your kids will you use the Digi-Pig experience with?</p>
+        <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Enter your kid(s) names.</p>
         <p class="text-body-2 font-weight-regular mb-8">Currently, we support up to 4 kids in the system at a time.</p>
-        <v-row justify="center">
-          <v-col
-              v-for="n in 4"
-              :key="`${n}-kids`"
-              cols="6"
-              sm="3"
-              md="2"
-              class="mx-auto"
-              style="display: inline"
-          >
-            <v-btn
-              v-if="numberOfKids == n"
-              class="mx-2 mb-10"
-              fab
-              dark
-              x-large
-              color="#9367E6"
-              @click="createKids(n)"
-            >
-              {{n}}
-            </v-btn>
-            <v-btn
-              v-else
-              class="mx-2 mb-10"
-              fab
-          
-              x-large
-              color="#F7F8FA"
-              @click="createKids(n)"
-            >
-              {{n}}
-            </v-btn>
-          </v-col>
-        </v-row>
-
-        <p class="text-h6 font-weight-regular">What are your kid's names?</p>
-        <v-text-field
-            :label="`Kid 1 Name`"
-            v-model="kid1Name"
-            solo
-            dense
-            :disabled="isKidInputDisabled(1)"
-          ></v-text-field>
-        <v-text-field
-            :label="`Kid 2 Name`"
-            v-model="kid2Name"
-            solo
-            dense
-            :disabled="isKidInputDisabled(2)"
-          ></v-text-field>
-        <v-text-field
-            :label="`Kid 3 Name`"
-            v-model="kid3Name"
-            solo
-            dense
-            :disabled="isKidInputDisabled(3)"
-          ></v-text-field>
-        <v-text-field
-            :label="`Kid 4 Name`"
-            v-model="kid4Name"
-            solo
-            dense
-            :disabled="isKidInputDisabled(4)"
-          ></v-text-field> -->
-        
-        <p class="text-h6 font-weight-regular mb-0">Enter your kids names.</p>
-        <v-text-field
-          label="Kid one"
-          v-model="kid.name"
-          solo
-          dense
-          v-for="(kid, i) in kids"
-          :key="`kid-${i}`"
-        ></v-text-field>
+        <v-row no-gutters>
+          <v-col cols="9" md="4">
+            <v-text-field
+              label="Kid one"
+              v-model="kid.name"
+              solo
+              dense
+              append-outer-icon="mdi-close-circle-outline"
+              @click:append-outer="removeKiddo(i)"
+              v-for="(kid, i) in kids"
+              :key="`kid-${i}`"
+            ></v-text-field>
+          </v-col >
+        </v-row >
         <v-btn
           color="#A0E667"
-          class="ma-2 white--text"
+          class="white--text"
           @click="addKiddo"
+          :disabled="kids.length >= 4"
         >
-          Add another kiddo
+          Add kid
           <v-icon
             right
             dark
@@ -99,30 +36,11 @@
             mdi-plus
           </v-icon>
         </v-btn>
-        <v-btn
-          color="red"
-          class="ma-2 white--text"
-          @click="removeKiddo"
-        >
-          Remove last kiddo
-          <v-icon
-            right
-            dark
-          >
-            mdi-minus
-          </v-icon>
-        </v-btn>
       </v-col>  
     </v-row>
-    <v-row 
-      :style="{
-        minHeight: '93vh',
-      }"
-      class="snap-child"
-      justify="center"
-    >
+    <v-row justify="center">
       <v-col cols="11">
-        <p class="text-h6 font-weight-regular mt-10 mb-0">Lets set up your family's earning framework.</p>
+        <p class="text-h6 font-weight-regular mt-10 mb-0" style="color: #9367E6">Select your family's earning framework.</p>
         <p class="text-body-2 font-weight-regular mb-8">Parents, let’s think about how you want your kids to receive Piggles coins, which is our in-app currency, represented by lights appearing on the Digipig. Below are three common frameworks to choose from. Pick one and we will help you set it up.</p>
         <v-container class="mb-10">
           <v-row justify="center">
@@ -133,9 +51,10 @@
               :key="earningSystem.title"
             >
               <v-card 
-                style="border: 2px solid #48A182"
-                :color="isEarningSystemSelected(earningSystem)"
-                class="pa-2"
+                style="border: 2px solid #9367E6"
+                :color="isEarningSystemSelected(earningSystem) ? '#9367E6' : '#FFFFFF'"
+                
+                class="pa-4"
                 min-height="100%"
                 @click="selectEarningSystem(i)"
               >
@@ -148,23 +67,87 @@
       </v-col>  
     </v-row>
     <v-row 
-      :style="{
-        minHeight: '93vh',
-      }"
-      class="snap-child"
       justify="center"
       v-if="showTasksAndBehaviors"
     >
       <v-col cols="11">
-        <template >
-          <p class="text-h6 font-weight-regular">Select tasks and/or behaviors you would like your kid(s) to acheive.</p>
-          <v-container 
+          <p class="text-h6 font-weight-regular" style="color: #9367E6">Select tasks and/or behaviors you would like your kid(s) to acheive.</p>
+          <div 
             class="mb-10"
             v-for="(kid, kidIndex) in kids"
             :key="`kidTasks&Behaviors-${kidIndex}`"
           >
-            <p>{{kid.name}}'s Tasks</p>
-            <v-row justify="center" class="mb-5">
+            <v-row>
+              <v-col cols="12" md="6">
+                <p>Select tasks for {{kid.name}}</p>
+                <v-chip
+                  class="ma-2"
+                  color="#48A182"
+                  v-for="(task, taskIndex) in tasks"
+                  :key="`${kid.name}-${task}`"
+                  :outlined="!isTaskSelected(kidIndex, task)"
+                  :text-color="isTaskSelected(kidIndex, task) ? '#FFFFFF': '#48A182'"
+                  @click="selectTask(kidIndex, taskIndex)"
+                >
+                  <v-icon v-if="isTaskSelected(kidIndex, task)">mdi-check</v-icon>
+                  {{task}}
+                </v-chip>
+                <v-chip
+                  v-if="showNewTaskChip"
+                  class="ma-2"
+                  color="#48A182"
+                  outlined
+                >
+                  <v-text-field
+                    label="New Task"
+                    v-model="newTaskChip"
+                    single-line
+                    
+                    dense
+                    style="position: relative; top: 9px;"
+                    
+                  ></v-text-field>
+                  <v-icon @click="createTask" >mdi-plus</v-icon>
+                </v-chip>
+                <v-chip
+                  v-else
+                  class="ma-2"
+                  color="#48A182"
+                  outlined
+                  @click="showNewTaskChip = true"
+                >
+                  <v-icon >mdi-plus</v-icon>
+                  Custom Task
+                </v-chip>
+              </v-col>
+              <v-col cols="12" md="6">
+                <p>Select behaviors for {{kid.name}}</p>
+                <v-chip
+                  class="ma-2"
+                  color="#48A182"
+                  v-for="(behavior, behaviorIndex) in behaviors"
+                  :key="`${kid.name}-${behavior}`"
+                  :outlined="!isBehaviorSelected(kidIndex, behavior)"
+                  :text-color="isBehaviorSelected(kidIndex, behavior) ? '#FFFFFF' : '#48A182' "
+                  @click="selectBehavior(kidIndex, behaviorIndex)"
+                >
+                  <v-icon v-if="isBehaviorSelected(kidIndex, behavior)">mdi-check</v-icon>
+                  {{behavior}}
+                </v-chip>
+                <v-chip
+                  class="ma-2"
+                  color="#48A182"
+                  outlined
+                  @click="createBehavior()"
+                >
+                  <v-icon >mdi-plus</v-icon>
+                  Custom Behavior
+                </v-chip>
+              </v-col>
+            </v-row>
+
+
+            <!-- <v-row justify="center" class="mb-5">
               <v-col 
                 cols="10"
                 md="3"
@@ -186,7 +169,7 @@
               >
                 <v-card
                   style="border: 2px solid #A0E667"
-                  color=#F7F8FA
+                  color=#FFFFFF
                   class="pa-2"
                   @click="createTask()"
                 >
@@ -196,56 +179,16 @@
                   </p>
                 </v-card>
               </v-col>
-            </v-row>
+            </v-row> -->
 
-            <p>{{kid.name}}'s Behaviors</p>
-            <v-row justify="center" class="mb-5">
-              <v-col 
-                cols="6"
-                md="3"
-                v-for="(behavior, behaviorIndex) in behaviors"
-                :key="behavior"
-              >
-                <v-card
-                  style="border: 2px solid #9367E6"
-                  :color="isBehaviorSelected(kidIndex, behavior)"
-                  class="pa-2"
-                  @click="selectBehavior(kidIndex, behaviorIndex)"
-                >
-                  <p class="text-body-2 text-center mb-0">{{behavior}}</p>
-                </v-card>
-              </v-col>
-              <v-col 
-                cols="6"
-                md="3"
-              >
-                <v-card
-                  style="border: 2px solid #9367E6"
-                  color=#F7F8FA
-                  class="pa-2"
-                  @click="createBehavior()"
-                >
 
-                  <p class="text-body-2 text-center mb-0">
-                    <v-icon>mdi-plus</v-icon>Custom Behavior
-                  </p>
-                </v-card>
-              </v-col>
-            </v-row>
-          </v-container>
-        </template>
+          </div>
       </v-col>  
     </v-row>
-    <v-row 
-      :style="{
-        minHeight: '93vh',
-      }"
-      class="snap-child"
-      justify="center"
-    >
+    <v-row justify="center">
       <v-col cols="11">
 
-        <p class="text-h6 font-weight-regular">Create your Goal Catalog. </p>
+        <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Create your Goal Catalog. </p>
         <p class="text-body-2 font-weight-regular mb-8">The Goal Catalog is a list of goals that you would like your kids to work towards. In lesson 1, your kids will choose their own goal from your customized Goal. </p>
         <v-container class="mb-10">
           <v-row justify="center" class="mb-5">
@@ -256,14 +199,31 @@
               :key="goal.name + i"
             >
               <v-card
-                style="border: 2px solid #48A182"
-                :color="isGoalSelected(goal)"
                 class="pa-2"
+                height="100%"
+                :style="{border: '2px solid #9367E6', fontColor: isGoalSelected(goal) ? '#9367E6' : '#FFFFFF' }"
+                :color="isGoalSelected(goal) ? '#9367E6' : '#FFFFFF'"
                 @click="selectGoal(i)"
               >
-                <p class="text-body-2 text-center mb-0">{{goal.name}}</p>
-                <p class="text-caption mb-0">{{goal.description}}</p>
-                <p class="text-body-2 text-center mb-0">{{goal.coins}}<v-icon color="#FAC432">mdi-coin</v-icon></p>
+                <p class="text-subtitle-1 text-center mb-0">{{goal.name}}</p>
+                <p class="text-caption mb-0 text-center px-2">{{goal.description}}</p>
+                <!--TODO: oof this is centered weird --> 
+                <v-card-title class="pl-16 mb-0">
+                  <p class="text-h2 font-weight-bold text-center mb-0">{{goal.coins}}
+                    <!-- <v-img 
+                      :src="require('@/assets/PigglesCoin.png')" 
+                      aspect-ratio="1"
+                      width="50px"
+                    ></v-img> -->
+                  </p>
+                  <v-avatar size="50px">
+                    <img
+                      alt="coin"
+                      :src="require('@/assets/PigglesCoin.png')" 
+                    >
+                  </v-avatar>
+                </v-card-title>
+                <p class="text-caption text-center my-0">Piggles Coins</p>
               </v-card>
             </v-col>
             <v-col 
@@ -271,12 +231,53 @@
               md="3"
             >
               <v-card
-                style="border: 2px solid #48A182"
-                class="pa-2"
+                v-if="showGoalCreateTool"
+                height="100%"
+                style="border: 2px solid #9367E6"
+                class="pa-5"
+              >
+                <v-text-field
+                  label="Goal Name"
+                  v-model="newGoalName"
+                  dense
+                  outlined
+                ></v-text-field>
+                <v-text-field
+                  label="Description"
+                  v-model="newGoalDescription"
+                  dense
+                  outlined
+                ></v-text-field>
+                <v-text-field
+                  label="Piggles Coins"
+                  v-model="newGoalTotal"
+                  dense
+                  outlined
+                ></v-text-field>
+                <v-btn
+                  @click="cancelNewGoal"
+                  outlined
+                  color="#9367E6"
+                  class="ma-2"
+                >
+                  Cancel
+                </v-btn>
+                <v-btn
+                  @click="saveNewGoal"
+                  color="#9367E6"
+                >
+                  Save
+                </v-btn>
+              </v-card>
+              <v-card
+                v-else
+                height="100%"
+                style="border: 2px solid #9367E6"
+                class="pa-2 d-flex align-center justify-center"
                 @click="createGoal()"
               >
-                <v-icon>mdi-plus</v-icon>
                 <p class="text-body-2 text-center mb-0">
+                  <v-icon class="text-body-2 mx-auto" >mdi-plus</v-icon>
                   Create a Custom Goal
                 </p>
               </v-card>
@@ -285,37 +286,51 @@
         </v-container>
       </v-col>  
     </v-row>
-    <v-row 
-      :style="{
-        minHeight: '93vh',
-      }"
-      class="snap-child"
-      justify="center"
-    >
+    <v-row justify="center">
       <v-col cols="11">
-        <p class="text-h6 font-weight-regular">Pick your payday.</p>
+        <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Pick your Piggles Payday.</p>
         <p class="text-body-2 font-weight-regular mb-8">We recommond you sit down with your kids on this day each week to review their progress towards their goals.</p>
         <v-select
           :items="days"
-          label="Pick your payday"
+          label="Our Piggles Payday"
           solo
         ></v-select>
-
-        <v-btn
-          :loading="loading"
-          :disabled="loading"
-          color="#A0E667"
-          class="ma-2 white--text float-right"
-          @click="saveKids"
-        >
-          Save My Preferences
-          <v-icon
-            right
-            dark
-          >
-            mdi-cloud-upload
-          </v-icon>
-        </v-btn>
+        <v-row justify="right" v-if="showLessonPointer">
+          <v-col >
+            <v-btn
+              color="#A0E667"
+              class="ma-2 white--text float-right"
+              to="/lessons"
+            >
+              Start lesson 1
+              <v-icon
+                right
+                dark
+              >
+                mdi-arrow-right-bold
+              </v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
+        <v-row justify="right">
+          <v-col >
+            <v-btn
+              :loading="loading"
+              :disabled="loading"
+              color="#A0E667"
+              class="ma-2 white--text float-right"
+              @click="saveKids"
+            >
+              Save My Preferences
+              <v-icon
+                right
+                dark
+              >
+                mdi-cloud-upload
+              </v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
 
       </v-col>
     </v-row>
@@ -396,7 +411,14 @@ export default {
       goals,
       selectedGoals: [],
       // loader: null,
-      loading: false
+      loading: false,
+      showGoalCreateTool: false,
+      newGoalName: "",
+      newGoalDescription: "",
+      newGoalTotal: "",
+      newTaskChip: "",
+      showNewTaskChip: false,
+      showLessonPointer: false
     }
   },
   // watch: {
@@ -430,12 +452,18 @@ export default {
     //     this.kids.push(newKid);
     //   }
     // },
+    cancelNewGoal() {
+      this.newGoalName = "",
+      this.newGoalDescription = "",
+      this.newGoalTotal = "",
+      this.showGoalCreateTool = false
+    },
     addKiddo() {
       const newKid = {name: "", tasks: [], behaviors: []};
       this.kids.push(newKid);
     },
-    removeKiddo() {
-      this.kids.pop();
+    removeKiddo(index) {
+      this.kids = this.kids.filter((_kid, i) => i != index);
     },
     isKidInputDisabled: function(num) {
       return this.numberOfKids < num ? true : false
@@ -473,25 +501,39 @@ export default {
       }
     },
     isEarningSystemSelected(earningSystem) {
-      return  this.earningSystem && this.earningSystem == earningSystem.title ? '#48A182' : '#F7F8FA'
+      return  this.earningSystem && this.earningSystem == earningSystem.title;
     },
     isTaskSelected(kidIndex, task) {
-      return  this.kids[kidIndex].tasks.length != 0 && this.kids[kidIndex].tasks.includes(task) ? '#A0E667' : '#F7F8FA'
+      return  this.kids[kidIndex].tasks.length != 0 && this.kids[kidIndex].tasks.includes(task);
     },
     isBehaviorSelected(kidIndex, behavior) {
-      return  this.kids[kidIndex].behaviors.length != 0 && this.kids[kidIndex].behaviors.includes(behavior) ? '#9367E6' : '#F7F8FA'
+      return  this.kids[kidIndex].behaviors.length != 0 && this.kids[kidIndex].behaviors.includes(behavior);
     },
     isGoalSelected(goal) {
-      return  this.selectedGoals.length != 0 && (this.selectedGoals.filter(g => g.name == goal.name ).length > 0) ? '#48A182' : '#F7F8FA'
+      return  this.selectedGoals.length != 0 && (this.selectedGoals.filter(g => g.name == goal.name ).length > 0);
     },
     createTask() {
-      this.tasks.push("New task is added")
+      this.tasks.push(this.newTaskChip)
+      this.showNewTaskChip = false
     },
     createBehavior() {
       this.behaviors.push("New behavior is added")
     },
     createGoal() {
-      this.goals.push({name: "New Goal", description: "Happy little description", coins: 8})
+      this.showGoalCreateTool = true
+    },
+    saveNewGoal() {
+      this.goals.push({
+        name: this.newGoalName, 
+        description: this.newGoalDescription, 
+        coins: this.newGoalTotal
+      })
+      console.log("this.showGoalCreateTool", this.showGoalCreateTool)
+      this.showGoalCreateTool = false,
+      console.log("this.showGoalCreateTool", this.showGoalCreateTool)
+      this.newGoalName = "",
+      this.newGoalDescription = "",
+      this.newGoalTotal = ""
     },
     async saveKids() {
       this.loading = true;
@@ -524,6 +566,7 @@ export default {
 
       if (await this.updateDevice(device)) {
         this.loading = false;
+        this.showLessonPointer = true;
         this.displayMessage({ text: 'Successfully added kids', color: 'info' });
       } else {
         this.loading = false;
@@ -559,14 +602,3 @@ export default {
 
 };
 </script>
-
-<style scoped>
-  .snap-container {
-    height: 95vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-  }
-  .snap-child {
-    scroll-snap-align: start;
-  }
-</style>

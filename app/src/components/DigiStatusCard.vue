@@ -9,8 +9,8 @@
       ></v-img>
     </v-sheet>
      <v-list-item
-        v-for="(g) in enabledGoals"
-        :key="g.name"
+        v-for="(g, i) in enabledGoals"
+        :key="`${g.name}-${i}`"
       >
       <v-list-item-avatar>
         <v-progress-circular

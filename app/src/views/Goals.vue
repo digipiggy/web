@@ -46,34 +46,94 @@
           cols="12"
           md="6"
         >
-          <v-card class="pa-5" height="100%">
+          <v-card class="pa-5 rounded-sm" height="100%" :style="{borderTop: `5px solid ${$color(goal.color)}`}">
             <!-- <v-avatar rounded="circle" :color="goal.enabled ? $color(goal.color) : 'grey'" size="36"></v-avatar> -->
             <!-- <span> {{goal.kidsName}}'s Goal</span> -->
-            <p class="text-h6 text-center">{{goal.kidsName}}'s Goal</p>
+            <v-row justify="space-between">
+              <v-col>
+                <p class="text-h5 font-weight-medium " style="color: #48A182">{{goal.kidsName}}</p>
+              </v-col>
+              <v-col>
+                <p 
+                  class="text-body-2 font-weight-light text-right" 
+                  style="color: #2C2C2C; "
+                  >
+                  Digi Piggy Bank LED Color
+                 <v-icon :color="$color(goal.color)">
+                    mdi-checkbox-blank-circle-outline
+                  </v-icon>
+                </p>
+                 
+              </v-col>
+            </v-row>
+            <p class="text-caption font-weight-light mb-0" style="color: #2C2C2C">{{goal.kidsName}}'s Goal</p>
             <v-select
               :items="goalCatalog"
               :label="goal.name"
               solo
               v-model="goal.name"
             ></v-select>
-            <p class="text-h3 font-weight-bold text-center" :style="{color: $color(goal.color)}">
+            <p class="text-h5 font-weight-medium text-center" style="color: #9367E6">{{goal.kidsName}}'s Bank</p>
+            <!-- <p class="text-h3 font-weight-bold text-center" :style="{color: $color(goal.color)}">
               {{goal.name}}
               <v-icon @click="editGoal">
                 mdi-pencil
               </v-icon>
-            </p>
+            </p> -->
             <v-container>
               <v-row>
                 <v-col cols="6">
-                  <p class="text-h6 font-weight-bold text-center">Current Amount</p>
-                  <p class="text-h2 font-weight-bold text-center">{{goal.current}}</p>
+                  <p class="text-body-1 text-center font-weight-light" style="color: #2C2C2C">Current Amount</p>
+                  <v-sheet class="pl-8">
+                    <v-btn
+                      class="mx-2"
+                      style="display: inline;"
+                      fab
+                      dark
+                      small
+                      color="#9367E6"
+                      @click="goal.current -= 1"
+                    >
+                      <v-icon dark>
+                        mdi-minus
+                      </v-icon>
+                    </v-btn>
+                    <p class="text-h1 font-weight-bold text-center" style="color: #48A182; display: inline;">{{goal.current}}</p>
+                    <v-btn
+                      class="mx-2"
+                      style="display: inline;"
+                      fab
+                      dark
+                      small
+                      color="#9367E6"
+                      @click="goal.current += 1"
+                    >
+                      <v-icon dark>
+                        mdi-plus
+                      </v-icon>
+                    </v-btn>
+                  </v-sheet>
                 </v-col>
                 <v-col cols="6">
-                  <p class="text-h6 font-weight-bold text-center">Goal Target</p>
-                  <p class="text-h2 font-weight-bold text-center">{{goal.total}}</p>
+                  <p class="text-body-1 text-center font-weight-light" style="color: #2C2C2C">Goal Target</p>
+                  <p class="text-h1 font-weight-bold text-center" style="color: #48A182">{{goal.total}}</p>
                 </v-col>
               </v-row>
-              <v-row class="d-flex justify-space-between mb-5">
+              <v-row class="mb-7 px-10">
+                <v-img 
+                  v-for="coinDot in goal.current"
+                  :key="`coinDot-${coinDot}`"
+                  :src="require('@/assets/PigglesCoin.png')" 
+                  aspect-ratio="1"
+                ></v-img>
+                <v-img 
+                  v-for="blankLED in (goal.total - goal.current)"
+                  :key="`blankLED-${blankLED}`"
+                  :src="require('@/assets/BlankLED.png')" 
+                  aspect-ratio="1"
+                ></v-img>
+              </v-row>
+              <!-- <v-row class="d-flex justify-space-between mb-5">
                 <v-avatar 
                   v-for="coloredDot in goal.current"
                   :key="`coloredDot-${coloredDot}`"
@@ -88,30 +148,47 @@
                   color="grey" 
                   size="30"
                   ></v-avatar>
-              </v-row>
+              </v-row> -->
             </v-container>
             <!-- <p>Current Amount Saved: {{goal.current}} <v-icon color="#FAC432">mdi-coin</v-icon></p> -->
             <!--Display the list of behaviors and tasks that are associated with this kid-->
-            <p class="text-h6 font-weight-bold text-center">How this goal is earned</p>
+            <p class="text-body-1 font-weight-light mb-0">{{goal.kidsName}}'s Tasks and Behaviors</p>
             <v-chip
+              outlined
               class="ma-2"
-              color="#A0E667"
+              color="#48A182"
+              text-color="#48A182"
               v-for="(task, i) in goal.kidTasks"
               :key="`taskChip-${i}`"
             >
               {{task}}
             </v-chip>
             <v-chip
+              outlined
               class="ma-2"
-              color="#9367E6"
+              color="#48A182"
+              text-color="#48A182"
               v-for="(behavior, i) in goal.kidBehaviors"
               :key="`behaviorChip-${i}`"
             >
               {{behavior}}
             </v-chip>
+
+            <v-btn
+                class="mt-7 mx-auto"
+                style="display: block"
+                dark
+                
+                min-width="15%"
+                color="#A0E667"
+                @click="mockGoalSave"
+              >
+                Save
+              </v-btn>
+
             <!--Display a plus and minus button to add and remove from the goal.current. -->
-            <p class="text-h6 font-weight-bold text-center">Make a contribution</p>
-            <v-row justify="center" align="center">
+            <!-- <p class="text-h6 font-weight-bold text-center">Make a contribution</p> -->
+            <!-- <v-row justify="center" align="center">
               <v-btn
                 class="mx-2"
                 fab
@@ -136,7 +213,7 @@
                   mdi-plus
                 </v-icon>
               </v-btn>
-            </v-row>
+            </v-row> -->
           </v-card>
         </v-col>
       </v-row>
@@ -147,12 +224,12 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import converter from 'hex2dec';
-import Goal from '@/components/NewGoal';
+// import Goal from '@/components/NewGoal';
 
 export default {
-  components: {
-    goal: Goal,
-  },
+  // components: {
+  //   goal: Goal,
+  // },
   data() {
     return {
       clearDialogDisplayed: false,
@@ -194,6 +271,9 @@ export default {
     convertColor(color){
       let hex = converter.decToHex(color.toString());
       return hex.slice(2, hex.length);
+    },
+    mockGoalSave() {
+      console.log('save clicked')
     },
     editGoal: () => {
       console.log("I'm editing a goal!")

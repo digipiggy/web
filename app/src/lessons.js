@@ -113,7 +113,7 @@ const newTextPage2 = {
     "How did you work towards it?",
   ],
   audience: "kid",
-  instructions: "Read and Share",
+  instructions: "Read Aloud",
   instructionIcon: "book-open",
   backgroundImage: 'RexAndMomma.jpg',
   backgroundColor: "#FFFFFF",
@@ -125,6 +125,26 @@ const newTextPage2 = {
 const newTextPage3 = {
   type: "newTextPage",
   title: "Kid Goals",
+  text: [
+    "Kids, think of a time when you really wanted to do or have something, and you had to wait or work for it.",
+    "Tell your family:",
+    "What were you waiting for?",
+    "What helped you feel patient?",
+    "How did you work toward it?"
+  ],
+  audience: "kid",
+  instructions: "Family reads",
+  instructionIcon: "book-open",
+  backgroundImage: 'rexPirate.jpg',
+  backgroundColor: "#FFFFFF",
+  quote: "“I wanted a pirate costume for Halloween. I didn’t have the money yet, so I made a paper eye patch.” -Rex Piggle",
+  quoteImg: "RexPiggleHeadshot.png",
+  textPrimaryColor: "#9367E6"
+}
+
+const newTextPage4 = {
+  type: "newTextPage",
+  title: "Rex's Goals",
   text: [
     "Kids, think of a time when you really wanted to do or have something, and you had to wait or work for it.",
     "Tell your family:",
