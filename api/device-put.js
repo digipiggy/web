@@ -42,7 +42,7 @@ const schema = Joi.object().keys({
   preferences: Joi.object().keys({
     rewardDay: Joi.string(),
     earningSystem: Joi.string(),
-    goalAllowance: Joi.number(),
+    goalAllowance: Joi.number().allow(null),
   }),
   status: Joi.object().keys({
     firstLogin: Joi.boolean(),
