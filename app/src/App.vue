@@ -81,7 +81,7 @@
             <v-list-item-icon>
               <v-icon>mdi-settings</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Digi Pig Settings</v-list-item-title>
+            <v-list-item-title>Digi Pig Controls</v-list-item-title>
           </v-list-item>
 
           <v-list-item to="/articles">
