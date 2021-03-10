@@ -93,8 +93,8 @@
         <v-row >
           <v-col cols="8" md="4">
             <v-select
-              :items="coinsPerWeekOptions"
-              v-model="coinsPerWeek"
+              :items="allowanceOptions"
+              v-model="allowanceAmount"
               label="Coins earned per week"
               outlined
               background-color="#FFFFFF"
@@ -124,46 +124,6 @@
                   :kid="kid"
                   @selectTask="selectTask"
                 />
-
-                <!-- <v-chip
-                  class="ma-2"
-                  color="#48A182"
-                  v-for="(task, taskIndex) in tasks"
-                  :key="`${kid.name}-${task}`"
-                  :outlined="!isTaskSelected(kidIndex, task)"
-                  :text-color="isTaskSelected(kidIndex, task) ? '#FFFFFF': '#48A182'"
-                  @click="selectTask(kidIndex, taskIndex)"
-                >
-                  <v-icon v-if="isTaskSelected(kidIndex, task)">mdi-check</v-icon>
-                  {{task}}
-                </v-chip> -->
-                <!-- <v-chip
-                  v-if="showNewTaskChip"
-                  class="ma-2"
-                  color="#48A182"
-                  outlined
-                >
-                  <v-text-field
-                    label="New Task"
-                    v-model="newTaskChip"
-                    single-line
-                    
-                    dense
-                    style="position: relative; top: 9px;"
-                    
-                  ></v-text-field>
-                  <v-icon @click="createTask" >mdi-plus</v-icon>
-                </v-chip>
-                <v-chip
-                  v-else
-                  class="ma-2"
-                  color="#48A182"
-                  outlined
-                  @click="showNewTaskChip = true"
-                >
-                  <v-icon >mdi-plus</v-icon>
-                  Custom Task
-                </v-chip> -->
               </v-col>
               <v-col cols="12" md="6">
                 <p>Select behaviors for {{kid.name}}</p>
@@ -174,52 +134,14 @@
                   />
               </v-col>
             </v-row>
-
-
-            <!-- <v-row justify="center" class="mb-5">
-              <v-col 
-                cols="10"
-                md="3"
-                v-for="(task, taskIndex) in tasks"
-                :key="task"
-              >
-                <v-card
-                  style="border: 2px solid #A0E667"
-                  :color="isTaskSelected(kidIndex, task)"
-                  class="pa-2"
-                  @click="selectTask(kidIndex, taskIndex)"
-                >
-                  <p class="text-body-2 text-center mb-0">{{task}}</p>
-                </v-card>
-              </v-col>
-              <v-col 
-                cols="8"
-                md="3"
-              >
-                <v-card
-                  style="border: 2px solid #A0E667"
-                  color=#FFFFFF
-                  class="pa-2"
-                  @click="createTask()"
-                >
-
-                  <p class="text-body-2 text-center mb-0">
-                    <v-icon>mdi-plus</v-icon>Custom Task
-                  </p>
-                </v-card>
-              </v-col>
-            </v-row> -->
-
-
           </div>
       </v-col>  
     </v-row>
     <!--Goal Catalog--> 
     <v-row justify="center">
       <v-col cols="11">
-
         <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Create your Goal Catalog. </p>
-        <p class="text-body-2 font-weight-regular mb-8">The Goal Catalog is a list of goals that you would like your kids to work towards. In lesson 1, your kids will choose their own goal from your customized Goal. </p>
+        <p class="text-body-2 font-weight-regular mb-8">The Goal Catalog is your curated list of goals that your kids can work towards. Select the goals that you would like to include in your catalog from our pre-defined list, or create your own! In lesson 1, your kids will choose their first goal from your customized Goal Catalog. </p>
         <v-container class="mb-10">
           <v-row justify="center" class="mb-5">
             <v-col 
@@ -231,37 +153,35 @@
               <v-card
                 class="pa-2"
                 height="100%"
-                :style="{border: '2px solid #9367E6', fontColor: isGoalSelected(goal) ? '#9367E6' : '#FFFFFF' }"
-                :color="isGoalSelected(goal) ? '#9367E6' : '#FFFFFF'"
+                :style="{border: isGoalSelected(goal) ? '2px solid #9367E6' : '2px solid #FFFFFF'}"
                 @click="selectGoal(i)"
               >
-                <p class="text-subtitle-1 text-center mb-0">{{goal.name}}</p>
-                <p class="text-caption mb-0 text-center px-2">{{goal.description}}</p>
-                <!--TODO: oof this is centered weird --> 
-                <v-card-title class="pl-16 mb-0">
-                  <p class="text-h2 font-weight-bold text-center mb-0">{{goal.coins}}
-                    <!-- <v-img 
-                      :src="require('@/assets/PigglesCoin.png')" 
-                      aspect-ratio="1"
-                      width="50px"
-                    ></v-img> -->
-                  </p>
-                  <v-avatar size="50px">
-                    <img
-                      alt="coin"
-                      :src="require('@/assets/PigglesCoin.png')" 
-                    >
-                  </v-avatar>
-                </v-card-title>
+                <p class="text-subtitle-1 text-center mb-4">{{goal.name}}</p>
+                <p class="text-caption pl-1 ">Reward Goal</p>
+                <v-row class="mb-5 px-4">
+                  <v-img 
+                    v-for="coinDot in goal.coins"
+                    :key="`coinDot-${coinDot}`"
+                    :src="require('@/assets/PigglesCoin.png')" 
+                    aspect-ratio="1"
+                  ></v-img>
+                  <v-img 
+                    v-for="blankLED in (8 - goal.coins)"
+                    :key="`blankLED-${blankLED}`"
+                    :src="require('@/assets/BlankLED.png')" 
+                    aspect-ratio="1"
+                  ></v-img>
+                </v-row>
+                <p class="text-h2 font-weight-bold text-center mb-0" style="color: #9367E6">{{goal.coins}}</p>
                 <p class="text-caption text-center my-0">Piggles Coins</p>
               </v-card>
             </v-col>
             <v-col 
-              cols="6"
+              v-if="showGoalCreateTool"
+              cols="12"
               md="3"
             >
               <v-card
-                v-if="showGoalCreateTool"
                 height="100%"
                 style="border: 2px solid #9367E6"
                 class="pa-5"
@@ -272,39 +192,51 @@
                   dense
                   outlined
                 ></v-text-field>
-                <v-text-field
-                  label="Description"
-                  v-model="newGoalDescription"
-                  dense
-                  outlined
-                ></v-text-field>
-                <v-text-field
-                  label="Piggles Coins"
-                  v-model="newGoalTotal"
-                  dense
-                  outlined
-                ></v-text-field>
+                <p class="text-caption pl-1 ">Reward Goal</p>
+                <v-row class="mb-5 px-4">
+                  <v-img 
+                    v-for="coinDot in newGoalTotal"
+                    :key="`coinDot-${coinDot}`"
+                    :src="require('@/assets/PigglesCoin.png')" 
+                    @click="updateNewGoalAmount('coin', coinDot)"
+                    aspect-ratio="1"
+                  ></v-img>
+                  <v-img 
+                    v-for="blankLED in (8 - newGoalTotal)"
+                    @click="updateNewGoalAmount('blank', blankLED)"
+                    :key="`blankLED-${blankLED}`"
+                    :src="require('@/assets/BlankLED.png')" 
+                    aspect-ratio="1"
+                  ></v-img>
+                </v-row>
+                <p class="text-h2 font-weight-bold text-center mb-0" style="color: #9367E6">{{newGoalTotal}}</p>
+                <p class="text-caption text-center my-0">Piggles Coins</p>
                 <v-btn
                   @click="cancelNewGoal"
                   outlined
-                  color="#9367E6"
+                  color="#A0E667"
                   class="ma-2"
                 >
                   Cancel
                 </v-btn>
                 <v-btn
                   @click="saveNewGoal"
-                  color="#9367E6"
+                  color="#A0E667"
                 >
                   Save
                 </v-btn>
               </v-card>
+            </v-col>
+            <v-col 
+              v-else
+              cols="6"
+              md="3"
+            >
               <v-card
-                v-else
                 height="100%"
                 style="border: 2px solid #9367E6"
                 class="pa-2 d-flex align-center justify-center"
-                @click="createGoal()"
+                @click="createNewGoal()"
               >
                 <p class="text-body-2 text-center mb-0">
                   <v-icon class="text-body-2 mx-auto" >mdi-plus</v-icon>
@@ -323,9 +255,15 @@
         <p class="text-body-2 font-weight-regular mb-8">We recommond you sit down with your kids on this day each week to review their progress towards their goals.</p>
         <v-select
           :items="days"
+          v-model="rewardDay"
           label="Our Piggles Payday"
           solo
         ></v-select>
+      </v-col>
+    </v-row>
+    <!-- Save --> 
+    <v-row justify="center">
+      <v-col cols="11">
         <v-row justify="end" v-if="showLessonPointer">
           <v-col >
             <v-btn
@@ -350,7 +288,7 @@
               :disabled="loading"
               color="#A0E667"
               class="ma-2 white--text float-right"
-              @click="saveKids"
+              @click="saveData"
             >
               Save My Preferences
               <v-icon
@@ -412,17 +350,17 @@ const behaviors = [
   "Express feelings calmly"
 ];
 const goals = [
-  {name: "Video Game", description: "Pick a video game up to $10 value", coins: 8, },
-  {name: "Stay up Late", description: "Kid gets to stay up 1 hour past their bedtime", coins: 8, },
-  {name: "Ice Cream", description: "Ice cream party! Scoop there it is! ", coins: 8, },
-  {name: "Extra Screen Time", description: "15 minutes of extra screen time", coins: 8, },
-  {name: "Movie Night", description: "Family watches a movie of the kid's choice", coins: 8, },
-  {name: "Daddy Date", description: "Dad and kid spend 1x1 time together", coins: 8, },
-  {name: "Mommy Date", description: "Mom and kid spend 1x1 time together", coins: 8, },
-  {name: "New Book", description: "Choose a new book from Barnes & Noble", coins: 8, },
-  {name: "New Puzzle", description: "Choose a new puzzle from Target", coins: 8, },
-  {name: "Donate To Charity", description: "Donate $10 to a charity of the kids choice", coins: 8, },
-  {name: "Sleepover", description: "Invite your friends to a sleepover", coins: 8, },
+  {name: "Video Game", coins: 8, },
+  {name: "Stay up Late", coins: 5, },
+  {name: "Ice Cream", coins: 4, },
+  {name: "Extra Screen Time", coins: 7, },
+  {name: "Movie Night", coins: 6, },
+  {name: "Daddy Date", coins: 5, },
+  {name: "Mommy Date", coins: 5, },
+  {name: "New Book", coins: 8, },
+  {name: "New Puzzle", coins: 7, },
+  {name: "Donate To Charity", coins: 6, },
+  {name: "Sleepover",  coins: 8, },
 ];
 
 export default {
@@ -437,9 +375,7 @@ export default {
       earningSystem: null,
       earningSystems,
       tasks,
-      selectedTasks: [],
       behaviors,
-      selectedBehaviors: [],
       days: [
         'Sunday',
         'Monday',
@@ -449,23 +385,19 @@ export default {
         'Friday',
         'Saturday',
       ],
-      coinsPerWeekOptions:[
+      allowanceOptions:[
         2,
         3,
         4
       ],
-      coinsPerWeek: null,
+      allowanceAmount: null,
       rewardDay: "",
       goals,
       selectedGoals: [],
-      // loader: null,
       loading: false,
       showGoalCreateTool: false,
       newGoalName: "",
-      newGoalDescription: "",
-      newGoalTotal: "",
-      newTaskChip: "",
-      showNewTaskChip: false,
+      newGoalTotal: 1,
       showLessonPointer: false
     }
   },
@@ -517,7 +449,7 @@ export default {
       return this.numberOfKids < num ? true : false
     },
 
-    // earning system selection functions
+    // earning system functions
     selectEarningSystem(index) {
       // throw warning if at least 1 kid's name isn't entered first
       if (this.kids.length != 0 && this.kids[0].name != ''){
@@ -556,12 +488,7 @@ export default {
       }
     },
 
-    cancelNewGoal() {
-      this.newGoalName = "",
-      this.newGoalDescription = "",
-      this.newGoalTotal = "",
-      this.showGoalCreateTool = false
-    },
+    // goal functions
     selectGoal(index) {
       const goal = this.goals[index];
       if ((this.selectedGoals.filter(g => g.name == goal.name ).length > 0) ) {
@@ -570,36 +497,96 @@ export default {
         this.selectedGoals.push(goal);
       }
     },
-
-
-    isBehaviorSelected(kidIndex, behavior) {
-      return  this.kids[kidIndex].behaviors.length != 0 && this.kids[kidIndex].behaviors.includes(behavior);
-    },
     isGoalSelected(goal) {
       return  this.selectedGoals.length != 0 && (this.selectedGoals.filter(g => g.name == goal.name ).length > 0);
     },
-
-    createBehavior() {
-      this.behaviors.push("New behavior is added")
-    },
-    createGoal() {
+    createNewGoal() {
+      console.log("createNewGoal called")
       this.showGoalCreateTool = true
+    },
+    updateNewGoalAmount(coinType, newTotal){
+      if (coinType == 'coin'){
+        this.newGoalTotal = newTotal;
+      } else {
+        this.newGoalTotal = this.newGoalTotal + newTotal;
+      }
     },
     saveNewGoal() {
       this.goals.push({
         name: this.newGoalName, 
-        description: this.newGoalDescription, 
         coins: this.newGoalTotal
-      })
+      });
+      this.selectGoal(this.goals.length - 1);
       console.log("this.showGoalCreateTool", this.showGoalCreateTool)
-      this.showGoalCreateTool = false,
+      this.showGoalCreateTool = false;
       console.log("this.showGoalCreateTool", this.showGoalCreateTool)
-      this.newGoalName = "",
-      this.newGoalDescription = "",
-      this.newGoalTotal = ""
+      this.newGoalName = "";
+      this.newGoalTotal = 1;
     },
-    async saveKids() {
+    cancelNewGoal() {
+      this.newGoalName = "";
+      this.newGoalTotal = 1;
+      console.log("this.showGoalCreateTool", this.showGoalCreateTool)
+      this.showGoalCreateTool = false;
+      console.log("this.showGoalCreateTool", this.showGoalCreateTool)
+    },
+
+    // save data
+    checkInputs(){
+
+    },
+    async saveData() {
+      // show the loading spinner
       this.loading = true;
+      
+      // Check the data integrity.
+      // TODO: clean this up. Possbily use joi to validate.
+      // check that all kids names are filled in
+      if (this.kids.some(kid => kid.name == "")){
+        this.displayMessage({ text: 'Unable to save settings. Ensure all kid\'s names are filled in.', color: 'error' });
+        this.loading = false;
+        return;
+      }
+      // check that there is an earning system set
+      if (!this.earningSystem || this.earningSystem == ""){
+        this.displayMessage({ text: 'Unable to save settings. Ensure an earning framework is selected.', color: 'error' });
+        this.loading = false;
+        return;
+      }
+      // check that an allowance is set
+      // TODO: use constants here
+      if ((this.earningSystem == "Expectation Free" || this.earningSystem == "Both") && !this.allowanceAmount){
+        this.displayMessage({ text: 'Unable to save settings. Ensure your weekly coin allowance is set.', color: 'error' });
+        this.loading = false;
+        return;
+      }
+      // check that a task or behavior is selected for each kid
+      if (this.earningSystem == "Incentive Based" || this.earningSystem == "Both"){
+        if (this.kids.some(kid => kid.tasks.length + kid.behaviors.length <= 0 )) {
+          this.displayMessage({ text: 'Unable to save settings. Ensure at least one task or behavior is selected for each kid.', color: 'error' });
+          this.loading = false;
+          return;
+        }
+      }
+      // check that at least one goal is selected
+      if (this.selectedGoals.length <= 0){
+        this.displayMessage({ text: 'Unable to save settings. Ensure you\'ve added at least one goal to your Goal Catalog.', color: 'error' });
+        this.loading = false;
+        return;
+      }
+      // check that a payday is selected
+      if (this.rewardDay == ""){
+        this.displayMessage({ text: 'Unable to save settings. Ensure you\'ve selected your Piggles Payday.', color: 'error' });
+        this.loading = false;
+        return;
+      }
+      // organize the kids
+
+      console.log("happy close")
+      this.displayMessage({ text: 'All looks good you salty sea dog', color: 'info' });
+      this.loading = false;
+      return;
+
       let kids = this.kids.map((kid, i) => {
         return {
           name: kid.name,
@@ -636,6 +623,8 @@ export default {
         this.displayMessage({ text: 'Failed to add kids', color: 'error' });
       }
     },
+
+    // initialize data from store
     initialize() {
       if (this.device.kids) {
         this.kids = this.device.kids;

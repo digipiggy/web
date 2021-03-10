@@ -1,12 +1,13 @@
 <template>
-  <v-card v-if="device.status.firstLogin" class="elevation-4 pa-5" color="#A0E667">
+  <v-card v-if="device.status.firstLogin" class="elevation-4 pa-5 d-flex align-center" color="#A0E667">
     <v-img 
       style="display: inline-block;" 
       class=""
       :src="require(`@/assets/PigHello.gif`)" 
-      width="30px" >
+      max-width="30px" >
     </v-img>
     <p class="text-h5 mb-0" style="display: inline-block; padding-left: 5px; color: white;">Welcome to DigiPig! Get started by setting your family's values.</p>
+    <v-spacer></v-spacer>
     <v-btn
       dense
       to="/preferences"
