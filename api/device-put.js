@@ -37,12 +37,12 @@ const schema = Joi.object().keys({
   })),
   rewards: Joi.array().items(Joi.object().keys({
     name: Joi.string(),
-    description: Joi.string(),
     coins: Joi.number().integer()
   })),
   preferences: Joi.object().keys({
     rewardDay: Joi.string(),
-    earningSystem: Joi.string()
+    earningSystem: Joi.string(),
+    goalAllowance: Joi.number(),
   }),
   status: Joi.object().keys({
     firstLogin: Joi.boolean(),
