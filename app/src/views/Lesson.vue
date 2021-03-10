@@ -14,7 +14,7 @@
       justify="center"
     >
       <!--TODO componitize the contents of the if/else here-->
-
+ 
       <!--newTitlePage-->
       <template> 
         <v-col
@@ -111,27 +111,27 @@
           {{newTextPage2.title}}
         </p>
         <p 
-          class="text-body-1 font-weight-regular mb-14"
+          class="text-h6 font-weight-light mb-14"
         >
           {{newTextPage2.text[0]}}
         </p>
         <p 
-          class="text-h6 mb-14"
+          class="text-h6 mb-14 text-uppercase"
         >
           {{newTextPage2.text[1]}}
         </p>
         <p 
-          class="text-body-1 font-weight-regular mb-14"
+          class="text-h6 font-weight-light mb-14"
         >
           {{newTextPage2.text[2]}}
         </p>
         <p 
-          class="text-body-1 font-weight-regular mb-14"
+          class="text-h6 font-weight-light mb-14"
         >
           {{newTextPage2.text[3]}}
         </p>
         <p 
-          class="text-body-1 font-weight-regular mb-14"
+          class="text-h6 font-weight-light mb-14"
         >
           {{newTextPage2.text[4]}}
         </p>
@@ -177,27 +177,27 @@
           {{newTextPage3.title}}
         </p>
         <p 
-          class="text-body-1 font-weight-regular mb-14"
+          class="text-h6 font-weight-light mb-14"
         >
           {{newTextPage3.text[0]}}
         </p>
         <p 
-          class="text-h6 mb-14"
+          class="text-h6 mb-14 text-uppercase"
         >
           {{newTextPage3.text[1]}}
         </p>
         <p 
-          class="text-body-1 font-weight-regular mb-14"
+          class="text-h6 font-weight-light mb-14"
         >
           {{newTextPage3.text[2]}}
         </p>
         <p 
-          class="text-body-1 font-weight-regular mb-14"
+          class="text-h6 font-weight-light mb-14"
         >
           {{newTextPage3.text[3]}}
         </p>
         <p 
-          class="text-body-1 font-weight-regular mb-14"
+          class="text-h6 font-weight-light mb-14"
         >
           {{newTextPage3.text[4]}}
         </p>
@@ -235,7 +235,7 @@
         md="4"
         class="pa-5"
       >
-        <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
+        <p class="text-body-1 font-weight-light mt-3 mb-6" style="color: black">
           <v-icon color="#A0E667" size="40" >mdi-{{newTextPage4.instructionIcon}}</v-icon>
           {{newTextPage4.instructions}}
         </p>
@@ -243,42 +243,50 @@
           {{newTextPage4.title}}
         </p>
         <p 
-          class="text-body-1 font-weight-regular mb-14"
+          class="text-h6 font-weight-light mb-6"
         >
           {{newTextPage4.text[0]}}
         </p>
-        <!-- <v-img 
-          v-for="n in 3"
-          style=""
-          width="20px"
-          :key="`coinDot-${n}`"
-          :src="require('@/assets/PigglesCoin.png')" 
-          aspect-ratio="1"
-        ></v-img>
-        <v-img 
-          v-for="i in 5"
-          width="20px"
-          :key="`blankLED-${i}`"
-          :src="require('@/assets/BlankLED.png')" 
-          aspect-ratio="1"
-        ></v-img> -->
+        <v-row class="mb-5 px-14">
+          <v-img 
+            v-for="coinDot in 3"
+            :key="`coinDot-${coinDot}`"
+            :src="require('@/assets/PigglesCoin.png')" 
+            aspect-ratio="1"
+          ></v-img>
+          <v-img 
+            v-for="blankLED in 5"
+            :key="`blankLED-${blankLED}`"
+            :src="require('@/assets/BlankLED.png')" 
+            aspect-ratio="1"
+          ></v-img>
+        </v-row>
         <p 
-          class="text-body-1 font-weight-regular mb-14"
+          class="text-h6 font-weight-light mb-12"
         >
           {{newTextPage4.text[1]}}
         </p>
         <p 
-          class="text-body-1 font-weight-regular mb-14"
+          class="text-h6 font-weight-light mb-7"
         >
           {{newTextPage4.text[2]}}
         </p>
+        <v-row class="mb-4 d-flex align-center justify-center">
+          <v-img 
+            :src="require('@/assets/PigglesCoin.png')" 
+            aspect-ratio="1"
+            max-width="40px"
+          ></v-img>
+          <p class="mb-0" style="color: black;"> 1x per week
+          </p>
+        </v-row>
         <p 
-          class="text-body-1 font-weight-regular mb-14"
+          class="text-h6 font-weight-light mb-12"
         >
           {{newTextPage4.text[3]}}
         </p>
         <p 
-          class="text-body-1 font-weight-regular mb-14"
+          class="text-h6 font-weight-light mb-12"
         >
           {{newTextPage4.text[4]}}
         </p>
@@ -289,14 +297,12 @@
       :style="{
         minHeight: '95vh',
         color: newTextPage5.textPrimaryColor,
-        backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage5.backgroundImage}`)})`,
-        backgroundPosition: 'center'
       }"
       class="snap-child"
     >
       <v-col
-        cols="11"
-        md="4"
+        cols="12"
+        md="6"
         class="pa-5"
       >
         <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
@@ -307,33 +313,130 @@
           {{newTextPage5.title}}
         </p>
         <p 
-          class="text-body-1 font-weight-regular mb-14"
+          class="text-h6 font-weight-light mb-14"
         >
           {{newTextPage5.text[0]}}
         </p>
-        <p 
-          class="text-body-1 font-weight-regular mb-14"
-        >
-          {{newTextPage5.text[1]}}
-        </p>
         <v-btn
-          to="/goals"
-          color="#A0E667"
+          to="/preferences"
+          color="#9367E6"
           class="ma-2 white--text"
         >
-          Update My Goals
+          My Family
           <v-icon
             right
             dark
-                      color="white"
-
+            color="white"
           >
             mdi-right-arrow
           </v-icon>
         </v-btn>
       </v-col>
+      <v-col
+        cols="12"
+        md="6"
+        class="pa-5"
+      >
+        <p class="text-body-1 font-weight-light" style="color: black">
+          {{newTextPage5.imageTitle}}
+        </p>
+        <v-img 
+          :src="require(`@/assets/${newTextPage5.backgroundImage}`)" 
+          aspect-ratio="1"
+        ></v-img>
+      </v-col>
     </v-row>
-
+    <!-- Page 6 --> 
+    <v-row 
+      :style="{
+        minHeight: '95vh',
+        color: newTextPage6.textPrimaryColor,
+      }"
+      class="snap-child"
+    >
+      <v-col
+        cols="12"
+        md="6"
+        class="pa-5"
+      >
+        <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
+          <v-icon color="#A0E667" size="40" >mdi-{{newTextPage6.instructionIcon}}</v-icon>
+          {{newTextPage6.instructions}}
+        </p>
+        <p class="text-h6 text-uppercase">
+          {{newTextPage6.title}}
+        </p>
+        <p 
+          class="text-h6 font-weight-light mb-14"
+        >
+          {{newTextPage6.text[0]}}
+        </p>
+        <v-btn
+          to="/goals"
+          color="#9367E6"
+          class="ma-2 white--text"
+        >
+          My Family
+        </v-btn>
+      </v-col>
+      <v-col
+        cols="12"
+        md="6"
+        class="pa-5"
+      >
+        <p class="text-body-1 font-weight-light" style="color: black">
+          {{newTextPage6.imageTitle}}
+        </p>
+        <v-img 
+          :src="require(`@/assets/${newTextPage6.backgroundImage}`)" 
+          aspect-ratio="1"
+        ></v-img>
+      </v-col>
+    </v-row>
+    <!-- Page 7 --> 
+    <v-row 
+      :style="{
+        minHeight: '95vh',
+        color: newTextPage7.textPrimaryColor,
+      }"
+      class="snap-child"
+    >
+      <v-col
+        cols="12"
+        md="6"
+        class="pa-5"
+      >
+        <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
+          <v-icon color="#A0E667" size="40" >mdi-{{newTextPage7.instructionIcon}}</v-icon>
+          {{newTextPage7.instructions}}
+        </p>
+        <p class="text-h6 text-uppercase">
+          {{newTextPage7.title}}
+        </p>
+        <p 
+          class="text-h6 font-weight-light mb-14"
+        >
+          {{newTextPage7.text[0]}}
+        </p>
+        <v-btn
+          to="/lessons"
+          color="#9367E6"
+          class="ma-2 white--text"
+        >
+          Start Lesson 2
+        </v-btn>
+      </v-col>
+      <v-col
+        cols="12"
+        md="6"
+        class="pa-5"
+      >
+        <v-img 
+          :src="require(`@/assets/${newTextPage7.backgroundImage}`)" 
+          aspect-ratio="1"
+        ></v-img>
+      </v-col>
+    </v-row>
     <!-- <v-row 
       :style="{
         minHeight: '95vh',
@@ -462,7 +565,7 @@ const newTextPage4 = {
   audience: "kid",
   instructions: "Read and Share",
   instructionIcon: "book-open",
-  backgroundImage: 'rexPirate.jpg',
+  backgroundImage: 'RexAndMomma.jpg',
   backgroundColor: "#FFFFFF",
   quote: "“I wanted a pirate costume for Halloween. I didn’t have the money yet, so I made a paper eye patch.” -Rex Piggle",
   quoteImg: "RexPiggleHeadshot.png",
@@ -473,16 +576,41 @@ const newTextPage5 = {
   type: "newTextPage",
   title: "Your Time To Shine",
   text: [
-    "It’s your turn to choose a goal and practice saving coins! Grab your coin catalog and pick out a reward you’d like to save towards! If you can match the amount of coins you can receive that reward.",
-    "In Lesson 2, you will plan with your parents to earn Piggle Coins and light up Digi.",
+    "It’s your turn to choose a goal for your kid(s) and practice saving coins! You and your family should already have selected rewards in the Coin Catalog of the My Family page. If you would like to edit them you can click below.",
+  ],
+  audience: "kid",
+  instructions: "Take Action",
+  instructionIcon: "book-open",
+  imageTitle: "Goals Catalog Example:",
+  backgroundImage: 'GoalCatalog.png',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+const newTextPage6 = {
+  type: "newTextPage",
+  title: "Check out your goals",
+  text: [
+    "Once your Coin Catalog has been completed visit the Goals page to select the Reward your child will work towards. This page is also where you contribute Piggles Coins to your child’s Goal. When saved you will see the DigiPig light up!"
+  ],
+  audience: "kid",
+  instructions: "Take Action",
+  instructionIcon: "book-open",
+  imageTitle: "Goals Page Example:",
+  backgroundImage: 'GoalPage.png',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+const newTextPage7 = {
+  type: "newTextPage",
+  title: "Get ready to earn",
+  text: [
+    "Now that your Goal has been set and your child has a Reward in sight, it’s time to learn together how to earn Piggles Coins. Find out how in Lesson 2 - Earning!",
   ],
   audience: "kid",
   instructions: "Take Action",
   instructionIcon: "book-open",
   backgroundImage: 'logoLightGreen.png',
   backgroundColor: "#FFFFFF",
-  quote: "“I wanted a pirate costume for Halloween. I didn’t have the money yet, so I made a paper eye patch.” -Rex Piggle",
-  quoteImg: "RexPiggleHeadshot.png",
   textPrimaryColor: "#9367E6"
 }
 
@@ -497,7 +625,9 @@ export default {
       newTextPage2,
       newTextPage3,
       newTextPage4,
-      newTextPage5
+      newTextPage5,
+      newTextPage6,
+      newTextPage7,
     }
   },
   async created() {
