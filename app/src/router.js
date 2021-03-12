@@ -4,7 +4,7 @@ import Auth from './auth';
 import Setup from './views/Setup';
 import Callback from './views/Callback';
 import PigDashboard from './views/PigDashboard';
-import PigSettingsNew from './views/PigSettingsNew';
+import PigSettings from './views/PigSettings';
 import Goals from './views/Goals';
 import Home from './views/Home';
 import Story from './views/Story';
@@ -49,7 +49,7 @@ const router = new Router({
     {
       path: '/pigSettings',
       name: 'pigSettings',
-      component: PigSettingsNew
+      component: PigSettings
     },
     {
       path: '/story',
