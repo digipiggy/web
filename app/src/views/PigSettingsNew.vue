@@ -127,17 +127,11 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import Goal from '@/components/Goal';
 import Sleep from '@/components/Sleep';
-import Allowance from '@/components/Allowance';
-import Promises from '@/components/Promises';
 
 export default {
   components: {
-    goal: Goal,
     sleep: Sleep,
-    allowance: Allowance,
-    promises: Promises
   },
   data() {
     return {

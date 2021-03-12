@@ -56,7 +56,13 @@ export default {
     },
     computed: {
         allChips: function(){
-            return [...this.defaultChips, ...this.customChips]
+            let allChips = [...this.defaultChips];
+            this.kid.behaviors.forEach(behavior => {
+                if (!allChips.some(b => b == behavior)){
+                    allChips.push(behavior)
+                }
+            })
+            return allChips
         }
     },
     methods: {

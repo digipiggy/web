@@ -299,6 +299,7 @@
         color: newTextPage5.textPrimaryColor,
       }"
       class="snap-child"
+      align="center"
     >
       <v-col
         cols="12"
@@ -342,7 +343,6 @@
         </p>
         <v-img 
           :src="require(`@/assets/${newTextPage5.backgroundImage}`)" 
-          aspect-ratio="1"
         ></v-img>
       </v-col>
     </v-row>
@@ -353,6 +353,7 @@
         color: newTextPage6.textPrimaryColor,
       }"
       class="snap-child"
+      align="center"
     >
       <v-col
         cols="12"
@@ -376,7 +377,7 @@
           color="#9367E6"
           class="ma-2 white--text"
         >
-          My Family
+          View Goals
         </v-btn>
       </v-col>
       <v-col
@@ -389,7 +390,6 @@
         </p>
         <v-img 
           :src="require(`@/assets/${newTextPage6.backgroundImage}`)" 
-          aspect-ratio="1"
         ></v-img>
       </v-col>
     </v-row>
@@ -400,6 +400,7 @@
         color: newTextPage7.textPrimaryColor,
       }"
       class="snap-child"
+      align="center"
     >
       <v-col
         cols="12"
@@ -433,10 +434,10 @@
       >
         <v-img 
           :src="require(`@/assets/${newTextPage7.backgroundImage}`)" 
-          aspect-ratio="1"
         ></v-img>
       </v-col>
     </v-row>
+    <!-- dynamic --> 
     <!-- <v-row 
       :style="{
         minHeight: '95vh',

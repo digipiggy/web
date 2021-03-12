@@ -47,7 +47,6 @@ export default {
     props: {    
         defaultChips: Array,
         kid: Object,
-
     },
     data() {
         return {
@@ -58,7 +57,13 @@ export default {
     },
     computed: {
         allChips: function(){
-            return [...this.defaultChips, ...this.customChips]
+            let allChips = [...this.defaultChips];
+            this.kid.tasks.forEach(task => {
+                if (!allChips.some(t => t == task)){
+                    allChips.push(task)
+                }
+            })
+            return allChips
         }
     },
     methods: {

@@ -51,14 +51,8 @@
         "total": 8
       }
     ],
-    "piggySleep": {
-      "enabled": true,
-      "observeDaylightSavings": true,
-      "sleepTime": "17:00",
-      "timezone": "-6",
-      "wakeupTime": "09:00"
-    },
     "status": {
-      "firstLogin": true
+      "firstLogin": true,
+      "completedPreferences": false
     }
   }

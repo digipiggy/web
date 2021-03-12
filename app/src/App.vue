@@ -104,7 +104,7 @@
             <v-list-item-icon>
               <v-icon>mdi-clippy</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Contact Us</v-list-item-title>
+            <v-list-item-title>Help</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>

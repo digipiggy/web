@@ -1,14 +1,14 @@
 <template>
   <v-card class="elevation-3 pa-5">
-    <p>My Digi Pig - {{device.deviceCode}} </p>
-    <v-sheet class="mb-4 px-14">
+    <p class="text-h6" >My Digi Pig - {{device.deviceCode}} </p>
+    <!-- <v-sheet class="mb-4 px-14">
       <v-img 
         :src="require('@/assets/logoLightGreen.png')" 
         aspect-ratio="1.4"
 
       ></v-img>
-    </v-sheet>
-     <v-list-item
+    </v-sheet> -->
+     <!-- <v-list-item
         v-for="(g, i) in enabledGoals"
         :key="`${g.name}-${i}`"
       >
@@ -27,13 +27,34 @@
 
         <v-list-item-subtitle >{{g.current}}/{{g.total}}</v-list-item-subtitle>
       </v-list-item-content>
+    </v-list-item> -->
 
-      <v-list-item-action>
-        <v-btn icon>
-          <v-icon color="grey lighten-1">mdi-information</v-icon>
-        </v-btn>
-      </v-list-item-action>
-    </v-list-item>
+    <v-row 
+      v-for="kid in device.kids"
+      :key="`goal-${kid}`"
+      class="mb-2"
+    >
+      <v-col v-if="device.goals[kid.goalIndex].name == 'Select A New Goal'">
+        <p class="mb-2">{{kid.name}}'s Goal has not been selected from the Goal Catalog.</p>
+      </v-col>
+      <v-col v-else>
+        <p>{{kid.name}}'s Goal</p>
+        <v-row class="mb-2">
+          <v-img 
+            v-for="coinDot in 3"
+            :key="`coinDot-${coinDot}`"
+            :src="require('@/assets/PigglesCoin.png')" 
+            aspect-ratio="1"
+          ></v-img>
+          <v-img 
+            v-for="blankLED in 5"
+            :key="`blankLED-${blankLED}`"
+            :src="require('@/assets/BlankLED.png')" 
+            aspect-ratio="1"
+          ></v-img>
+        </v-row>
+      </v-col>
+    </v-row>
     <v-btn color="#9367E6" dark to="/pigSettings">
       Update My Goals
     </v-btn>

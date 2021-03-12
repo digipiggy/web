@@ -88,7 +88,7 @@
       class="mb-8"
     >
       <v-col cols="11">
-        <p class="text-h6 font-weight-regular mt-10 mb-0" style="color: #9367E6">Set your weekly allowance</p>
+        <p class="text-h6 font-weight-regular mt-10 mb-0" style="color: #9367E6">Set your weekly coin allowance</p>
         <p class="text-body-2 font-weight-regular mb-8">By selecting {{earningSystem}}, you are committing to give your kid(s) a set number of piggles coins each week.</p>
         <v-row >
           <v-col cols="8" md="4">
@@ -147,7 +147,7 @@
             <v-col 
               cols="6"
               md="3"
-              v-for="(goal, i) in goals"
+              v-for="(goal, i) in allGoals"
               :key="goal.name + i"
             >
               <v-card
@@ -165,12 +165,12 @@
                     :src="require('@/assets/PigglesCoin.png')" 
                     aspect-ratio="1"
                   ></v-img>
-                  <v-img 
+                  <!-- <v-img 
                     v-for="blankLED in (8 - goal.coins)"
                     :key="`blankLED-${blankLED}`"
                     :src="require('@/assets/BlankLED.png')" 
                     aspect-ratio="1"
-                  ></v-img>
+                  ></v-img> -->
                 </v-row>
                 <p class="text-h2 font-weight-bold text-center mb-0" style="color: #9367E6">{{goal.coins}}</p>
                 <p class="text-caption text-center my-0">Piggles Coins</p>
@@ -252,7 +252,7 @@
     <v-row justify="center">
       <v-col cols="11">
         <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Pick your Piggles Payday.</p>
-        <p class="text-body-2 font-weight-regular mb-8">We recommond you sit down with your kids on this day each week to review their progress towards their goals.</p>
+        <p class="text-body-2 font-weight-regular mb-8">We recommend you sit down with your kids on this day each week to review their progress towards their goals.</p>
         <v-select
           :items="days"
           v-model="rewardDay"
@@ -265,20 +265,18 @@
     <v-row justify="center">
       <v-col cols="11">
         <v-row justify="end" v-if="showLessonPointer">
-          <v-col >
-            <v-btn
-              color="#A0E667"
-              class="ma-2 white--text float-right"
-              to="/lessons"
-            >
-              Start lesson 1
-              <v-icon
-                right
-                dark
+          <v-col cols="12">
+            <v-card class="pa-5" >
+              <p lass="text-h6 font-weight-regular mb-0">🚀 You're all set!</p>
+              <p class="text-body-2 font-weight-regular mb-4">When you're ready, you can begin lesson 1 with your kid(s).</p>
+              <v-btn
+                color="#A0E667"
+                class="ma-2 white--text"
+                to="/lessons"
               >
-                mdi-arrow-right-bold
-              </v-icon>
-            </v-btn>
+                Start lesson 1
+              </v-btn>
+            </v-card>
           </v-col>
         </v-row>
         <v-row justify="end">
@@ -416,6 +414,16 @@ export default {
   // },
   computed: {
     ...mapState(['device']),
+    // combines the pre-set goals, and any custom goals that were created and saved by the user.
+    allGoals: function() {
+      let allGoals = [...this.goals];
+      this.selectedGoals.forEach(goal => {
+        if (!allGoals.some(g => g.name == goal.name)){
+          allGoals.push(goal)
+        }
+      })
+      return allGoals
+    },
     showAllowance: function() {
       if (this.earningSystem != null) {
         return this.earningSystem == 'Expectation Free' || this.earningSystem == 'Both';
@@ -532,9 +540,6 @@ export default {
     },
 
     // save data
-    checkInputs(){
-
-    },
     async saveData() {
       // show the loading spinner
       this.loading = true;
@@ -580,29 +585,26 @@ export default {
         this.loading = false;
         return;
       }
+
       // organize the kids
+      const kids = this.kids;
 
-      console.log("happy close")
-      this.displayMessage({ text: 'All looks good you salty sea dog', color: 'info' });
-      this.loading = false;
-      return;
-
-      let kids = this.kids.map((kid, i) => {
-        return {
-          name: kid.name,
-          goalIndex: i,
-          behaviors: kid.behaviors,
-          tasks: kid.tasks
-        }
-      })
-      kids = kids.filter(kid => kid.name != "")     
-
-      let preferences = {
+      // organize the preferences
+      const goalAllowance = (this.earningSystem == "Expectation Free" || this.earningSystem == "Both") ? this.allowanceAmount : null;
+      const preferences = {
         earningSystem: this.earningSystem,
-        rewardDay: "Sunday", 
-      }
+        rewardDay: this.rewardDay,
+        goalAllowance
+      };
 
-      let rewards = this.selectedGoals;
+      // organize the rewards
+      const rewards = this.selectedGoals;
+
+      // organize the status
+      const status = {
+        firstLogin: this.firstLogin,
+        completedPreferences: true
+      };
 
       const device = {
         deviceId: this.device.deviceId,
@@ -611,16 +613,17 @@ export default {
         goals: this.device.goals,
         kids,
         preferences,
-        rewards
+        rewards,
+        status
       }
-
+      console.log('made it down here')
       if (await this.updateDevice(device)) {
         this.loading = false;
         this.showLessonPointer = true;
-        this.displayMessage({ text: 'Successfully added kids', color: 'info' });
+        this.displayMessage({ text: 'Successfully saved your family\'s values.', color: 'info' });
       } else {
         this.loading = false;
-        this.displayMessage({ text: 'Failed to add kids', color: 'error' });
+        this.displayMessage({ text: 'Failed to save values. Please refresh and try again.', color: 'error' });
       }
     },
 
@@ -642,9 +645,11 @@ export default {
       if (this.device.preferences) {
         this.earningSystem = this.device.preferences.earningSystem;
         this.rewardDay = this.device.preferences.rewardDay;
+        this.allowanceAmount = this.device.preferences.goalAllowance;
       } else {
         this.earningSystem = ""
         this.rewardDay = "";
+        this.allowanceAmount = null;
       }
 
       if (this.device.rewards) {

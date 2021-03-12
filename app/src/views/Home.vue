@@ -5,7 +5,7 @@
         <welcomeCard />
       </v-col>
     </v-row>
-    <v-row justify="center">
+    <v-row v-if="device.status.completedPreferences" justify="center">
       <v-col cols="12" md="4">
         <lessonCard 
           :lesson="lesson"
@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 import LessonCard from '@/components/LessonCard';
 import ArticleCard from '@/components/ArticleCard';
 import WelcomeCard from '@/components/WelcomeCard';
@@ -44,6 +46,9 @@ export default {
     return {
       lesson
     }
+  },
+  computed: {
+    ...mapState(['device']),
   }
 };
 </script>

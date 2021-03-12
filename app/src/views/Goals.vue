@@ -38,7 +38,42 @@
         </div>
       </v-flex>
     </v-layout> -->
-    <v-container>
+    <v-container v-if="device.status.completedPreferences == false">
+      <v-row>
+        <v-col cols="12">
+          <v-card class="pa-5 rounded-sm">
+            <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">✋ Before you can update goals on your Digi Pig, you need to set up the system.</p>
+            <p class="text-body-2 font-weight-regular mb-4">Click the button below to configure your family's values</p>
+            <v-btn
+              color="#A0E667"
+              class="ma-2 white--text"
+              to="/preferences"
+            >
+              My Values
+            </v-btn>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-container v-else>
+      <v-row>
+        <v-col cols="12">
+          <v-card class="pa-5 rounded-sm">
+            <p class="text-h6 font-weight-regular mb-5" style="color: #9367E6">Welcome to your Goal Hub!</p>
+            <p class="text-body-2 font-weight-regular mb-5">This is the place where goals are managed and updated.</p>
+            <p class="text-body-2 font-weight-regular mb-1">Together with your kids, select a goal from your Goal Catalog.</p>
+            <p class="text-body-2 font-weight-regular mb-5">Unsure which goal to pick? Make sure you've worked through lesson one together to understand goals and how to acheive them.</p>
+            <v-btn
+              color="#A0E667"
+              class="ma-2 white--text mb-6"
+              to="/lessons"
+            >
+              Lessons
+            </v-btn>
+            <p class="text-body-2 font-weight-regular mb-1">On {{device.preferences.reward}}'s (your Piggles Payday), sit down together and review the past weeks progress towards your kid(s) selected goals.</p>
+          </v-card>
+        </v-col>
+      </v-row>
       <v-row>
         <v-col
           v-for="(goal, i) in activeGoals" 
@@ -74,12 +109,6 @@
               v-model="goal.name"
             ></v-select>
             <p class="text-h5 font-weight-medium text-center" style="color: #9367E6">{{goal.kidsName}}'s Bank</p>
-            <!-- <p class="text-h3 font-weight-bold text-center" :style="{color: $color(goal.color)}">
-              {{goal.name}}
-              <v-icon @click="editGoal">
-                mdi-pencil
-              </v-icon>
-            </p> -->
             <v-container>
               <v-row>
                 <v-col cols="6">
@@ -133,26 +162,9 @@
                   aspect-ratio="1"
                 ></v-img>
               </v-row>
-              <!-- <v-row class="d-flex justify-space-between mb-5">
-                <v-avatar 
-                  v-for="coloredDot in goal.current"
-                  :key="`coloredDot-${coloredDot}`"
-                  rounded="circle" 
-                  :color="$color(goal.color)" 
-                  size="30"
-                  ></v-avatar>
-                <v-avatar 
-                  v-for="grayDot in (goal.total - goal.current)"
-                  :key="`greyDot-${grayDot}`"
-                  rounded="circle" 
-                  color="grey" 
-                  size="30"
-                  ></v-avatar>
-              </v-row> -->
             </v-container>
-            <!-- <p>Current Amount Saved: {{goal.current}} <v-icon color="#FAC432">mdi-coin</v-icon></p> -->
             <!--Display the list of behaviors and tasks that are associated with this kid-->
-            <p class="text-body-1 font-weight-light mb-0">{{goal.kidsName}}'s Tasks and Behaviors</p>
+            <p class="text-body-1 font-weight-light mb-0">{{goal.kidsName}}'s ways to earn Piggles Coins:</p>
             <v-chip
               outlined
               class="ma-2"
@@ -181,39 +193,10 @@
                 
                 min-width="15%"
                 color="#A0E667"
-                @click="mockGoalSave"
+                @click="onSave"
               >
                 Save
               </v-btn>
-
-            <!--Display a plus and minus button to add and remove from the goal.current. -->
-            <!-- <p class="text-h6 font-weight-bold text-center">Make a contribution</p> -->
-            <!-- <v-row justify="center" align="center">
-              <v-btn
-                class="mx-2"
-                fab
-                dark
-                small
-                color="primary"
-                @click="goal.current -= 1"
-              >
-                <v-icon dark>
-                  mdi-minus
-                </v-icon>
-              </v-btn>
-              <v-btn
-                class="mx-2"
-                fab
-                dark
-                large
-                color="primary"
-                @click="goal.current += 1"
-              >
-                <v-icon dark>
-                  mdi-plus
-                </v-icon>
-              </v-btn>
-            </v-row> -->
           </v-card>
         </v-col>
       </v-row>
@@ -230,6 +213,7 @@ export default {
   // components: {
   //   goal: Goal,
   // },
+  name: "GoalView",
   data() {
     return {
       clearDialogDisplayed: false,
@@ -289,6 +273,35 @@ export default {
       }
 
       this.busy = false;
+    },
+    async saveGoals(){
+      this.busy = true;
+      const device = {
+        deviceId: this.device.deviceId,
+        deviceCode: this.device.deviceCode,
+        piggySleep: this.device.piggySleep,
+        goals: this.goals.map(g => {
+          return {
+            name: g.name,
+            enabled: g.enabled,
+            color: +g.color,
+            percentage: +g.percentage / 100,
+            total: +g.total,
+            current: +g.current,
+            promise: +g.promise,
+            promises: g.promises
+          };
+        })
+      };
+
+      if (await this.updateDevice(device)) {
+        this.displayMessage({ text: 'Goals updated', color: 'info' });
+      } else {
+        this.displayMessage({ text: 'Failed to update goals', color: 'error' });
+      }
+
+      this.busy = false;
+
     },
     async onSave() {
       this.busy = true;
