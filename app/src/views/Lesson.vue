@@ -506,7 +506,7 @@ const newTextPage = {
   audience: "kid",
   instructions: "Read Aloud",
   instructionIcon: "book-open",
-  backgroundImage: 'PennyGoal.png',
+  backgroundImage: 'PennyGoal.jpg',
   backgroundColor: "#FFFFFF",
   quote: '"I try to make goals when I play soccer" - Penny Piggle',
   quoteImg: "PennyHeadshotSquare.png",
@@ -653,6 +653,6 @@ export default {
     scroll-snap-align: start;
   }
   .backback {
-    background-image: linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(../assets/PennyGoal.png)
+    background-image: linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(../assets/PennyGoal.jpg)
   }
 </style>
