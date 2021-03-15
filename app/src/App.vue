@@ -8,7 +8,7 @@
     >
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Digi Piggy</v-toolbar-title>
+      <v-toolbar-title>Piggles Family {{routerPage}}</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-dialog v-model="logoutDialogDisplayed" max-width="320">
         <template v-slot:activator="{ on }">
@@ -144,6 +144,13 @@ export default {
     }),
     hasNotificationsPending() {
       return this.notificationQueue.length > 0;
+    },
+    routerPage() {
+      if (!this.$route.name || this.$route.name == "callback"){
+        return "";
+      } else {
+        return `- ${this.$route.name}`
+      }
     }
   },
   watch: {

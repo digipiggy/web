@@ -23,7 +23,7 @@ const router = new Router({
   routes: [
     {
       path: '/setup',
-      name: 'setup',
+      name: 'Setup',
       component: Setup
     },
     {
@@ -33,7 +33,7 @@ const router = new Router({
     },
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: Home
     },
     {

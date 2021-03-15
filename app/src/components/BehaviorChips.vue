@@ -14,6 +14,7 @@
         </v-chip>
         <v-chip
             v-if="showNewBehaviorChip"
+            v-click-outside="createBehavior"
             class="ma-2"
             color="#48A182"
             outlined
@@ -21,6 +22,7 @@
             <v-text-field
             label="New Behavior"
             v-model="newBehaviorChipText"
+            v-on:keyup.enter="createBehavior"
             single-line
             dense
             style="position: relative; top: 9px;"
@@ -30,9 +32,10 @@
         <v-chip
             v-else
             class="ma-2"
+            style="cursor: pointer;"
             color="#48A182"
             outlined
-            @click="showInput"
+            @click.native="showChipAdder"
         >
             <v-icon >mdi-plus</v-icon>
             Custom Behavior
@@ -76,18 +79,19 @@ export default {
             });
         },
         createBehavior(){
+            if (this.newBehaviorChipText == ""){
+                this.showNewBehaviorChip = false;
+            } else {
             this.customChips.push(this.newBehaviorChipText)
             this.$emit('selectBehavior', {
                 kid: this.kid,
                 behavior: this.newBehaviorChipText
             });
             this.newBehaviorChipText = "";
-            console.log("this.showNewBehaviorChip", this.showNewBehaviorChip)
             this.showNewBehaviorChip = false;
-            console.log("this.showNewBehaviorChip", this.showNewBehaviorChip)
+            }
         },
-        showInput(){
-            console.log("showInput was called")
+        showChipAdder(){
             this.showNewBehaviorChip = true;
         }
     }

@@ -32,7 +32,7 @@ export default {
         this.displayMessage({ text: 'Failed to load device', color: 'error' });
       }
       
-      this.$router.replace({ name: 'home' });
+      this.$router.replace({ name: 'Home' });
     } catch (err) {
       console.error(err);
       this.displayMessage({ text: 'Unable to complete authentication', color: 'error' });

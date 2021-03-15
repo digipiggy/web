@@ -14,6 +14,7 @@
         </v-chip>
         <v-chip
             v-if="showNewTaskChip"
+            v-click-outside="createTask"
             class="ma-2"
             color="#48A182"
             outlined
@@ -21,19 +22,20 @@
             <v-text-field
             label="New Task"
             v-model="newTaskChipText"
+            v-on:keyup.enter="createTask"
             single-line
             dense
             style="position: relative; top: 9px;"
-            
             ></v-text-field>
             <v-icon @click="createTask" >mdi-plus</v-icon>
         </v-chip>
         <v-chip
             v-else
             class="ma-2"
+            style="cursor: pointer;"
             color="#48A182"
             outlined
-            @click="showNewTaskChip = true"
+            @click.native="showChipAdder"
         >
             <v-icon >mdi-plus</v-icon>
             Custom Task
@@ -42,6 +44,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
     name: "taskChips", 
     props: {    
@@ -52,7 +56,7 @@ export default {
         return {
             showNewTaskChip: false,
             newTaskChipText: "",
-            customChips: []
+            customChips: [],
         };
     },
     computed: {
@@ -67,6 +71,7 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['displayMessage']),
         isChipSelected(task) {
             return this.kid.tasks.includes(task)
         },
@@ -77,15 +82,21 @@ export default {
             });
         },
         createTask(){
-            this.customChips.push(this.newTaskChipText)
-            this.$emit('selectTask', {
-                kid: this.kid,
-                task: this.newTaskChipText
-            });
-            this.newTaskChipText = "";
-            this.showNewTaskChip = false;
-
-        }
+            if (this.newTaskChipText == ""){
+                this.showNewTaskChip = false;
+            } else {
+                this.customChips.push(this.newTaskChipText)
+                this.$emit('selectTask', {
+                    kid: this.kid,
+                    task: this.newTaskChipText
+                });
+                this.newTaskChipText = "";
+                this.showNewTaskChip = false;
+            }
+        },
+        showChipAdder(){
+            this.showNewTaskChip = true;
+        },
     }
 };
 </script>

@@ -81,62 +81,6 @@
         </v-container>
       </v-col>  
     </v-row>
-    <!--Allowance--> 
-    <v-row 
-      justify="center"
-      v-if="showAllowance"
-      class="mb-8"
-    >
-      <v-col cols="11">
-        <p class="text-h6 font-weight-regular mt-10 mb-0" style="color: #9367E6">Set your weekly coin allowance</p>
-        <p class="text-body-2 font-weight-regular mb-8">By selecting {{earningSystem}}, you are committing to give your kid(s) a set number of piggles coins each week.</p>
-        <v-row >
-          <v-col cols="8" md="4">
-            <v-select
-              :items="allowanceOptions"
-              v-model="allowanceAmount"
-              label="Coins earned per week"
-              outlined
-              background-color="#FFFFFF"
-            ></v-select>
-          </v-col>  
-        </v-row>
-      </v-col>  
-    </v-row>
-    <!--Tasks and Behaviors--> 
-    <v-row 
-      justify="center"
-      v-if="showTasksAndBehaviors"
-    >
-      <v-col cols="11">
-          <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Select tasks and/or behaviors you would like your kid(s) to acheive.</p>
-          <p class="text-body-2 font-weight-regular mb-8">Your kid(s) will earn Piggles coins every week based on the completion of the tasks and behaviors you select. Choose from our list, or feel free to add your own!</p>
-          <div 
-            class="mb-10"
-            v-for="(kid, kidIndex) in kids"
-            :key="`kidTasks&Behaviors-${kidIndex}`"
-          >
-            <v-row>
-              <v-col cols="12" md="6">
-                <p>Select tasks for {{kid.name}}</p>
-                <taskchips
-                  :defaultChips="tasks"
-                  :kid="kid"
-                  @selectTask="selectTask"
-                />
-              </v-col>
-              <v-col cols="12" md="6">
-                <p>Select behaviors for {{kid.name}}</p>
-                  <behaviorChips
-                    :defaultChips="behaviors"
-                    :kid="kid"
-                    @selectBehavior="selectBehavior"
-                  />
-              </v-col>
-            </v-row>
-          </div>
-      </v-col>  
-    </v-row>
     <!--Goal Catalog--> 
     <v-row justify="center">
       <v-col cols="11">
@@ -165,12 +109,6 @@
                     :src="require('@/assets/PigglesCoin.png')" 
                     aspect-ratio="1"
                   ></v-img>
-                  <!-- <v-img 
-                    v-for="blankLED in (8 - goal.coins)"
-                    :key="`blankLED-${blankLED}`"
-                    :src="require('@/assets/BlankLED.png')" 
-                    aspect-ratio="1"
-                  ></v-img> -->
                 </v-row>
                 <p class="text-h2 font-weight-bold text-center mb-0" style="color: #9367E6">{{goal.coins}}</p>
                 <p class="text-caption text-center my-0">Piggles Coins</p>
@@ -234,9 +172,9 @@
             >
               <v-card
                 height="100%"
-                style="border: 2px solid #9367E6"
+                style="border: 2px solid #9367E6; cursor: pointer;"
                 class="pa-2 d-flex align-center justify-center"
-                @click="createNewGoal()"
+                @click.native="createNewGoal()"
               >
                 <p class="text-body-2 text-center mb-0">
                   <v-icon class="text-body-2 mx-auto" >mdi-plus</v-icon>
@@ -246,6 +184,62 @@
             </v-col>
           </v-row>
         </v-container>
+      </v-col>  
+    </v-row>
+    <!--Tasks and Behaviors--> 
+    <v-row 
+      justify="center"
+      v-if="showTasksAndBehaviors"
+    >
+      <v-col cols="11">
+          <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Select tasks and/or behaviors you would like your kid(s) to acheive.</p>
+          <p class="text-body-2 font-weight-regular mb-8">Your kid(s) will earn Piggles coins every week based on the completion of the tasks and behaviors you select. Choose from our list, or feel free to add your own!</p>
+          <div 
+            class="mb-10"
+            v-for="(kid, kidIndex) in kids"
+            :key="`kidTasks&Behaviors-${kidIndex}`"
+          >
+            <v-row>
+              <v-col cols="12" md="6">
+                <p>Select tasks for {{kid.name}}</p>
+                <taskchips
+                  :defaultChips="tasks"
+                  :kid="kid"
+                  @selectTask="selectTask"
+                />
+              </v-col>
+              <v-col cols="12" md="6">
+                <p>Select behaviors for {{kid.name}}</p>
+                  <behaviorChips
+                    :defaultChips="behaviors"
+                    :kid="kid"
+                    @selectBehavior="selectBehavior"
+                  />
+              </v-col>
+            </v-row>
+          </div>
+      </v-col>  
+    </v-row>
+    <!--Allowance--> 
+    <v-row 
+      justify="center"
+      v-if="showAllowance"
+      class="mb-8"
+    >
+      <v-col cols="11">
+        <p class="text-h6 font-weight-regular mt-10 mb-0" style="color: #9367E6">Set your weekly coin allowance</p>
+        <p class="text-body-2 font-weight-regular mb-8">By selecting {{earningSystem}}, you are committing to give your kid(s) a set number of piggles coins each week.</p>
+        <v-row >
+          <v-col cols="8" md="4">
+            <v-select
+              :items="allowanceOptions"
+              v-model="allowanceAmount"
+              label="Coins earned per week"
+              outlined
+              background-color="#FFFFFF"
+            ></v-select>
+          </v-col>  
+        </v-row>
       </v-col>  
     </v-row>
     <!--Payday--> 
@@ -327,38 +321,38 @@ const tasks = [
   "Fold Laundry",
   "Feed pets",
   "Pick up toys",
-  "Put laundry in hamper",
-  "Dust",
-  "Help with meal prep",
-  "Making the bed",
-  "Clearing the table",
-  "Doing bedtime routine",
-  "Vacuum or sweep"
+  // "Put laundry in hamper",
+  // "Dust",
+  // "Help with meal prep",
+  // "Making the bed",
+  // "Clearing the table",
+  // "Doing bedtime routine",
+  // "Vacuum or sweep"
 ];
 const behaviors = [
   "Show gratitude",
   "Help siblings",
   "Share with others",
-  "Help parents",
-  "Use kind words",
-  "Wait your turn",
-  "Persevere through challenges",
-  "Follow directions",
-  "Use calming strategies",
-  "Express feelings calmly"
+  // "Help parents",
+  // "Use kind words",
+  // "Wait your turn",
+  // "Persevere through challenges",
+  // "Follow directions",
+  // "Use calming strategies",
+  // "Express feelings calmly"
 ];
 const goals = [
   {name: "Video Game", coins: 8, },
-  {name: "Stay up Late", coins: 5, },
+  {name: "Stay up Late", coins: 6, },
   {name: "Ice Cream", coins: 4, },
-  {name: "Extra Screen Time", coins: 7, },
-  {name: "Movie Night", coins: 6, },
-  {name: "Daddy Date", coins: 5, },
-  {name: "Mommy Date", coins: 5, },
-  {name: "New Book", coins: 8, },
-  {name: "New Puzzle", coins: 7, },
-  {name: "Donate To Charity", coins: 6, },
-  {name: "Sleepover",  coins: 8, },
+  // {name: "Extra Screen Time", coins: 7, },
+  // {name: "Movie Night", coins: 6, },
+  // {name: "Daddy Date", coins: 5, },
+  // {name: "Mommy Date", coins: 5, },
+  // {name: "New Book", coins: 8, },
+  // {name: "New Puzzle", coins: 7, },
+  // {name: "Donate To Charity", coins: 6, },
+  // {name: "Sleepover",  coins: 8, },
 ];
 
 export default {
@@ -498,7 +492,9 @@ export default {
 
     // goal functions
     selectGoal(index) {
+      console.log('index', index)
       const goal = this.goals[index];
+      
       if ((this.selectedGoals.filter(g => g.name == goal.name ).length > 0) ) {
         this.selectedGoals = this.selectedGoals.filter((g) => g.name != goal.name)
       } else {
@@ -509,7 +505,6 @@ export default {
       return  this.selectedGoals.length != 0 && (this.selectedGoals.filter(g => g.name == goal.name ).length > 0);
     },
     createNewGoal() {
-      console.log("createNewGoal called")
       this.showGoalCreateTool = true
     },
     updateNewGoalAmount(coinType, newTotal){
@@ -520,23 +515,23 @@ export default {
       }
     },
     saveNewGoal() {
+      if (this.newGoalName == "") {
+        this.displayMessage({ text: 'Enter a goal name before saving a custom goal.', color: 'error' });
+      } else {
       this.goals.push({
         name: this.newGoalName, 
         coins: this.newGoalTotal
       });
       this.selectGoal(this.goals.length - 1);
-      console.log("this.showGoalCreateTool", this.showGoalCreateTool)
       this.showGoalCreateTool = false;
-      console.log("this.showGoalCreateTool", this.showGoalCreateTool)
       this.newGoalName = "";
       this.newGoalTotal = 1;
+      }
     },
     cancelNewGoal() {
       this.newGoalName = "";
       this.newGoalTotal = 1;
-      console.log("this.showGoalCreateTool", this.showGoalCreateTool)
       this.showGoalCreateTool = false;
-      console.log("this.showGoalCreateTool", this.showGoalCreateTool)
     },
 
     // save data
@@ -616,7 +611,6 @@ export default {
         rewards,
         status
       }
-      console.log('made it down here')
       if (await this.updateDevice(device)) {
         this.loading = false;
         this.showLessonPointer = true;
