@@ -492,9 +492,8 @@ export default {
 
     // goal functions
     selectGoal(index) {
-      console.log('index', index)
       const goal = this.goals[index];
-      
+
       if ((this.selectedGoals.filter(g => g.name == goal.name ).length > 0) ) {
         this.selectedGoals = this.selectedGoals.filter((g) => g.name != goal.name)
       } else {

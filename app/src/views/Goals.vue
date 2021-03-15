@@ -232,7 +232,6 @@ export default {
       return goalCatalog
     },
     activeGoals: function () {
-      console.log("activeGoals: ", this.goals.filter(goal => !!goal.kidsName))
       return this.goals.filter(goal => !!goal.kidsName)
     }
   },
@@ -243,7 +242,6 @@ export default {
       this.allGoalsValid = this.valid.every(x => x);
     },
     onPercentage() {
-      console.log("onPercentage has been called")
       const enabledGoals = this.goals.filter(g => g.enabled);
       if (!enabledGoals.length) {
         this.totalPercentageValid = true;
@@ -257,10 +255,10 @@ export default {
       return hex.slice(2, hex.length);
     },
     mockGoalSave() {
-      console.log('save clicked')
+      // console.log('save clicked')
     },
     editGoal: () => {
-      console.log("I'm editing a goal!")
+      // console.log("I'm editing a goal!")
     },
     async onReset() {
       this.clearDialogDisplayed = false;
@@ -333,7 +331,7 @@ export default {
     },
     initialize() {
       this.goals = this.device.goals.map((g, i) => {
-        console.log('this.device', this.device)
+        // console.log('this.device', this.device)
         const kid = this.device.kids[i];
 
         if (kid){
