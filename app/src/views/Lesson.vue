@@ -49,7 +49,7 @@
         minHeight: '100vh',
         color: newTextPage.textPrimaryColor,
         backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage.backgroundImage}`)})`,
-        backgroundPosition: 'center'
+        backgroundPosition: 'right'
       }"
       class="snap-child"
       id="page1"
@@ -98,7 +98,7 @@
         minHeight: '100vh',
         color: newTextPage2.textPrimaryColor,
         backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage2.backgroundImage}`)})`,
-        backgroundPosition: 'center'
+        backgroundPosition: 'right'
       }"
       class="snap-child"
       id="page2"
@@ -165,7 +165,7 @@
         minHeight: '100vh',
         color: newTextPage3.textPrimaryColor,
         backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage3.backgroundImage}`)})`,
-        backgroundPosition: 'center'
+        backgroundPosition: 'right'
       }"
       class="snap-child"
     >
@@ -231,7 +231,7 @@
         minHeight: '100vh',
         color: newTextPage4.textPrimaryColor,
         backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage4.backgroundImage}`)})`,
-        backgroundPosition: 'center'
+        backgroundPosition: 'right'
       }"
       class="snap-child"
     >
