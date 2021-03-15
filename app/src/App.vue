@@ -1,10 +1,119 @@
 <template>
   <v-app id="app">
-    <v-content>
+    <v-app-bar
+      color="#9367E6"
+      dark
+      dense
+      max-height="48"
+    >
+      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+
+      <v-toolbar-title>Piggles Family {{routerPage}}</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-dialog v-model="logoutDialogDisplayed" max-width="320">
+        <template v-slot:activator="{ on }">
+          <v-btn icon v-on="on">
+            <v-tooltip top>
+              <template v-slot:activator="{ on }">
+                <v-icon v-on="on">power_settings_new</v-icon>
+              </template>
+              <span>Logout</span>
+            </v-tooltip>
+          </v-btn>
+        </template>
+        <v-card>
+          <v-card-text>Are you sure you want to logout?</v-card-text>
+          <v-divider></v-divider>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="red lighten-2" text @click="onLogout">Logout</v-btn>
+            <v-btn color="primary" text @click="logoutDialogDisplayed = false">Cancel</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-app-bar>
+
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      temporary
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-title class="title">
+          Digi Piggy
+        </v-list-item-title>
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          <v-list-item to="/">
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Home</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item to="/lessons">
+            <v-list-item-icon>
+              <v-icon>mdi-book</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Lessons</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item to="/goals">
+            <v-list-item-icon>
+              <v-icon>mdi-checkbox-multiple-marked-outline</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Goals</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item to="/preferences">
+            <v-list-item-icon>
+              <v-icon>mdi-heart</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>My Family</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item to="/pigSettings">
+            <v-list-item-icon>
+              <v-icon>mdi-settings</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Digi Pig Controls</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item to="/articles">
+            <v-list-item-icon>
+              <v-icon>mdi-newspaper</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Articles</v-list-item-title>
+          </v-list-item>
+
+          <v-divider ></v-divider>
+
+          <v-list-item to="/faq">
+            <v-list-item-icon>
+              <v-icon>mdi-help</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>FAQs</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item to="/contactUs">
+            <v-list-item-icon>
+              <v-icon>mdi-clippy</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Help</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+    <v-main style="background-color: #F7F8FA">
       <transition name="component-fade" mode="out-in">
         <router-view/>
       </transition>
-    </v-content>
+    </v-main>
     <v-snackbar v-model="notification" :multi-line="true" :timeout="3000">
       {{ notificationText }}
       <v-btn text :color="notificationColor" @click="notification = false">Close</v-btn>
@@ -14,6 +123,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import Auth from './auth';
 
 export default {
   data() {
@@ -21,7 +131,10 @@ export default {
       notificationText: '',
       notificationColor: 'info',
       notificationQueue: [],
-      notification: false
+      notification: false,
+      drawer: false,
+      group: null,
+      logoutDialogDisplayed: false,
     };
   },
   computed: {
@@ -31,6 +144,13 @@ export default {
     }),
     hasNotificationsPending() {
       return this.notificationQueue.length > 0;
+    },
+    routerPage() {
+      if (!this.$route.name || this.$route.name == "callback"){
+        return "";
+      } else {
+        return `- ${this.$route.name}`
+      }
     }
   },
   watch: {
@@ -55,7 +175,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['initialize'])
+    ...mapActions(['initialize']),
+    onLogout() {
+      Auth.logout();
+    }
   }
 };
 </script>

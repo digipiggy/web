@@ -1,0 +1,58 @@
+{
+    "deviceCode": "M2E1D7",
+    "deviceId": "420032000751373238323937",
+    "goals": [
+      {
+        "color": 16744988,
+        "current": 0,
+        "enabled": true,
+        "name": "Select A New Goal",
+        "percentage": 0.5,
+        "promise": 0,
+        "promises": [
+  
+        ],
+        "total": 8
+      },
+      {
+        "color": 1073100,
+        "current": 0,
+        "enabled": true,
+        "name": "Select A New Goal",
+        "percentage": 0.5,
+        "promise": 0,
+        "promises": [
+  
+        ],
+        "total": 8
+      },
+      {
+        "color": 43087,
+        "current":0,
+        "enabled": false,
+        "name": "Select A New Goal",
+        "percentage": 0.25,
+        "promise": 0,
+        "promises": [
+  
+        ],
+        "total": 8
+      },
+      {
+        "color": 14422029,
+        "current": 4,
+        "enabled": false,
+        "name": "Select A New Goal",
+        "percentage": 0,
+        "promise": 0,
+        "promises": [
+  
+        ],
+        "total": 8
+      }
+    ],
+    "status": {
+      "firstLogin": true,
+      "completedPreferences": false
+    }
+  }

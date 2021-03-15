@@ -1,6 +1,6 @@
 <template>
   <v-card class="elevation-12">
-    <v-toolbar dark color="primary">
+    <v-toolbar dark color="#9367E6">
       <v-toolbar-title>Sleep</v-toolbar-title>
       <v-spacer></v-spacer>
       <div>
@@ -39,13 +39,15 @@
           v-model="piggySleep.observeDaylightSavings"
           label="Do you observe daylight savings?"
           :disabled="!piggySleep.enabled  || busy"
+          color="#9367E6"
         ></v-checkbox>
       </v-form>
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
       <v-btn
-        color="primary"
+        dark
+        color="#9367E6"
         @click="onSave"
       >Save Sleep
         <v-icon right dark>cloud_upload</v-icon>

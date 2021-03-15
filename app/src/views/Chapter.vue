@@ -8,11 +8,11 @@
     <v-sheet v-if="currentPageIndex == -1">
       <v-card-title class="justify-center">{{chapter.title}} Questions</v-card-title>
       <v-divider></v-divider>
-      <p class="text-h4 font-weight-medium pl-3 pt-5">
+      <p class="text-h2 font-weight-medium pl-3 pt-5">
         Questions for Kids
       </p>
       <v-card-text 
-        class="text-body-2 font-weight-regular pl-6" 
+        class="text-h2 font-weight-light pl-6" 
         v-for="question in chapter.questions.kids"
         :key="question"
       >

@@ -384,6 +384,21 @@ export default new Vuex.Store({
         console.error(err);
         return false;
       }
+    },
+    async updateKids({state, commit}, device) {
+      try {
+        await axios.put(`${state.baseUrl}/api/device/${state.device.deviceId}`, device, {
+          headers: { Authorization: `Bearer ${Auth.idToken}` }
+        }, httpsAgent);
+
+      } catch (err) {
+        console.error(err);
+        return false;
+      }
+
+      Vue.ls.set('device', device);
+      commit('setDevice', device);
+      return true;
     }
   }
 })
