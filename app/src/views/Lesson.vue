@@ -14,7 +14,6 @@
       justify="center"
     >
       <!--TODO componitize the contents of the if/else here-->
- 
       <!--newTitlePage-->
       <template> 
         <v-col
@@ -34,7 +33,11 @@
             <v-icon :color="lesson.pages.titlePage.textPrimaryColor">mdi-book</v-icon>{{lesson.pages.titlePage.audience}}
           </p>
           <p class="text-h6 text-center">
-            <v-icon :color="lesson.pages.titlePage.textPrimaryColor" size="70">mdi-chevron-down</v-icon>
+            <v-icon 
+              size="70"
+              @click="$vuetify.goTo('#page1')"
+              :color="lesson.pages.titlePage.textPrimaryColor" 
+            >mdi-chevron-down</v-icon>
           </p>
         </v-col>
       </template>
@@ -43,12 +46,13 @@
     <!-- Page 1 --> 
     <v-row 
       :style="{
-        minHeight: '95vh',
+        minHeight: '100vh',
         color: newTextPage.textPrimaryColor,
         backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage.backgroundImage}`)})`,
         backgroundPosition: 'center'
       }"
       class="snap-child"
+      id="page1"
     >
       <v-col
         cols="11"
@@ -91,12 +95,13 @@
     <!-- Page 2 --> 
     <v-row 
       :style="{
-        minHeight: '95vh',
+        minHeight: '100vh',
         color: newTextPage2.textPrimaryColor,
         backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage2.backgroundImage}`)})`,
         backgroundPosition: 'center'
       }"
       class="snap-child"
+      id="page2"
     >
       <v-col
         cols="11"
@@ -157,7 +162,7 @@
     <!-- Page 3 --> 
     <v-row 
       :style="{
-        minHeight: '95vh',
+        minHeight: '100vh',
         color: newTextPage3.textPrimaryColor,
         backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage3.backgroundImage}`)})`,
         backgroundPosition: 'center'
@@ -223,7 +228,7 @@
     <!-- Page 4 --> 
     <v-row 
       :style="{
-        minHeight: '95vh',
+        minHeight: '100vh',
         color: newTextPage4.textPrimaryColor,
         backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage4.backgroundImage}`)})`,
         backgroundPosition: 'center'
@@ -295,7 +300,7 @@
     <!-- Page 5 --> 
     <v-row 
       :style="{
-        minHeight: '95vh',
+        minHeight: '100vh',
         color: newTextPage5.textPrimaryColor,
       }"
       class="snap-child"
@@ -349,7 +354,7 @@
     <!-- Page 6 --> 
     <v-row 
       :style="{
-        minHeight: '95vh',
+        minHeight: '100vh',
         color: newTextPage6.textPrimaryColor,
       }"
       class="snap-child"
@@ -396,7 +401,7 @@
     <!-- Page 7 --> 
     <v-row 
       :style="{
-        minHeight: '95vh',
+        minHeight: '100vh',
         color: newTextPage7.textPrimaryColor,
       }"
       class="snap-child"
@@ -440,7 +445,7 @@
     <!-- dynamic --> 
     <!-- <v-row 
       :style="{
-        minHeight: '95vh',
+        minHeight: '100vh',
         color: page.textPrimaryColor,
         backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${page.backgroundImage}`)})`,
         backgroundPosition: 'center'
@@ -644,14 +649,14 @@ export default {
 </script>
 
 <style scoped>
-  .snap-container {
-    height: 95vh;
+  /* .snap-container {
+    height: 90vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
   }
   .snap-child {
     scroll-snap-align: start;
-  }
+  } */
   .backback {
     background-image: linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(../assets/PennyGoal.png)
   }
