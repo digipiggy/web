@@ -2,7 +2,7 @@
   <v-container 
     class=" snap-container"
     fluid>
-    <!-- title --> 
+    <!-- Title --> 
     <v-row 
       :style="{
         minHeight: '95vh',
@@ -70,6 +70,7 @@
       </template>
     
     </v-row>
+
     <!-- Page 1 --> 
     <v-row 
       :style="{
@@ -89,6 +90,8 @@
           color="#9367E6"
         >mdi-chevron-up</v-icon>
       </v-col> -->
+      <v-spacer>
+      </v-spacer>
       <v-col
         cols="12"
         md="4"
@@ -149,6 +152,7 @@
         >mdi-chevron-down</v-icon>
       </v-col>
     </v-row>
+
     <!-- Page 2 --> 
     <v-row 
       :style="{
@@ -167,6 +171,8 @@
           color="#9367E6"
         >mdi-chevron-up</v-icon>
       </v-col> -->
+      <v-spacer>
+      </v-spacer>
       <v-col
         cols="12"
         md="4"
@@ -243,6 +249,7 @@
         >mdi-chevron-down</v-icon>
       </v-col>
     </v-row>
+
     <!-- Page 3 --> 
     <v-row 
       :style="{
@@ -261,6 +268,8 @@
           color="#9367E6"
         >mdi-chevron-up</v-icon>
       </v-col> -->
+      <v-spacer>
+      </v-spacer>
       <v-col
         cols="12"
         md="4"
@@ -337,6 +346,7 @@
         >mdi-chevron-down</v-icon>
       </v-col>
     </v-row>
+
     <!-- Page 4 --> 
     <v-row 
       :style="{
@@ -355,6 +365,8 @@
           color="#9367E6"
         >mdi-chevron-up</v-icon>
       </v-col> -->
+      <v-spacer>
+      </v-spacer>
       <v-col
         cols="12"
         md="4"
@@ -429,13 +441,14 @@
       <v-col cols="12" class="d-flex justify-center pa-0">
         <v-icon 
           :size="isDesktop ? 70 : 40"
-          @click="$vuetify.goTo('#page6')"
+          @click="$vuetify.goTo('#page5')"
           color="#9367E6"
         >mdi-chevron-down</v-icon>
       </v-col>
     </v-row>
+
     <!-- Page 5 --> 
-    <!-- <v-row 
+    <v-row 
       :style="{
         minHeight: '100vh',
         color: newTextPage5.textPrimaryColor,
@@ -444,7 +457,6 @@
       id="page5"
       align="center"
     >
-
       <v-spacer>
       </v-spacer>
       <v-col cols="12" >
@@ -512,7 +524,8 @@
           color="#9367E6"
         >mdi-chevron-down</v-icon>
       </v-col>
-    </v-row> -->
+    </v-row>
+
     <!-- Page 6 --> 
     <v-row 
       :style="{
