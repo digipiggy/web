@@ -356,7 +356,7 @@ const goals = [
 ];
 
 export default {
-  name: "Preferences",
+  name: "SetupGuide",
   components: {
     taskchips: TaskChips,
     behaviorChips: BehaviorChips

@@ -27,6 +27,7 @@
 
 <script>
 export default {
+  Name: "404",
   components: {},
 
 };

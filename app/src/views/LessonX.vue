@@ -51,7 +51,7 @@ const titlePage = {
 }
 
 export default {
-  name: 'Lesson',
+  name: 'LessonX',
   components: {},
   computed: {
     isDesktop () {

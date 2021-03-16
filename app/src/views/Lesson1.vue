@@ -889,7 +889,7 @@ const textPage7 = {
 }
 
 export default {
-  name: 'Lesson',
+  name: 'Lesson1',
   components: {},
   computed: {
     ...mapState(['device']),

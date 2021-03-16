@@ -56,6 +56,7 @@ const lessons = [
 ]
 
 export default {
+  name: "Lessons",
   components: {
     lessonStatusIndicator: LessonStatusIndicator,
     lessonCard: LessonCard,

@@ -84,6 +84,7 @@ const questions = [
 ]
 
 export default {
+  name: "FAQ",
   components: {},
   data() {
     return {

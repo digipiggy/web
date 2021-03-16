@@ -16,7 +16,7 @@ import Articles from './views/Articles';
 import FAQ from './views/Faq';
 import ContactUs from './views/ContactUs';
 import Chapter from './views/Chapter';
-import Preferences from './views/Preferences';
+import SetupGuide from './views/SetupGuide';
 import Page404 from './views/Page404';
 
 Vue.use(Router);
@@ -102,7 +102,7 @@ const router = new Router({
     {
       path: '/setupGuide',
       name: 'Setup Guide',
-      component: Preferences
+      component: SetupGuide
     },
     {
       path: '/404',

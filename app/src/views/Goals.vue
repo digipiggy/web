@@ -47,7 +47,7 @@
             <v-btn
               color="#A0E667"
               class="ma-2 white--text"
-              to="/preferences"
+              to="/setupGuide"
             >
               My Values
             </v-btn>
@@ -212,7 +212,7 @@ export default {
   // components: {
   //   goal: Goal,
   // },
-  name: "GoalView",
+  name: "Goals",
   data() {
     return {
       clearDialogDisplayed: false,

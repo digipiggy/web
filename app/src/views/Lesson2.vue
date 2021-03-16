@@ -189,7 +189,7 @@ const textPage1 = {
 }
 
 export default {
-  name: 'Lesson',
+  name: 'Lesson2',
   components: {},
   computed: {
     ...mapState(['device']),

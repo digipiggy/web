@@ -37,6 +37,7 @@ const lesson = {
 }
 
 export default {
+  name: "Home",
   components: {
     lessonCard: LessonCard,
     welcomeCard: WelcomeCard,
