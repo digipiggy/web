@@ -7,13 +7,13 @@
       :style="{
         minHeight: '95vh',
         backgroundImage: isDesktop 
-          ? `url(${require(`@/assets/${lesson.pages.titlePage.backgroundImage}`)})`
-          : `url(${require(`@/assets/${lesson.pages.titlePage.backgroundImageMobile}`)})`,
-        color: lesson.pages.titlePage.textPrimaryColor,
+          ? `url(${require(`@/assets/${titlePage.backgroundImage}`)})`
+          : `url(${require(`@/assets/${titlePage.backgroundImageMobile}`)})`,
+        color: titlePage.textPrimaryColor,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }"
-      class="snap-child flex-column"
+      class=" flex-column"
       justify="center"
     >
       <!--TODO componitize the contents of the if/else here-->
@@ -24,14 +24,14 @@
           class="mt-9"
         >
           <p class="text-h4 text-md-h3 text-uppercase text-center font-weight-bold mb-0">
-            {{lesson.pages.titlePage.title}}
+            {{titlePage.title}}
           </p>
           <p 
             class="text-uppercase text-center font-weight-bold my-n5 my-md-n9" 
             :style="{
               fontSize: isDesktop ? '140px' : '90px'
             }">
-            {{lesson.pages.titlePage.subtitle}}
+            {{titlePage.subtitle}}
           </p>
         </v-col>
         <v-spacer>
@@ -53,17 +53,17 @@
           cols="12"
         >
           <p class="text-h6 text-center ">
-            <v-icon size="40" :color="lesson.pages.titlePage.textPrimaryColor">mdi-timer</v-icon> {{lesson.pages.titlePage.readTime}} mins
+            <v-icon size="40" :color="titlePage.textPrimaryColor">mdi-timer</v-icon> {{titlePage.readTime}} mins
           </p>
           <p class="text-h6 text-center">
-            <v-icon size="40" :color="lesson.pages.titlePage.textPrimaryColor">fab fa-readme</v-icon> {{lesson.pages.titlePage.audience}}
+            <v-icon size="40" :color="titlePage.textPrimaryColor">fab fa-readme</v-icon> {{titlePage.audience}}
           </p>
           <p class="text-h6 text-center">
             <v-icon 
               class="bounceyArrow"
               size="70"
               @click="$vuetify.goTo('#page1')"
-              :color="lesson.pages.titlePage.textPrimaryColor" 
+              :color="titlePage.textPrimaryColor" 
             >mdi-chevron-down</v-icon>
           </p>
         </v-col>
@@ -75,12 +75,12 @@
     <v-row 
       :style="{
         minHeight: '100vh',
-        color: newTextPage.textPrimaryColor,
-        backgroundImage: isDesktop ? `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage.backgroundImage}`)})` : '',
+        color: textPage1.textPrimaryColor,
+        backgroundImage: isDesktop ? `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${textPage1.backgroundImage}`)})` : '',
         backgroundPosition: 'right',
         position: 'relative',
       }"
-      class="snap-child flex-column"
+      class=" flex-column"
       id="page1"
     >
       <!-- <v-col cols="12" class="d-flex justify-center  pa-0">
@@ -98,24 +98,24 @@
         class="pa-5"
       >
         <p class="text-body-1 font-weight-light mt-md-3 mb-md-8" style="color: black">
-          <v-icon color="#A0E667" size="30" >{{newTextPage.instructionIcon}}</v-icon>
+          <v-icon color="#A0E667" size="30" >{{textPage1.instructionIcon}}</v-icon>
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
               <span
                 v-bind="attrs"
                 v-on="on"
-              > {{newTextPage.instructions}}</span>
+              > {{textPage1.instructions}}</span>
             </template>
-            <span>{{newTextPage.instructionsTT}}</span>
+            <span>{{textPage1.instructionsTT}}</span>
           </v-tooltip>
         </p>
         <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
-          {{newTextPage.title}}
+          {{textPage1.title}}
         </p>
         <div class="mb-8 mb-md-14">
           <p 
             class="text-body-1 text-md-h6 font-weight-light mb-6"
-            v-for="paragraph in newTextPage.text"
+            v-for="paragraph in textPage1.text"
             :key="paragraph"
           >
             {{paragraph}}
@@ -125,7 +125,7 @@
           <v-row>
             <v-col cols="4">
               <v-img 
-                :src="require(`@/assets/${newTextPage.quoteImg}`)" 
+                :src="require(`@/assets/${textPage1.quoteImg}`)" 
                 style="border-radius: 50%; border: 1px solid #9367E6"
                 aspect-ratio="1"
                 width="100"
@@ -133,10 +133,10 @@
             </v-col>
             <v-col cols="8" class="text-body-1 font-weight-light">
               <p style="color: black">
-                {{newTextPage.quote}}
+                {{textPage1.quote}}
               </p>
               <p style="color: black">
-                - {{newTextPage.quoteAttrib}}
+                - {{textPage1.quoteAttrib}}
               </p>
             </v-col>
           </v-row>
@@ -165,11 +165,11 @@
     <v-row 
       :style="{
         minHeight: '100vh',
-        color: newTextPage2.textPrimaryColor,
-        backgroundImage: isDesktop ? `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage2.backgroundImage}`)})` : '',
+        color: textPage2.textPrimaryColor,
+        backgroundImage: isDesktop ? `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${textPage2.backgroundImage}`)})` : '',
         backgroundPosition: 'right'
       }"
-      class="snap-child flex-column"
+      class=" flex-column"
       id="page2"
     >
       <!-- <v-col cols="12" class="d-flex justify-center pa-0">
@@ -187,50 +187,50 @@
         class="pa-5"
       >
         <p class="text-body-1 font-weight-light mt-md-3 mb-md-8" style="color: black">
-          <v-icon color="#A0E667" size="30" >{{newTextPage2.instructionIcon}}</v-icon>
+          <v-icon color="#A0E667" size="30" >{{textPage2.instructionIcon}}</v-icon>
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
               <span
                 v-bind="attrs"
                 v-on="on"
-              > {{newTextPage2.instructions}}</span>
+              > {{textPage2.instructions}}</span>
             </template>
-            <span>{{newTextPage2.instructionsTT}}</span>
+            <span>{{textPage2.instructionsTT}}</span>
           </v-tooltip>
         </p>
         <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
-          {{newTextPage2.title}}
+          {{textPage2.title}}
         </p>
         <p 
           class="text-body-1 text-md-h6 font-weight-light mb-5 mb-md-10"
         >
-          {{newTextPage2.text[0]}}
+          {{textPage2.text[0]}}
         </p>
         <p 
           class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1"
         >
-          {{newTextPage2.text[1]}}
+          {{textPage2.text[1]}}
         </p>
         <p 
           class="text-body-1 text-md-h6 font-weight-light font-italic mb-6 mb-md-14"
         >
-          {{newTextPage2.text[2]}}
+          {{textPage2.text[2]}}
         </p>
         <p 
           class="text-body-1 text-md-h6 font-weight-light font-italic mb-6 mb-md-14"
         >
-          {{newTextPage2.text[3]}}
+          {{textPage2.text[3]}}
         </p>
         <p 
           class="text-body-1 text-md-h6 font-weight-light font-italic mb-6 mb-md-14"
         >
-          {{newTextPage2.text[4]}}
+          {{textPage2.text[4]}}
         </p>
         <v-container >
           <v-row>
             <v-col cols="4">
               <v-img 
-                :src="require(`@/assets/${newTextPage2.quoteImg}`)" 
+                :src="require(`@/assets/${textPage2.quoteImg}`)" 
                 style="border-radius: 50%; border: 1px solid #9367E6"
                 aspect-ratio="1"
                 width="100"
@@ -238,10 +238,10 @@
             </v-col>
             <v-col cols="8" class="text-body-1 font-weight-light">
               <p style="color: black">
-                {{newTextPage2.quote}}
+                {{textPage2.quote}}
               </p>
               <p style="color: black">
-                - {{newTextPage2.quoteAttrib}}
+                - {{textPage2.quoteAttrib}}
               </p>
             </v-col>
           </v-row>
@@ -270,11 +270,11 @@
     <v-row 
       :style="{
         minHeight: '100vh',
-        color: newTextPage3.textPrimaryColor,
-        backgroundImage: isDesktop ? `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage3.backgroundImage}`)})` : '',
+        color: textPage3.textPrimaryColor,
+        backgroundImage: isDesktop ? `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${textPage3.backgroundImage}`)})` : '',
         backgroundPosition: 'right'
       }"
-      class="snap-child flex-column"
+      class=" flex-column"
       id="page3"
     >
       <!-- <v-col cols="12" class="d-flex justify-center pa-0">
@@ -292,50 +292,50 @@
         class="pa-5"
       >
         <p class="text-body-1 font-weight-light mt-md-3 mb-md-8" style="color: black">
-          <v-icon color="#A0E667" size="30" >{{newTextPage3.instructionIcon}}</v-icon>
+          <v-icon color="#A0E667" size="30" >{{textPage3.instructionIcon}}</v-icon>
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
               <span
                 v-bind="attrs"
                 v-on="on"
-              > {{newTextPage3.instructions}}</span>
+              > {{textPage3.instructions}}</span>
             </template>
-            <span>{{newTextPage3.instructionsTT}}</span>
+            <span>{{textPage3.instructionsTT}}</span>
           </v-tooltip>
         </p>
         <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
-          {{newTextPage3.title}}
+          {{textPage3.title}}
         </p>
         <p 
           class="text-body-1 text-md-h6 font-weight-light mb-5 mb-md-10"
         >
-          {{newTextPage3.text[0]}}
+          {{textPage3.text[0]}}
         </p>
         <p 
           class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1"
         >
-          {{newTextPage3.text[1]}}
+          {{textPage3.text[1]}}
         </p>
         <p 
           class="text-body-1 text-md-h6 font-weight-light font-italic mb-6 mb-md-14"
         >
-          {{newTextPage3.text[2]}}
+          {{textPage3.text[2]}}
         </p>
         <p 
           class="text-body-1 text-md-h6 font-weight-light font-italic mb-6 mb-md-14"
         >
-          {{newTextPage3.text[3]}}
+          {{textPage3.text[3]}}
         </p>
         <p 
           class="text-body-1 text-md-h6 font-weight-light font-italic mb-6 mb-md-14"
         >
-          {{newTextPage3.text[4]}}
+          {{textPage3.text[4]}}
         </p>
         <v-container >
           <v-row>
             <v-col cols="4">
               <v-img 
-                :src="require(`@/assets/${newTextPage3.quoteImg}`)" 
+                :src="require(`@/assets/${textPage3.quoteImg}`)" 
                 style="border-radius: 50%; border: 1px solid #9367E6"
                 aspect-ratio="1"
                 width="100"
@@ -343,10 +343,10 @@
             </v-col>
             <v-col cols="8" class="text-body-1 font-weight-light">
               <p style="color: black">
-                {{newTextPage3.quote}}
+                {{textPage3.quote}}
               </p>
               <p style="color: black">
-                - {{newTextPage3.quoteAttrib}}
+                - {{textPage3.quoteAttrib}}
               </p>
             </v-col>
           </v-row>
@@ -375,11 +375,11 @@
     <v-row 
       :style="{
         minHeight: '100vh',
-        color: newTextPage4.textPrimaryColor,
-        backgroundImage: isDesktop ? `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage4.backgroundImage}`)})` : '',
+        color: textPage4.textPrimaryColor,
+        backgroundImage: isDesktop ? `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${textPage4.backgroundImage}`)})` : '',
         backgroundPosition: 'right'
       }"
-      class="snap-child flex-column"
+      class=" flex-column"
       id="page4"
     >
       <!-- <v-col cols="12" class="d-flex justify-center pa-0">
@@ -397,24 +397,24 @@
         class="pa-5"
       >
         <p class="text-body-1 font-weight-light mt-md-3 mb-md-8" style="color: black">
-          <v-icon color="#A0E667" size="30" >{{newTextPage4.instructionIcon}}</v-icon>
+          <v-icon color="#A0E667" size="30" >{{textPage4.instructionIcon}}</v-icon>
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
               <span
                 v-bind="attrs"
                 v-on="on"
-              > {{newTextPage4.instructions}}</span>
+              > {{textPage4.instructions}}</span>
             </template>
-            <span>{{newTextPage4.instructionsTT}}</span>
+            <span>{{textPage4.instructionsTT}}</span>
           </v-tooltip>
         </p>
         <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
-          {{newTextPage4.title}}
+          {{textPage4.title}}
         </p>
         <p 
           class="text-body-1 text-md-h6 font-weight-light mb-5 mb-md-5"
         >
-          {{newTextPage4.text[0]}}
+          {{textPage4.text[0]}}
         </p>
         <v-row class="mb-5 px-14">
           <v-img 
@@ -433,12 +433,12 @@
         <p 
           class="text-body-1 text-md-h6 font-weight-light mb-5"
         >
-          {{newTextPage4.text[1]}}
+          {{textPage4.text[1]}}
         </p>
         <p 
           class="text-body-1 text-md-h6 font-weight-light mb-5"
         >
-          {{newTextPage4.text[2]}}
+          {{textPage4.text[2]}}
         </p>
         <v-row class=" d-flex align-center justify-center mb-5">
           <v-img 
@@ -452,12 +452,12 @@
         <p 
           class="text-body-1 text-md-h6 font-weight-light font-italic mb-5"
         >
-          {{newTextPage4.text[3]}}
+          {{textPage4.text[3]}}
         </p>
         <p 
           class="text-body-1 text-md-h6 font-weight-light font-italic mb-5"
         >
-          {{newTextPage4.text[4]}}
+          {{textPage4.text[4]}}
         </p>
       </v-col>
       <v-spacer>
@@ -483,9 +483,9 @@
     <v-row 
       :style="{
         minHeight: '100vh',
-        color: newTextPage5.textPrimaryColor,
+        color: textPage5.textPrimaryColor,
       }"
-      class="snap-child flex-column"
+      class=" flex-column"
       id="page5"
       align="center"
     >
@@ -499,31 +499,31 @@
             class="pa-5"
           >
             <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-              <v-icon color="#A0E667" size="30" >{{newTextPage5.instructionIcon}}</v-icon>
+              <v-icon color="#A0E667" size="30" >{{textPage5.instructionIcon}}</v-icon>
               <v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
                   <span
                     v-bind="attrs"
                     v-on="on"
-                  > {{newTextPage5.instructions}}</span>
+                  > {{textPage5.instructions}}</span>
                 </template>
-                <span>{{newTextPage5.instructionsTT}}</span>
+                <span>{{textPage5.instructionsTT}}</span>
               </v-tooltip>
             </p>
             <p class="text-h6 text-uppercase">
-              {{newTextPage5.title}}
+              {{textPage5.title}}
             </p>
             <p 
               class="text-h6 font-weight-light mb-14"
             >
-              {{newTextPage5.text[0]}}
+              {{textPage5.text[0]}}
             </p>
             <v-btn
-              to="/preferences"
+              to="/SetupGuide"
               color="#9367E6"
               class="ma-2 white--text"
             >
-              My Family
+              Goal Catalog
               <v-icon
                 right
                 dark
@@ -539,10 +539,10 @@
             class="pa-5"
           >
             <p class="text-body-1 font-weight-light" style="color: black">
-              {{newTextPage5.imageTitle}}
+              {{textPage5.imageTitle}}
             </p>
             <v-img 
-              :src="require(`@/assets/${newTextPage5.backgroundImage}`)" 
+              :src="require(`@/assets/${textPage5.backgroundImage}`)" 
             ></v-img>
           </v-col>
         </v-row>
@@ -570,9 +570,9 @@
     <v-row 
       :style="{
         minHeight: '100vh',
-        color: newTextPage6.textPrimaryColor,
+        color: textPage6.textPrimaryColor,
       }"
-      class="snap-child flex-column"
+      class=" flex-column"
       id="page6"
       align="center"
     >
@@ -593,24 +593,24 @@
             class="pa-5"
           >
             <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-              <v-icon color="#A0E667" size="30" >{{newTextPage6.instructionIcon}}</v-icon>
+              <v-icon color="#A0E667" size="30" >{{textPage6.instructionIcon}}</v-icon>
               <v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
                   <span
                     v-bind="attrs"
                     v-on="on"
-                  > {{newTextPage6.instructions}}</span>
+                  > {{textPage6.instructions}}</span>
                 </template>
-                <span>{{newTextPage6.instructionsTT}}</span>
+                <span>{{textPage6.instructionsTT}}</span>
               </v-tooltip>
             </p>
             <p class="text-h6 text-uppercase">
-              {{newTextPage6.title}}
+              {{textPage6.title}}
             </p>
             <p 
               class="text-h6 font-weight-light mb-14"
             >
-              {{newTextPage6.text[0]}}
+              {{textPage6.text[0]}}
             </p>
             <!-- <v-btn
               to="/goals"
@@ -640,7 +640,7 @@
               >
                 <template slot="selection" slot-scope="data">
                   <template >
-                    <v-list-item-avatar @click="console(item, data, goalCatalog)">
+                    <v-list-item-avatar >
                       <v-img :src="require(`@/assets/PigglesCoin${data.item.coins}.png`)" ></v-img>
                       <!-- <p style="position: relative; right: 20px">{{device.rewards[i].coins}}</p> -->
                     </v-list-item-avatar>
@@ -651,7 +651,7 @@
                 </template>
                 <template slot="item" slot-scope="data">
                   <template >
-                    <v-list-item-avatar @click="console(item, data, goalCatalog)">
+                    <v-list-item-avatar >
                       <v-img :src="require(`@/assets/PigglesCoin${data.item.coins}.png`)" ></v-img>
                     </v-list-item-avatar>
                     <v-list-item-content>
@@ -696,9 +696,9 @@
     <v-row 
       :style="{
         minHeight: '100vh',
-        color: newTextPage7.textPrimaryColor,
+        color: textPage7.textPrimaryColor,
       }"
-      class="snap-child"
+      class=""
       id="page7"
       align="center"
     >
@@ -717,16 +717,16 @@
             class="pa-5"
           >
             <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-              <v-icon color="#A0E667" size="30" >fab fa-readme{{newTextPage7.instructionIcon}}</v-icon>
-              {{newTextPage7.instructions}}
+              <v-icon color="#A0E667" size="30" >fab fa-readme{{textPage7.instructionIcon}}</v-icon>
+              {{textPage7.instructions}}
             </p>
             <p class="text-h6 text-uppercase">
-              {{newTextPage7.title}}
+              {{textPage7.title}}
             </p>
             <p 
               class="text-h6 font-weight-light mb-14"
             >
-              {{newTextPage7.text[0]}}
+              {{textPage7.text[0]}}
             </p>
             <v-btn
               to="/lessons"
@@ -742,74 +742,29 @@
             class="pa-5"
           >
             <v-img 
-              :src="require(`@/assets/${newTextPage7.backgroundImage}`)" 
+              :src="require(`@/assets/${textPage7.backgroundImage}`)" 
             ></v-img>
           </v-col>
         </v-row>  
       </v-col>
     </v-row>
-    <!-- dynamic --> 
-    <!-- <v-row 
-      :style="{
-        minHeight: '100vh',
-        color: page.textPrimaryColor,
-        backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${page.backgroundImage}`)})`,
-        backgroundPosition: 'center'
-      }"
-      class="snap-child"
-      v-for="(page, i) in lesson.pages.contentPages" 
-      :key="i"
-    >
-      <template
-        v-if="page.type == 'newTextPage'"
-      > 
-        <v-col
-          cols="11"
-          md="4"
-        >
-          <p class="text-h6 text-center">
-            <v-icon>mdi-{{page.instructionIcon}}</v-icon>{{page.instructions}}
-          </p>
-          <p class="text-h6 text-uppercase text-center">
-            {{page.title}}
-          </p>
-          <p 
-            class="text-body-1 text-uppercase font-weight-bold"
-            v-for="paragraph in page.text"
-            :key="paragraph"
-          >
-            {{paragraph}}
-          </p>
-          <v-container >
-            <v-row>
-              <v-col cols="4">
-                <v-img 
-                  :src="require(`@/assets/${page.quoteImg}`)" 
-                  style="border-radius: 50%; border: 1px solid #9367E6"
-                  aspect-ratio="1"
-                  width="100"
-                ></v-img>
-              </v-col>
-              <v-col cols="8">
-                <p>
-                  {{page.quote}}
-                </p>
-              </v-col>
-            </v-row>
-          </v-container >
-        </v-col>
-      </template>
-      
-    </v-row> -->
   </v-container>
 </template>
 
 <script>
-import lessons from "@/lessons"
-
 import { mapState, mapActions } from 'vuex';
 
-const newTextPage = {
+const titlePage = {
+  type: "newTitlePage",
+  title: "Lesson 1",
+  subtitle: "Goals",
+  readTime: "15",
+  audience: "Family reads together.",
+  backgroundImage: "familyKitchen2.png",
+  backgroundImageMobile: "familyKitchenMobile.png",
+  textPrimaryColor: "#FFFFFF"
+}
+const textPage1 = {
   type: "newTextPage",
   title: "What is a goal?",
   text: [
@@ -827,7 +782,7 @@ const newTextPage = {
   quoteImg: "PennyHeadshotSquare.png",
   textPrimaryColor: "#9367E6"
 }
-const newTextPage2 = {
+const textPage2 = {
   type: "newTextPage",
   title: "Parent Goals",
   text: [
@@ -848,7 +803,7 @@ const newTextPage2 = {
   quoteImg: "MommaPiggleHeadshot.png",
   textPrimaryColor: "#9367E6"
 }
-const newTextPage3 = {
+const textPage3 = {
   type: "newTextPage",
   title: "Kid Goals",
   text: [
@@ -869,7 +824,7 @@ const newTextPage3 = {
   quoteImg: "RexPiggleHeadshot.png",
   textPrimaryColor: "#9367E6"
 }
-const newTextPage4 = {
+const textPage4 = {
   type: "newTextPage",
   title: "Rex's Goals",
   text: [
@@ -889,7 +844,7 @@ const newTextPage4 = {
   quoteImg: "RexPiggleHeadshot.png",
   textPrimaryColor: "#9367E6"
 }
-const newTextPage5 = {
+const textPage5 = {
   type: "newTextPage",
   title: "Your Time To Shine",
   text: [
@@ -904,7 +859,7 @@ const newTextPage5 = {
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
-const newTextPage6 = {
+const textPage6 = {
   type: "newTextPage",
   title: "It's your turn!",
   text: [
@@ -919,7 +874,7 @@ const newTextPage6 = {
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
-const newTextPage7 = {
+const textPage7 = {
   type: "newTextPage",
   title: "Get ready to earn",
   text: [
@@ -953,25 +908,19 @@ export default {
   data() {
     return {
       goals: [],
-      lessons,
-      lesson: {},
-      newTextPage,
-      newTextPage2,
-      newTextPage3,
-      newTextPage4,
-      newTextPage5,
-      newTextPage6,
-      newTextPage7,
+      titlePage,
+      textPage1,
+      textPage2,
+      textPage3,
+      textPage4,
+      textPage5,
+      textPage6,
+      textPage7,
       loading: false
     }
   },
   methods: {
-        ...mapActions(['updateDevice', 'displayMessage']),
-    console(item, data, goalCatalog) {
-      console.log("item", item)
-      console.log("data", data)
-      console.log("goalCatalog", goalCatalog)
-    },
+    ...mapActions(['updateDevice', 'displayMessage']),
     async saveGoals() {
       this.loading = true;
       const device = {
@@ -1019,7 +968,6 @@ export default {
     },
     initialize() {
       this.goals = this.device.goals.map((g, i) => {
-        // console.log('this.device', this.device)
         const kid = this.device.kids[i];
 
         if (kid){
@@ -1052,48 +1000,18 @@ export default {
           };
         }
       });
-
     }
   },
   mounted() {
     this.initialize();
   },
-  async created() {
-    try {
-      const title = this.$route.params.title
-      this.lesson = this.lessons.find( lesson => lesson.title == title)
-      // this.lesson = this.$store.state.lessons.find( lesson => lesson.title == title)
-    } catch (err) {
-      console.error(err);
-    }
-  },
+
 };
 </script>
 
 <style scoped>
-  /* .snap-container {
-    height: 90vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-  }
-  .snap-child {
-    scroll-snap-align: start;
-  } */
   .backback {
     background-image: linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(../assets/PennyGoal.png)
-  }
-
-  .blueBorder {
-    border: 1px solid blue;
-  }
-  .redBorder {
-    border: 1px solid red;
-  }
-  .greenBorder {
-    border: 1px solid green;
-  }
-  .orangeBorder {
-    border: 1px solid orange;
   }
 
   .bounceyArrow {
@@ -1112,5 +1030,3 @@ export default {
         100% { transform: scale(1,1)      translateY(0); }
   }
 </style>
-
-

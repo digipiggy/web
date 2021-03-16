@@ -9,12 +9,15 @@ import Goals from './views/Goals';
 import Home from './views/Home';
 import Story from './views/Story';
 import Lessons from './views/Lessons';
-import Lesson from './views/Lesson';
+import Lesson1 from './views/Lesson1';
+import Lesson2 from './views/Lesson2';
+import LessonX from './views/LessonX';
 import Articles from './views/Articles';
 import FAQ from './views/Faq';
 import ContactUs from './views/ContactUs';
 import Chapter from './views/Chapter';
 import Preferences from './views/Preferences';
+import Page404 from './views/Page404';
 
 Vue.use(Router);
 
@@ -67,9 +70,19 @@ const router = new Router({
       component: Lessons
     },
     {
+      path: '/lessons/lesson/1',
+      name: 'Lesson 1 - Goals',
+      component: Lesson1
+    },
+    {
+      path: '/lessons/lesson/2',
+      name: 'Lesson 2 - Earning',
+      component: Lesson2
+    },
+    {
       path: '/lessons/lesson/:title',
-      name: 'Lesson',
-      component: Lesson
+      name: 'Lesson Coming Soon',
+      component: LessonX
     },
     {
       path: '/articles',
@@ -92,8 +105,13 @@ const router = new Router({
       component: Preferences
     },
     {
+      path: '/404',
+      name: '404 - Page not Found',
+      component: Page404
+    },
+    {
       path: '*',
-      redirect: { name: 'pigDashboard' }
+      redirect: { name: '404 - Page not Found' }
     }
   ]
 });

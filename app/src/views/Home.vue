@@ -32,7 +32,8 @@ const lesson = {
   title: "Lesson 1",
   image: "kitchenEnter.jpg",
   subtitle: "Let's talk about Goals",
-  body: "Set your goals with help from the piggles family."
+  body: "Set your goals with help from the piggles family.",
+  route: "/lessons/lesson/1"
 }
 
 export default {
