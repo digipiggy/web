@@ -10,15 +10,14 @@
         color: lesson.pages.titlePage.textPrimaryColor,
         backgroundPosition: 'center'
       }"
-      class="snap-child"
+      class="snap-child flex-column"
       justify="center"
     >
       <!--TODO componitize the contents of the if/else here-->
       <!--newTitlePage-->
       <template> 
         <v-col
-          cols="11"
-          md="6"
+          cols="12"
         >
           <p class="text-h3 text-uppercase text-center">
             {{lesson.pages.titlePage.title}}
@@ -26,6 +25,25 @@
           <p class="text-h1 text-uppercase text-center font-weight-bold">
             {{lesson.pages.titlePage.subtitle}}
           </p>
+        </v-col>
+        <v-spacer>
+        </v-spacer>
+        <v-col
+          cols="12"
+        >
+          <v-img 
+            max-width="200px"
+            class="mx-auto"
+            style="cursor: pointer;"
+            :src="require(`@/assets/startCoin.png`)" 
+            @click="$vuetify.goTo('#page1')"
+          ></v-img>
+        </v-col>
+        <v-spacer class="">
+        </v-spacer>
+        <v-col
+          cols="12"
+        >
           <p class="text-h6 text-center ">
             <v-icon :color="lesson.pages.titlePage.textPrimaryColor">mdi-timer</v-icon>{{lesson.pages.titlePage.readTime}} mins
           </p>
@@ -34,6 +52,7 @@
           </p>
           <p class="text-h6 text-center">
             <v-icon 
+              class="bounceyArrow"
               size="70"
               @click="$vuetify.goTo('#page1')"
               :color="lesson.pages.titlePage.textPrimaryColor" 
@@ -48,16 +67,24 @@
       :style="{
         minHeight: '100vh',
         color: newTextPage.textPrimaryColor,
-        backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage.backgroundImage}`)})`,
-        backgroundPosition: 'right'
+        backgroundImage: isDesktop ? `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage.backgroundImage}`)})` : '',
+        backgroundPosition: 'right',
+        position: 'relative'
       }"
-      class="snap-child"
+      class="snap-child flex-column"
       id="page1"
     >
+      <!-- <v-col cols="12" class="d-flex justify-center  pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo(0)"
+          color="#9367E6"
+        >mdi-chevron-up</v-icon>
+      </v-col> -->
       <v-col
-        cols="11"
+        cols="12"
         md="4"
-        class="pa-5"
+        class="pa-5 "
       >
         <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
           <v-icon color="#A0E667" size="40" >mdi-{{newTextPage.instructionIcon}}</v-icon>
@@ -91,20 +118,36 @@
           </v-row>
         </v-container >
       </v-col>
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" class="d-flex justify-center pa-0 ">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo('#page2')"
+          color="#9367E6"
+        >mdi-chevron-down</v-icon>
+      </v-col>
     </v-row>
     <!-- Page 2 --> 
     <v-row 
       :style="{
         minHeight: '100vh',
         color: newTextPage2.textPrimaryColor,
-        backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage2.backgroundImage}`)})`,
+        backgroundImage: isDesktop ? `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage2.backgroundImage}`)})` : '',
         backgroundPosition: 'right'
       }"
-      class="snap-child"
+      class="snap-child flex-column"
       id="page2"
     >
+      <!-- <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo('#page1')"
+          color="#9367E6"
+        >mdi-chevron-up</v-icon>
+      </v-col> -->
       <v-col
-        cols="11"
+        cols="12"
         md="4"
         class="pa-5"
       >
@@ -158,19 +201,36 @@
           </v-row>
         </v-container >
       </v-col>
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" class="d-flex justify-center pa-0 ">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo('#page3')"
+          color="#9367E6"
+        >mdi-chevron-down</v-icon>
+      </v-col>
     </v-row>
     <!-- Page 3 --> 
     <v-row 
       :style="{
         minHeight: '100vh',
         color: newTextPage3.textPrimaryColor,
-        backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage3.backgroundImage}`)})`,
+        backgroundImage: isDesktop ? `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage3.backgroundImage}`)})` : '',
         backgroundPosition: 'right'
       }"
-      class="snap-child"
+      class="snap-child flex-column"
+      id="page3"
     >
+      <!-- <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo('#page2')"
+          color="#9367E6"
+        >mdi-chevron-up</v-icon>
+      </v-col> -->
       <v-col
-        cols="11"
+        cols="12"
         md="4"
         class="pa-5"
       >
@@ -224,19 +284,36 @@
           </v-row>
         </v-container >
       </v-col>
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo('#page4')"
+          color="#9367E6"
+        >mdi-chevron-down</v-icon>
+      </v-col>
     </v-row>
     <!-- Page 4 --> 
     <v-row 
       :style="{
         minHeight: '100vh',
         color: newTextPage4.textPrimaryColor,
-        backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage4.backgroundImage}`)})`,
+        backgroundImage: isDesktop ? `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage4.backgroundImage}`)})` : '',
         backgroundPosition: 'right'
       }"
-      class="snap-child"
+      class="snap-child flex-column"
+      id="page4"
     >
+      <!-- <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo('#page3')"
+          color="#9367E6"
+        >mdi-chevron-up</v-icon>
+      </v-col> -->
       <v-col
-        cols="11"
+        cols="12"
         md="4"
         class="pa-5"
       >
@@ -296,6 +373,15 @@
           {{newTextPage4.text[4]}}
         </p>
       </v-col>
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo('#page5')"
+          color="#9367E6"
+        >mdi-chevron-down</v-icon>
+      </v-col>
     </v-row>
     <!-- Page 5 --> 
     <v-row 
@@ -303,52 +389,73 @@
         minHeight: '100vh',
         color: newTextPage5.textPrimaryColor,
       }"
-      class="snap-child"
+      class="snap-child flex-column"
+      id="page5"
       align="center"
     >
-      <v-col
-        cols="12"
-        md="6"
-        class="pa-5"
-      >
-        <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-          <v-icon color="#A0E667" size="40" >mdi-{{newTextPage5.instructionIcon}}</v-icon>
-          {{newTextPage5.instructions}}
-        </p>
-        <p class="text-h6 text-uppercase">
-          {{newTextPage5.title}}
-        </p>
-        <p 
-          class="text-h6 font-weight-light mb-14"
-        >
-          {{newTextPage5.text[0]}}
-        </p>
-        <v-btn
-          to="/preferences"
+      <!-- <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo('#page4')"
           color="#9367E6"
-          class="ma-2 white--text"
-        >
-          My Family
-          <v-icon
-            right
-            dark
-            color="white"
+        >mdi-chevron-up</v-icon>
+      </v-col> -->
+      <v-col cols="12" class="">
+        <v-row>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
           >
-            mdi-right-arrow
-          </v-icon>
-        </v-btn>
+            <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
+              <v-icon color="#A0E667" size="40" >mdi-{{newTextPage5.instructionIcon}}</v-icon>
+              {{newTextPage5.instructions}}
+            </p>
+            <p class="text-h6 text-uppercase">
+              {{newTextPage5.title}}
+            </p>
+            <p 
+              class="text-h6 font-weight-light mb-14"
+            >
+              {{newTextPage5.text[0]}}
+            </p>
+            <v-btn
+              to="/preferences"
+              color="#9367E6"
+              class="ma-2 white--text"
+            >
+              My Family
+              <v-icon
+                right
+                dark
+                color="white"
+              >
+                mdi-right-arrow
+              </v-icon>
+            </v-btn>
+          </v-col>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light" style="color: black">
+              {{newTextPage5.imageTitle}}
+            </p>
+            <v-img 
+              :src="require(`@/assets/${newTextPage5.backgroundImage}`)" 
+            ></v-img>
+          </v-col>
+        </v-row>
       </v-col>
-      <v-col
-        cols="12"
-        md="6"
-        class="pa-5"
-      >
-        <p class="text-body-1 font-weight-light" style="color: black">
-          {{newTextPage5.imageTitle}}
-        </p>
-        <v-img 
-          :src="require(`@/assets/${newTextPage5.backgroundImage}`)" 
-        ></v-img>
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo('#page6')"
+          color="#9367E6"
+        >mdi-chevron-down</v-icon>
       </v-col>
     </v-row>
     <!-- Page 6 --> 
@@ -357,9 +464,17 @@
         minHeight: '100vh',
         color: newTextPage6.textPrimaryColor,
       }"
-      class="snap-child"
+      class="snap-child flex-column"
+      id="page6"
       align="center"
     >
+      <!-- <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo('#page5')"
+          color="#9367E6"
+        >mdi-chevron-up</v-icon>
+      </v-col> -->
       <v-col
         cols="12"
         md="6"
@@ -397,6 +512,15 @@
           :src="require(`@/assets/${newTextPage6.backgroundImage}`)" 
         ></v-img>
       </v-col>
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo('#page7')"
+          color="#9367E6"
+        >mdi-chevron-down</v-icon>
+      </v-col>
     </v-row>
     <!-- Page 7 --> 
     <v-row 
@@ -404,9 +528,17 @@
         minHeight: '100vh',
         color: newTextPage7.textPrimaryColor,
       }"
-      class="snap-child"
+      class="snap-child flex-column"
+      id="page7"
       align="center"
     >
+      <!-- <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo('#page6')"
+          color="#9367E6"
+        >mdi-chevron-up</v-icon>
+      </v-col> -->
       <v-col
         cols="12"
         md="6"
@@ -517,7 +649,6 @@ const newTextPage = {
   quoteImg: "PennyHeadshotSquare.png",
   textPrimaryColor: "#9367E6"
 }
-
 const newTextPage2 = {
   type: "newTextPage",
   title: "Parent Goals",
@@ -537,7 +668,6 @@ const newTextPage2 = {
   quoteImg: "MommaPiggleHeadshot.png",
   textPrimaryColor: "#9367E6"
 }
-
 const newTextPage3 = {
   type: "newTextPage",
   title: "Kid Goals",
@@ -557,7 +687,6 @@ const newTextPage3 = {
   quoteImg: "RexPiggleHeadshot.png",
   textPrimaryColor: "#9367E6"
 }
-
 const newTextPage4 = {
   type: "newTextPage",
   title: "Rex's Goals",
@@ -571,13 +700,12 @@ const newTextPage4 = {
   audience: "kid",
   instructions: "Read and Share",
   instructionIcon: "book-open",
-  backgroundImage: 'RexAndMomma.jpg',
+  backgroundImage: 'MomSearchCorner.png',
   backgroundColor: "#FFFFFF",
   quote: "“I wanted a pirate costume for Halloween. I didn’t have the money yet, so I made a paper eye patch.” -Rex Piggle",
   quoteImg: "RexPiggleHeadshot.png",
   textPrimaryColor: "#9367E6"
 }
-
 const newTextPage5 = {
   type: "newTextPage",
   title: "Your Time To Shine",
@@ -623,6 +751,12 @@ const newTextPage7 = {
 export default {
   name: 'Lesson',
   components: {},
+  computed: {
+    isDesktop () {
+        let { name } = this.$vuetify.breakpoint;
+        return name == 'md' || name == 'lg' || name == 'xl';
+    }
+  },
   data() {
     return {
       lessons,
@@ -660,4 +794,35 @@ export default {
   .backback {
     background-image: linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(../assets/PennyGoal.png)
   }
+
+  .blueBorder {
+    border: 1px solid blue;
+  }
+  .redBorder {
+    border: 1px solid red;
+  }
+  .greenBorder {
+    border: 1px solid green;
+  }
+  .orangeBorder {
+    border: 1px solid orange;
+  }
+
+  .bounceyArrow {
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-name: bounce-7;
+        animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+    }
+    @keyframes bounce-7 {
+        0%   { transform: scale(1,1)      translateY(0); }
+        10%  { transform: scale(1.1,.9)   translateY(0); }
+        30%  { transform: scale(.9,1.1)   translateY(-10px); }
+        50%  { transform: scale(1.05,.95) translateY(0); }
+        57%  { transform: scale(1,1)      translateY(-7px); }
+        64%  { transform: scale(1,1)      translateY(0); }
+        100% { transform: scale(1,1)      translateY(0); }
+  }
 </style>
+
+
