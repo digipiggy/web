@@ -88,7 +88,15 @@
       >
         <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
           <v-icon color="#A0E667" size="40" >{{newTextPage.instructionIcon}}</v-icon>
-          {{newTextPage.instructions}}
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <span
+                v-bind="attrs"
+                v-on="on"
+              > {{newTextPage.instructions}}</span>
+            </template>
+            <span>{{newTextPage.instructionsTT}}</span>
+          </v-tooltip>
         </p>
         <p class="text-h6 text-uppercase">
           {{newTextPage.title}}
@@ -156,7 +164,15 @@
       >
         <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
           <v-icon color="#A0E667" size="40" >{{newTextPage2.instructionIcon}}</v-icon>
-          {{newTextPage2.instructions}}
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <span
+                v-bind="attrs"
+                v-on="on"
+              > {{newTextPage2.instructions}}</span>
+            </template>
+            <span>{{newTextPage2.instructionsTT}}</span>
+          </v-tooltip>
         </p>
         <p class="text-h6 text-uppercase">
           {{newTextPage2.title}}
@@ -242,7 +258,15 @@
       >
         <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
           <v-icon color="#A0E667" size="40" >{{newTextPage3.instructionIcon}}</v-icon>
-          {{newTextPage3.instructions}}
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <span
+                v-bind="attrs"
+                v-on="on"
+              > {{newTextPage3.instructions}}</span>
+            </template>
+            <span>{{newTextPage3.instructionsTT}}</span>
+          </v-tooltip>
         </p>
         <p class="text-h6 text-uppercase">
           {{newTextPage3.title}}
@@ -328,7 +352,15 @@
       >
         <p class="text-body-1 font-weight-light mt-3 mb-6" style="color: black">
           <v-icon color="#A0E667" size="40" >{{newTextPage4.instructionIcon}}</v-icon>
-          {{newTextPage4.instructions}}
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <span
+                v-bind="attrs"
+                v-on="on"
+              > {{newTextPage4.instructions}}</span>
+            </template>
+            <span>{{newTextPage4.instructionsTT}}</span>
+          </v-tooltip>
         </p>
         <p class="text-h6 text-uppercase">
           {{newTextPage4.title}}
@@ -418,7 +450,15 @@
           >
             <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
               <v-icon color="#A0E667" size="40" >{{newTextPage5.instructionIcon}}</v-icon>
-              {{newTextPage5.instructions}}
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <span
+                    v-bind="attrs"
+                    v-on="on"
+                  > {{newTextPage5.instructions}}</span>
+                </template>
+                <span>{{newTextPage5.instructionsTT}}</span>
+              </v-tooltip>
             </p>
             <p class="text-h6 text-uppercase">
               {{newTextPage5.title}}
@@ -491,7 +531,15 @@
       >
         <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
           <v-icon color="#A0E667" size="40" >{{newTextPage6.instructionIcon}}</v-icon>
-          {{newTextPage6.instructions}}
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <span
+                v-bind="attrs"
+                v-on="on"
+              > {{newTextPage6.instructions}}</span>
+            </template>
+            <span>{{newTextPage6.instructionsTT}}</span>
+          </v-tooltip>
         </p>
         <p class="text-h6 text-uppercase">
           {{newTextPage6.title}}
@@ -651,6 +699,7 @@ const newTextPage = {
   ],
   audience: "kid",
   instructions: "Read Aloud",
+  instructionsTT: "Read this section outloud with your kid(s).",
   instructionIcon: "fab fa-readme",
   backgroundImage: 'PennyGoal.png',
   backgroundColor: "#FFFFFF",
@@ -671,6 +720,7 @@ const newTextPage2 = {
   ],
   audience: "kid",
   instructions: "Read and Share",
+  instructionsTT: "Read and discuss the italicized questions with your kid(s)",
   instructionIcon: "fas fa-book-reader",
   backgroundImage: 'RexAndMomma.jpg',
   backgroundColor: "#FFFFFF",
@@ -691,6 +741,7 @@ const newTextPage3 = {
   ],
   audience: "kid",
   instructions: "Read and Share",
+  instructionsTT: "Read and discuss the italicized questions with your kid(s)",
   instructionIcon: "fas fa-book-reader",
   backgroundImage: 'rexPirate.jpg',
   backgroundColor: "#FFFFFF",
@@ -711,6 +762,7 @@ const newTextPage4 = {
   ],
   audience: "kid",
   instructions: "Read and Share",
+  instructionsTT: "Read and discuss the italicized questions with your kid(s)",
   instructionIcon: "fas fa-book-reader",
   backgroundImage: 'MomSearchCorner.png',
   backgroundColor: "#FFFFFF",
@@ -726,6 +778,7 @@ const newTextPage5 = {
   ],
   audience: "kid",
   instructions: "Take Action",
+  instructionsTT: "Something else",
   instructionIcon: "fas fa-tasks",
   imageTitle: "Goals Catalog Example:",
   backgroundImage: 'GoalCatalog.png',
@@ -740,6 +793,7 @@ const newTextPage6 = {
   ],
   audience: "kid",
   instructions: "Take Action",
+  instructionsTT: "Something else",
   instructionIcon: "fas fa-tasks",
   imageTitle: "Goals Page Example:",
   backgroundImage: 'GoalPage.png',
