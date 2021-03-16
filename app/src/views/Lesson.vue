@@ -451,7 +451,9 @@
           color="#9367E6"
         >mdi-chevron-up</v-icon>
       </v-col> -->
-      <v-col cols="12" class="">
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" >
         <v-row>
           <v-col
             cols="12"
@@ -534,50 +536,93 @@
           color="#9367E6"
         >mdi-chevron-up</v-icon>
       </v-col> -->
-      <v-col
-        cols="12"
-        md="6"
-        class="pa-5"
-      >
-        <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-          <v-icon color="#A0E667" size="30" >{{newTextPage6.instructionIcon}}</v-icon>
-          <v-tooltip bottom>
-            <template v-slot:activator="{ on, attrs }">
-              <span
-                v-bind="attrs"
-                v-on="on"
-              > {{newTextPage6.instructions}}</span>
-            </template>
-            <span>{{newTextPage6.instructionsTT}}</span>
-          </v-tooltip>
-        </p>
-        <p class="text-h6 text-uppercase">
-          {{newTextPage6.title}}
-        </p>
-        <p 
-          class="text-h6 font-weight-light mb-14"
-        >
-          {{newTextPage6.text[0]}}
-        </p>
-        <v-btn
-          to="/goals"
-          color="#9367E6"
-          class="ma-2 white--text"
-        >
-          View Goals
-        </v-btn>
-      </v-col>
-      <v-col
-        cols="12"
-        md="6"
-        class="pa-5"
-      >
-        <p class="text-body-1 font-weight-light" style="color: black">
-          {{newTextPage6.imageTitle}}
-        </p>
-        <v-img 
-          :src="require(`@/assets/${newTextPage6.backgroundImage}`)" 
-        ></v-img>
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" >
+        <v-row>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
+              <v-icon color="#A0E667" size="30" >{{newTextPage6.instructionIcon}}</v-icon>
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <span
+                    v-bind="attrs"
+                    v-on="on"
+                  > {{newTextPage6.instructions}}</span>
+                </template>
+                <span>{{newTextPage6.instructionsTT}}</span>
+              </v-tooltip>
+            </p>
+            <p class="text-h6 text-uppercase">
+              {{newTextPage6.title}}
+            </p>
+            <p 
+              class="text-h6 font-weight-light mb-14"
+            >
+              {{newTextPage6.text[0]}}
+            </p>
+            <!-- <v-btn
+              to="/goals"
+              color="#9367E6"
+              class="ma-2 white--text"
+            >
+              View Goals
+            </v-btn> -->
+          </v-col>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <!-- <p class="text-body-1 font-weight-light" style="color: black">
+              {{newTextPage6.imageTitle}}
+            </p>
+            <v-img 
+              :src="require(`@/assets/${newTextPage6.backgroundImage}`)" 
+            ></v-img> -->
+            <v-sheet
+              v-for="(goal, i) in activeGoals"
+              :key="`${goal.color}-${i}`"
+            >
+              <p>Select {{device.kids[i].name}}'s goal:</p>
+              <v-select
+                :items="device.rewards"
+                :label="goal.name"
+                zxitem-text="name"
+                item-value="name"
+                solo
+                v-model="goal.name"
+              >
+                <template slot="selection" slot-scope="data">
+                  <template >
+                    <v-list-item-avatar @click="console(item, data, goalCatalog)">
+                      <v-img :src="require(`@/assets/PigglesCoin${data.item.coins}.png`)" ></v-img>
+                      <!-- <p style="position: relative; right: 20px">{{device.rewards[i].coins}}</p> -->
+                    </v-list-item-avatar>
+                    <v-list-item-content>
+                      <v-list-item-title >{{data.item.name}}</v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+                </template>
+                <template slot="item" slot-scope="data">
+                  <template >
+                    <v-list-item-avatar @click="console(item, data, goalCatalog)">
+                      <v-img :src="require(`@/assets/PigglesCoin${data.item.coins}.png`)" ></v-img>
+                    </v-list-item-avatar>
+                    <v-list-item-content>
+                      <v-list-item-title >{{data.item.name}}</v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+                </template>
+              </v-select>
+            </v-sheet>
+
+          </v-col>
+        </v-row>
       </v-col>
       <v-spacer>
       </v-spacer>
@@ -595,7 +640,7 @@
         minHeight: '100vh',
         color: newTextPage7.textPrimaryColor,
       }"
-      class="snap-child flex-column"
+      class="snap-child"
       id="page7"
       align="center"
     >
@@ -606,39 +651,43 @@
           color="#9367E6"
         >mdi-chevron-up</v-icon>
       </v-col> -->
-      <v-col
-        cols="12"
-        md="6"
-        class="pa-5"
-      >
-        <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-          <v-icon color="#A0E667" size="30" >mdi-{{newTextPage7.instructionIcon}}</v-icon>
-          {{newTextPage7.instructions}}
-        </p>
-        <p class="text-h6 text-uppercase">
-          {{newTextPage7.title}}
-        </p>
-        <p 
-          class="text-h6 font-weight-light mb-14"
-        >
-          {{newTextPage7.text[0]}}
-        </p>
-        <v-btn
-          to="/lessons"
-          color="#9367E6"
-          class="ma-2 white--text"
-        >
-          Start Lesson 2
-        </v-btn>
-      </v-col>
-      <v-col
-        cols="12"
-        md="6"
-        class="pa-5"
-      >
-        <v-img 
-          :src="require(`@/assets/${newTextPage7.backgroundImage}`)" 
-        ></v-img>
+      <v-col cols="12" >
+        <v-row>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
+              <v-icon color="#A0E667" size="30" >fab fa-readme{{newTextPage7.instructionIcon}}</v-icon>
+              {{newTextPage7.instructions}}
+            </p>
+            <p class="text-h6 text-uppercase">
+              {{newTextPage7.title}}
+            </p>
+            <p 
+              class="text-h6 font-weight-light mb-14"
+            >
+              {{newTextPage7.text[0]}}
+            </p>
+            <v-btn
+              to="/lessons"
+              color="#A0E667"
+              class="ma-2 white--text"
+            >
+              Start Lesson 2
+            </v-btn>
+          </v-col>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <v-img 
+              :src="require(`@/assets/${newTextPage7.backgroundImage}`)" 
+            ></v-img>
+          </v-col>
+        </v-row>  
       </v-col>
     </v-row>
     <!-- dynamic --> 
@@ -699,6 +748,8 @@
 
 <script>
 import lessons from "@/lessons"
+
+import { mapState } from 'vuex';
 
 const newTextPage = {
   type: "newTextPage",
@@ -797,9 +848,9 @@ const newTextPage5 = {
 }
 const newTextPage6 = {
   type: "newTextPage",
-  title: "Check out your goals",
+  title: "Now it's your turn to set a goal",
   text: [
-    "Once your Coin Catalog has been completed visit the Goals page to select the Reward your child will work towards. This page is also where you contribute Piggles Coins to your child’s Goal. When saved you will see the DigiPig light up!"
+    "Choose one from the list "
   ],
   audience: "kid",
   instructions: "Take Action",
@@ -814,12 +865,12 @@ const newTextPage7 = {
   type: "newTextPage",
   title: "Get ready to earn",
   text: [
-    "Now that your Goal has been set and your child has a Reward in sight, it’s time to learn together how to earn Piggles Coins. Find out how in Lesson 2 - Earning!",
+    "Congratulations on completing Lesson 1 - Goals! Now that your Goal has been set and your child has a Reward in sight, it’s time to learn how to earn Piggles Coins. Find out how in Lesson 2 - Earning!",
   ],
   audience: "kid",
   instructions: "Take Action",
-  instructionIcon: "book-open",
-  backgroundImage: 'logoLightGreen.png',
+  instructionIcon: "fab fa-readme",
+  backgroundImage: 'rex&Penny.jpg',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -828,13 +879,22 @@ export default {
   name: 'Lesson',
   components: {},
   computed: {
+    ...mapState(['device']),
     isDesktop () {
         let { name } = this.$vuetify.breakpoint;
         return name == 'md' || name == 'lg' || name == 'xl';
+    },
+    goalCatalog: function () {
+      const goalCatalog = this.device.rewards.map(reward => reward.name)
+      return goalCatalog
+    },
+    activeGoals: function () {
+      return this.goals.filter(goal => !!goal.kidsName)
     }
   },
   data() {
     return {
+      goals: [],
       lessons,
       lesson: {},
       newTextPage,
@@ -845,6 +905,53 @@ export default {
       newTextPage6,
       newTextPage7,
     }
+  },
+  methods: {
+    console(item, data, goalCatalog) {
+      console.log("item", item)
+      console.log("data", data)
+      console.log("goalCatalog", goalCatalog)
+    },
+    initialize() {
+      this.goals = this.device.goals.map((g, i) => {
+        // console.log('this.device', this.device)
+        const kid = this.device.kids[i];
+
+        if (kid){
+          return {
+            name: g.name,
+            color: g.color,
+            enabled: g.enabled,
+            percentage: g.percentage * 100,
+            total: g.total,
+            current: g.current,
+            promise: g.promise,
+            promises: g.promises,
+            kidsName: kid.name,
+            kidTasks: kid.tasks,
+            kidBehaviors: kid.behaviors,
+          };
+        } else {
+          return {
+            name: g.name,
+            color: g.color,
+            enabled: g.enabled,
+            percentage: g.percentage * 100,
+            total: g.total,
+            current: g.current,
+            promise: g.promise,
+            promises: g.promises,
+            kidsName: "",
+            kidTasks: [],
+            kidBehaviors: [],
+          };
+        }
+      });
+
+    }
+  },
+  mounted() {
+    this.initialize();
   },
   async created() {
     try {
