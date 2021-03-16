@@ -38,22 +38,22 @@ const router = new Router({
     },
     {
       path: '/pigDashboard',
-      name: 'pigDashboard',
+      name: 'PigDashboard',
       component: PigDashboard
     },
     {
       path: '/goals',
-      name: 'goals',
+      name: 'Goals',
       component: Goals
     },
     {
       path: '/pigSettings',
-      name: 'pigSettings',
+      name: 'PigSettings',
       component: PigSettings
     },
     {
       path: '/story',
-      name: 'story',
+      name: 'Story',
       component: Story
     },
     {
@@ -63,32 +63,32 @@ const router = new Router({
     },
     {
       path: '/lessons',
-      name: 'lessons',
+      name: 'Lessons',
       component: Lessons
     },
     {
       path: '/lessons/lesson/:title',
-      name: 'lesson',
+      name: 'Lesson',
       component: Lesson
     },
     {
       path: '/articles',
-      name: 'articles',
+      name: 'Articles',
       component: Articles
     },
     {
       path: '/faq',
-      name: 'faq',
+      name: 'FAQ',
       component: FAQ
     },
     {
       path: '/contactUs',
-      name: 'contactUs',
+      name: 'Contact Us',
       component: ContactUs
     },
     {
-      path: '/preferences',
-      name: 'preferences',
+      path: '/setupGuide',
+      name: 'Setup Guide',
       component: Preferences
     },
     {

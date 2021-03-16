@@ -11,7 +11,7 @@
           : `url(${require(`@/assets/${lesson.pages.titlePage.backgroundImageMobile}`)})`,
         color: lesson.pages.titlePage.textPrimaryColor,
         backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center',
       }"
       class="snap-child flex-column"
       justify="center"
@@ -78,7 +78,7 @@
         color: newTextPage.textPrimaryColor,
         backgroundImage: isDesktop ? `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${newTextPage.backgroundImage}`)})` : '',
         backgroundPosition: 'right',
-        position: 'relative'
+        position: 'relative',
       }"
       class="snap-child flex-column"
       id="page1"
@@ -151,6 +151,14 @@
           color="#9367E6"
         >mdi-chevron-down</v-icon>
       </v-col>
+    </v-row>
+
+    <!-- Page Divider for Mobile -->
+    <v-row 
+      :style="{
+        borderBottom: isDesktop ? '' : '3px dashed #AAA'
+      }"
+    >
     </v-row>
 
     <!-- Page 2 --> 
@@ -250,6 +258,14 @@
       </v-col>
     </v-row>
 
+    <!-- Page Divider for Mobile -->
+    <v-row 
+      :style="{
+        borderBottom: isDesktop ? '' : '3px dashed #AAA'
+      }"
+    >
+    </v-row>
+
     <!-- Page 3 --> 
     <v-row 
       :style="{
@@ -345,6 +361,14 @@
           color="#9367E6"
         >mdi-chevron-down</v-icon>
       </v-col>
+    </v-row>
+
+    <!-- Page Divider for Mobile -->
+    <v-row 
+      :style="{
+        borderBottom: isDesktop ? '' : '3px dashed #AAA'
+      }"
+    >
     </v-row>
 
     <!-- Page 4 --> 
@@ -447,6 +471,14 @@
       </v-col>
     </v-row>
 
+    <!-- Page Divider for Mobile -->
+    <v-row 
+      :style="{
+        borderBottom: isDesktop ? '' : '3px dashed #AAA'
+      }"
+    >
+    </v-row>
+
     <!-- Page 5 --> 
     <v-row 
       :style="{
@@ -524,6 +556,14 @@
           color="#9367E6"
         >mdi-chevron-down</v-icon>
       </v-col>
+    </v-row>
+
+    <!-- Page Divider for Mobile -->
+    <v-row 
+      :style="{
+        borderBottom: isDesktop ? '' : '3px dashed #AAA'
+      }"
+    >
     </v-row>
 
     <!-- Page 6 --> 
@@ -642,6 +682,14 @@
           color="#9367E6"
         >mdi-chevron-down</v-icon>
       </v-col>
+    </v-row>
+
+    <!-- Page Divider for Mobile -->
+    <v-row 
+      :style="{
+        borderBottom: isDesktop ? '' : '3px dashed #AAA'
+      }"
+    >
     </v-row>
 
     <!-- Page 7 --> 
