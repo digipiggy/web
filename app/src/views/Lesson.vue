@@ -45,10 +45,10 @@
           cols="12"
         >
           <p class="text-h6 text-center ">
-            <v-icon :color="lesson.pages.titlePage.textPrimaryColor">mdi-timer</v-icon>{{lesson.pages.titlePage.readTime}} mins
+            <v-icon size="40" :color="lesson.pages.titlePage.textPrimaryColor">mdi-timer</v-icon> {{lesson.pages.titlePage.readTime}} mins
           </p>
           <p class="text-h6 text-center">
-            <v-icon :color="lesson.pages.titlePage.textPrimaryColor">mdi-book</v-icon>{{lesson.pages.titlePage.audience}}
+            <v-icon size="40" :color="lesson.pages.titlePage.textPrimaryColor">fab fa-readme</v-icon> {{lesson.pages.titlePage.audience}}
           </p>
           <p class="text-h6 text-center">
             <v-icon 
@@ -87,7 +87,7 @@
         class="pa-5 "
       >
         <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-          <v-icon color="#A0E667" size="40" >mdi-{{newTextPage.instructionIcon}}</v-icon>
+          <v-icon color="#A0E667" size="40" >{{newTextPage.instructionIcon}}</v-icon>
           {{newTextPage.instructions}}
         </p>
         <p class="text-h6 text-uppercase">
@@ -113,6 +113,9 @@
             <v-col cols="8" class="text-body-1 font-weight-light">
               <p style="color: black">
                 {{newTextPage.quote}}
+              </p>
+              <p style="color: black">
+                - {{newTextPage.quoteAttrib}}
               </p>
             </v-col>
           </v-row>
@@ -152,7 +155,7 @@
         class="pa-5"
       >
         <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-          <v-icon color="#A0E667" size="40" >mdi-{{newTextPage2.instructionIcon}}</v-icon>
+          <v-icon color="#A0E667" size="40" >{{newTextPage2.instructionIcon}}</v-icon>
           {{newTextPage2.instructions}}
         </p>
         <p class="text-h6 text-uppercase">
@@ -197,6 +200,9 @@
               <p style="color: black">
                 {{newTextPage2.quote}}
               </p>
+              <p style="color: black">
+                - {{newTextPage2.quoteAttrib}}
+              </p>
             </v-col>
           </v-row>
         </v-container >
@@ -235,7 +241,7 @@
         class="pa-5"
       >
         <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-          <v-icon color="#A0E667" size="40" >mdi-{{newTextPage3.instructionIcon}}</v-icon>
+          <v-icon color="#A0E667" size="40" >{{newTextPage3.instructionIcon}}</v-icon>
           {{newTextPage3.instructions}}
         </p>
         <p class="text-h6 text-uppercase">
@@ -280,6 +286,9 @@
               <p style="color: black">
                 {{newTextPage3.quote}}
               </p>
+              <p style="color: black">
+                - {{newTextPage3.quoteAttrib}}
+              </p>
             </v-col>
           </v-row>
         </v-container >
@@ -318,7 +327,7 @@
         class="pa-5"
       >
         <p class="text-body-1 font-weight-light mt-3 mb-6" style="color: black">
-          <v-icon color="#A0E667" size="40" >mdi-{{newTextPage4.instructionIcon}}</v-icon>
+          <v-icon color="#A0E667" size="40" >{{newTextPage4.instructionIcon}}</v-icon>
           {{newTextPage4.instructions}}
         </p>
         <p class="text-h6 text-uppercase">
@@ -408,7 +417,7 @@
             class="pa-5"
           >
             <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-              <v-icon color="#A0E667" size="40" >mdi-{{newTextPage5.instructionIcon}}</v-icon>
+              <v-icon color="#A0E667" size="40" >{{newTextPage5.instructionIcon}}</v-icon>
               {{newTextPage5.instructions}}
             </p>
             <p class="text-h6 text-uppercase">
@@ -481,7 +490,7 @@
         class="pa-5"
       >
         <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-          <v-icon color="#A0E667" size="40" >mdi-{{newTextPage6.instructionIcon}}</v-icon>
+          <v-icon color="#A0E667" size="40" >{{newTextPage6.instructionIcon}}</v-icon>
           {{newTextPage6.instructions}}
         </p>
         <p class="text-h6 text-uppercase">
@@ -642,10 +651,11 @@ const newTextPage = {
   ],
   audience: "kid",
   instructions: "Read Aloud",
-  instructionIcon: "book-open",
+  instructionIcon: "fab fa-readme",
   backgroundImage: 'PennyGoal.png',
   backgroundColor: "#FFFFFF",
-  quote: '"I try to make goals when I play soccer" - Penny Piggle',
+  quote: '"I try to make goals when I play soccer"',
+  quoteAttrib: 'Penny Piggle',
   quoteImg: "PennyHeadshotSquare.png",
   textPrimaryColor: "#9367E6"
 }
@@ -661,10 +671,11 @@ const newTextPage2 = {
   ],
   audience: "kid",
   instructions: "Read and Share",
-  instructionIcon: "book-open",
+  instructionIcon: "fas fa-book-reader",
   backgroundImage: 'RexAndMomma.jpg',
   backgroundColor: "#FFFFFF",
-  quote: "“My goal was to start a business, but I wasn’t sure how. I made a list of things to learn. Then I talked to people who helped me with my ideas.” -Momma Piggle",
+  quote: '"My goal was to start a business, but I wasn’t sure how. I made a list of things to learn. Then I talked to people who helped me with my ideas."',
+  quoteAttrib: 'Momma Piggle',
   quoteImg: "MommaPiggleHeadshot.png",
   textPrimaryColor: "#9367E6"
 }
@@ -680,10 +691,11 @@ const newTextPage3 = {
   ],
   audience: "kid",
   instructions: "Read and Share",
-  instructionIcon: "book-open",
+  instructionIcon: "fas fa-book-reader",
   backgroundImage: 'rexPirate.jpg',
   backgroundColor: "#FFFFFF",
-  quote: "“I wanted a pirate costume for Halloween. I didn’t have the money yet, so I made a paper eye patch.” -Rex Piggle",
+  quote: 'I wanted a pirate costume for Halloween. I didn’t have the money yet, so I made a paper eye patch."',
+  quoteAttrib: 'Rex Piggle',
   quoteImg: "RexPiggleHeadshot.png",
   textPrimaryColor: "#9367E6"
 }
@@ -699,7 +711,7 @@ const newTextPage4 = {
   ],
   audience: "kid",
   instructions: "Read and Share",
-  instructionIcon: "book-open",
+  instructionIcon: "fas fa-book-reader",
   backgroundImage: 'MomSearchCorner.png',
   backgroundColor: "#FFFFFF",
   quote: "“I wanted a pirate costume for Halloween. I didn’t have the money yet, so I made a paper eye patch.” -Rex Piggle",
@@ -714,7 +726,7 @@ const newTextPage5 = {
   ],
   audience: "kid",
   instructions: "Take Action",
-  instructionIcon: "book-open",
+  instructionIcon: "fas fa-tasks",
   imageTitle: "Goals Catalog Example:",
   backgroundImage: 'GoalCatalog.png',
   backgroundColor: "#FFFFFF",
@@ -728,7 +740,7 @@ const newTextPage6 = {
   ],
   audience: "kid",
   instructions: "Take Action",
-  instructionIcon: "book-open",
+  instructionIcon: "fas fa-tasks",
   imageTitle: "Goals Page Example:",
   backgroundImage: 'GoalPage.png',
   backgroundColor: "#FFFFFF",
