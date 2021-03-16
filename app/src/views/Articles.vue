@@ -29,6 +29,7 @@ import ArticleCard from '@/components/ArticleCard';
 import ArticleStatus from '@/components/ArticleStatus';
 
 export default {
+  name: "Articles",
   components: {
     latestArticle: LatestArticle,
     articleCard: ArticleCard,

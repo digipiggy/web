@@ -8,7 +8,7 @@
     ></v-img>
     <p>{{lesson.subtitle}}</p>
     <p>{{lesson.body}}</p>
-    <v-btn color="#A0E667" dark to="/lessons/lesson/1">
+    <v-btn color="#A0E667" dark :to="lesson.route">
       Start {{lesson.title}}
     </v-btn>
   </v-card>

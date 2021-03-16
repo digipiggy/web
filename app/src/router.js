@@ -9,12 +9,15 @@ import Goals from './views/Goals';
 import Home from './views/Home';
 import Story from './views/Story';
 import Lessons from './views/Lessons';
-import Lesson from './views/Lesson';
+import Lesson1 from './views/Lesson1';
+import Lesson2 from './views/Lesson2';
+import LessonX from './views/LessonX';
 import Articles from './views/Articles';
 import FAQ from './views/Faq';
 import ContactUs from './views/ContactUs';
 import Chapter from './views/Chapter';
-import Preferences from './views/Preferences';
+import SetupGuide from './views/SetupGuide';
+import Page404 from './views/Page404';
 
 Vue.use(Router);
 
@@ -38,22 +41,22 @@ const router = new Router({
     },
     {
       path: '/pigDashboard',
-      name: 'pigDashboard',
+      name: 'PigDashboard',
       component: PigDashboard
     },
     {
       path: '/goals',
-      name: 'goals',
+      name: 'Goals',
       component: Goals
     },
     {
       path: '/pigSettings',
-      name: 'pigSettings',
+      name: 'PigSettings',
       component: PigSettings
     },
     {
       path: '/story',
-      name: 'story',
+      name: 'Story',
       component: Story
     },
     {
@@ -63,37 +66,52 @@ const router = new Router({
     },
     {
       path: '/lessons',
-      name: 'lessons',
+      name: 'Lessons',
       component: Lessons
     },
     {
+      path: '/lessons/lesson/1',
+      name: 'Lesson 1 - Goals',
+      component: Lesson1
+    },
+    {
+      path: '/lessons/lesson/2',
+      name: 'Lesson 2 - Earning',
+      component: Lesson2
+    },
+    {
       path: '/lessons/lesson/:title',
-      name: 'lesson',
-      component: Lesson
+      name: 'Lesson Coming Soon',
+      component: LessonX
     },
     {
       path: '/articles',
-      name: 'articles',
+      name: 'Articles',
       component: Articles
     },
     {
       path: '/faq',
-      name: 'faq',
+      name: 'FAQ',
       component: FAQ
     },
     {
       path: '/contactUs',
-      name: 'contactUs',
+      name: 'Contact Us',
       component: ContactUs
     },
     {
-      path: '/preferences',
-      name: 'preferences',
-      component: Preferences
+      path: '/setupGuide',
+      name: 'Setup Guide',
+      component: SetupGuide
+    },
+    {
+      path: '/404',
+      name: '404 - Page not Found',
+      component: Page404
     },
     {
       path: '*',
-      redirect: { name: 'pigDashboard' }
+      redirect: { name: '404 - Page not Found' }
     }
   ]
 });

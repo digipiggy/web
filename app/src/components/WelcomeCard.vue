@@ -10,7 +10,7 @@
     <v-spacer></v-spacer>
     <v-btn
       dense
-      to="/preferences"
+      to="/setupGuide"
     >
       Set Values
     </v-btn>
