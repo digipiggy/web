@@ -6,8 +6,11 @@
     <v-row 
       :style="{
         minHeight: '95vh',
-        backgroundImage: `url(${require(`@/assets/${lesson.pages.titlePage.backgroundImage}`)})`,
+        backgroundImage: isDesktop 
+          ? `url(${require(`@/assets/${lesson.pages.titlePage.backgroundImage}`)})`
+          : `url(${require(`@/assets/${lesson.pages.titlePage.backgroundImageMobile}`)})`,
         color: lesson.pages.titlePage.textPrimaryColor,
+        backgroundSize: 'cover',
         backgroundPosition: 'center'
       }"
       class="snap-child flex-column"
@@ -18,11 +21,16 @@
       <template> 
         <v-col
           cols="12"
+          class="mt-9"
         >
-          <p class="text-h3 text-uppercase text-center">
+          <p class="text-h4 text-md-h3 text-uppercase text-center font-weight-bold mb-0">
             {{lesson.pages.titlePage.title}}
           </p>
-          <p class="text-h1 text-uppercase text-center font-weight-bold">
+          <p 
+            class="text-uppercase text-center font-weight-bold my-n5 my-md-n9" 
+            :style="{
+              fontSize: isDesktop ? '140px' : '90px'
+            }">
             {{lesson.pages.titlePage.subtitle}}
           </p>
         </v-col>
@@ -84,10 +92,10 @@
       <v-col
         cols="12"
         md="4"
-        class="pa-5 "
+        class="pa-5"
       >
-        <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-          <v-icon color="#A0E667" size="40" >{{newTextPage.instructionIcon}}</v-icon>
+        <p class="text-body-1 font-weight-light mt-md-3 mb-md-8" style="color: black">
+          <v-icon color="#A0E667" size="30" >{{newTextPage.instructionIcon}}</v-icon>
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
               <span
@@ -98,16 +106,18 @@
             <span>{{newTextPage.instructionsTT}}</span>
           </v-tooltip>
         </p>
-        <p class="text-h6 text-uppercase">
+        <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
           {{newTextPage.title}}
         </p>
-        <p 
-          class="text-h6 font-weight-light mb-14"
-          v-for="paragraph in newTextPage.text"
-          :key="paragraph"
-        >
-          {{paragraph}}
-        </p>
+        <div class="mb-8 mb-md-14">
+          <p 
+            class="text-body-1 text-md-h6 font-weight-light mb-6"
+            v-for="paragraph in newTextPage.text"
+            :key="paragraph"
+          >
+            {{paragraph}}
+          </p>
+        </div>
         <v-container >
           <v-row>
             <v-col cols="4">
@@ -162,8 +172,8 @@
         md="4"
         class="pa-5"
       >
-        <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-          <v-icon color="#A0E667" size="40" >{{newTextPage2.instructionIcon}}</v-icon>
+        <p class="text-body-1 font-weight-light mt-md-3 mb-md-8" style="color: black">
+          <v-icon color="#A0E667" size="30" >{{newTextPage2.instructionIcon}}</v-icon>
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
               <span
@@ -174,31 +184,31 @@
             <span>{{newTextPage2.instructionsTT}}</span>
           </v-tooltip>
         </p>
-        <p class="text-h6 text-uppercase">
+        <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
           {{newTextPage2.title}}
         </p>
         <p 
-          class="text-h6 font-weight-light mb-14"
+          class="text-body-1 text-md-h6 font-weight-light mb-5 mb-md-10"
         >
           {{newTextPage2.text[0]}}
         </p>
         <p 
-          class="text-h6 mb-14 text-uppercase"
+          class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1"
         >
           {{newTextPage2.text[1]}}
         </p>
         <p 
-          class="text-h6 font-weight-light mb-14"
+          class="text-body-1 text-md-h6 font-weight-light font-italic mb-6 mb-md-14"
         >
           {{newTextPage2.text[2]}}
         </p>
         <p 
-          class="text-h6 font-weight-light mb-14"
+          class="text-body-1 text-md-h6 font-weight-light font-italic mb-6 mb-md-14"
         >
           {{newTextPage2.text[3]}}
         </p>
         <p 
-          class="text-h6 font-weight-light mb-14"
+          class="text-body-1 text-md-h6 font-weight-light font-italic mb-6 mb-md-14"
         >
           {{newTextPage2.text[4]}}
         </p>
@@ -256,8 +266,8 @@
         md="4"
         class="pa-5"
       >
-        <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-          <v-icon color="#A0E667" size="40" >{{newTextPage3.instructionIcon}}</v-icon>
+        <p class="text-body-1 font-weight-light mt-md-3 mb-md-8" style="color: black">
+          <v-icon color="#A0E667" size="30" >{{newTextPage3.instructionIcon}}</v-icon>
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
               <span
@@ -268,31 +278,31 @@
             <span>{{newTextPage3.instructionsTT}}</span>
           </v-tooltip>
         </p>
-        <p class="text-h6 text-uppercase">
+        <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
           {{newTextPage3.title}}
         </p>
         <p 
-          class="text-h6 font-weight-light mb-14"
+          class="text-body-1 text-md-h6 font-weight-light mb-5 mb-md-10"
         >
           {{newTextPage3.text[0]}}
         </p>
         <p 
-          class="text-h6 mb-14 text-uppercase"
+          class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1"
         >
           {{newTextPage3.text[1]}}
         </p>
         <p 
-          class="text-h6 font-weight-light mb-14"
+          class="text-body-1 text-md-h6 font-weight-light font-italic mb-6 mb-md-14"
         >
           {{newTextPage3.text[2]}}
         </p>
         <p 
-          class="text-h6 font-weight-light mb-14"
+          class="text-body-1 text-md-h6 font-weight-light font-italic mb-6 mb-md-14"
         >
           {{newTextPage3.text[3]}}
         </p>
         <p 
-          class="text-h6 font-weight-light mb-14"
+          class="text-body-1 text-md-h6 font-weight-light font-italic mb-6 mb-md-14"
         >
           {{newTextPage3.text[4]}}
         </p>
@@ -350,8 +360,8 @@
         md="4"
         class="pa-5"
       >
-        <p class="text-body-1 font-weight-light mt-3 mb-6" style="color: black">
-          <v-icon color="#A0E667" size="40" >{{newTextPage4.instructionIcon}}</v-icon>
+        <p class="text-body-1 font-weight-light mt-md-3 mb-md-8" style="color: black">
+          <v-icon color="#A0E667" size="30" >{{newTextPage4.instructionIcon}}</v-icon>
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
               <span
@@ -362,11 +372,11 @@
             <span>{{newTextPage4.instructionsTT}}</span>
           </v-tooltip>
         </p>
-        <p class="text-h6 text-uppercase">
+        <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
           {{newTextPage4.title}}
         </p>
         <p 
-          class="text-h6 font-weight-light mb-6"
+          class="text-body-1 text-md-h6 font-weight-light mb-5 mb-md-5"
         >
           {{newTextPage4.text[0]}}
         </p>
@@ -385,31 +395,31 @@
           ></v-img>
         </v-row>
         <p 
-          class="text-h6 font-weight-light mb-12"
+          class="text-body-1 text-md-h6 font-weight-light mb-5"
         >
           {{newTextPage4.text[1]}}
         </p>
         <p 
-          class="text-h6 font-weight-light mb-7"
+          class="text-body-1 text-md-h6 font-weight-light mb-5"
         >
           {{newTextPage4.text[2]}}
         </p>
-        <v-row class="mb-4 d-flex align-center justify-center">
+        <v-row class=" d-flex align-center justify-center mb-5">
           <v-img 
             :src="require('@/assets/PigglesCoin.png')" 
             aspect-ratio="1"
-            max-width="40px"
+            max-width="30px"
           ></v-img>
           <p class="mb-0" style="color: black;"> 1x per week
           </p>
         </v-row>
         <p 
-          class="text-h6 font-weight-light mb-12"
+          class="text-body-1 text-md-h6 font-weight-light font-italic mb-5"
         >
           {{newTextPage4.text[3]}}
         </p>
         <p 
-          class="text-h6 font-weight-light mb-12"
+          class="text-body-1 text-md-h6 font-weight-light font-italic mb-5"
         >
           {{newTextPage4.text[4]}}
         </p>
@@ -449,7 +459,7 @@
             class="pa-5"
           >
             <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-              <v-icon color="#A0E667" size="40" >{{newTextPage5.instructionIcon}}</v-icon>
+              <v-icon color="#A0E667" size="30" >{{newTextPage5.instructionIcon}}</v-icon>
               <v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
                   <span
@@ -530,7 +540,7 @@
         class="pa-5"
       >
         <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-          <v-icon color="#A0E667" size="40" >{{newTextPage6.instructionIcon}}</v-icon>
+          <v-icon color="#A0E667" size="30" >{{newTextPage6.instructionIcon}}</v-icon>
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
               <span
@@ -602,7 +612,7 @@
         class="pa-5"
       >
         <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-          <v-icon color="#A0E667" size="40" >mdi-{{newTextPage7.instructionIcon}}</v-icon>
+          <v-icon color="#A0E667" size="30" >mdi-{{newTextPage7.instructionIcon}}</v-icon>
           {{newTextPage7.instructions}}
         </p>
         <p class="text-h6 text-uppercase">
