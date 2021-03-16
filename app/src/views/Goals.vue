@@ -60,17 +60,16 @@
         <v-col cols="12">
           <v-card class="pa-5 rounded-sm">
             <p class="text-h6 font-weight-regular mb-5" style="color: #9367E6">Welcome to your Goal Hub!</p>
-            <p class="text-body-2 font-weight-regular mb-5">This is the place where goals are managed and updated.</p>
-            <p class="text-body-2 font-weight-regular mb-1">Together with your kids, select a goal from your Goal Catalog.</p>
-            <p class="text-body-2 font-weight-regular mb-5">Unsure which goal to pick? Make sure you've worked through lesson one together to understand goals and how to acheive them.</p>
-            <v-btn
-              color="#A0E667"
-              class="ma-2 white--text mb-6"
-              to="/lessons"
-            >
-              Lessons
-            </v-btn>
-            <p class="text-body-2 font-weight-regular mb-1">On {{device.preferences.reward}}'s (your Piggles Payday), sit down together and review the past weeks progress towards your kid(s) selected goals.</p>
+            <p class="text-body-1 font-weight-light mb-5">Here you can view, update, and manage your family's goals.</p>
+            <p class="text-body-1 font-weight-light mb-1">
+              On 
+              <span 
+                style="color: #9367E6" 
+                class="font-weight-medium">
+                {{device.preferences.rewardDay}}'s
+              </span>
+              (your family's Piggles Day), sit down as a family and discuss you kids progress towards their goals. 
+            </p>
           </v-card>
         </v-col>
       </v-row>
@@ -108,7 +107,7 @@
               solo
               v-model="goal.name"
             ></v-select>
-            <p class="text-h5 font-weight-medium text-center" style="color: #9367E6">{{goal.kidsName}}'s Bank</p>
+            <!-- <p class="text-h5 font-weight-medium text-center" style="color: #9367E6">{{goal.kidsName}}'s Bank</p> -->
             <v-container>
               <v-row>
                 <v-col cols="6">

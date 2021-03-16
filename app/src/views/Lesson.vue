@@ -429,13 +429,13 @@
       <v-col cols="12" class="d-flex justify-center pa-0">
         <v-icon 
           :size="isDesktop ? 70 : 40"
-          @click="$vuetify.goTo('#page5')"
+          @click="$vuetify.goTo('#page6')"
           color="#9367E6"
         >mdi-chevron-down</v-icon>
       </v-col>
     </v-row>
     <!-- Page 5 --> 
-    <v-row 
+    <!-- <v-row 
       :style="{
         minHeight: '100vh',
         color: newTextPage5.textPrimaryColor,
@@ -444,13 +444,7 @@
       id="page5"
       align="center"
     >
-      <!-- <v-col cols="12" class="d-flex justify-center pa-0">
-        <v-icon 
-          :size="isDesktop ? 70 : 40"
-          @click="$vuetify.goTo('#page4')"
-          color="#9367E6"
-        >mdi-chevron-up</v-icon>
-      </v-col> -->
+
       <v-spacer>
       </v-spacer>
       <v-col cols="12" >
@@ -518,7 +512,7 @@
           color="#9367E6"
         >mdi-chevron-down</v-icon>
       </v-col>
-    </v-row>
+    </v-row> -->
     <!-- Page 6 --> 
     <v-row 
       :style="{
@@ -578,13 +572,7 @@
             md="6"
             class="pa-5"
           >
-            <!-- <p class="text-body-1 font-weight-light" style="color: black">
-              {{newTextPage6.imageTitle}}
-            </p>
-            <v-img 
-              :src="require(`@/assets/${newTextPage6.backgroundImage}`)" 
-            ></v-img> -->
-            <v-sheet
+            <div
               v-for="(goal, i) in activeGoals"
               :key="`${goal.color}-${i}`"
             >
@@ -619,8 +607,16 @@
                   </template>
                 </template>
               </v-select>
-            </v-sheet>
-
+            </div>
+            <v-btn
+              color="#A0E667"
+              class="ma-2 white--text"
+              :loading="loading"
+              :disabled="loading"
+              @click="saveGoals"
+            >
+              Save Goals
+            </v-btn>
           </v-col>
         </v-row>
       </v-col>
@@ -634,6 +630,7 @@
         >mdi-chevron-down</v-icon>
       </v-col>
     </v-row>
+
     <!-- Page 7 --> 
     <v-row 
       :style="{
@@ -749,7 +746,7 @@
 <script>
 import lessons from "@/lessons"
 
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 const newTextPage = {
   type: "newTextPage",
@@ -848,9 +845,9 @@ const newTextPage5 = {
 }
 const newTextPage6 = {
   type: "newTextPage",
-  title: "Now it's your turn to set a goal",
+  title: "It's your turn!",
   text: [
-    "Choose one from the list "
+    "Kids, choose a goal from the Goal Catalog that you would like to save up for."
   ],
   audience: "kid",
   instructions: "Take Action",
@@ -904,13 +901,60 @@ export default {
       newTextPage5,
       newTextPage6,
       newTextPage7,
+      loading: false
     }
   },
   methods: {
+        ...mapActions(['updateDevice', 'displayMessage']),
     console(item, data, goalCatalog) {
       console.log("item", item)
       console.log("data", data)
       console.log("goalCatalog", goalCatalog)
+    },
+    async saveGoals() {
+      this.loading = true;
+      const device = {
+        deviceId: this.device.deviceId,
+        deviceCode: this.device.deviceCode,
+        kids: this.device.kids,
+        preferences: this.device.preferences,
+        rewards: this.device.rewards,
+        status: this.device.status,
+        goals: this.goals.map((g, i)=> {
+          if (this.activeGoals[i]){
+            const currentReward = this.device.rewards.find(reward => reward.name == g.name)
+            return {
+              name: this.activeGoals[i].name,
+              enabled: g.enabled,
+              color: +g.color,
+              percentage: +g.percentage / 100,
+              total: currentReward.coins,
+              current: +g.current,
+              promise: +g.promise,
+              promises: g.promises
+            };
+          } else {
+            return {
+              name: g.name,
+              enabled: g.enabled,
+              color: +g.color,
+              percentage: +g.percentage / 100,
+              total: +g.total,
+              current: +g.current,
+              promise: +g.promise,
+              promises: g.promises
+            };
+          }
+        })
+      };
+
+      if (await this.updateDevice(device)) {
+        this.displayMessage({ text: 'Goals saved', color: 'info' });
+      } else {
+        this.displayMessage({ text: 'Failed to save goals', color: 'error' });
+      }
+
+      this.loading = false;
     },
     initialize() {
       this.goals = this.device.goals.map((g, i) => {
