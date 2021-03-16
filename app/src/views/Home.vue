@@ -5,7 +5,8 @@
         <welcomeCard />
       </v-col>
     </v-row>
-    <v-row v-if="device.status.completedPreferences" justify="center">
+    <!-- <v-row v-if="device.status.completedPreferences" justify="center"> -->
+    <v-row v-if="(device.goals.length > 0)" justify="center">
       <v-col cols="12" md="4">
         <lessonCard 
           :lesson="lesson"
@@ -50,7 +51,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['device']),
+    ...mapState(['device'])
   }
 };
 </script>
