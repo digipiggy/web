@@ -698,7 +698,6 @@
         minHeight: '100vh',
         color: textPage7.textPrimaryColor,
       }"
-      class=""
       id="page7"
       align="center"
     >
