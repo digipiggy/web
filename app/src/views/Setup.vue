@@ -4,12 +4,12 @@
       <v-flex xs12 sm8 md4>
         <div>
           <v-card class="elevation-12 mb-4">
-            <v-toolbar dark color="primary">
+            <v-toolbar dark color="#9367E6">
               <v-toolbar-title>Setup</v-toolbar-title>
             </v-toolbar>
             <v-card-text>
               <v-stepper v-model="step" vertical>
-                <v-stepper-step :complete="step > 1" step="1">
+                <v-stepper-step :complete="step > 1" step="1" color="#9367E6">
                   Device Code
                   <small>Find the device code on the back of your device</small>
                 </v-stepper-step>
@@ -17,7 +17,7 @@
                   <deviceCode @continue="onCodeContinue"/>
                 </v-stepper-content>
 
-                <v-stepper-step :complete="step > 2" step="2">
+                <v-stepper-step :complete="step > 2" step="2" color="#9367E6">
                   Account
                   <small>Create your user account</small>
                 </v-stepper-step>
@@ -25,7 +25,7 @@
                   <account :tokenInfo="deviceTokenInfo" @continue="onAccountContinue"/>
                 </v-stepper-content>
 
-                <v-stepper-step :complete="step > 3" step="3">
+                <v-stepper-step :complete="step > 3" step="3" color="#9367E6">
                   Wi-Fi
                   <small>Connect your device to your local network</small>
                 </v-stepper-step>
@@ -36,7 +36,7 @@
                   </v-btn>
                 </v-stepper-content>
 
-                <v-stepper-step step="4">
+                <v-stepper-step step="4" color="#9367E6">
                   Finish
                   <small>Complete the setup of your device</small>
                 </v-stepper-step>
@@ -70,7 +70,7 @@ export default {
   },
   data() {
     return {
-      step: 0,
+      step: 1,
       deviceTokenInfo: {},
       claimCode: null
     };
