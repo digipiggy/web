@@ -1,6 +1,7 @@
 <template>
   <v-app id="app">
     <v-app-bar
+      v-if="!isSetupPage"
       color="#9367E6"
       dark
       dense
@@ -34,6 +35,7 @@
     </v-app-bar>
 
     <v-navigation-drawer
+      v-if="!isSetupPage"
       v-model="drawer"
       absolute
       temporary
@@ -150,6 +152,13 @@ export default {
         return "";
       } else {
         return this.$route.name
+      }
+    },
+    isSetupPage(){
+      if (!this.$route.name || this.$route.name == "setup"){
+        return true;
+      } else {
+        return false
       }
     }
   },
