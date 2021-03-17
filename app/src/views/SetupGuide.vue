@@ -282,6 +282,7 @@
                 >
                   <v-card
                     height="100%"
+                    min-height="200px"
                     style="cursor: pointer;"
                     class="pa-2 d-flex align-center justify-center"
                     @click.native="createNewGoal()"
@@ -416,7 +417,7 @@
       <v-col cols="12" md="8">
         <p class="text-h6 font-weight-regular text-center mb-4">Fantastic, you're all set!</p>
         <p class="text-body-1 font-weight-light text-center mb-4">When you're ready, take a stroll over to the lesson section and dive into lesson 1 with your kid(s).</p>
-        <p class="text-body-1 font-weight-light text-center mb-4">Lesson 1 is an introduction to Goals for your kids. Learn what a goal is, how The Piggles Family sets their goals, and choose your kid(s) first goal to work towards. </p>
+        <p class="text-body-1 font-weight-light text-center mb-4">Lesson 1 is an introduction to Goals for your kids. They will learn what a goal is, how The Piggles Family sets their goals, and choose their first goal to work towards.</p>
         <p class="text-center">
           <v-btn
             color="#9367E6"
