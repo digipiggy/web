@@ -7,7 +7,7 @@
           <v-col :sm="12" :md="8" :lg="6">
             <v-img :src="require('@/assets/logo.png')" height="128px" contain class="d-block my-4"></v-img>
             <v-card class="elevation-12">
-              <v-toolbar dark color="primary">
+              <v-toolbar dark color="#9367E6">
                 <v-toolbar-title>WiFi Setup</v-toolbar-title>
               </v-toolbar>
               <v-layout align-center justify-center row v-show="busy">
