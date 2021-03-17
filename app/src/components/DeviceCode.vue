@@ -8,6 +8,7 @@
           filled
           autofocus
           required
+          color="#9367E6" 
           prepend-icon="memory"
           :rules="[rules.required, rules.deviceCode]"
           v-model="deviceCode"

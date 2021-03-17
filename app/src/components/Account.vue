@@ -7,6 +7,7 @@
           type="email"
           filled
           required
+          color="#9367E6"
           prepend-icon="email"
           :rules="[rules.emailRequired, rules.email]"
           v-model="email"
@@ -16,6 +17,7 @@
           type="password"
           filled
           required
+          color="#9367E6"
           prepend-icon="lock"
           :rules="[rules.passwordRequired, rules.passwordLength, rules.passwordPattern]"
           v-model="password"

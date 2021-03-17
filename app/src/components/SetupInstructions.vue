@@ -1,6 +1,6 @@
 <template>
     <v-card class="elevation-12">
-        <v-toolbar dark color="primary">
+        <v-toolbar dark color="#9367E6">
             <v-toolbar-title>Setup Instructions</v-toolbar-title>
         </v-toolbar>
         <v-card-text>

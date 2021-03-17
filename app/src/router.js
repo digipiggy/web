@@ -26,7 +26,7 @@ const router = new Router({
   routes: [
     {
       path: '/setup',
-      name: 'Setup',
+      name: 'setup',
       component: Setup
     },
     {
