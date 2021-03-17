@@ -1,14 +1,455 @@
 <template>
-  <v-container >
+<div>
+  <v-container v-if="!device.status.completedPreferences" >
+  <!-- <v-container  > -->
+      <v-window v-model="e1">
+          <!--Title Text 0--> 
+          <v-window-item >
+            <p class="text-h5 font-weight-regular text-center my-10">👋 Hi there! We're excited you're on this journey with us. </p>
+            <p class="text-body-1 font-weight-light text-center my-10" >This guide will help you customize the Digi-Pig experience to your family's unique situation and values. </p>
+        
+            <p class="text-center" >
+              <v-btn
+                dark
+                color="#9367E6"
+                @click="e1 = 1"
+              >
+                Let's get started!
+              </v-btn>
+            </p>
+          </v-window-item>
+
+          <!--Kid Entry 1--> 
+          <v-window-item>
+            <v-btn
+              fab
+              dark
+              small
+              color="#9367E6"
+              elevation="0"
+              @click="e1 = 0"
+            >
+              <v-icon dark>
+                mdi-chevron-left
+              </v-icon>
+            </v-btn>
+            <v-row justify="center" >
+              <v-col cols="12" md="6">
+                <p class="text-h6 font-weight-regular text-center mb-0" style="color: #9367E6">Enter your kid(s) names.</p>
+                <p class="text-body-1 font-weight-light text-center mb-0">Enter your kid(s) between ages 5-10 that you would like to use the Piggles Family experience with.</p>
+                <p class="text-body-1 font-weight-light text-center mb-6">Currently, we support up to 4 kids in the system at a time.</p>
+              </v-col>
+            </v-row>
+            <v-row no-gutters justify="center">
+              <v-col cols="9" md="4">
+              <div
+                v-for="(kid, i) in kids"
+                :key="`kid-${i}`"
+              >
+                <v-text-field
+                  v-if="i == 0"
+                  label="Enter name"
+                  v-model="kid.name"
+                  solo
+                  dense
+                  append-outer-icon="mdi-"
+                ></v-text-field>
+                <v-text-field
+                  v-else
+                  label="Enter Name"
+                  v-model="kid.name"
+                  solo
+                  dense
+                  append-outer-icon="mdi-close-circle-outline"
+                  @click:append-outer="removeKid(i)"
+                ></v-text-field>
+              </div>
+              </v-col >
+            </v-row >
+            <v-row no-gutters justify="center" class="mb-8">
+              <v-col cols="9" md="4">
+                <p class="text-center" >
+                  <v-btn
+                    color="#FFFFFF"
+                    class="black--text"
+                    @click="addKid"
+                    :disabled="kids.length >= 4"
+                  >
+                    Add another kid
+                    <v-icon
+                      right
+                      dark
+                    >
+                      mdi-plus
+                    </v-icon>
+                  </v-btn>
+                </p>
+              </v-col>
+            </v-row>
+            <p class="text-center" >
+              <v-btn
+                dark
+                color="#9367E6"
+                @click="e1 = 2"
+              >
+                Next
+              </v-btn>
+            </p>
+          </v-window-item>
+
+          <!--Earning Philosiphy 2--> 
+          <v-window-item >
+            <v-btn
+              fab
+              dark
+              small
+              color="#9367E6"
+              elevation="0"
+              @click="e1 = 1"
+            >
+              <v-icon dark>
+                mdi-chevron-left
+              </v-icon>
+            </v-btn>
+            <v-row justify="center" >
+              <v-col cols="12" md="8">
+                <p class="text-h6 font-weight-regular text-center mt-10 mb-2" style="color: #9367E6">Earning Philosphies.</p>
+                <p class="text-body-1 font-weight-light text-center mb-8">The Piggles Family system uses Piggles Coins as a way to show progress towards a goal. This in-app currency is represented by lights that appear on the DigiPig. On the next screen, you will pick from 3 common philosophies on how your kid(s) will receive Piggles Coins.</p>
+              </v-col>
+            </v-row>
+            <p class="text-center" >
+              <v-btn
+                dark
+                color="#9367E6"
+                @click="e1 = 3"
+              >
+                Next
+              </v-btn>
+            </p>
+          </v-window-item>
+
+          <!--Earning Philosiphy 3--> 
+          <v-window-item >
+            <v-btn
+              fab
+              dark
+              small
+              color="#9367E6"
+              elevation="0"
+              @click="e1 = 2"
+            >
+              <v-icon dark>
+                mdi-chevron-left
+              </v-icon>
+            </v-btn>
+            <p class="text-h6 font-weight-regular text-center mt-10 mb-0" style="color: #9367E6">Select your family's Earning Philosphy.</p>
+            <v-container >
+              <v-row justify="center">
+                <v-col 
+                  cols="12"
+                  md="4"
+                  v-for="(earningSystem, i) in earningSystems"
+                  :key="earningSystem.title"
+                >
+                  <v-card 
+                    :style="{
+                      border: isEarningSystemSelected(earningSystem) ? '2px solid #9367E6' : '2px solid #FFFFFF'
+                    }"
+                    
+                    class="pa-4"
+                    min-height="100%"
+                    @click="selectEarningSystem(i)"
+                  >
+                    <p class="text-subtitle-1 font-weight-medium text-center">{{earningSystem.title}}</p>
+                    <p class="text-body-2 text-center">{{earningSystem.text}}</p>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-container>
+            <p class="text-center" >
+              <v-btn
+                dark
+                color="#9367E6"
+                @click="e1 = 4"
+              >
+                Next
+              </v-btn>
+            </p>
+          </v-window-item>
+
+          <!--Goal Catalog 4--> 
+          <v-window-item >
+            <v-btn
+              fab
+              dark
+              small
+              color="#9367E6"
+              elevation="0"
+              @click="e1 = 3"
+            >
+              <v-icon dark>
+                mdi-chevron-left
+              </v-icon>
+            </v-btn>
+            <v-row justify="center" >
+              <v-col cols="12" md="8">
+                <p class="text-h6 font-weight-regular text-center mb-0" style="color: #9367E6">Create your Goal Catalog. </p>
+                <p class="text-body-1 font-weight-light mb-8">The Goal Catalog is your curated list of goals that your kid(s) will choose from in lesson 1. In this step, select the goals that you would like to include in your catalog. Goals don't have to cost money. They can be experiences as well. Pick from our pre-defined list, or create your own!</p>
+              </v-col>
+            </v-row>
+            <v-container class="mb-10">
+              <v-row justify="center" class="mb-5">
+                <v-col 
+                  cols="12"
+                  md="3"
+                  v-for="(goal, i) in allGoals"
+                  :key="goal.name + i"
+                >
+                  <v-card
+                    class="pa-2"
+                    height="100%"
+                    :style="{border: isGoalSelected(goal) ? '2px solid #9367E6' : '2px solid #FFFFFF'}"
+                    @click="selectGoal(i)"
+                  >
+                    <p class="text-subtitle-1 text-center mb-4">{{goal.name}}</p>
+                    <v-row class="mb-5 px-4" justify="center">
+                      <v-img 
+                        v-for="coinDot in goal.coins"
+                        :key="`coinDot-${coinDot}`"
+                        :src="require('@/assets/PigglesCoin.png')" 
+                        aspect-ratio="1"
+                        max-width="12%"
+                      ></v-img>
+                    </v-row>
+                    <p class="text-h2 font-weight-bold text-center mb-0" style="color: #9367E6">{{goal.coins}}</p>
+                    <p class="text-caption text-center my-0">Piggles Coins</p>
+                  </v-card>
+                </v-col>
+                <v-col 
+                  v-if="showGoalCreateTool"
+                  cols="12"
+                  md="3"
+                >
+                  <v-card
+                    height="100%"
+                    style="border: 2px solid #9367E6"
+                    class="pa-5"
+                  >
+                    <v-text-field
+                      label="Goal Name"
+                      v-model="newGoalName"
+                      dense
+                      outlined
+                    ></v-text-field>
+                    <v-row class="mb-5 px-4">
+                      <v-img 
+                        v-for="coinDot in newGoalTotal"
+                        :key="`coinDot-${coinDot}`"
+                        :src="require('@/assets/PigglesCoin.png')" 
+                        @click="updateNewGoalAmount('coin', coinDot)"
+                        aspect-ratio="1"
+                      ></v-img>
+                      <v-img 
+                        v-for="blankLED in (8 - newGoalTotal)"
+                        @click="updateNewGoalAmount('blank', blankLED)"
+                        :key="`blankLED-${blankLED}`"
+                        :src="require('@/assets/BlankLED.png')" 
+                        aspect-ratio="1"
+                      ></v-img>
+                    </v-row>
+                    <p class="text-h2 font-weight-bold text-center mb-0" style="color: #9367E6">{{newGoalTotal}}</p>
+                    <p class="text-caption text-center my-0">Piggles Coins</p>
+                    <v-btn
+                      @click="cancelNewGoal"
+                      outlined
+                      color="#A0E667"
+                      class="ma-2"
+                    >
+                      Cancel
+                    </v-btn>
+                    <v-btn
+                      @click="saveNewGoal"
+                      color="#A0E667"
+                    >
+                      Save
+                    </v-btn>
+                  </v-card>
+                </v-col>
+                <v-col 
+                  v-else
+                  cols="12"
+                  md="3"
+                >
+                  <v-card
+                    height="100%"
+                    min-height="200px"
+                    style="cursor: pointer;"
+                    class="pa-2 d-flex align-center justify-center"
+                    @click.native="createNewGoal()"
+                  >
+                    <p class="text-subtitle-1 font-weight-regular text-center mb-0">
+                      Create a Custom Goal
+                      <v-icon size="32" class="mx-auto" style="color: #9367E6" >mdi-plus-circle-outline</v-icon>
+                    </p>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-container>
+
+            <p class="text-center" >
+              <v-btn
+                dark
+                color="#9367E6"
+                @click="showTasksAndBehaviors ? e1 = 5 : e1 = 6"
+              >
+                Next
+              </v-btn>
+            </p>
+          </v-window-item>
+
+          <!--Tasks and Behaviors 5--> 
+          <v-window-item >
+            <v-btn
+              fab
+              dark
+              small
+              color="#9367E6"
+              elevation="0"
+              @click="e1 = 4"
+            >
+              <v-icon dark>
+                mdi-chevron-left
+              </v-icon>
+            </v-btn>
+            <v-row justify="center" >
+              <v-col cols="12" md="8">
+                <p class="text-h6 font-weight-regular text-center mb-0" style="color: #9367E6">Select tasks and/or behaviors</p>
+                <p class="text-body-1 font-weight-light text-center mb-8">Your kid(s) will earn Piggles Coins every week based on the completion of the tasks and behaviors you select. Choose from our list, or feel free to add your own!</p>
+              </v-col>
+            </v-row>
+            <div 
+              class="mb-10"
+              v-for="(kid, kidIndex) in kids"
+              :key="`kidTasks&Behaviors-${kidIndex}`"
+            >
+              <v-row justify="center">
+                <v-col cols="12" md="8" >
+                  <p>Select tasks and/or behaviors for {{kid.name}}</p>
+                  <taskchips
+                    :defaultChips="tasks"
+                    :kid="kid"
+                    @selectTask="selectTask"
+                  />
+                </v-col>
+              </v-row>
+            </div>
+            <p class="text-center" >
+              <v-btn
+                dark
+                color="#9367E6"
+                @click="e1 = 6"
+              >
+                Next
+              </v-btn>
+            </p>
+          </v-window-item>
+
+          <!--Piggles Day 6-->
+          <v-window-item>
+            <v-btn
+              fab
+              dark
+              small
+              color="#9367E6"
+              elevation="0"
+              @click="e1 = 5"
+            >
+              <v-icon dark>
+                mdi-chevron-left
+              </v-icon>
+            </v-btn>
+            <v-row justify="center" >
+              <v-col cols="12" md="8">
+                <p class="text-h6 font-weight-regular text-center mb-0" style="color: #9367E6">Pick your Piggles Day.</p>
+                <p class="text-body-1 font-weight-light text-center mb-8">We recommend you sit down with your kids on this day each week to review their progress towards their goals, reward piggles coins, and read the next lesson.</p>
+              </v-col>
+            </v-row>
+            <v-row justify="center" >
+              <v-col cols="12" md="4">
+                <v-select
+                  :items="days"
+                  v-model="rewardDay"
+                  label="Our Piggles Payday"
+                  solo
+                ></v-select>
+              </v-col>
+            </v-row>
+            <p class="text-center" >
+              <v-btn
+                dark
+                color="#9367E6"
+                @click="showFinalSlide"
+              >
+                Next
+              </v-btn>
+            </p>
+          </v-window-item>
+
+          <!--Success 7-->
+          <v-window-item>
+            <div v-if="loading">
+              <p class="text-h6 font-weight-regular text-center mb-0" style="color: #9367E6">Saving your settings.</p>
+              <v-container class="pt-12">
+                <v-row align="center" justify="center">
+                  <loader color="#9367E6"/>
+                </v-row>
+              </v-container>
+            </div>
+            <div v-else-if="saveFailed">
+              <p class="text-h6 font-weight-regular text-center mb-0" style="color: #9367E6">Unable to save you settings. Please refresh your application and try again. If the problem persists, please contact us.</p>
+            </div>
+          </v-window-item>
+      </v-window>
+  </v-container>
+  <v-container v-else-if="showFirstSetupCompletion">
+  <!-- <v-container> -->
+    <v-row justify="center">
+      <v-col cols="12" md="8">
+        <p class="text-h6 font-weight-regular text-center mb-4">Fantastic, you're all set!</p>
+        <p class="text-body-1 font-weight-light text-center mb-4">When you're ready, take a stroll over to the lesson section and dive into lesson 1 with your kid(s).</p>
+        <p class="text-body-1 font-weight-light text-center mb-4">Lesson 1 is an introduction to Goals for your kids. They will learn what a goal is, how The Piggles Family sets their goals, and choose their first goal to work towards.</p>
+        <p class="text-center">
+          <v-btn
+            color="#9367E6"
+            class="ma-2 white--text"
+            to="/lessons"
+          >
+            Lessons
+          </v-btn>
+          <v-btn
+            color="#9367E6"
+            class="ma-2 white--text"
+            @click="showFirstSetupCompletion = false"
+          >
+            Review Settings
+          </v-btn>
+        </p>
+      </v-col>
+    </v-row>
+  </v-container>
+  <v-container v-else>
+  <!-- <v-container > -->
     <!--Title Text & Kid Entry--> 
     <v-row justify="center" class="mb-8">
       <v-col cols="11">
-        <p class="text-h5 font-weight-regular my-10">👋 Hi there! We're excited you're on this journey with us. </p>
+        <!-- <p class="text-h5 font-weight-regular my-10">👋 Hi there! We're excited you're on this journey with us. </p>
         <p class="text-h5 font-weight-regular my-10" >This guide will help you customize the Digi-Pig experience to your familiy's unique situation and values. </p>
         <p class="text-h5 font-weight-regular my-10" style="color: #A0E667;">Let's get started!</p>
-        
-        <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Enter your kid(s) names.</p>
-        <p class="text-body-2 font-weight-regular mb-6">Currently, we support up to 4 kids in the system at a time.</p>
+         -->
+        <p class="text-h5 font-weight-regular my-10" >Update your setttings</p>
+        <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Kids</p>
+        <p class="text-body-1 font-weight-light mb-0">Enter your kid(s) between ages 5-10 that you would like to use the Piggles Family experience with.</p>
+        <p class="text-body-1 font-weight-light mb-6">Currently, we support up to 4 kids in the system at a time.</p>
         <v-row no-gutters>
           <v-col cols="9" md="4">
            <div
@@ -36,7 +477,7 @@
           </v-col >
         </v-row >
         <v-btn
-          color="#A0E667"
+          color="#FFFFFF"
           class="black--text"
           @click="addKid"
           :disabled="kids.length >= 4"
@@ -54,8 +495,8 @@
     <!--Earning Framework--> 
     <v-row justify="center" class="mb-8">
       <v-col cols="11">
-        <p class="text-h6 font-weight-regular mt-10 mb-0" style="color: #9367E6">Select your family's earning framework.</p>
-        <p class="text-body-2 font-weight-regular mb-8">Parents, let’s think about how you want your kids to receive Piggles coins, which is our in-app currency, represented by lights appearing on the Digipig. Below are three common frameworks to choose from. Pick one and we will help you set it up.</p>
+        <p class="text-h6 font-weight-regular mt-10 mb-0" style="color: #9367E6">Our Family's Earning Philosphy</p>
+        <p class="text-body-1 font-weight-light mb-8">The Piggles Family system uses Piggles Coins as a way to show progress towards a goal. This in-app currency is represented by lights that appear on the DigiPig. On the next screen, you will pick from 3 common philosophies on how your kid(s) will receive Piggles Coins.</p>
         <v-container >
           <v-row justify="center">
             <v-col 
@@ -84,12 +525,12 @@
     <!--Goal Catalog--> 
     <v-row justify="center">
       <v-col cols="11">
-        <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Create your Goal Catalog. </p>
-        <p class="text-body-2 font-weight-regular mb-8">The Goal Catalog is your curated list of goals that your kids can work towards. Select the goals that you would like to include in your catalog from our pre-defined list, or create your own! In lesson 1, your kids will choose their first goal from your customized Goal Catalog. </p>
+        <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Our Family's Goal Catalog</p>
+        <p class="ttext-body-1 font-weight-light mb-8">The Goal Catalog is your curated list of goals that your kid(s) will choose from in lesson 1. In this step, select the goals that you would like to include in your catalog. Goals don't have to cost money. They can be experiences as well. Choose from our list, or feel free to add your own!</p>
         <v-container class="mb-10">
-          <v-row justify="center" class="mb-5">
+          <v-row class="mb-5">
             <v-col 
-              cols="6"
+              cols="12"
               md="3"
               v-for="(goal, i) in allGoals"
               :key="goal.name + i"
@@ -100,14 +541,14 @@
                 :style="{border: isGoalSelected(goal) ? '2px solid #9367E6' : '2px solid #FFFFFF'}"
                 @click="selectGoal(i)"
               >
-                <p class="text-subtitle-1 text-center mb-4">{{goal.name}}</p>
-                <p class="text-caption pl-1 ">Reward Goal</p>
-                <v-row class="mb-5 px-4">
+                <p class="text-subtitle-1 text-center mb-6">{{goal.name}}</p>
+                <v-row class="mb-5 px-4" justify="center">
                   <v-img 
                     v-for="coinDot in goal.coins"
                     :key="`coinDot-${coinDot}`"
                     :src="require('@/assets/PigglesCoin.png')" 
                     aspect-ratio="1"
+                    max-width="12%"
                   ></v-img>
                 </v-row>
                 <p class="text-h2 font-weight-bold text-center mb-0" style="color: #9367E6">{{goal.coins}}</p>
@@ -130,7 +571,6 @@
                   dense
                   outlined
                 ></v-text-field>
-                <p class="text-caption pl-1 ">Reward Goal</p>
                 <v-row class="mb-5 px-4">
                   <v-img 
                     v-for="coinDot in newGoalTotal"
@@ -167,18 +607,19 @@
             </v-col>
             <v-col 
               v-else
-              cols="6"
+              cols="12"
               md="3"
             >
               <v-card
                 height="100%"
-                style="border: 2px solid #9367E6; cursor: pointer;"
+                min-height="200px"
+                style="cursor: pointer;"
                 class="pa-2 d-flex align-center justify-center"
                 @click.native="createNewGoal()"
               >
-                <p class="text-body-2 text-center mb-0">
-                  <v-icon class="text-body-2 mx-auto" >mdi-plus</v-icon>
+                <p class="text-subtitle-1 font-weight-regular text-center mb-0">
                   Create a Custom Goal
+                  <v-icon size="32" class="mx-auto" style="color: #9367E6" >mdi-plus-circle-outline</v-icon>
                 </p>
               </v-card>
             </v-col>
@@ -192,43 +633,35 @@
       v-if="showTasksAndBehaviors"
     >
       <v-col cols="11">
-          <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Select tasks and/or behaviors you would like your kid(s) to acheive.</p>
-          <p class="text-body-2 font-weight-regular mb-8">Your kid(s) will earn Piggles coins every week based on the completion of the tasks and behaviors you select. Choose from our list, or feel free to add your own!</p>
+          <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Tasks and/or Behaviors</p>
+          <p class="text-body-1 font-weight-light mb-8">Your kid(s) will earn Piggles Coins every week based on the completion of the tasks and behaviors you select. Choose from our list, or feel free to add your own!</p>
           <div 
             class="mb-10"
             v-for="(kid, kidIndex) in kids"
             :key="`kidTasks&Behaviors-${kidIndex}`"
           >
             <v-row>
-              <v-col cols="12" md="6">
-                <p>Select tasks for {{kid.name}}</p>
+              <v-col cols="12" >
+                <p>Select tasks and/or behaviors for {{kid.name}}</p>
                 <taskchips
                   :defaultChips="tasks"
                   :kid="kid"
                   @selectTask="selectTask"
                 />
               </v-col>
-              <v-col cols="12" md="6">
-                <p>Select behaviors for {{kid.name}}</p>
-                  <behaviorChips
-                    :defaultChips="behaviors"
-                    :kid="kid"
-                    @selectBehavior="selectBehavior"
-                  />
-              </v-col>
             </v-row>
           </div>
       </v-col>  
     </v-row>
     <!--Allowance--> 
-    <v-row 
+    <!-- <v-row 
       justify="center"
       v-if="showAllowance"
       class="mb-8"
     >
       <v-col cols="11">
-        <p class="text-h6 font-weight-regular mt-10 mb-0" style="color: #9367E6">Set your weekly coin allowance</p>
-        <p class="text-body-2 font-weight-regular mb-8">By selecting {{earningSystem}}, you are committing to give your kid(s) a set number of piggles coins each week.</p>
+        <p class="text-h6 font-weight-regular mt-10 mb-0" style="color: #9367E6">Set your weekly Piggles Coin allowance</p>
+        <p class="text-body-2 font-weight-regular mb-8">By selecting {{earningSystem}}, you are committing to give your kid(s) a set number of Piggles Coins to save towards their goals each week.</p>
         <v-row >
           <v-col cols="8" md="4">
             <v-select
@@ -241,48 +674,37 @@
           </v-col>  
         </v-row>
       </v-col>  
-    </v-row>
-    <!--Payday--> 
+    </v-row> -->
+    <!--Piggles Day--> 
     <v-row justify="center">
       <v-col cols="11">
-        <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Pick your Piggles Payday.</p>
-        <p class="text-body-2 font-weight-regular mb-8">We recommend you sit down with your kids on this day each week to review their progress towards their goals.</p>
-        <v-select
-          :items="days"
-          v-model="rewardDay"
-          label="Our Piggles Payday"
-          solo
-        ></v-select>
+        <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Our Piggles Day</p>
+        <p class="text-body-1 font-weight-light mb-8">We recommend you sit down with your kids on this day each week to review their progress towards their goals, reward piggles coins, and read the next lesson.</p>
+        <v-row>
+          <v-col cols="10" md="4">
+            <v-select
+              :items="days"
+              v-model="rewardDay"
+              label="Our Piggles Payday"
+              solo
+            ></v-select>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
     <!-- Save --> 
     <v-row justify="center">
       <v-col cols="11">
-        <v-row justify="end" v-if="showLessonPointer">
-          <v-col cols="12">
-            <v-card class="pa-5" >
-              <p lass="text-h6 font-weight-regular mb-0">🚀 You're all set!</p>
-              <p class="text-body-2 font-weight-regular mb-4">When you're ready, you can begin lesson 1 with your kid(s).</p>
-              <v-btn
-                color="#A0E667"
-                class="ma-2 white--text"
-                to="/lessons"
-              >
-                Start lesson 1
-              </v-btn>
-            </v-card>
-          </v-col>
-        </v-row>
         <v-row justify="end">
           <v-col >
             <v-btn
               :loading="loading"
               :disabled="loading"
-              color="#A0E667"
+              color="#9367E6"
               class="ma-2 white--text float-right"
               @click="saveData"
             >
-              Save My Preferences
+              Save My Settings
               <v-icon
                 right
                 dark
@@ -296,70 +718,52 @@
       </v-col>
     </v-row>
   </v-container>
+</div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
 import TaskChips from '@/components/TaskChips';
-import BehaviorChips from '@/components/BehaviorChips';
+import { HashLoader } from '@saeris/vue-spinners';
 
 const earningSystems = [
   {
-    title: "Expectation Free",
-    text: "The kid(s) will earn things on a regular basis but it will not be tied to specific chores or behaviors. Specific chores and behaviors are just expectations of being part of our family.", 
+    title: "Allowance",
+    text: "The kid(s) will earn a set number of Piggles Coins on a weekly basis.", 
   },
   {
-    title: "Incentive Based",
-    text: "I want to show my kids(s) they must work to earn things. I will incentivize certain chores and/or behaviors and keep track of those things",
+    title: "Incentive",
+    text: "The kids(s) will earn a varying number of Piggles Coins on a weekly basis, for completing certain tasks and behaviors.",
   },
   {
-    title: "Both",
-    text: "There are standard chores and/or behaviors that are expected to be part of the family, but I want to also provide incentives for going above and beyond.",
+    title: "Allowance + Incentive",
+    text: "The kid(s) will earn both a set number of Piggles Coins on a weekly basis, and can earn more for completing certain tasks and behaviors.",
   }
 ];
 const tasks = [
-  "Fold Laundry",
-  "Feed pets",
-  "Pick up toys",
-  // "Put laundry in hamper",
-  // "Dust",
-  // "Help with meal prep",
-  // "Making the bed",
-  // "Clearing the table",
-  // "Doing bedtime routine",
-  // "Vacuum or sweep"
+  "Do morning/bedtime routine",
+  "Clean up our spaces",
+  "Clear the table",
+  "Show gratitude",
+  "Persevere through challenges",
+  "Share feelings calmly",
 ];
 const behaviors = [
   "Show gratitude",
   "Help siblings",
   "Share with others",
-  // "Help parents",
-  // "Use kind words",
-  // "Wait your turn",
-  // "Persevere through challenges",
-  // "Follow directions",
-  // "Use calming strategies",
-  // "Express feelings calmly"
 ];
 const goals = [
-  {name: "Video Game", coins: 8, },
-  {name: "Stay up Late", coins: 6, },
-  {name: "Ice Cream", coins: 4, },
-  // {name: "Extra Screen Time", coins: 7, },
-  // {name: "Movie Night", coins: 6, },
-  // {name: "Daddy Date", coins: 5, },
-  // {name: "Mommy Date", coins: 5, },
-  // {name: "New Book", coins: 8, },
-  // {name: "New Puzzle", coins: 7, },
-  // {name: "Donate To Charity", coins: 6, },
-  // {name: "Sleepover",  coins: 8, },
+  {name: "Family movie night", coins: 8, },
+  {name: "Stay up late on the weekend", coins: 6, },
+  {name: "Ice cream treat", coins: 4, },
 ];
 
 export default {
   name: "SetupGuide",
   components: {
     taskchips: TaskChips,
-    behaviorChips: BehaviorChips
+    loader: HashLoader
   },
   data() {
     return {
@@ -378,6 +782,7 @@ export default {
         'Saturday',
       ],
       allowanceOptions:[
+        1,
         2,
         3,
         4
@@ -390,7 +795,9 @@ export default {
       showGoalCreateTool: false,
       newGoalName: "",
       newGoalTotal: 1,
-      showLessonPointer: false
+      showFirstSetupCompletion: false,
+      saveFailed: false,
+      e1: 0
     }
   },
   // watch: {
@@ -420,19 +827,28 @@ export default {
     },
     showAllowance: function() {
       if (this.earningSystem != null) {
-        return this.earningSystem == 'Expectation Free' || this.earningSystem == 'Both';
+        return this.earningSystem == 'Allowance' || this.earningSystem == 'Allowance + Incentive';
       } 
       return false;
     },
     showTasksAndBehaviors: function() {
       if (this.earningSystem != null) {
-        return this.earningSystem == 'Incentive Based' || this.earningSystem == 'Both';
+        return this.earningSystem == 'Incentive' || this.earningSystem == 'Allowance + Incentive';
       } 
       return false;
     },
   },
   methods: {
     ...mapActions(['updateKids', 'updateDevice', 'displayMessage']),
+
+    showFinalSlide(){
+      this.e1 = 7;
+      if (this.saveData()){
+        this.showFirstSetupCompletion = true;
+      } else {
+        this.saveFailed = true;
+      }
+    },
 
     // kid array mutation functions
     addKid() {
@@ -492,7 +908,7 @@ export default {
 
     // goal functions
     selectGoal(index) {
-      const goal = this.goals[index];
+      const goal = this.allGoals[index];
 
       if ((this.selectedGoals.filter(g => g.name == goal.name ).length > 0) ) {
         this.selectedGoals = this.selectedGoals.filter((g) => g.name != goal.name)
@@ -552,15 +968,8 @@ export default {
         this.loading = false;
         return;
       }
-      // check that an allowance is set
-      // TODO: use constants here
-      if ((this.earningSystem == "Expectation Free" || this.earningSystem == "Both") && !this.allowanceAmount){
-        this.displayMessage({ text: 'Unable to save settings. Ensure your weekly coin allowance is set.', color: 'error' });
-        this.loading = false;
-        return;
-      }
       // check that a task or behavior is selected for each kid
-      if (this.earningSystem == "Incentive Based" || this.earningSystem == "Both"){
+      if (this.earningSystem == "Incentive" || this.earningSystem == "Allowance + Incentive"){
         if (this.kids.some(kid => kid.tasks.length + kid.behaviors.length <= 0 )) {
           this.displayMessage({ text: 'Unable to save settings. Ensure at least one task or behavior is selected for each kid.', color: 'error' });
           this.loading = false;
@@ -584,11 +993,9 @@ export default {
       const kids = this.kids;
 
       // organize the preferences
-      const goalAllowance = (this.earningSystem == "Expectation Free" || this.earningSystem == "Both") ? this.allowanceAmount : null;
       const preferences = {
         earningSystem: this.earningSystem,
         rewardDay: this.rewardDay,
-        goalAllowance
       };
 
       // organize the rewards
@@ -614,9 +1021,11 @@ export default {
         this.loading = false;
         this.showLessonPointer = true;
         this.displayMessage({ text: 'Successfully saved your family\'s values.', color: 'info' });
+        return true;
       } else {
         this.loading = false;
         this.displayMessage({ text: 'Failed to save values. Please refresh and try again.', color: 'error' });
+        return false;
       }
     },
 
