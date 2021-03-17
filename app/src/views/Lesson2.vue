@@ -423,7 +423,7 @@ export default {
 
 <style scoped>
   .backback {
-    background-image: linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(../assets/PennyGoal.png)
+    background-image: linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(../assets/PennyGoal.jpg)
   }
 
   .bounceyArrow {

@@ -81,7 +81,7 @@ const newTitlePage = {
   subtitle: "Goals",
   readTime: "15",
   audience: "Family reads together.",
-  backgroundImage: "familyKitchen2.png",
+  backgroundImage: "familyKitchen2.jpg",
   backgroundImageMobile: "familyKitchenMobile.png",
   textPrimaryColor: "#FFFFFF"
 }
@@ -96,7 +96,7 @@ const newTitlePage = {
 //   audience: "kid",
 //   instructions: "Family reads",
 //   instructionIcon: "book-open",
-//   backgroundImage: 'PennyGoal.png',
+//   backgroundImage: 'PennyGoal.jpg',
 //   backgroundColor: "#FFFFFF",
 //   quote: "I try to make goals when I play soccer - Penny Piggle",
 //   quoteImg: "PennyHeadshotSquare.png",

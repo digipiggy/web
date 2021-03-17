@@ -759,7 +759,7 @@ const titlePage = {
   subtitle: "Goals",
   readTime: "15",
   audience: "Family reads together.",
-  backgroundImage: "familyKitchen2.png",
+  backgroundImage: "familyKitchen2.jpg",
   backgroundImageMobile: "familyKitchenMobile.png",
   textPrimaryColor: "#FFFFFF"
 }
@@ -774,7 +774,7 @@ const textPage1 = {
   instructions: "Read Aloud",
   instructionsTT: "Read this section outloud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'PennyGoal.png',
+  backgroundImage: 'PennyGoal.jpg',
   backgroundColor: "#FFFFFF",
   quote: '"I try to make goals when I play soccer"',
   quoteAttrib: 'Penny Piggle',
@@ -1010,7 +1010,7 @@ export default {
 
 <style scoped>
   .backback {
-    background-image: linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(../assets/PennyGoal.png)
+    background-image: linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(../assets/PennyGoal.jpg)
   }
 
   .bounceyArrow {

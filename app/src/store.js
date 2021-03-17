@@ -26,7 +26,14 @@ export default new Vuex.Store({
     device: {
       deviceId: null,
       deviceCode: null,
-      goals: []
+      goals: [],
+      kids: [],
+      preferences: {},
+      rewards: [],
+      status: {
+        firstLogin: true,
+        completedPreferences: false
+      }
     },
     chapters
   },
@@ -36,7 +43,12 @@ export default new Vuex.Store({
       state.message.color = options.color;
     },
     setDevice(state, device) {
-      state.device = device;
+      // Assign Value if they exist in both objects
+      // This won't overwrite defaults
+      for (var i in device) {
+        if (state.device.hasOwnProperty(i))
+            state.device[i] = device[i]
+      }
     }
   },
   getters: {

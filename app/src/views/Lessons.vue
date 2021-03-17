@@ -48,7 +48,7 @@ const lessons = [
   },
   {
     title: "Lesson 4",
-    image: "digiStanding.png",
+    image: "digiStanding.jpg",
     subtitle: "Reward time!",
     body: "Work hard, play hard. It's time to celebrate!",
     route: "/lessons/lesson/4"

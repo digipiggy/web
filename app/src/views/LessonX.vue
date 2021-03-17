@@ -45,7 +45,7 @@ const titlePage = {
   type: "newTitlePage",
   title: "Lesson {x}",
   subtitle: "Coming Soon",
-  backgroundImage: "familyKitchen2.png",
+  backgroundImage: "familyKitchen2.jpg",
   backgroundImageMobile: "familyKitchenMobile.png",
   textPrimaryColor: "#FFFFFF"
 }
