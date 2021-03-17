@@ -71,17 +71,94 @@
     
     </v-row>
 
-    <!-- Page 1 --> 
+    <!-- Page 1 -->
     <v-row 
       :style="{
         minHeight: '100vh',
         color: textPage1.textPrimaryColor,
-        backgroundImage: isDesktop ? `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${textPage1.backgroundImage}`)})` : '',
+      }"
+      class=" flex-column"
+      id="page1"
+      align="center"
+    >
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" >
+        <v-row>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
+              <v-icon color="#A0E667" size="30" >{{textPage1.instructionIcon}}</v-icon>
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <span
+                    v-bind="attrs"
+                    v-on="on"
+                  > {{textPage1.instructions}}</span>
+                </template>
+                <span>{{textPage1.instructionsTT}}</span>
+              </v-tooltip>
+            </p>
+            <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
+              {{textPage1.title}}
+            </p>
+            <div class="mb-8 mb-md-14">
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+                v-for="paragraph in textPage1.text"
+                :key="paragraph"
+              >
+                {{paragraph}}
+              </p>
+            </div>
+          </v-col>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light" style="color: black">
+              {{textPage1.imageTitle}}
+            </p>
+            <v-img 
+              :src="require(`@/assets/${textPage1.backgroundImage}`)" 
+            ></v-img>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo('#page2')"
+          color="#9367E6"
+        >mdi-chevron-down</v-icon>
+      </v-col>
+    </v-row>
+
+    <!-- Page Divider for Mobile -->
+    <v-row 
+      :style="{
+        borderBottom: isDesktop ? '' : '3px dashed #AAA'
+      }"
+    >
+    </v-row>
+
+    <!-- Page 2 --> 
+    <v-row 
+      :style="{
+        minHeight: '100vh',
+        color: page2.textPrimaryColor,
+        backgroundImage: isDesktop ? `linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(${require(`@/assets/${page2.backgroundImage}`)})` : '',
         backgroundPosition: 'right',
         position: 'relative',
       }"
       class=" flex-column"
-      id="page1"
+      id="page2"
     >
       <!-- <v-col cols="12" class="d-flex justify-center  pa-0">
         <v-icon 
@@ -98,49 +175,29 @@
         class="pa-5"
       >
         <p class="text-body-1 font-weight-light mt-md-3 mb-md-8" style="color: black">
-          <v-icon color="#A0E667" size="30" >{{textPage1.instructionIcon}}</v-icon>
+          <v-icon color="#A0E667" size="30" >{{page2.instructionIcon}}</v-icon>
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
               <span
                 v-bind="attrs"
                 v-on="on"
-              > {{textPage1.instructions}}</span>
+              > {{page2.instructions}}</span>
             </template>
-            <span>{{textPage1.instructionsTT}}</span>
+            <span>{{page2.instructionsTT}}</span>
           </v-tooltip>
         </p>
         <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
-          {{textPage1.title}}
+          {{page2.title}}
         </p>
         <div class="mb-8 mb-md-14">
           <p 
             class="text-body-1 text-md-h6 font-weight-light mb-6"
-            v-for="paragraph in textPage1.text"
+            v-for="paragraph in page2.text"
             :key="paragraph"
           >
             {{paragraph}}
           </p>
         </div>
-        <!-- <v-container >
-          <v-row>
-            <v-col cols="4">
-              <v-img 
-                :src="require(`@/assets/${textPage1.quoteImg}`)" 
-                style="border-radius: 50%; border: 1px solid #9367E6"
-                aspect-ratio="1"
-                width="100"
-              ></v-img>
-            </v-col>
-            <v-col cols="8" class="text-body-1 font-weight-light">
-              <p style="color: black">
-                {{textPage1.quote}}
-              </p>
-              <p style="color: black">
-                - {{textPage1.quoteAttrib}}
-              </p>
-            </v-col>
-          </v-row>
-        </v-container > -->
       </v-col>
       <v-spacer>
       </v-spacer>
@@ -165,26 +222,75 @@ const titlePage = {
   subtitle: "Earning",
   readTime: "20",
   audience: "Family reads together.",
-  backgroundImage: "familyKitchen2.png",
-  backgroundImageMobile: "familyKitchenMobile.png",
+  backgroundImage: "Lesson2Title.png",
+  backgroundImageMobile: "Lesson2Title.png",
   textPrimaryColor: "#FFFFFF"
 }
 const textPage1 = {
   type: "newTextPage",
   title: "How do we earn?",
   text: [
-    "Earning has to do with things people get through their own behavior. Adults earn money in exchange for doing a job. That’s how they pay for things they need and want.",
-    "Before grown-ups earn money, they make a plan with who’s paying them, for what they’ll earn. They also agree on when they’ll be paid. Remember Rex’s goal to save for a Pirate Costume? Let’s see how he does it!"
+    "Adults earn money in exchange for doing a job. That’s how they pay for things they need and want.",
+    "Grown-ups make a plan with whoever is paying them, like at their job, and agree how much they will earn. They also agree on when they’ll be paid.",
+    "Remember Rex’s goal to save 8 Piggle Coins for a Pirate Costume? Let’s see how he’s doing!"
   ],
   audience: "kid",
   instructions: "Read Aloud",
   instructionsTT: "Read this section outloud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'PennyGoal.png',
+  backgroundImage: 'logoLightGreen.png',
   backgroundColor: "#FFFFFF",
-  quote: '"I try to make goals when I play soccer"',
-  quoteAttrib: 'Penny Piggle',
-  quoteImg: "PennyHeadshotSquare.png",
+  textPrimaryColor: "#9367E6"
+}
+
+const textPage2Allowance = {
+  type: "newTextPage",
+  title: "Rex's Earning Plan",
+  text: [
+    "Mama Piggle offered to help Rex earn enough coins for his pirate costume goal.",
+    "Each week, Rex will receive an allowance of Piggles Coins to save towards his goal.",
+  ],
+  audience: "kid",
+  instructions: "Read Aloud",
+  instructionsTT: "Read this section outloud with your kid(s).",
+  instructionIcon: "fab fa-readme",
+  backgroundImage: 'RexLikeWhat.jpg',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+const textPage2Incentive = {
+  type: "newTextPage",
+  title: "Rex's Earning Plan",
+  text: [
+    "Mama Piggle offered to help Rex earn enough coins for his pirate costume goal.",
+    "Each week, in exchange for good behaviors and completing tasks, Mama will award Rex with coins.",
+    "She told Rex he will earn coins for being consistent (making good choices regularly over time) and vacuuming the family room.",
+    "Together, Mama Piggle and Rex agreed on what Rex could do to earn coins. Let’s look at their earning plan."
+  ],
+  audience: "kid",
+  instructions: "Read Aloud",
+  instructionsTT: "Read this section outloud with your kid(s).",
+  instructionIcon: "fab fa-readme",
+  backgroundImage: 'RexEarning.png',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+const textPage2Both = {
+  type: "newTextPage",
+  title: "Rex's Earning Plan",
+  text: [
+    "Mama Piggle offered to help Rex earn enough coins for his pirate costume goal.",
+    "Each week, Rex will receive an allowance of Piggles Coins.",
+    "Rex can also earn Piggles Coins for good behaviors and completing tasks.",
+    "Mama told Rex he will earn extra coins for being consistent (making good choices regularly over time) and vacuuming the family room.",
+    "Together, Mama Piggle and Rex agreed on what Rex could do to earn coins. Let’s look at their earning plan."
+  ],
+  audience: "kid",
+  instructions: "Read Aloud",
+  instructionsTT: "Read this section outloud with your kid(s).",
+  instructionIcon: "fab fa-readme",
+  backgroundImage: 'RexEarning.png',
+  backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
 
@@ -203,6 +309,15 @@ export default {
     },
     activeGoals: function () {
       return this.goals.filter(goal => !!goal.kidsName)
+    },
+    page2: function() {
+      if (this.device.preferences.earningSystem == 'Allowance'){
+        return this.textPage2Allowance
+      } else if (this.device.preferences.earningSystem == 'Incentive'){
+        return this.textPage2Incentive
+      } else {
+        return this.textPage2Both
+      }
     }
   },
   data() {
@@ -210,6 +325,9 @@ export default {
       goals: [],
       titlePage,
       textPage1,
+      textPage2Allowance,
+      textPage2Incentive,
+      textPage2Both,
       loading: false
     }
   },

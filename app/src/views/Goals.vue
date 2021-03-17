@@ -61,7 +61,7 @@
           <v-card class="pa-5 rounded-sm">
             <p class="text-h6 font-weight-regular mb-5" style="color: #9367E6">Welcome to your Goal Hub!</p>
             <p class="text-body-1 font-weight-light mb-5">Here you can view, update, and manage your family's goals.</p>
-            <p class="text-body-1 font-weight-light mb-1">
+            <p class="text-body-1 font-weight-light mb-5">
               On 
               <span 
                 style="color: #9367E6" 
@@ -70,6 +70,7 @@
               </span>
               (your family's Piggles Day), sit down as a family and discuss you kids progress towards their goals. 
             </p>
+            <p class="text-body-1 font-weight-light mb-1">As you kid(s) earn Piggles Coins towards goals, add them to their bank using the + and - buttons below. Watch in awe as the lights on your Digi Pig light up!</p>
           </v-card>
         </v-col>
       </v-row>
