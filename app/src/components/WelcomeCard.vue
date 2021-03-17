@@ -1,6 +1,5 @@
 <template>
-  <!-- <v-card v-if="device.status.firstLogin" class="elevation-4 pa-5 d-flex align-center" color="#A0E667"> -->
-  <v-card v-if="(device.goals.length > 0)" class="elevation-4 pa-5 d-flex align-center" color="#A0E667">
+  <v-card v-if="(device.goals.length == 0)" class="elevation-4 pa-5 d-flex align-center" color="#A0E667">
     <v-img 
       style="display: inline-block;" 
       class=""

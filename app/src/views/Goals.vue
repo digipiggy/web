@@ -38,7 +38,7 @@
         </div>
       </v-flex>
     </v-layout> -->
-    <v-container v-if="(device.goals.length <= 0)">
+    <v-container v-if="(device.goals.length == 0)">
       <v-row>
         <v-col cols="12">
           <v-card class="pa-5 rounded-sm">
