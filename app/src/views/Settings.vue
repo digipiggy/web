@@ -488,6 +488,7 @@
         </v-btn>
       </v-col>  
     </v-row>
+    
     <!--Earning Philosophy--> 
     <v-row justify="center" class="mb-8">
       <v-col cols="11">
@@ -518,6 +519,7 @@
         </v-container>
       </v-col>  
     </v-row>
+
     <!--Goal Catalog--> 
     <v-row justify="center">
       <v-col cols="11">
@@ -623,6 +625,7 @@
         </v-container>
       </v-col>  
     </v-row>
+
     <!--Tasks and Behaviors--> 
     <v-row 
       justify="center"
@@ -649,28 +652,7 @@
           </div>
       </v-col>  
     </v-row>
-    <!--Allowance--> 
-    <!-- <v-row 
-      justify="center"
-      v-if="showAllowance"
-      class="mb-8"
-    >
-      <v-col cols="11">
-        <p class="text-h6 font-weight-regular mt-10 mb-0" style="color: #9367E6">Set your weekly Piggles Coin allowance</p>
-        <p class="text-body-2 font-weight-regular mb-8">By selecting {{earningSystem}}, you are committing to give your kid(s) a set number of Piggles Coins to save towards their goals each week.</p>
-        <v-row >
-          <v-col cols="8" md="4">
-            <v-select
-              :items="allowanceOptions"
-              v-model="allowanceAmount"
-              label="Coins earned per week"
-              outlined
-              background-color="#FFFFFF"
-            ></v-select>
-          </v-col>  
-        </v-row>
-      </v-col>  
-    </v-row> -->
+
     <!--Piggles Day--> 
     <v-row justify="center">
       <v-col cols="11">
@@ -688,6 +670,7 @@
         </v-row>
       </v-col>
     </v-row>
+    
     <!-- Save --> 
     <v-row justify="center">
       <v-col cols="11">
@@ -714,7 +697,7 @@
       </v-col>
     </v-row>
   </v-container>
-  
+
 </div>
 </template>
 

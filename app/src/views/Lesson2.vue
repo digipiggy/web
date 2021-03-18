@@ -16,7 +16,7 @@
       class=" flex-column"
       justify="center"
     >
-      <!--TODO componitize the contents of the if/else here-->
+      <!--TODO componentize the contents of the if/else here-->
       <!--newTitlePage-->
       <template> 
         <v-col
@@ -71,7 +71,7 @@
     
     </v-row>
 
-    <!-- Page 1 -->
+    <!-- Page1 How To Earn-->
     <v-row 
       :style="{
         minHeight: '100vh',
@@ -140,7 +140,7 @@
       </v-col>
     </v-row>
 
-    <!-- Page Divider for Mobile -->
+    <!-- Divider for Mobile -->
     <v-row 
       :style="{
         borderBottom: isDesktop ? '' : '3px dashed #AAA'
@@ -148,7 +148,7 @@
     >
     </v-row>
 
-    <!-- Page 2 --> 
+    <!-- Page2 Rex's Earning Philosophy--> 
     <v-row 
       :style="{
         minHeight: '100vh',
@@ -210,7 +210,7 @@
       </v-col>
     </v-row>
 
-    <!-- Page Divider for Mobile -->
+    <!-- Divider for Mobile -->
     <v-row 
       :style="{
         borderBottom: isDesktop ? '' : '3px dashed #AAA'
@@ -218,7 +218,7 @@
     >
     </v-row>
 
-    <!-- Page 3 -->
+    <!-- Page3 How Rex Earns -->
     <v-row 
       v-if="isEarningIncentive || isEarningAllowanceAndIncentive"
       :style="{
@@ -288,7 +288,7 @@
       </v-col>
     </v-row>
 
-    <!-- Page Divider for Mobile -->
+    <!-- Divider for Mobile -->
     <v-row 
       :style="{
         borderBottom: isDesktop ? '' : '3px dashed #AAA'
@@ -296,7 +296,7 @@
     >
     </v-row>
 
-    <!-- Page 4 -->
+    <!-- Page4 How Rex is Evaluated-->
     <v-row 
       :style="{
         minHeight: '100vh',
@@ -365,7 +365,7 @@
       </v-col>
     </v-row>
 
-    <!-- Page Divider for Mobile -->
+    <!-- Divider for Mobile -->
     <v-row 
       :style="{
         borderBottom: isDesktop ? '' : '3px dashed #AAA'
@@ -373,7 +373,7 @@
     >
     </v-row>
 
-    <!-- Page 5 -->
+    <!-- Page5 How Rex is Rewarded-->
     <v-row 
       :style="{
         minHeight: '100vh',
@@ -442,7 +442,7 @@
       </v-col>
     </v-row>
 
-    <!-- Page Divider for Mobile -->
+    <!-- Divider for Mobile -->
     <v-row 
       :style="{
         borderBottom: isDesktop ? '' : '3px dashed #AAA'
@@ -450,7 +450,7 @@
     >
     </v-row>
 
-    <!-- Page 6 -->
+    <!-- Page6 Your Turn: Choose Allowance-->
     <v-row 
       v-if="isEarningAllowance || isEarningAllowanceAndIncentive"
       :style="{
@@ -495,18 +495,30 @@
               </p>
             </div>
           </v-col>
-          <v-col
+
+          <!--Allowance--> 
+          <v-col 
             cols="12"
-            md="6"
-            class="pa-5"
+            md="6"         
           >
-            <p class="text-body-1 font-weight-light" style="color: black">
-              {{textPage6Allowance.imageTitle}}
-            </p>
-            <v-img 
-              :src="require(`@/assets/${textPage6Allowance.backgroundImage}`)" 
-            ></v-img>
-          </v-col>
+            <p class="text-h6 font-weight-regular mt-10 mb-0" style="color: #9367E6">Set your weekly Piggles Coin allowance</p>
+            <p class="text-body-2 font-weight-regular mb-8">By selecting {{device.settings.earningSystem}}, you are committing to give your kid(s) a set number of Piggles Coins to save towards their goals each week.</p>
+            <v-row >
+              <v-col cols="12" md="8">
+                <v-select
+                  :items="allowanceOptions"
+                  v-model="allowanceAmount"
+                  label="Coins earned per week"
+                  outlined
+                  background-color="#FFFFFF"
+                ></v-select>
+                <v-btn>
+                  Save Allowance (mocked)
+                </v-btn>
+              </v-col>  
+            </v-row>
+          </v-col>  
+
         </v-row>
       </v-col>
       <v-spacer>
@@ -520,7 +532,7 @@
       </v-col>
     </v-row>
 
-    <!-- Page Divider for Mobile -->
+    <!-- Divider for Mobile -->
     <v-row 
       :style="{
         borderBottom: isDesktop ? '' : '3px dashed #AAA'
@@ -528,7 +540,7 @@
     >
     </v-row>
 
-    <!-- Page 7 -->
+    <!-- Page7 Your Turn: Update Tasks and Behaviors-->
     <v-row 
       v-if="isEarningIncentive || isEarningAllowanceAndIncentive"
       :style="{
@@ -578,12 +590,24 @@
             md="6"
             class="pa-5"
           >
-            <p class="text-body-1 font-weight-light" style="color: black">
-              {{textPage7Incentive.imageTitle}}
-            </p>
-            <v-img 
-              :src="require(`@/assets/${textPage7Incentive.backgroundImage}`)" 
-            ></v-img>
+            <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Tasks and/or Behaviors</p>
+            <p class="text-body-1 font-weight-light mb-8">Your kid(s) will earn Piggles Coins every week based on the completion of the tasks and behaviors you select. Choose from our list, or feel free to add your own!</p>
+            <div 
+              class="mb-10"
+              v-for="(kid, kidIndex) in device.kids"
+              :key="`kidTasks&Behaviors-${kidIndex}`"
+            >
+              <v-row>
+                <v-col cols="12" >
+                  <p>Review and Modify tasks and/or behaviors for {{kid.name}}</p>
+                  <taskchips
+                    :defaultChips="kid.tasks"
+                    :kid="kid"
+                    @selectTask="selectTask"
+                  />
+                </v-col>
+              </v-row>
+            </div>
           </v-col>
         </v-row>
       </v-col>
@@ -598,12 +622,159 @@
       </v-col>
     </v-row>
 
+    <!-- Divider for Mobile -->
+    <v-row 
+      :style="{
+        borderBottom: isDesktop ? '' : '3px dashed #AAA'
+      }"
+    >
+    </v-row>
+
+    <!-- Page8 Your Turn: fill out goal sheet-->
+    <v-row 
+      :style="{
+        minHeight: '100vh',
+        color: textPage8.textPrimaryColor,
+      }"
+      class=" flex-column"
+      id="page8"
+      align="center"
+    >
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" >
+        <v-row>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
+              <v-icon color="#A0E667" size="30" >{{textPage8.instructionIcon}}</v-icon>
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <span
+                    v-bind="attrs"
+                    v-on="on"
+                  > {{textPage8.instructions}}</span>
+                </template>
+                <span>{{textPage8.instructionsTT}}</span>
+              </v-tooltip>
+            </p>
+            <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
+              {{textPage8.title}}
+            </p>
+            <div class="mb-8 mb-md-14">
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+                v-for="paragraph in textPage8.text"
+                :key="paragraph"
+              >
+                {{paragraph}}
+              </p>
+            </div>
+          </v-col>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light" style="color: black">
+              {{textPage8.imageTitle}}
+            </p>
+            <v-img 
+              :src="require(`@/assets/${textPage8.backgroundImage}`)" 
+            ></v-img>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo('#page9')"
+          color="#9367E6"
+        >mdi-chevron-down</v-icon>
+      </v-col>
+    </v-row>
+
+    <!-- Divider for Mobile -->
+    <v-row 
+      :style="{
+        borderBottom: isDesktop ? '' : '3px dashed #AAA'
+      }"
+    >
+    </v-row>
+
+    <!-- Page9 Your Turn: First Goal Contribution-->
+    <v-row 
+      :style="{
+        minHeight: '100vh',
+        color: textPage9.textPrimaryColor,
+      }"
+      class=" flex-column"
+      id="page9"
+      align="center"
+    >
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" >
+        <v-row>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
+              <v-icon color="#A0E667" size="30" >{{textPage9.instructionIcon}}</v-icon>
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <span
+                    v-bind="attrs"
+                    v-on="on"
+                  > {{textPage9.instructions}}</span>
+                </template>
+                <span>{{textPage9.instructionsTT}}</span>
+              </v-tooltip>
+            </p>
+            <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
+              {{textPage9.title}}
+            </p>
+            <div class="mb-8 mb-md-14">
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+                v-for="paragraph in textPage9.text"
+                :key="paragraph"
+              >
+                {{paragraph}}
+              </p>
+            </div>
+          </v-col>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light" style="color: black">
+              {{textPage9.imageTitle}}
+            </p>
+            <v-img 
+              :src="require(`@/assets/${textPage9.backgroundImage}`)" 
+            ></v-img>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-spacer>
+      </v-spacer>
+    </v-row>
 
   </v-container>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import TaskChips from '@/components/TaskChips';
 
 const titlePage = {
   type: "newTitlePage",
@@ -615,6 +786,8 @@ const titlePage = {
   backgroundImageMobile: "Lesson2Title.png",
   textPrimaryColor: "#FFFFFF"
 }
+
+// Page1 How To Earn
 const textPage1 = {
   type: "newTextPage",
   title: "How do we earn?",
@@ -632,6 +805,7 @@ const textPage1 = {
   textPrimaryColor: "#9367E6"
 }
 
+// Page2 Rex's Earning Philosophy
 const textPage2Allowance = {
   type: "newTextPage",
   title: "Rex's Earning Plan",
@@ -683,6 +857,7 @@ const textPage2Both = {
   textPrimaryColor: "#9367E6"
 }
 
+// Page3 How Rex Earns
 const textPage3Incentive = {
   type: "newTextPage",
   title: "Behaviors and Tasks",
@@ -714,9 +889,10 @@ const textPage3Both = {
   textPrimaryColor: "#9367E6"
 }
 
+// Page4 How Rex is Evaluated
 const textPage4Allowance = {
   type: "newTextPage",
-  title: "Piggles Day",
+  title: "Piggles Day, how Rex is evaluated",
   text: [
     "Allowance Variation",
   ],
@@ -730,7 +906,7 @@ const textPage4Allowance = {
 }
 const textPage4Incentive = {
   type: "newTextPage",
-  title: "Rex's Earning Plan",
+  title: "Piggles Day, how Rex is evaluated",
   text: [
     "Incentive Variation",
   ],
@@ -744,7 +920,7 @@ const textPage4Incentive = {
 }
 const textPage4Both = {
   type: "newTextPage",
-  title: "Rex's Earning Plan",
+  title: "Piggles Day, how Rex is evaluated",
   text: [
     "Allowance and Incentive Variation",
   ],
@@ -757,9 +933,10 @@ const textPage4Both = {
   textPrimaryColor: "#9367E6"
 }
 
+// Page5 How Rex is Rewarded
 const textPage5Allowance = {
   type: "newTextPage",
-  title: "Piggles Day Add coins",
+  title: "Piggles Day, how Rex is rewarded",
   text: [
     "Allowance Variation",
   ],
@@ -773,7 +950,7 @@ const textPage5Allowance = {
 }
 const textPage5Incentive = {
   type: "newTextPage",
-  title: "Piggles Day Add coins",
+  title: "Piggles Day, how Rex is rewarded",
   text: [
     "Incentive Variation",
   ],
@@ -787,7 +964,7 @@ const textPage5Incentive = {
 }
 const textPage5Both = {
   type: "newTextPage",
-  title: "Piggles Day Add coins",
+  title: "Piggles Day, how Rex is rewarded",
   text: [
     "Allowance and Incentive Variation",
   ],
@@ -800,9 +977,10 @@ const textPage5Both = {
   textPrimaryColor: "#9367E6"
 }
 
+// Page6 Your Turn: Choose Allowance
 const textPage6Allowance = {
   type: "newTextPage",
-  title: "Allowance",
+  title: "Your turn, Allowance",
   text: [
     "Pick your allowance",
   ],
@@ -815,9 +993,10 @@ const textPage6Allowance = {
   textPrimaryColor: "#9367E6"
 }
 
+// Page7 Your Turn: Update Tasks and Behaviors
 const textPage7Incentive = {
   type: "newTextPage",
-  title: "Incentives",
+  title: "Your turn, Incentives",
   text: [
     "Review your incentives",
   ],
@@ -830,9 +1009,43 @@ const textPage7Incentive = {
   textPrimaryColor: "#9367E6"
 }
 
+// Page8 Your Turn: fill out goal sheet
+const textPage8 = {
+  type: "newTextPage",
+  title: "Your turn, Goal Sheet",
+  text: [
+    "Review your incentives",
+  ],
+  audience: "kid",
+  instructions: "Read Aloud",
+  instructionsTT: "Read this section out loud with your kid(s).",
+  instructionIcon: "fab fa-readme",
+  backgroundImage: 'EarningPlan.png',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+
+// Page9 Your Turn: First Goal Contribution
+const textPage9 = {
+  type: "newTextPage",
+  title: "Your turn, Update your goal",
+  text: [
+    "Add a coin to your goals, on us!",
+  ],
+  audience: "kid",
+  instructions: "Read Aloud",
+  instructionsTT: "Read this section out loud with your kid(s).",
+  instructionIcon: "fab fa-readme",
+  backgroundImage: 'GoalPage.png',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+
 export default {
   name: 'Lesson2',
-  components: {},
+  components: {
+    taskchips: TaskChips,
+  },
 
   data() {
     return {
@@ -852,10 +1065,19 @@ export default {
       textPage5Both,
       textPage6Allowance,
       textPage7Incentive,
-      loading: false
+      textPage8,
+      textPage9,
+      loading: false,
+      allowanceOptions:[
+        1,
+        2,
+        3,
+        4
+      ],
+      allowanceAmount: null,
     }
   },
-    computed: {
+  computed: {
     ...mapState(['device']),
     isDesktop: function () {
         let { name } = this.$vuetify.breakpoint;
@@ -914,6 +1136,19 @@ export default {
   },
   methods: {
     ...mapActions(['updateDevice', 'displayMessage']),
+
+    // task functions
+    selectTask(data) {
+      const {kid, task} = data;
+      // get the kid from the array of kids
+      const selectedKid = this.device.kids.find(k => k.name == kid.name);
+      // then update their tasks
+      if (selectedKid.tasks.includes(task)) {
+        selectedKid.tasks = selectedKid.tasks.filter((value) => value != task)
+      } else {
+        selectedKid.tasks.push(task);
+      }
+    },
     async saveGoals() {
       this.loading = true;
       const device = {
