@@ -92,7 +92,11 @@ export default new Vuex.Store({
 
       const values = device.goals.map(g => {
         return {
-          total: g.total,
+          // Our goals currently max at at 8. 
+          // We want the pig to always light up 1 light for each integer in the current values (g.current is 5, show 5 lights)
+          // Since the pig only shows a max of 8 LEDs for each goal, we had code this to 8 here.
+          // total: g.total,
+          total: 8,
           current: g.current,
           promise: g.promise
         };

@@ -75,7 +75,22 @@
                   </v-icon>
                 </p>
               </v-col>
+              <v-col>
+                <v-btn
+                class="float-right"
+                  icon
+                  @click="show = !show"
+                >
+                  <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                </v-btn>
+              </v-col>
             </v-row>
+
+            <v-expand-transition>
+              <div v-show="show">
+ 
+
+
             <p class="text-caption font-weight-light mb-0" style="color: #2C2C2C">{{goal.kidsName}}'s Goal</p>
             <v-select
               :items="goalCatalog"
@@ -171,6 +186,9 @@
               >
                 Save
               </v-btn>
+
+              </div>
+            </v-expand-transition>
           </v-card>
         </v-col>
       </v-row>
@@ -198,7 +216,8 @@ export default {
       valid: [true, true, true, true],
       busy: false,
       goals: [],
-      wifiUrl: `${process.env.VUE_APP_WIFI_REDIRECT_URL}#code=wifireset`
+      wifiUrl: `${process.env.VUE_APP_WIFI_REDIRECT_URL}#code=wifireset`,
+      show: false
     };
   },
   computed: {
@@ -251,12 +270,6 @@ export default {
         default:
           return ""
       }
-    },
-    mockGoalSave() {
-      // console.log('save clicked')
-    },
-    editGoal: () => {
-      // console.log("I'm editing a goal!")
     },
     async onReset() {
       this.clearDialogDisplayed = false;
