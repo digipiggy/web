@@ -1,7 +1,6 @@
 <template>
 <div>
   <v-container v-if="!device.status.completedPreferences" >
-  <!-- <v-container  > -->
       <v-window v-model="e1">
           <!--Title Text 0--> 
           <v-window-item >
@@ -373,7 +372,7 @@
             <v-row justify="center" >
               <v-col cols="12" md="8">
                 <p class="text-h6 font-weight-regular text-center mb-3" style="color: #9367E6">Pick your Piggles Day.</p>
-                <p class="text-body-1 font-weight-light text-center mb-5">Piggles Day is a day each week where you set aside time to review progress towards your kid's goals, reward Piggles Coins, and read the next lesson.</p>
+                <p class="text-body-1 font-weight-light text-center mb-5">Piggles Day is when you and your kid(s) will review goal progress, reward Piggles Coins, and do the next lesson.</p>
               </v-col>
             </v-row>
             <v-row justify="center" >
@@ -410,6 +409,8 @@
           </v-window-item>
       </v-window>
   </v-container>
+
+
   <v-container v-else-if="showFirstSetupCompletion">
     <v-row justify="center">
       <v-col cols="12" md="8">
@@ -435,6 +436,8 @@
       </v-col>
     </v-row>
   </v-container>
+
+
   <v-container v-else>
     <!--Title Text & Kid Entry--> 
     <v-row justify="center" class="mb-8">
@@ -672,7 +675,7 @@
     <v-row justify="center">
       <v-col cols="11">
         <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Our Piggles Day</p>
-        <p class="text-body-1 font-weight-light mb-8">Piggles Day is a day each week where you set aside time to review progress towards your kid's goals, reward Piggles Coins, and read the next lesson.</p>
+        <p class="text-body-1 font-weight-light mb-8">Piggles Day is when you and your kid(s) will review goal progress, reward Piggles Coins, and do the next lesson.</p>
         <v-row>
           <v-col cols="10" md="4">
             <v-select
@@ -711,6 +714,7 @@
       </v-col>
     </v-row>
   </v-container>
+  
 </div>
 </template>
 
@@ -840,7 +844,6 @@ export default {
     async showFinalSlide(){
       this.e1 = 7;
       const result = await this.saveData()
-      console.log("result", result)
       if (result){
         this.showFirstSetupCompletion = true;
       } else {
@@ -991,14 +994,14 @@ export default {
       // organize the kids
       const kids = this.kids;
 
-      // organize the preferences
-      const preferences = {
+      // organize the settings
+      const settings = {
         earningSystem: this.earningSystem,
         rewardDay: this.rewardDay,
       };
 
       // organize the rewards
-      const rewards = this.selectedGoals;
+      const goalCatalog = this.selectedGoals;
 
       // organize the status
       const status = {
@@ -1012,8 +1015,8 @@ export default {
         piggySleep: this.device.piggySleep,
         goals: this.device.goals,
         kids,
-        preferences,
-        rewards,
+        settings,
+        goalCatalog,
         status
       }
       if (await this.updateDevice(device)) {
@@ -1043,18 +1046,18 @@ export default {
         ];
       }
 
-      if (this.device.preferences) {
-        this.earningSystem = this.device.preferences.earningSystem;
-        this.rewardDay = this.device.preferences.rewardDay;
-        this.allowanceAmount = this.device.preferences.goalAllowance;
+      if (this.device.settings) {
+        this.earningSystem = this.device.settings.earningSystem;
+        this.rewardDay = this.device.settings.rewardDay;
+        this.allowanceAmount = this.device.settings.goalAllowance;
       } else {
         this.earningSystem = ""
         this.rewardDay = "";
         this.allowanceAmount = null;
       }
 
-      if (this.device.rewards) {
-        this.selectedGoals = this.device.rewards;
+      if (this.device.goalCatalog) {
+        this.selectedGoals = this.device.goalCatalog;
       } else {
         this.selectedGoals = []
       }

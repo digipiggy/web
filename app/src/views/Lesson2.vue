@@ -304,16 +304,16 @@ export default {
         return name == 'md' || name == 'lg' || name == 'xl';
     },
     goalCatalog: function () {
-      const goalCatalog = this.device.rewards.map(reward => reward.name)
+      const goalCatalog = this.device.goalCatalog.map(goal => goal.name)
       return goalCatalog
     },
     activeGoals: function () {
       return this.goals.filter(goal => !!goal.kidsName)
     },
     page2: function() {
-      if (this.device.preferences.earningSystem == 'Allowance'){
+      if (this.device.settings.earningSystem == 'Allowance'){
         return this.textPage2Allowance
-      } else if (this.device.preferences.earningSystem == 'Incentive'){
+      } else if (this.device.settings.earningSystem == 'Incentive'){
         return this.textPage2Incentive
       } else {
         return this.textPage2Both
@@ -339,12 +339,12 @@ export default {
         deviceId: this.device.deviceId,
         deviceCode: this.device.deviceCode,
         kids: this.device.kids,
-        preferences: this.device.preferences,
-        rewards: this.device.rewards,
+        settings: this.device.settings,
+        goalCatalog: this.device.goalCatalog,
         status: this.device.status,
         goals: this.goals.map((g, i)=> {
           if (this.activeGoals[i]){
-            const currentReward = this.device.rewards.find(reward => reward.name == g.name)
+            const currentReward = this.device.goalCatalog.find(reward => reward.name == g.name)
             return {
               name: this.activeGoals[i].name,
               enabled: g.enabled,

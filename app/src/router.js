@@ -113,7 +113,14 @@ const router = new Router({
       path: '*',
       redirect: { name: '404 - Page not Found' }
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 });
 
 router.beforeEach((to, from, next) => {

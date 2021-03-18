@@ -41,6 +41,23 @@
     <v-container v-if="!device.status.completedPreferences">
       <halt actionTodo="access your goals"/>
     </v-container>
+    <v-container v-else-if="device.goals.length == 0">
+      <v-row>
+        <v-col cols="12">
+          <v-card class="pa-5 rounded-sm">
+            <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">✋ Before you can modify your goals, you need to set them first!</p>
+            <p class="text-body-2 font-weight-regular mb-4">Click the button below to set your goals in lesson 1.</p>
+            <v-btn
+              color="#A0E667"
+              class="ma-2 white--text"
+              to="/lessons/lesson/1"
+            >
+              Lesson 1
+            </v-btn>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
     <v-container v-else>
       <v-row>
         <v-col cols="12">
@@ -52,11 +69,21 @@
               <span 
                 style="color: #9367E6" 
                 class="font-weight-medium">
-                {{device.preferences.rewardDay}}'s
+                {{device.settings.rewardDay}}'s
               </span>
               (your family's Piggles Day), sit down as a family and discuss you kids progress towards their goals. 
             </p>
-            <p class="text-body-1 font-weight-light mb-1">As you kid(s) earn Piggles Coins towards goals, add them to their bank using the + and - buttons below. Watch in awe as the lights on your Digi Pig light up!</p>
+            <p class="text-body-1 font-weight-light mb-1">
+              As you kid(s) earn Piggles Coins towards goals, add them to their bank using the 
+              <v-icon color="#9367E6">
+                mdi-plus-circle
+              </v-icon>
+              and
+              <v-icon color="#9367E6">
+                mdi-minus-circle
+              </v-icon>
+              buttons below. Watch in awe as the lights on your Digi Pig light up!
+            </p>
           </v-card>
         </v-col>
       </v-row>
@@ -67,7 +94,7 @@
           cols="12"
           md="6"
         >
-          <v-card class="pa-5 rounded-sm" height="100%" :style="{borderTop: `5px solid ${$color(goal.color)}`}">
+          <v-card class="pa-5 rounded-sm" height="100%" :style="{borderTop: `5px solid ${translateColor(goal.color)}`}">
             <!-- <v-avatar rounded="circle" :color="goal.enabled ? $color(goal.color) : 'grey'" size="36"></v-avatar> -->
             <!-- <span> {{goal.kidsName}}'s Goal</span> -->
             <v-row justify="space-between">
@@ -216,7 +243,7 @@ export default {
   computed: {
     ...mapState(['device']),
     goalCatalog: function () {
-      const goalCatalog = this.device.rewards.map(reward => reward.name)
+      const goalCatalog = this.device.goalCatalog.map(reward => reward.name)
       return goalCatalog
     },
     activeGoals: function () {
@@ -241,6 +268,20 @@ export default {
     convertColor(color){
       let hex = converter.decToHex(color.toString());
       return hex.slice(2, hex.length);
+    },
+    translateColor(color){
+      switch(color){
+        case 255:
+          return "blue";
+        case 16711680:
+          return "red"
+        case 685312:
+          return "green"
+        case 16718336:
+          return "yellow"
+        default:
+          return ""
+      }
     },
     mockGoalSave() {
       // console.log('save clicked')

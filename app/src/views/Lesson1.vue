@@ -465,93 +465,6 @@
       <v-col cols="12" class="d-flex justify-center pa-0">
         <v-icon 
           :size="isDesktop ? 70 : 40"
-          @click="$vuetify.goTo('#page5')"
-          color="#9367E6"
-        >mdi-chevron-down</v-icon>
-      </v-col>
-    </v-row>
-
-    <!-- Page Divider for Mobile -->
-    <v-row 
-      :style="{
-        borderBottom: isDesktop ? '' : '3px dashed #AAA'
-      }"
-    >
-    </v-row>
-
-    <!-- Page 5 --> 
-    <v-row 
-      :style="{
-        minHeight: '100vh',
-        color: textPage5.textPrimaryColor,
-      }"
-      class=" flex-column"
-      id="page5"
-      align="center"
-    >
-      <v-spacer>
-      </v-spacer>
-      <v-col cols="12" >
-        <v-row>
-          <v-col
-            cols="12"
-            md="6"
-            class="pa-5"
-          >
-            <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-              <v-icon color="#A0E667" size="30" >{{textPage5.instructionIcon}}</v-icon>
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on, attrs }">
-                  <span
-                    v-bind="attrs"
-                    v-on="on"
-                  > {{textPage5.instructions}}</span>
-                </template>
-                <span>{{textPage5.instructionsTT}}</span>
-              </v-tooltip>
-            </p>
-            <p class="text-h6 text-uppercase">
-              {{textPage5.title}}
-            </p>
-            <p 
-              class="text-h6 font-weight-light mb-14"
-            >
-              {{textPage5.text[0]}}
-            </p>
-            <v-btn
-              to="/settings"
-              color="#9367E6"
-              class="ma-2 white--text"
-            >
-              Goal Catalog
-              <v-icon
-                right
-                dark
-                color="white"
-              >
-                mdi-right-arrow
-              </v-icon>
-            </v-btn>
-          </v-col>
-          <v-col
-            cols="12"
-            md="6"
-            class="pa-5"
-          >
-            <p class="text-body-1 font-weight-light" style="color: black">
-              {{textPage5.imageTitle}}
-            </p>
-            <v-img 
-              :src="require(`@/assets/${textPage5.backgroundImage}`)" 
-            ></v-img>
-          </v-col>
-        </v-row>
-      </v-col>
-      <v-spacer>
-      </v-spacer>
-      <v-col cols="12" class="d-flex justify-center pa-0">
-        <v-icon 
-          :size="isDesktop ? 70 : 40"
           @click="$vuetify.goTo('#page6')"
           color="#9367E6"
         >mdi-chevron-down</v-icon>
@@ -612,13 +525,6 @@
             >
               {{textPage6.text[0]}}
             </p>
-            <!-- <v-btn
-              to="/goals"
-              color="#9367E6"
-              class="ma-2 white--text"
-            >
-              View Goals
-            </v-btn> -->
           </v-col>
           <v-col
             cols="12"
@@ -631,9 +537,9 @@
             >
               <p>Select {{device.kids[i].name}}'s goal:</p>
               <v-select
-                :items="device.rewards"
+                :items="device.goalCatalog"
                 :label="goal.name"
-                zxitem-text="name"
+                item-text="name"
                 item-value="name"
                 solo
                 v-model="goal.name"
@@ -642,7 +548,7 @@
                   <template >
                     <v-list-item-avatar >
                       <v-img :src="require(`@/assets/PigglesCoin${data.item.coins}.png`)" ></v-img>
-                      <!-- <p style="position: relative; right: 20px">{{device.rewards[i].coins}}</p> -->
+                      <!-- <p style="position: relative; right: 20px">{{device.goalCatalog[i].coins}}</p> -->
                     </v-list-item-avatar>
                     <v-list-item-content>
                       <v-list-item-title >{{data.item.name}}</v-list-item-title>
@@ -772,7 +678,7 @@ const textPage1 = {
   ],
   audience: "kid",
   instructions: "Read Aloud",
-  instructionsTT: "Read this section outloud with your kid(s).",
+  instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
   backgroundImage: 'PennyGoal.png',
   backgroundColor: "#FFFFFF",
@@ -843,21 +749,21 @@ const textPage4 = {
   quoteImg: "RexPiggleHeadshot.png",
   textPrimaryColor: "#9367E6"
 }
-const textPage5 = {
-  type: "newTextPage",
-  title: "Your Time To Shine",
-  text: [
-    "It’s your turn to choose a goal for your kid(s) and practice saving coins! You and your family should already have selected rewards in the Coin Catalog of the My Family page. If you would like to edit them you can click below.",
-  ],
-  audience: "kid",
-  instructions: "Take Action",
-  instructionsTT: "Something else",
-  instructionIcon: "fas fa-tasks",
-  imageTitle: "Goals Catalog Example:",
-  backgroundImage: 'GoalCatalog.png',
-  backgroundColor: "#FFFFFF",
-  textPrimaryColor: "#9367E6"
-}
+// const textPage5 = {
+//   type: "newTextPage",
+//   title: "Your Time To Shine",
+//   text: [
+//     "It’s your turn to choose a goal for your kid(s) and practice saving coins! You and your family should already have selected rewards in the Coin Catalog of the My Family page. If you would like to edit them you can click below.",
+//   ],
+//   audience: "kid",
+//   instructions: "Take Action",
+//   instructionsTT: "Something else",
+//   instructionIcon: "fas fa-tasks",
+//   imageTitle: "Goals Catalog Example:",
+//   backgroundImage: 'GoalCatalog.png',
+//   backgroundColor: "#FFFFFF",
+//   textPrimaryColor: "#9367E6"
+// }
 const textPage6 = {
   type: "newTextPage",
   title: "It's your turn!",
@@ -887,6 +793,13 @@ const textPage7 = {
   textPrimaryColor: "#9367E6"
 }
 
+const goalColors = [
+  "255",
+  "16711680",
+  "685312",
+  "16718336"
+]
+
 export default {
   name: 'Lesson1',
   components: {},
@@ -897,11 +810,11 @@ export default {
         return name == 'md' || name == 'lg' || name == 'xl';
     },
     goalCatalog: function () {
-      const goalCatalog = this.device.rewards.map(reward => reward.name)
+      const goalCatalog = this.device.goalCatalog.map(goal => goal.name)
       return goalCatalog
     },
     activeGoals: function () {
-      return this.goals.filter(goal => !!goal.kidsName)
+      return this.goals.filter(goal => goal.enabled)
     }
   },
   data() {
@@ -912,10 +825,11 @@ export default {
       textPage2,
       textPage3,
       textPage4,
-      textPage5,
+      // textPage5,
       textPage6,
       textPage7,
-      loading: false
+      loading: false,
+      goalColors
     }
   },
   methods: {
@@ -926,18 +840,18 @@ export default {
         deviceId: this.device.deviceId,
         deviceCode: this.device.deviceCode,
         kids: this.device.kids,
-        preferences: this.device.preferences,
-        rewards: this.device.rewards,
+        settings: this.device.settings,
+        goalCatalog: this.device.goalCatalog,
         status: this.device.status,
         goals: this.goals.map((g, i)=> {
           if (this.activeGoals[i]){
-            const currentReward = this.device.rewards.find(reward => reward.name == g.name)
+            const currentGoal = this.device.goalCatalog.find(goal => goal.name == g.name)
             return {
               name: this.activeGoals[i].name,
               enabled: g.enabled,
               color: +g.color,
               percentage: +g.percentage / 100,
-              total: currentReward.coins,
+              total: currentGoal.coins,
               current: +g.current,
               promise: +g.promise,
               promises: g.promises
@@ -966,36 +880,25 @@ export default {
       this.loading = false;
     },
     initialize() {
-      this.goals = this.device.goals.map((g, i) => {
-        const kid = this.device.kids[i];
 
-        if (kid){
+      // if there are already goals, keep them, otherwise initialize a goal for each kid.
+      this.goals = this.device.kids.map((kid, i) => {
+        const goal = this.device.goals[i];
+
+        if (goal){
           return {
-            name: g.name,
-            color: g.color,
-            enabled: g.enabled,
-            percentage: g.percentage * 100,
-            total: g.total,
-            current: g.current,
-            promise: g.promise,
-            promises: g.promises,
-            kidsName: kid.name,
-            kidTasks: kid.tasks,
-            kidBehaviors: kid.behaviors,
+            ...this.device.goals[i],
+            percentage: this.device.goals[i].percentage * 100,
           };
         } else {
           return {
-            name: g.name,
-            color: g.color,
-            enabled: g.enabled,
-            percentage: g.percentage * 100,
-            total: g.total,
-            current: g.current,
-            promise: g.promise,
-            promises: g.promises,
-            kidsName: "",
-            kidTasks: [],
-            kidBehaviors: [],
+            name: "Choose a goal",
+            color: this.goalColors[i],
+            enabled: true,
+            percentage: 0,
+            total: 0,
+            current: 0,
+            promise: 0,
           };
         }
       });
