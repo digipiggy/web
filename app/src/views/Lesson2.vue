@@ -29,7 +29,7 @@
           <p 
             class="text-uppercase text-center font-weight-bold my-n5 my-md-n9" 
             :style="{
-              fontSize: isDesktop ? '140px' : '90px'
+              fontSize: isDesktop ? '140px' : '75px'
             }">
             {{titlePage.subtitle}}
           </p>
@@ -204,11 +204,400 @@
       <v-col cols="12" class="d-flex justify-center pa-0 ">
         <v-icon 
           :size="isDesktop ? 70 : 40"
-          @click="$vuetify.goTo('#page2')"
+          @click="$vuetify.goTo(isEarningAllowance ? '#page4' : '#page3')"
           color="#9367E6"
         >mdi-chevron-down</v-icon>
       </v-col>
     </v-row>
+
+    <!-- Page Divider for Mobile -->
+    <v-row 
+      :style="{
+        borderBottom: isDesktop ? '' : '3px dashed #AAA'
+      }"
+    >
+    </v-row>
+
+    <!-- Page 3 -->
+    <v-row 
+      v-if="isEarningIncentive || isEarningAllowanceAndIncentive"
+      :style="{
+        minHeight: '100vh',
+        color: page3.textPrimaryColor,
+      }"
+      class=" flex-column"
+      id="page3"
+      align="center"
+    >
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" >
+        <v-row>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
+              <v-icon color="#A0E667" size="30" >{{page3.instructionIcon}}</v-icon>
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <span
+                    v-bind="attrs"
+                    v-on="on"
+                  > {{page3.instructions}}</span>
+                </template>
+                <span>{{page3.instructionsTT}}</span>
+              </v-tooltip>
+            </p>
+            <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
+              {{page3.title}}
+            </p>
+            <div class="mb-8 mb-md-14">
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+                v-for="paragraph in page3.text"
+                :key="paragraph"
+              >
+                {{paragraph}}
+              </p>
+            </div>
+          </v-col>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light" style="color: black">
+              {{page3.imageTitle}}
+            </p>
+            <v-img 
+              :src="require(`@/assets/${page3.backgroundImage}`)" 
+            ></v-img>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo((isEarningAllowance ? '#page5' : '#page4'))"
+          color="#9367E6"
+        >mdi-chevron-down</v-icon>
+      </v-col>
+    </v-row>
+
+    <!-- Page Divider for Mobile -->
+    <v-row 
+      :style="{
+        borderBottom: isDesktop ? '' : '3px dashed #AAA'
+      }"
+    >
+    </v-row>
+
+    <!-- Page 4 -->
+    <v-row 
+      :style="{
+        minHeight: '100vh',
+        color: page4.textPrimaryColor,
+      }"
+      class=" flex-column"
+      id="page4"
+      align="center"
+    >
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" >
+        <v-row>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
+              <v-icon color="#A0E667" size="30" >{{page4.instructionIcon}}</v-icon>
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <span
+                    v-bind="attrs"
+                    v-on="on"
+                  > {{page4.instructions}}</span>
+                </template>
+                <span>{{page4.instructionsTT}}</span>
+              </v-tooltip>
+            </p>
+            <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
+              {{page4.title}}
+            </p>
+            <div class="mb-8 mb-md-14">
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+                v-for="paragraph in page4.text"
+                :key="paragraph"
+              >
+                {{paragraph}}
+              </p>
+            </div>
+          </v-col>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light" style="color: black">
+              {{page4.imageTitle}}
+            </p>
+            <v-img 
+              :src="require(`@/assets/${page4.backgroundImage}`)" 
+            ></v-img>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo('#page5')"
+          color="#9367E6"
+        >mdi-chevron-down</v-icon>
+      </v-col>
+    </v-row>
+
+    <!-- Page Divider for Mobile -->
+    <v-row 
+      :style="{
+        borderBottom: isDesktop ? '' : '3px dashed #AAA'
+      }"
+    >
+    </v-row>
+
+    <!-- Page 5 -->
+    <v-row 
+      :style="{
+        minHeight: '100vh',
+        color: page5.textPrimaryColor,
+      }"
+      class=" flex-column"
+      id="page5"
+      align="center"
+    >
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" >
+        <v-row>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
+              <v-icon color="#A0E667" size="30" >{{page5.instructionIcon}}</v-icon>
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <span
+                    v-bind="attrs"
+                    v-on="on"
+                  > {{page5.instructions}}</span>
+                </template>
+                <span>{{page5.instructionsTT}}</span>
+              </v-tooltip>
+            </p>
+            <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
+              {{page5.title}}
+            </p>
+            <div class="mb-8 mb-md-14">
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+                v-for="paragraph in page5.text"
+                :key="paragraph"
+              >
+                {{paragraph}}
+              </p>
+            </div>
+          </v-col>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light" style="color: black">
+              {{page5.imageTitle}}
+            </p>
+            <v-img 
+              :src="require(`@/assets/${page5.backgroundImage}`)" 
+            ></v-img>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo(isEarningIncentive ? '#page7' : '#page6')"
+          color="#9367E6"
+        >mdi-chevron-down</v-icon>
+      </v-col>
+    </v-row>
+
+    <!-- Page Divider for Mobile -->
+    <v-row 
+      :style="{
+        borderBottom: isDesktop ? '' : '3px dashed #AAA'
+      }"
+    >
+    </v-row>
+
+    <!-- Page 6 -->
+    <v-row 
+      v-if="isEarningAllowance || isEarningAllowanceAndIncentive"
+      :style="{
+        minHeight: '100vh',
+        color: textPage6Allowance.textPrimaryColor,
+      }"
+      class=" flex-column"
+      id="page6"
+      align="center"
+    >
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" >
+        <v-row>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
+              <v-icon color="#A0E667" size="30" >{{textPage6Allowance.instructionIcon}}</v-icon>
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <span
+                    v-bind="attrs"
+                    v-on="on"
+                  > {{textPage6Allowance.instructions}}</span>
+                </template>
+                <span>{{textPage6Allowance.instructionsTT}}</span>
+              </v-tooltip>
+            </p>
+            <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
+              {{textPage6Allowance.title}}
+            </p>
+            <div class="mb-8 mb-md-14">
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+                v-for="paragraph in textPage6Allowance.text"
+                :key="paragraph"
+              >
+                {{paragraph}}
+              </p>
+            </div>
+          </v-col>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light" style="color: black">
+              {{textPage6Allowance.imageTitle}}
+            </p>
+            <v-img 
+              :src="require(`@/assets/${textPage6Allowance.backgroundImage}`)" 
+            ></v-img>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo(isEarningAllowance ? '#page8' : '#page7')"
+          color="#9367E6"
+        >mdi-chevron-down</v-icon>
+      </v-col>
+    </v-row>
+
+    <!-- Page Divider for Mobile -->
+    <v-row 
+      :style="{
+        borderBottom: isDesktop ? '' : '3px dashed #AAA'
+      }"
+    >
+    </v-row>
+
+    <!-- Page 7 -->
+    <v-row 
+      v-if="isEarningIncentive || isEarningAllowanceAndIncentive"
+      :style="{
+        minHeight: '100vh',
+        color: textPage7Incentive.textPrimaryColor,
+      }"
+      class=" flex-column"
+      id="page7"
+      align="center"
+    >
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" >
+        <v-row>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
+              <v-icon color="#A0E667" size="30" >{{textPage7Incentive.instructionIcon}}</v-icon>
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <span
+                    v-bind="attrs"
+                    v-on="on"
+                  > {{textPage7Incentive.instructions}}</span>
+                </template>
+                <span>{{textPage7Incentive.instructionsTT}}</span>
+              </v-tooltip>
+            </p>
+            <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
+              {{textPage7Incentive.title}}
+            </p>
+            <div class="mb-8 mb-md-14">
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+                v-for="paragraph in textPage7Incentive.text"
+                :key="paragraph"
+              >
+                {{paragraph}}
+              </p>
+            </div>
+          </v-col>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light" style="color: black">
+              {{textPage7Incentive.imageTitle}}
+            </p>
+            <v-img 
+              :src="require(`@/assets/${textPage7Incentive.backgroundImage}`)" 
+            ></v-img>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo('#page8')"
+          color="#9367E6"
+        >mdi-chevron-down</v-icon>
+      </v-col>
+    </v-row>
+
 
   </v-container>
 </template>
@@ -236,7 +625,7 @@ const textPage1 = {
   ],
   audience: "kid",
   instructions: "Read Aloud",
-  instructionsTT: "Read this section outloud with your kid(s).",
+  instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
   backgroundImage: 'logoLightGreen.png',
   backgroundColor: "#FFFFFF",
@@ -252,7 +641,7 @@ const textPage2Allowance = {
   ],
   audience: "kid",
   instructions: "Read Aloud",
-  instructionsTT: "Read this section outloud with your kid(s).",
+  instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
   backgroundImage: 'RexLikeWhat.jpg',
   backgroundColor: "#FFFFFF",
@@ -269,7 +658,7 @@ const textPage2Incentive = {
   ],
   audience: "kid",
   instructions: "Read Aloud",
-  instructionsTT: "Read this section outloud with your kid(s).",
+  instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
   backgroundImage: 'RexEarning.png',
   backgroundColor: "#FFFFFF",
@@ -287,9 +676,156 @@ const textPage2Both = {
   ],
   audience: "kid",
   instructions: "Read Aloud",
-  instructionsTT: "Read this section outloud with your kid(s).",
+  instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
   backgroundImage: 'RexEarning.png',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+
+const textPage3Incentive = {
+  type: "newTextPage",
+  title: "Behaviors and Tasks",
+  text: [
+    "Mama tells Rex he can choose to work on behaviors or complete tasks to earn Piggles Coins.",
+    "Incentive copy goes here"
+  ],
+  audience: "kid",
+  instructions: "Read Aloud",
+  instructionsTT: "Read this section out loud with your kid(s).",
+  instructionIcon: "fab fa-readme",
+  backgroundImage: 'MommaPiggleHeadshot.png',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+const textPage3Both = {
+  type: "newTextPage",
+  title: "Behaviors and Tasks",
+  text: [
+    "Mama tells Rex he can choose to work on behaviors or complete tasks to earn extra Piggles Coins above his normal allowance.",
+    "Both copy goes here"
+  ],
+  audience: "kid",
+  instructions: "Read Aloud",
+  instructionsTT: "Read this section out loud with your kid(s).",
+  instructionIcon: "fab fa-readme",
+  backgroundImage: 'MommaPiggleHeadshot.png',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+
+const textPage4Allowance = {
+  type: "newTextPage",
+  title: "Piggles Day",
+  text: [
+    "Allowance Variation",
+  ],
+  audience: "kid",
+  instructions: "Read Aloud",
+  instructionsTT: "Read this section out loud with your kid(s).",
+  instructionIcon: "fab fa-readme",
+  backgroundImage: 'RexAndMomma.jpg',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+const textPage4Incentive = {
+  type: "newTextPage",
+  title: "Rex's Earning Plan",
+  text: [
+    "Incentive Variation",
+  ],
+  audience: "kid",
+  instructions: "Read Aloud",
+  instructionsTT: "Read this section out loud with your kid(s).",
+  instructionIcon: "fab fa-readme",
+  backgroundImage: 'RexAndMomma.jpg',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+const textPage4Both = {
+  type: "newTextPage",
+  title: "Rex's Earning Plan",
+  text: [
+    "Allowance and Incentive Variation",
+  ],
+  audience: "kid",
+  instructions: "Read Aloud",
+  instructionsTT: "Read this section out loud with your kid(s).",
+  instructionIcon: "fab fa-readme",
+  backgroundImage: 'RexAndMomma.jpg',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+
+const textPage5Allowance = {
+  type: "newTextPage",
+  title: "Piggles Day Add coins",
+  text: [
+    "Allowance Variation",
+  ],
+  audience: "kid",
+  instructions: "Read Aloud",
+  instructionsTT: "Read this section out loud with your kid(s).",
+  instructionIcon: "fab fa-readme",
+  backgroundImage: 'RexGoalCard.png',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+const textPage5Incentive = {
+  type: "newTextPage",
+  title: "Piggles Day Add coins",
+  text: [
+    "Incentive Variation",
+  ],
+  audience: "kid",
+  instructions: "Read Aloud",
+  instructionsTT: "Read this section out loud with your kid(s).",
+  instructionIcon: "fab fa-readme",
+  backgroundImage: 'RexGoalCard.png',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+const textPage5Both = {
+  type: "newTextPage",
+  title: "Piggles Day Add coins",
+  text: [
+    "Allowance and Incentive Variation",
+  ],
+  audience: "kid",
+  instructions: "Read Aloud",
+  instructionsTT: "Read this section out loud with your kid(s).",
+  instructionIcon: "fab fa-readme",
+  backgroundImage: 'RexGoalCard.png',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+
+const textPage6Allowance = {
+  type: "newTextPage",
+  title: "Allowance",
+  text: [
+    "Pick your allowance",
+  ],
+  audience: "kid",
+  instructions: "Read Aloud",
+  instructionsTT: "Read this section out loud with your kid(s).",
+  instructionIcon: "fab fa-readme",
+  backgroundImage: 'AllowanceSelector.png',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+
+const textPage7Incentive = {
+  type: "newTextPage",
+  title: "Incentives",
+  text: [
+    "Review your incentives",
+  ],
+  audience: "kid",
+  instructions: "Read Aloud",
+  instructionsTT: "Read this section out loud with your kid(s).",
+  instructionIcon: "fab fa-readme",
+  backgroundImage: 'TaskBehaviorSelector.png',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -297,9 +833,31 @@ const textPage2Both = {
 export default {
   name: 'Lesson2',
   components: {},
-  computed: {
+
+  data() {
+    return {
+      goals: [],
+      titlePage,
+      textPage1,
+      textPage2Allowance,
+      textPage2Incentive,
+      textPage2Both,
+      textPage3Incentive,
+      textPage3Both,
+      textPage4Allowance,
+      textPage4Incentive,
+      textPage4Both,
+      textPage5Allowance,
+      textPage5Incentive,
+      textPage5Both,
+      textPage6Allowance,
+      textPage7Incentive,
+      loading: false
+    }
+  },
+    computed: {
     ...mapState(['device']),
-    isDesktop () {
+    isDesktop: function () {
         let { name } = this.$vuetify.breakpoint;
         return name == 'md' || name == 'lg' || name == 'xl';
     },
@@ -310,6 +868,15 @@ export default {
     activeGoals: function () {
       return this.goals.filter(goal => !!goal.kidsName)
     },
+    isEarningAllowance: function() {
+      return this.device.settings.earningSystem == 'Allowance'
+    },
+    isEarningIncentive: function() {
+      return this.device.settings.earningSystem == 'Incentive'
+    },
+    isEarningAllowanceAndIncentive: function() {
+      return this.device.settings.earningSystem == 'Allowance + Incentive'
+    },
     page2: function() {
       if (this.device.settings.earningSystem == 'Allowance'){
         return this.textPage2Allowance
@@ -318,17 +885,31 @@ export default {
       } else {
         return this.textPage2Both
       }
-    }
-  },
-  data() {
-    return {
-      goals: [],
-      titlePage,
-      textPage1,
-      textPage2Allowance,
-      textPage2Incentive,
-      textPage2Both,
-      loading: false
+    },
+    page3: function() {
+      if (this.device.settings.earningSystem == 'Incentive'){
+        return this.textPage3Incentive
+      } else {
+        return this.textPage3Both
+      }
+    },
+    page4: function() {
+      if (this.device.settings.earningSystem == 'Allowance'){
+        return this.textPage4Allowance
+      } else if (this.device.settings.earningSystem == 'Incentive'){
+        return this.textPage4Incentive
+      } else {
+        return this.textPage4Both
+      }
+    },
+    page5: function() {
+      if (this.device.settings.earningSystem == 'Allowance'){
+        return this.textPage5Allowance
+      } else if (this.device.settings.earningSystem == 'Incentive'){
+        return this.textPage5Incentive
+      } else {
+        return this.textPage5Both
+      }
     }
   },
   methods: {

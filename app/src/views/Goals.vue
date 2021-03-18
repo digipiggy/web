@@ -165,9 +165,8 @@
                 class="mt-7 mx-auto"
                 style="display: block"
                 dark
-                
-                min-width="15%"
-                color="#A0E667"
+                min-width="40%"
+                color="#9367E6"
                 @click="onSave"
               >
                 Save
