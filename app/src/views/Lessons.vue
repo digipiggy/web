@@ -1,5 +1,8 @@
 <template>
-  <v-container fluid >
+  <v-container v-if="!device.status.completedPreferences">
+      <halt actionTodo="access your lessons"/>
+  </v-container>
+  <v-container v-else fluid >
     <v-row  justify="center">
       <v-col cols="12" md="10">
         <lessonStatusIndicator />
@@ -21,8 +24,10 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import LessonStatusIndicator from '@/components/LessonStatusIndicator';
 import LessonCard from '@/components/LessonCard';
+import Halt from '@/components/Halt';
 
 const lessons = [
   {
@@ -60,11 +65,15 @@ export default {
   components: {
     lessonStatusIndicator: LessonStatusIndicator,
     lessonCard: LessonCard,
+    halt: Halt
   },
   data() {
     return {
       lessons
     }
+  },
+  computed: {
+    ...mapState(['device']),
   }
 
 };

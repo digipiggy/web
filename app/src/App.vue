@@ -72,11 +72,11 @@
             <v-list-item-title>Goals</v-list-item-title>
           </v-list-item>
 
-          <v-list-item to="/setupGuide">
+          <v-list-item to="/settings">
             <v-list-item-icon>
               <v-icon>mdi-heart</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Setup Guide</v-list-item-title>
+            <v-list-item-title>Family Settings</v-list-item-title>
           </v-list-item>
 
           <v-list-item to="/pigSettings">

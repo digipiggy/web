@@ -519,7 +519,7 @@
               {{textPage5.text[0]}}
             </p>
             <v-btn
-              to="/SetupGuide"
+              to="/settings"
               color="#9367E6"
               class="ma-2 white--text"
             >

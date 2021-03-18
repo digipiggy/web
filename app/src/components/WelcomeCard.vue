@@ -1,5 +1,5 @@
 <template>
-  <v-card v-if="device.status.firstLogin" class="elevation-4 pa-5 d-flex align-center" color="#A0E667">
+  <v-card v-if="!device.status.completedPreferences" class="elevation-4 pa-5 d-flex align-center" color="#A0E667">
     <v-img 
       style="display: inline-block;" 
       class=""
@@ -10,9 +10,9 @@
     <v-spacer></v-spacer>
     <v-btn
       dense
-      to="/setupGuide"
+      to="/settings"
     >
-      Set Values
+      Family Settings
     </v-btn>
   </v-card>
   <v-card v-else class="elevation-4 pa-5" color="#A0E667">

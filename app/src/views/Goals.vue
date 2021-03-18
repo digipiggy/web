@@ -38,22 +38,8 @@
         </div>
       </v-flex>
     </v-layout> -->
-    <v-container v-if="device.status.completedPreferences == false">
-      <v-row>
-        <v-col cols="12">
-          <v-card class="pa-5 rounded-sm">
-            <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">✋ Before you can update goals on your Digi Pig, you need to set up the system.</p>
-            <p class="text-body-2 font-weight-regular mb-4">Click the button below to configure your family's values</p>
-            <v-btn
-              color="#A0E667"
-              class="ma-2 white--text"
-              to="/setupGuide"
-            >
-              My Values
-            </v-btn>
-          </v-card>
-        </v-col>
-      </v-row>
+    <v-container v-if="!device.status.completedPreferences">
+      <halt actionTodo="access your goals"/>
     </v-container>
     <v-container v-else>
       <v-row>
@@ -208,11 +194,13 @@
 import { mapState, mapActions } from 'vuex';
 import converter from 'hex2dec';
 // import Goal from '@/components/NewGoal';
+import Halt from '@/components/Halt';
 
 export default {
-  // components: {
-  //   goal: Goal,
-  // },
+  components: {
+    // goal: Goal,
+    halt: Halt
+  },
   name: "Goals",
   data() {
     return {

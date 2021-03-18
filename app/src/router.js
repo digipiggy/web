@@ -16,7 +16,7 @@ import Articles from './views/Articles';
 import FAQ from './views/Faq';
 import ContactUs from './views/ContactUs';
 import Chapter from './views/Chapter';
-import SetupGuide from './views/SetupGuide';
+import Settings from './views/Settings';
 import Page404 from './views/Page404';
 
 Vue.use(Router);
@@ -100,9 +100,9 @@ const router = new Router({
       component: ContactUs
     },
     {
-      path: '/setupGuide',
-      name: 'Setup Guide',
-      component: SetupGuide
+      path: '/settings',
+      name: 'Family Settings',
+      component: Settings
     },
     {
       path: '/404',
