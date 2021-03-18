@@ -19,7 +19,7 @@ const schema = Joi.object().keys({
     amount: Joi.number().min(0).allow(null),
     depositSchedule: Joi.string().allow(null).empty()
   }),
-  goals: Joi.array().length(4).required().items(Joi.object().keys({
+  goals: Joi.array().min(0).max(4).items(Joi.object().keys({
     name: Joi.string(),
     enabled: Joi.boolean(),
     percentage: Joi.number().min(0).max(1).required(),
@@ -35,17 +35,16 @@ const schema = Joi.object().keys({
     behaviors: Joi.array().items(Joi.string().allow(null).empty()),
     tasks: Joi.array().items(Joi.string().allow(null).empty())
   })),
-  rewards: Joi.array().items(Joi.object().keys({
+  goalCatalog: Joi.array().items(Joi.object().keys({
     name: Joi.string(),
     coins: Joi.number().integer()
   })),
-  preferences: Joi.object().keys({
+  settings: Joi.object().keys({
     rewardDay: Joi.string(),
     earningSystem: Joi.string(),
     goalAllowance: Joi.number().allow(null),
   }),
   status: Joi.object().keys({
-    firstLogin: Joi.boolean(),
     completedPreferences: Joi.boolean()
   })
 });
