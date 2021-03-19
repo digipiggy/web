@@ -8,6 +8,7 @@ import store from './store';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Storage from 'vue-ls';
+import VueConfetti from 'vue-confetti';
 
 Vue.use(VueAxios, axios);
 Vue.use(Storage, {
@@ -15,6 +16,8 @@ Vue.use(Storage, {
   name: 'ls',
   storage: 'local'
 });
+
+Vue.use(VueConfetti);
 
 Vue.config.productionTip = false;
 

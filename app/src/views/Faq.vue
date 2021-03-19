@@ -35,11 +35,11 @@
 const questions = [
   {
     question: "What's a good age range for this product?",
-    answer: "Parents with children aged 8 - 10."
+    answer: "Parents with children aged 5 - 10."
   },
   {
-    question: "Where can I find other reliable sources to learn about family financial ed?",
-    answer: "TheMint.org"
+    question: "Where can I find other reliable sources to learn about family financial education?",
+    answer: "Check out our Articles Page to find our favorite resources about family financial education."
   },
   {
     question: "Can I use the app to view my kid's goals from anywhere?",
@@ -47,11 +47,7 @@ const questions = [
   },
   {
     question: "What kinds of lessons will my family learn?",
-    answer: "Your family will have access to many different lessons, including good habit building and financial savings lessons."
-  },
-  {
-    question: "Can I access the Piggles Family on the web and in an app?",
-    answer: "You can log into the Piggles Family experience from any desktop or mobile device with access to the internet."
+    answer: "Your family will have access to many different lessons, including good habit building, and financial savings lessons."
   },
   {
     question: "How often are lessons released?",
@@ -59,11 +55,11 @@ const questions = [
   },
   {
     question: "Can I set reminders to update goals?",
-    answer: "You can setup reminders in from the Piggles Family website."
+    answer: "After setting up your Piggles Family values, you'll receive automatic reminders to complete lessons and make progress to your goals."
   },
   {
     question: "Do I need to give an allowance to use the Piggles Family?",
-    answer: "No. While allowance it the typical way to track progress, you can adjust each goal to your own specifications. Including non-allowance based goals."
+    answer: "No. We provide a flexible Earning System which allows you to use an Allowance, an Incentive based approach, or a combination of both."
   },
   {
     question: "Are there tips to help me with an allowance philosophy?",
@@ -71,7 +67,7 @@ const questions = [
   },
   {
     question: "What's a good sized goal for me to set for my kids?",
-    answer: " It is sometimes good to start with a smaller goal, $5 - $20 a small toy or choice of dining experience, and have your child work up to larger goals, $200 - $300 Nintendo Switch."
+    answer: "We recommend setting a goal you believe your child will earn during a 2 week period. It is sometimes good to start with a smaller goal, like a small toy or being able to stay up late, and have your child work up to larger goals."
   },
   {
     question: "How can I help my kids learn about money without using allowance?",

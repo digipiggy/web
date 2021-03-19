@@ -1,14 +1,21 @@
 <template>
   <v-card class="elevation-3 pa-5">
-    <p class="text-h6">{{lesson.title}}</p>
+    <p v-if="lesson.comingSoon" class="text-h6 font-weight-regular" style="color: #9367E6">Coming Soon!</p>
+    <p class="text-h6 font-weight-regular">{{lesson.title}}</p>
     <v-img 
       :src="require(`@/assets/${lesson.image}`)" 
+      :gradient="lesson.comingSoon ? '90deg, rgba(68,68,68,0.48144841269841265) 35%, rgba(68,68,68,0.4973214285714286) 78%' : ''"
       aspect-ratio="1.9"
       class="mb-4"
     ></v-img>
-    <p>{{lesson.subtitle}}</p>
-    <p>{{lesson.body}}</p>
-    <v-btn color="#A0E667" dark :to="lesson.route">
+    <p class="text-caption ">{{lesson.subtitle}}</p>
+    <p class="text-body-1 font-weight-light">{{lesson.body}}</p>
+    <v-btn 
+      color="#48A182" 
+      class="white--text"
+      :disabled="lesson.comingSoon" 
+      :to="lesson.route"
+    >
       Start {{lesson.title}}
     </v-btn>
   </v-card>

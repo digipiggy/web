@@ -1,5 +1,8 @@
 <template>
-  <v-container fluid >
+  <v-container v-if="!device.status.completedPreferences">
+      <halt actionTodo="access your lessons"/>
+  </v-container>
+  <v-container v-else fluid >
     <v-row  justify="center">
       <v-col cols="12" md="10">
         <lessonStatusIndicator />
@@ -21,37 +24,41 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import LessonStatusIndicator from '@/components/LessonStatusIndicator';
 import LessonCard from '@/components/LessonCard';
+import Halt from '@/components/Halt';
 
 const lessons = [
   {
-    title: "Lesson 1",
+    title: "Lesson 1 - Goals",
     image: "kitchenEnter.jpg",
     subtitle: "Let's talk about Goals",
-    body: "Set your goals with help from the piggles family.",
+    body: "Set your goals with help from the Piggles family.",
     route: "/lessons/lesson/1"
   },
   {
-    title: "Lesson 2",
+    title: "Lesson 2 - Earning",
     image: "rex&Penny.jpg",
     subtitle: "Start your earning",
     body: "Learn to earn and track goal progress.",
     route: "/lessons/lesson/2"
   },
   {
-    title: "Lesson 3",
+    title: "Lesson 3 - Saving",
     image: "rexPirate.jpg",
     subtitle: "Save vs Spend",
-    body: "Making Saving and spending choices.",
-    route: "/lessons/lesson/3"
+    body: "Smart saving made easy.",
+    route: "/lessons/lesson/3",
+    comingSoon: true
   },
   {
-    title: "Lesson 4",
+    title: "Lesson 4 - Spending",
     image: "digiStanding.png",
     subtitle: "Reward time!",
-    body: "Work hard, play hard. It's time to celebrate!",
-    route: "/lessons/lesson/4"
+    body: "You've worked for this, now it's time to celebrate!",
+    route: "/lessons/lesson/4",
+    comingSoon: true
   }
 ]
 
@@ -60,11 +67,15 @@ export default {
   components: {
     lessonStatusIndicator: LessonStatusIndicator,
     lessonCard: LessonCard,
+    halt: Halt
   },
   data() {
     return {
       lessons
     }
+  },
+  computed: {
+    ...mapState(['device']),
   }
 
 };

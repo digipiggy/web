@@ -1,76 +1,183 @@
 <template>
   <v-container fluid >
-    <!-- <v-layout align-center justify-center>
-      <v-flex xs12 sm8 md4>
-        <div>
-          <v-card class="elevation-12 mb-4">
-            <v-card-text class="grey lighten-5">
-              <v-alert
-                class="mb-3"
-                :value="!totalPercentageValid"
-                type="warning"
-              >Total percentage does not add up to 100.</v-alert>
-              <v-expansion-panels popout>
-                  <v-expansion-panel v-for="(goal, i) in goals" :key="i">
-                    <v-expansion-panel-header >
-                      <v-chip color="white" :class="(goal.enabled ? 'goal-enabled' : '')">
-                        <v-avatar :color="goal.enabled ? $color(goal.color) : 'grey'"></v-avatar>
-                        <span class="ml-2">{{goal.kidsName}}' Goal</span>
-                      </v-chip>
-                    </v-expansion-panel-header>
-                    <v-expansion-panel-content>
-                      <goal v-model="goals[i]" :busy="busy" @valid="onValid(i, $event)"/>
-                    </v-expansion-panel-content>
-                  </v-expansion-panel>
-              </v-expansion-panels>
-            </v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn
-                color="primary"
-                @click="onSave"
-                :disabled="!totalPercentageValid || !allGoalsValid || busy"
-              >Save Goals
-                <v-icon right dark>cloud_upload</v-icon>
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </div>
-      </v-flex>
-    </v-layout> -->
-    <v-container v-if="device.status.completedPreferences == false">
+
+    <v-container v-if="!device.status.completedPreferences">
+      <halt actionTodo="access your goals"/>
+    </v-container>
+
+    <v-container v-else-if="device.goals.length == 0">
       <v-row>
         <v-col cols="12">
           <v-card class="pa-5 rounded-sm">
-            <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">✋ Before you can update goals on your Digi Pig, you need to set up the system.</p>
-            <p class="text-body-2 font-weight-regular mb-4">Click the button below to configure your family's values</p>
+            <p class="text-h6 font-weight-regular mb-4" style="color: #9367E6">✋ Before you can modify your goals, you need to set them first!</p>
+            <p class="text-body-2 font-weight-regular mb-4">Click the button below to set your goals in lesson 1.</p>
             <v-btn
-              color="#A0E667"
-              class="ma-2 white--text"
-              to="/setupGuide"
+              color="#48A182"
+              class="my-2 white--text"
+              to="/lessons/lesson/1"
             >
-              My Values
+              Lesson 1
             </v-btn>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
+
     <v-container v-else>
+      <v-dialog
+        v-model="showCelebration"
+        width="90%"
+        min-height="90%"
+      >
+      <v-card >
+        <p @click="showCelebration = false" >             
+          <v-icon >
+                mdi-close
+          </v-icon>
+        </p>
+        <p class="text-h4 font-weight-regular text-center pa-9 mb-0" style="color: #9367E6">Congratulations on completing your goal!</p>
+        <p class="text-center pb-5 mb-0">
+          <v-btn
+            color="#9367E6"
+            class="ma-2  white--text"
+            @click="closeCelebration"
+          >
+            Select a new goal
+          </v-btn>
+        </p>
+        </v-card>
+      </v-dialog>
       <v-row>
         <v-col cols="12">
           <v-card class="pa-5 rounded-sm">
-            <p class="text-h6 font-weight-regular mb-5" style="color: #9367E6">Welcome to your Goal Hub!</p>
-            <p class="text-body-1 font-weight-light mb-5">Here you can view, update, and manage your family's goals.</p>
-            <p class="text-body-1 font-weight-light mb-5">
-              On 
-              <span 
-                style="color: #9367E6" 
-                class="font-weight-medium">
-                {{device.preferences.rewardDay}}'s
-              </span>
-              (your family's Piggles Day), sit down as a family and discuss you kids progress towards their goals. 
-            </p>
-            <p class="text-body-1 font-weight-light mb-1">As you kid(s) earn Piggles Coins towards goals, add them to their bank using the + and - buttons below. Watch in awe as the lights on your Digi Pig light up!</p>
+            <div class="d-flex justify-space-between">
+              <p class="text-h6 font-weight-regular mb-5" style="color: #9367E6">Welcome to your Goal Hub!</p>
+              <v-btn
+                icon
+                @click="showWelcome = !showWelcome"
+              >
+                <v-icon>{{ showWelcome ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+              </v-btn>
+            </div>
+            <v-expand-transition>
+              <div v-show="showWelcome">
+                <p class="text-body-1 font-weight-light mb-5">Here you can view, update, and manage your family's goals.</p>
+                <p class="text-body-1 font-weight-light mb-5">
+                  On 
+                  <span 
+                    style="color: #9367E6" 
+                    class="font-weight-medium">
+                    {{device.settings.rewardDay}}'s
+                  </span>
+                  (your family's Piggles Day), sit down as a family and discuss you kids progress towards their goals. 
+                </p>
+                <p class="text-body-1 font-weight-light mb-1">
+                  As you kid(s) earn Piggles Coins towards goals, add them to their bank using the 
+                  <v-icon color="#9367E6">
+                    mdi-plus-circle
+                  </v-icon>
+                  and
+                  <v-icon color="#9367E6">
+                    mdi-minus-circle
+                  </v-icon>
+                  buttons below. Watch in awe as the lights on your Digi Pig light up!
+                </p>
+              </div>
+            </v-expand-transition>
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12">
+          <v-card class="pa-5 rounded-sm" v-if="isTodayPiggleDay">
+              <p class="text-h6 font-weight-regular mb-5" style="color: #9367E6">OMGsh, it's your family's Piggle Day!</p>
+              <div v-if="device.settings.earningSystem == 'Allowance'" >
+                <p class="text-body-1 font-weight-light mb-5">
+                  Because you've chosen the Allowance Earning Philosophy, and set an allowance of {{device.settings.goalAllowance || 2}} Piggles Coins a week, add {{device.settings.goalAllowance || 2 }} to your kid(s) goals.
+                </p>
+              </div>
+              <div v-else-if="device.settings.earningSystem == 'Incentive'">
+                <p class="text-body-1 font-weight-light mb-5">
+                  Because you've chosen the Incentive Earning Philosophy, review the weekly progress of your kid(s) on their rewarding Tasks and Behaviors.
+                </p>
+                <div class="d-flex flex-row">
+                    <v-img 
+                      v-for="n in 1"
+                      :key="`good-${n}`"
+                      :src="require('@/assets/PigglesCoin.png')" 
+                      max-width="20px"
+                      max-height="20px"
+                    ></v-img>
+                  <p class="text-body-1 font-weight-light mb-0">
+                    Reward 1 Piggles Coin for a Good job.             
+                  </p>
+                </div>
+                <div class="d-flex flex-row">
+                    <v-img 
+                      v-for="n in 2"
+                      :key="`great-${n}`"
+                      :src="require('@/assets/PigglesCoin.png')" 
+                      max-width="20px"
+                      max-height="20px"
+                    ></v-img>
+                  <p class="text-body-1 font-weight-light mb-0">
+                    Reward 2 Piggles Coins for a Great job.            
+                  </p>
+                </div>
+                <div class="d-flex flex-row">
+                    <v-img 
+                      v-for="n in 3"
+                      :key="`amazing-${n}`"
+                      :src="require('@/assets/PigglesCoin.png')" 
+                      max-width="20px"
+                      max-height="20px"
+                    ></v-img>
+                  <p class="text-body-1 font-weight-light mb-0">
+                    Reward 3 Piggles Coins for an Amazing job.             
+                  </p>
+                </div>
+              </div>
+              <div v-if="device.settings.earningSystem == 'Allowance + Incentive'">
+                <p class="text-body-1 font-weight-light mb-5">
+                  Because you've chosen the Allowance + Incentive Earning Philosophy, add your set allowance of {{device.settings.goalAllowance || 2}} Piggles Coin(s) to your kid(s) goals. Then, review their weekly progress on rewarding Tasks and Behaviors and award additional Piggles Coins.
+                </p>
+                <div class="d-flex flex-row">
+                    <v-img 
+                      v-for="n in 1"
+                      :key="`good-${n}`"
+                      :src="require('@/assets/PigglesCoin.png')" 
+                      max-width="20px"
+                      max-height="20px"
+                    ></v-img>
+                  <p class="text-body-1 font-weight-light mb-0">
+                    Reward 1 Piggles Coin for a Good job.             
+                  </p>
+                </div>
+                <div class="d-flex flex-row">
+                    <v-img 
+                      v-for="n in 2"
+                      :key="`great-${n}`"
+                      :src="require('@/assets/PigglesCoin.png')" 
+                      max-width="20px"
+                      max-height="20px"
+                    ></v-img>
+                  <p class="text-body-1 font-weight-light mb-0">
+                    Reward 2 Piggles Coins for a Great job.            
+                  </p>
+                </div>
+                <div class="d-flex flex-row">
+                    <v-img 
+                      v-for="n in 3"
+                      :key="`amazing-${n}`"
+                      :src="require('@/assets/PigglesCoin.png')" 
+                      max-width="20px"
+                      max-height="20px"
+                    ></v-img>
+                  <p class="text-body-1 font-weight-light mb-0">
+                    Reward 3 Piggles Coins for an Amazing job.             
+                  </p>
+                </div>
+              </div>
           </v-card>
         </v-col>
       </v-row>
@@ -81,123 +188,16 @@
           cols="12"
           md="6"
         >
-          <v-card class="pa-5 rounded-sm" height="100%" :style="{borderTop: `5px solid ${$color(goal.color)}`}">
-            <!-- <v-avatar rounded="circle" :color="goal.enabled ? $color(goal.color) : 'grey'" size="36"></v-avatar> -->
-            <!-- <span> {{goal.kidsName}}'s Goal</span> -->
-            <v-row justify="space-between">
-              <v-col>
-                <p class="text-h5 font-weight-medium " style="color: #48A182">{{goal.kidsName}}</p>
-              </v-col>
-              <v-col>
-                <p 
-                  class="text-body-2 font-weight-light text-right" 
-                  style="color: #2C2C2C; "
-                  >
-                  Digi Piggy Bank LED Color
-                 <v-icon :color="$color(goal.color)">
-                    mdi-checkbox-blank-circle-outline
-                  </v-icon>
-                </p>
-                 
-              </v-col>
-            </v-row>
-            <p class="text-caption font-weight-light mb-0" style="color: #2C2C2C">{{goal.kidsName}}'s Goal</p>
-            <v-select
-              :items="goalCatalog"
-              :label="goal.name"
-              solo
-              v-model="goal.name"
-            ></v-select>
-            <!-- <p class="text-h5 font-weight-medium text-center" style="color: #9367E6">{{goal.kidsName}}'s Bank</p> -->
-            <v-container>
-              <v-row>
-                <v-col cols="6">
-                  <p class="text-body-1 text-center font-weight-light" style="color: #2C2C2C">Current Amount</p>
-                  <v-sheet class="pl-8">
-                    <v-btn
-                      class="mx-2"
-                      style="display: inline;"
-                      fab
-                      dark
-                      small
-                      color="#9367E6"
-                      @click="goal.current -= 1"
-                    >
-                      <v-icon dark>
-                        mdi-minus
-                      </v-icon>
-                    </v-btn>
-                    <p class="text-h1 font-weight-bold text-center" style="color: #48A182; display: inline;">{{goal.current}}</p>
-                    <v-btn
-                      class="mx-2"
-                      style="display: inline;"
-                      fab
-                      dark
-                      small
-                      color="#9367E6"
-                      @click="goal.current += 1"
-                    >
-                      <v-icon dark>
-                        mdi-plus
-                      </v-icon>
-                    </v-btn>
-                  </v-sheet>
-                </v-col>
-                <v-col cols="6">
-                  <p class="text-body-1 text-center font-weight-light" style="color: #2C2C2C">Goal Target</p>
-                  <p class="text-h1 font-weight-bold text-center" style="color: #48A182">{{goal.total}}</p>
-                </v-col>
-              </v-row>
-              <v-row class="mb-7 px-10">
-                <v-img 
-                  v-for="coinDot in goal.current"
-                  :key="`coinDot-${coinDot}`"
-                  :src="require('@/assets/PigglesCoin.png')" 
-                  aspect-ratio="1"
-                ></v-img>
-                <v-img 
-                  v-for="blankLED in (goal.total - goal.current)"
-                  :key="`blankLED-${blankLED}`"
-                  :src="require('@/assets/BlankLED.png')" 
-                  aspect-ratio="1"
-                ></v-img>
-              </v-row>
-            </v-container>
-            <!--Display the list of behaviors and tasks that are associated with this kid-->
-            <p class="text-body-1 font-weight-light mb-0">{{goal.kidsName}}'s ways to earn Piggles Coins:</p>
-            <v-chip
-              outlined
-              class="ma-2"
-              color="#48A182"
-              text-color="#48A182"
-              v-for="(task, i) in goal.kidTasks"
-              :key="`taskChip-${i}`"
-            >
-              {{task}}
-            </v-chip>
-            <v-chip
-              outlined
-              class="ma-2"
-              color="#48A182"
-              text-color="#48A182"
-              v-for="(behavior, i) in goal.kidBehaviors"
-              :key="`behaviorChip-${i}`"
-            >
-              {{behavior}}
-            </v-chip>
+          <goalCard
+            :goal="goal"
+            :goalIndex="i"
+            :goalCatalog="goalCatalog"
+            :busy="busy"
+            @selectNewGoal="selectNewGoal"
+            @updateGoalCurrentAmount="updateGoalCurrentAmount"
+            @onSave="onSave"
+          />
 
-            <v-btn
-                class="mt-7 mx-auto"
-                style="display: block"
-                dark
-                
-                min-width="15%"
-                color="#A0E667"
-                @click="onSave"
-              >
-                Save
-              </v-btn>
-          </v-card>
         </v-col>
       </v-row>
     </v-container>
@@ -208,11 +208,25 @@
 import { mapState, mapActions } from 'vuex';
 import converter from 'hex2dec';
 // import Goal from '@/components/NewGoal';
+import Halt from '@/components/Halt';
+import GoalCard from '../components/GoalCard.vue';
+
+const days = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+      ]
 
 export default {
-  // components: {
-  //   goal: Goal,
-  // },
+  components: {
+    // goal: Goal,
+    halt: Halt,
+    goalCard: GoalCard
+  },
   name: "Goals",
   data() {
     return {
@@ -222,24 +236,48 @@ export default {
       valid: [true, true, true, true],
       busy: false,
       goals: [],
-      wifiUrl: `${process.env.VUE_APP_WIFI_REDIRECT_URL}#code=wifireset`
+      wifiUrl: `${process.env.VUE_APP_WIFI_REDIRECT_URL}#code=wifireset`,
+      show: false,
+      showCelebration: false,
+      showWelcome: true
     };
   },
   computed: {
     ...mapState(['device']),
     goalCatalog: function () {
-      const goalCatalog = this.device.rewards.map(reward => reward.name)
+      const goalCatalog = this.device.goalCatalog.map(reward => reward.name)
       return goalCatalog
     },
     activeGoals: function () {
       return this.goals.filter(goal => !!goal.kidsName)
-    }
+    },
+    isTodayPiggleDay: function(){
+      const todaysDate = new Date();
+      const todaysDay = todaysDate.getDay();
+      const piggleDayIndex = days.indexOf(this.device.settings.rewardDay);
+      return todaysDay == piggleDayIndex;
+    },
   },
   methods: {
     ...mapActions(['updateDevice', 'resetDevice', 'displayMessage']),
     onValid(index, isValid) {
       this.valid[index] = isValid;
       this.allGoalsValid = this.valid.every(x => x);
+    },
+    startCelebration() {
+      this.showCelebration = true;
+      this.$confetti.start();
+    },
+    closeCelebration() {
+      this.showCelebration = false;
+      this.$confetti.stop();
+    },
+    selectNewGoal(data){
+      const {event, i} = data
+
+      const goalToUpdate = this.goals[i]
+      goalToUpdate.total = this.device.goalCatalog.find(goal => goal.name == event).coins;
+      goalToUpdate.current = 0;
     },
     onPercentage() {
       const enabledGoals = this.goals.filter(g => g.enabled);
@@ -250,15 +288,32 @@ export default {
         this.totalPercentageValid = total === 100;
       }
     },
+    updateGoalCurrentAmount(data) {
+      const {i: goalIndex, amount} = data
+      const goal = this.goals[goalIndex];
+      const newCurrentAmount = goal.current + amount;
+      if (newCurrentAmount >= 0 && newCurrentAmount <= goal.total) {
+        goal.current += amount
+      }
+      return
+    },
     convertColor(color){
       let hex = converter.decToHex(color.toString());
       return hex.slice(2, hex.length);
     },
-    mockGoalSave() {
-      // console.log('save clicked')
-    },
-    editGoal: () => {
-      // console.log("I'm editing a goal!")
+    translateColor(color){
+      switch(color){
+        case 255:
+          return "blue";
+        case 16711680:
+          return "red"
+        case 685312:
+          return "green"
+        case 16718336:
+          return "yellow"
+        default:
+          return ""
+      }
     },
     async onReset() {
       this.clearDialogDisplayed = false;
@@ -272,42 +327,18 @@ export default {
 
       this.busy = false;
     },
-    async saveGoals(){
-      this.busy = true;
-      const device = {
-        deviceId: this.device.deviceId,
-        deviceCode: this.device.deviceCode,
-        piggySleep: this.device.piggySleep,
-        goals: this.goals.map(g => {
-          return {
-            name: g.name,
-            enabled: g.enabled,
-            color: +g.color,
-            percentage: +g.percentage / 100,
-            total: +g.total,
-            current: +g.current,
-            promise: +g.promise,
-            promises: g.promises
-          };
-        })
-      };
-
-      if (await this.updateDevice(device)) {
-        this.displayMessage({ text: 'Goals updated', color: 'info' });
-      } else {
-        this.displayMessage({ text: 'Failed to update goals', color: 'error' });
-      }
-
-      this.busy = false;
-
-    },
     async onSave() {
       this.busy = true;
+
+      // On a save, check to see if any goals were hit. 
+
       const device = {
-        deviceId: this.device.deviceId,
-        deviceCode: this.device.deviceCode,
-        piggySleep: this.device.piggySleep,
-        goals: this.goals.map(g => {
+        ...this.device,
+        goals: this.activeGoals.map(g => {
+
+          if (g.current == g.total){
+            this.startCelebration();
+          }
           return {
             name: g.name,
             enabled: g.enabled,
@@ -331,7 +362,6 @@ export default {
     },
     initialize() {
       this.goals = this.device.goals.map((g, i) => {
-        // console.log('this.device', this.device)
         const kid = this.device.kids[i];
 
         if (kid){
