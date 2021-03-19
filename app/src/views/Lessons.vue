@@ -56,7 +56,7 @@ const lessons = [
     title: "Lesson 4 - Spending",
     image: "digiStanding.png",
     subtitle: "Reward time!",
-    body: "You've worked for this, now itt's time to celebrate!",
+    body: "You've worked for this, now it's time to celebrate!",
     route: "/lessons/lesson/4",
     comingSoon: true
   }

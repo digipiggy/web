@@ -204,7 +204,7 @@
       <v-col cols="12" class="d-flex justify-center pa-0 ">
         <v-icon 
           :size="isDesktop ? 70 : 40"
-          @click="$vuetify.goTo(isEarningAllowance ? '#page4' : '#page3')"
+          @click="$vuetify.goTo(isEarningAllowance ? '#page6' : '#page3')"
           color="#9367E6"
         >mdi-chevron-down</v-icon>
       </v-col>
@@ -262,6 +262,61 @@
                 {{paragraph}}
               </p>
             </div>
+
+            <div class="mb-4 mb-md-6">
+              <p 
+                class="text-body-1 text-md-h6 font-weight-regular mb-0"
+              >
+                Tasks - Doing Helpful Things:
+              </p>
+              <v-chip
+                class="ma-2 white--text"
+                color="#48A182"
+
+              >
+                Vacuuming family room
+              </v-chip>
+              <v-chip
+                class="ma-2 white--text"
+                color="#48A182"
+              >
+                Clearing the table
+              </v-chip>
+              <v-chip
+                class="ma-2 white--text"
+                color="#48A182"
+              >
+                Packing school snack
+              </v-chip>
+            </div>
+
+            <div class="">
+              <p 
+                class="text-body-1 text-md-h6 font-weight-regular mb-0"
+              >
+                Behaviors - Making Good Choices
+              </p>
+              <v-chip
+                class="ma-2 white--text"
+                color="#48A182"
+
+              >
+                Show gratitude
+              </v-chip>
+              <v-chip
+                class="ma-2 white--text"
+                color="#48A182"
+              >
+                Help with asking
+              </v-chip>
+              <v-chip
+                class="ma-2 white--text"
+                color="#48A182"
+              >
+                Mindfulness
+              </v-chip>
+            </div>
+
           </v-col>
           <v-col
             cols="12"
@@ -282,7 +337,7 @@
       <v-col cols="12" class="d-flex justify-center pa-0">
         <v-icon 
           :size="isDesktop ? 70 : 40"
-          @click="$vuetify.goTo((isEarningAllowance ? '#page5' : '#page4'))"
+          @click="$vuetify.goTo('#page4')"
           color="#9367E6"
         >mdi-chevron-down</v-icon>
       </v-col>
@@ -416,6 +471,10 @@
                 {{paragraph}}
               </p>
             </div>
+            <v-img 
+              :src="require(`@/assets/${page5.pigImage}`)" 
+            ></v-img>
+            
           </v-col>
           <v-col
             cols="12"
@@ -436,7 +495,7 @@
       <v-col cols="12" class="d-flex justify-center pa-0">
         <v-icon 
           :size="isDesktop ? 70 : 40"
-          @click="$vuetify.goTo(isEarningIncentive ? '#page7' : '#page6')"
+          @click="$vuetify.goTo('#page5a')"
           color="#9367E6"
         >mdi-chevron-down</v-icon>
       </v-col>
@@ -450,15 +509,14 @@
     >
     </v-row>
 
-    <!-- Page6 Your Turn: Choose Allowance-->
+    <!-- Page5a Your Turn Title-->
     <v-row 
-      v-if="isEarningAllowance || isEarningAllowanceAndIncentive"
       :style="{
         minHeight: '100vh',
-        color: textPage6Allowance.textPrimaryColor,
+        color: page5a.textPrimaryColor,
       }"
       class=" flex-column"
-      id="page6"
+      id="page5a"
       align="center"
     >
       <v-spacer>
@@ -471,54 +529,43 @@
             class="pa-5"
           >
             <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-              <v-icon color="#A0E667" size="30" >{{textPage6Allowance.instructionIcon}}</v-icon>
+              <v-icon color="#A0E667" size="30" >{{page5a.instructionIcon}}</v-icon>
               <v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
                   <span
                     v-bind="attrs"
                     v-on="on"
-                  > {{textPage6Allowance.instructions}}</span>
+                  > {{page5a.instructions}}</span>
                 </template>
-                <span>{{textPage6Allowance.instructionsTT}}</span>
+                <span>{{page5a.instructionsTT}}</span>
               </v-tooltip>
             </p>
             <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
-              {{textPage6Allowance.title}}
+              {{page5a.title}}
             </p>
             <div class="mb-8 mb-md-14">
               <p 
                 class="text-body-1 text-md-h6 font-weight-light mb-6"
-                v-for="paragraph in textPage6Allowance.text"
+                v-for="paragraph in page5a.text"
                 :key="paragraph"
               >
                 {{paragraph}}
               </p>
             </div>
+            
           </v-col>
-
-          <!--Allowance--> 
-          <v-col 
+          <v-col
             cols="12"
-            md="6"         
+            md="6"
+            class="pa-5"
           >
-            <p class="text-h6 font-weight-regular mt-10 mb-0" style="color: #9367E6">Set your weekly Piggles Coin allowance</p>
-            <p class="text-body-2 font-weight-regular mb-8">By selecting {{device.settings.earningSystem}}, you are committing to give your kid(s) a set number of Piggles Coins to save towards their goals each week.</p>
-            <v-row >
-              <v-col cols="12" md="8">
-                <v-select
-                  :items="allowanceOptions"
-                  v-model="allowanceAmount"
-                  label="Coins earned per week"
-                  outlined
-                  background-color="#FFFFFF"
-                ></v-select>
-                <v-btn>
-                  Save Allowance (mocked)
-                </v-btn>
-              </v-col>  
-            </v-row>
-          </v-col>  
-
+            <p class="text-body-1 font-weight-light" style="color: black">
+              {{page5a.imageTitle}}
+            </p>
+            <v-img 
+              :src="require(`@/assets/${page5a.backgroundImage}`)" 
+            ></v-img>
+          </v-col>
         </v-row>
       </v-col>
       <v-spacer>
@@ -526,11 +573,13 @@
       <v-col cols="12" class="d-flex justify-center pa-0">
         <v-icon 
           :size="isDesktop ? 70 : 40"
-          @click="$vuetify.goTo(isEarningAllowance ? '#page8' : '#page7')"
+          @click="$vuetify.goTo(isEarningIncentive || isEarningAllowanceAndIncentive ? '#page7' : '#page6')"
           color="#9367E6"
         >mdi-chevron-down</v-icon>
       </v-col>
     </v-row>
+
+
 
     <!-- Divider for Mobile -->
     <v-row 
@@ -608,7 +657,110 @@
                 </v-col>
               </v-row>
             </div>
+            <v-btn 
+              @click="saveTasksAndBehaviors"
+              class="white--text"
+              color="#9367E6"
+            >
+              Save Tasks and Behaviors (mocked)
+            </v-btn>
+
           </v-col>
+        </v-row>
+      </v-col>
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" class="d-flex justify-center pa-0">
+        <v-icon 
+          :size="isDesktop ? 70 : 40"
+          @click="$vuetify.goTo(isEarningAllowance || isEarningAllowanceAndIncentive ? '#page6' : '#page8')"
+          color="#9367E6"
+        >mdi-chevron-down</v-icon>
+      </v-col>
+    </v-row>
+
+        <!-- Divider for Mobile -->
+    <v-row 
+      :style="{
+        borderBottom: isDesktop ? '' : '3px dashed #AAA'
+      }"
+    >
+    </v-row>
+
+    <!-- Page6 Your Turn: Choose Allowance-->
+    <v-row 
+      v-if="isEarningAllowance || isEarningAllowanceAndIncentive"
+      :style="{
+        minHeight: '100vh',
+        color: textPage6Allowance.textPrimaryColor,
+      }"
+      class=" flex-column"
+      id="page6"
+      align="center"
+    >
+      <v-spacer>
+      </v-spacer>
+      <v-col cols="12" >
+        <v-row>
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
+              <v-icon color="#A0E667" size="30" >{{textPage6Allowance.instructionIcon}}</v-icon>
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <span
+                    v-bind="attrs"
+                    v-on="on"
+                  > {{textPage6Allowance.instructions}}</span>
+                </template>
+                <span>{{textPage6Allowance.instructionsTT}}</span>
+              </v-tooltip>
+            </p>
+            <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
+              {{textPage6Allowance.title}}
+            </p>
+            <div class="mb-8 mb-md-14">
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+                v-for="paragraph in textPage6Allowance.text"
+                :key="paragraph"
+              >
+                {{paragraph}}
+              </p>
+            </div>
+              <v-select
+                :items="allowanceOptions"
+                v-model="allowanceAmount"
+                label="Coins earned per week"
+                outlined
+                background-color="#FFFFFF"
+              ></v-select>
+              <v-btn 
+                @click="saveAllowance"
+                class="white--text"
+                color="#9367E6"
+              >
+                Save Allowance
+              </v-btn>
+          </v-col>
+
+          <!--Allowance--> 
+          <v-col
+            cols="12"
+            md="6"
+            class="pa-5"
+          >
+            <p class="text-body-1 font-weight-light" style="color: black">
+              {{textPage6Allowance.imageTitle}}
+            </p>
+            <v-img 
+              :src="require(`@/assets/${textPage6Allowance.backgroundImage}`)" 
+            ></v-img>
+          </v-col>
+
         </v-row>
       </v-col>
       <v-spacer>
@@ -634,7 +786,7 @@
     <v-row 
       :style="{
         minHeight: '100vh',
-        color: textPage8.textPrimaryColor,
+        color: page8.textPrimaryColor,
       }"
       class=" flex-column"
       id="page8"
@@ -650,27 +802,86 @@
             class="pa-5"
           >
             <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-              <v-icon color="#A0E667" size="30" >{{textPage8.instructionIcon}}</v-icon>
+              <v-icon color="#A0E667" size="30" >{{page8.instructionIcon}}</v-icon>
               <v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
                   <span
                     v-bind="attrs"
                     v-on="on"
-                  > {{textPage8.instructions}}</span>
+                  > {{page8.instructions}}</span>
                 </template>
-                <span>{{textPage8.instructionsTT}}</span>
+                <span>{{page8.instructionsTT}}</span>
               </v-tooltip>
             </p>
             <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
-              {{textPage8.title}}
+              {{page8.title}}
             </p>
             <div class="mb-8 mb-md-14">
               <p 
                 class="text-body-1 text-md-h6 font-weight-light mb-6"
-                v-for="paragraph in textPage8.text"
+                v-for="paragraph in page8.text"
                 :key="paragraph"
               >
                 {{paragraph}}
+              </p>
+            </div>
+            <div class="mb-8 mb-md-14">
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+              >
+                Here's an example of {{device.kids[0].name}}'s Earning Plan:
+              </p>
+            </div>
+
+            <div class="mb-8 mb-md-14" v-if="isEarningAllowance">
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+              >
+                <b>I would like to buy:</b> {{device.goals[0].name}}.
+              </p>
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+              >
+                <b>Cross out this section.</b>
+              </p>
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+              >
+                <b>I receive:</b> {{device.settings.goalAllowance}} Piggles Coin(s).
+              </p>
+            </div>
+            <div class="mb-8 mb-md-14" v-if="isEarningIncentive">
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+              >
+                <b>I would like to buy:</b> {{device.goals[0].name}}.
+              </p>
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+              >
+                <b>By Doing:</b> {{device.kids[0].tasks[0]}}.
+              </p>
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+              >
+                <b>Cross out this section.</b>
+              </p>
+            </div>
+            <div class="mb-8 mb-md-14" v-if="isEarningAllowanceAndIncentive">
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+              >
+                <b>I would like to buy:</b> {{device.goals[0].name}}.
+              </p>
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+              >
+                <b>By Doing:</b> {{device.kids[0].tasks[0]}}.
+              </p>
+              <p 
+                class="text-body-1 text-md-h6 font-weight-light mb-6"
+              >
+                <b>I receive:</b> {{device.settings.goalAllowance || 2}} Piggles Coin(s).
               </p>
             </div>
           </v-col>
@@ -680,10 +891,10 @@
             class="pa-5"
           >
             <p class="text-body-1 font-weight-light" style="color: black">
-              {{textPage8.imageTitle}}
+              {{page8.imageTitle}}
             </p>
             <v-img 
-              :src="require(`@/assets/${textPage8.backgroundImage}`)" 
+              :src="require(`@/assets/${page8.backgroundImage}`)" 
             ></v-img>
           </v-col>
         </v-row>
@@ -750,6 +961,17 @@
                 {{paragraph}}
               </p>
             </div>
+            <v-btn
+              dark
+              to="/goals"
+              color="#48A182"
+              elevation="4"
+            >
+              Goals
+              <v-icon right>
+                mdi-arrow-right
+              </v-icon>
+            </v-btn>
           </v-col>
           <v-col
             cols="12"
@@ -793,14 +1015,13 @@ const textPage1 = {
   title: "How do we earn?",
   text: [
     "Adults earn money in exchange for doing a job. That’s how they pay for things they need and want.",
-    "Grown-ups make a plan with whoever is paying them, like at their job, and agree how much they will earn. They also agree on when they’ll be paid.",
-    "Remember Rex’s goal to save 8 Piggle Coins for a Pirate Costume? Let’s see how he’s doing!"
+    "Grown-ups make a plan with whoever is paying them at their job, and agree on how much they will earn. They also agree on when they will be paid."
   ],
   audience: "kid",
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'logoLightGreen.png',
+  backgroundImage: 'PigglesBankCoins.png',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -808,51 +1029,48 @@ const textPage1 = {
 // Page2 Rex's Earning Philosophy
 const textPage2Allowance = {
   type: "newTextPage",
-  title: "Rex's Earning Plan",
+  title: "Rex's Allowance",
   text: [
-    "Mama Piggle offered to help Rex earn enough coins for his pirate costume goal.",
-    "Each week, Rex will receive an allowance of Piggles Coins to save towards his goal.",
+    "Mama Piggle offers to help Rex reach his pirate costume goal by giving him 2 coins each week.",
+    "He can redeem his coins for the costume when he has saved enough.",
   ],
   audience: "kid",
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexLikeWhat.jpg',
+  backgroundImage: 'RexEarningAllowance.jpg',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
 const textPage2Incentive = {
   type: "newTextPage",
-  title: "Rex's Earning Plan",
+  title: "Rex wants to earn too!",
   text: [
-    "Mama Piggle offered to help Rex earn enough coins for his pirate costume goal.",
+    "Mama Piggle offers to help Rex earn enough coins for his pirate costume goal.",
     "Each week, in exchange for good behaviors and completing tasks, Mama will award Rex with coins.",
-    "She told Rex he will earn coins for being consistent (making good choices regularly over time) and vacuuming the family room.",
-    "Together, Mama Piggle and Rex agreed on what Rex could do to earn coins. Let’s look at their earning plan."
+    "Together, Mama Piggle and Rex agree on what Rex could do to earn coins. Let’s see what they decided."
   ],
   audience: "kid",
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexEarning.png',
+  backgroundImage: 'RexEarningBoth.jpg',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
 const textPage2Both = {
   type: "newTextPage",
-  title: "Rex's Earning Plan",
+  title: "REX WANTS TO EARN TOO!",
   text: [
-    "Mama Piggle offered to help Rex earn enough coins for his pirate costume goal.",
-    "Each week, Rex will receive an allowance of Piggles Coins.",
-    "Rex can also earn Piggles Coins for good behaviors and completing tasks.",
-    "Mama told Rex he will earn extra coins for being consistent (making good choices regularly over time) and vacuuming the family room.",
-    "Together, Mama Piggle and Rex agreed on what Rex could do to earn coins. Let’s look at their earning plan."
+    "Mama Piggle offers to help Rex earn enough coins for his pirate costume goal.",
+    "Each week, Mama will give Rex coins. He will receive one coin each week, but he can also receive extra coins in exchange for good behaviors and completing tasks.",
+    "Together, Mama Piggle and Rex agree on what Rex could do to earn extra coins. Let’s see what they decided."
   ],
   audience: "kid",
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexEarning.png',
+  backgroundImage: 'RexEarningBoth.jpg',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -860,10 +1078,10 @@ const textPage2Both = {
 // Page3 How Rex Earns
 const textPage3Incentive = {
   type: "newTextPage",
-  title: "Behaviors and Tasks",
+  title: "Tasks and behaviors",
   text: [
-    "Mama tells Rex he can choose to work on behaviors or complete tasks to earn Piggles Coins.",
-    "Incentive copy goes here"
+    "Mama Piggle tells Rex he will earn coins for being consistent (making good choices regularly over time) and doing helpful things like vacuuming the family room.",
+    "She makes a deal with Rex to work on the  tasks and behaviors below throughout the week."
   ],
   audience: "kid",
   instructions: "Read Aloud",
@@ -875,10 +1093,10 @@ const textPage3Incentive = {
 }
 const textPage3Both = {
   type: "newTextPage",
-  title: "Behaviors and Tasks",
+  title: "Tasks and behaviors",
   text: [
-    "Mama tells Rex he can choose to work on behaviors or complete tasks to earn extra Piggles Coins above his normal allowance.",
-    "Both copy goes here"
+    "Mama Piggle tells Rex he will earn coins for being consistent (making good choices regularly over time) and doing helpful things like vacuuming the family room.",
+    "She makes a deal with Rex to work on the  tasks and behaviors below throughout the week."
   ],
   audience: "kid",
   instructions: "Read Aloud",
@@ -906,29 +1124,33 @@ const textPage4Allowance = {
 }
 const textPage4Incentive = {
   type: "newTextPage",
-  title: "Piggles Day, how Rex is evaluated",
+  title: "PIGGLES DAY IS HERE!",
   text: [
-    "Incentive Variation",
+    "On their Piggles Day, Mama and Rex use a Goal & Earning Plan to talk about the week.",
+    "How did Rex do on his tasks and behaviors?",
+    "Rex had a chance to earn up to 3 coins that week. Because he consistently made good choices, but didn’t do all of his helpful tasks, she decides to give him 2 Piggles Coins for doing a Great Job that week. "
   ],
   audience: "kid",
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexAndMomma.jpg',
+  backgroundImage: 'RexEarningPlan-Incentive.jpg',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
 const textPage4Both = {
   type: "newTextPage",
-  title: "Piggles Day, how Rex is evaluated",
+  title: "PIGGLES DAY IS HERE!",
   text: [
-    "Allowance and Incentive Variation",
+    "On their Piggles Day, Mama and Rex use a Goal and Earning Plan to talk about the week.",
+    "How did Rex do on his tasks and behaviors?",
+    "Rex had a chance to earn up to 3 additional coins that week. Because he consistently made good choices, but didn’t do all of his helpful tasks, she decides to give him 1 Piggles Coin for doing a Good Job that week. ",
   ],
   audience: "kid",
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexAndMomma.jpg',
+  backgroundImage: 'RexEarningPlan-Both.jpg',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -936,29 +1158,33 @@ const textPage4Both = {
 // Page5 How Rex is Rewarded
 const textPage5Allowance = {
   type: "newTextPage",
-  title: "Piggles Day, how Rex is rewarded",
+  title: "LIGHT IT UP",
   text: [
-    "Allowance Variation",
+    "On their Piggle Day, Mama and Rex look at their Goal and Earning Plan.",
+    "Rex receives 2 Piggle Coins! He can now add them to his goal in his DigiPig bank and watch it light up!"
   ],
   audience: "kid",
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexGoalCard.png',
+  backgroundImage: 'RexEarningPlan-Allowance.jpg',
+  pigImage: 'DigiPigBlueLights.gif',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
 const textPage5Incentive = {
   type: "newTextPage",
-  title: "Piggles Day, how Rex is rewarded",
+  title: "LIGHT IT UP",
   text: [
-    "Incentive Variation",
+    "Rex earns 2 Piggles Coins, which he can now add to his goal in his DigiPig bank!",
+    "Then he watches the DigiPig light up!",
   ],
   audience: "kid",
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexGoalCard.png',
+  backgroundImage: 'RexGoalsCard.png',
+  pigImage: 'DigiPigBlueLights.gif',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -966,13 +1192,30 @@ const textPage5Both = {
   type: "newTextPage",
   title: "Piggles Day, how Rex is rewarded",
   text: [
-    "Allowance and Incentive Variation",
+    "Rex earns 2 Piggles Coins, which he can now add to his goal in his DigiPig bank!",
+    "Then he watches the DigiPig light up!",
   ],
   audience: "kid",
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexGoalCard.png',
+  backgroundImage: 'RexGoalsCard.png',
+  pigImage: 'DigiPigBlueLights.gif',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+
+const page5a = {
+  type: "newTextPage",
+  title: "Now it’s your turn!",
+  text: [
+    "Lets setup your Goal & Earning Plan.",
+  ],
+  audience: "kid",
+  instructions: "Take Action",
+  instructionsTT: "Pick your goal.",
+  instructionIcon: "fas fa-tasks",
+  backgroundImage: 'EarningPlan.jpg',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -980,15 +1223,15 @@ const textPage5Both = {
 // Page6 Your Turn: Choose Allowance
 const textPage6Allowance = {
   type: "newTextPage",
-  title: "Your turn, Allowance",
+  title: "Allowance",
   text: [
-    "Pick your allowance",
+    "Choose your family’s weekly allowance of Piggles Coins.",
   ],
   audience: "kid",
-  instructions: "Read Aloud",
-  instructionsTT: "Read this section out loud with your kid(s).",
-  instructionIcon: "fab fa-readme",
-  backgroundImage: 'AllowanceSelector.png',
+  instructions: "Take Action",
+  instructionsTT: "Pick your goal.",
+  instructionIcon: "fas fa-tasks",
+  backgroundImage: 'RexStanding.png',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1010,17 +1253,45 @@ const textPage7Incentive = {
 }
 
 // Page8 Your Turn: fill out goal sheet
-const textPage8 = {
+const textPage8Allowance = {
+  type: "newTextPage",
+  title: "GOAL & EARNING PLAN",
+  text: [
+    "Grab a blank Goal & Earning Plan from your Piggles Box for each kid and fill in the sections below.",
+  ],
+  audience: "kid",
+  instructions: "Take Action",
+  instructionsTT: "Pick your goal.",
+  instructionIcon: "fas fa-tasks",
+  backgroundImage: 'EarningPlanAllowance.png',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+const textPage8Incentive = {
   type: "newTextPage",
   title: "Your turn, Goal Sheet",
   text: [
-    "Review your incentives",
+    "Grab a blank Goal & Earning Plan from your Piggles Box for each kid and fill in the sections below.",
   ],
   audience: "kid",
-  instructions: "Read Aloud",
-  instructionsTT: "Read this section out loud with your kid(s).",
-  instructionIcon: "fab fa-readme",
-  backgroundImage: 'EarningPlan.png',
+  instructions: "Take Action",
+  instructionsTT: "Pick your goal.",
+  instructionIcon: "fas fa-tasks",
+  backgroundImage: 'EarningPlanIncentive.png',
+  backgroundColor: "#FFFFFF",
+  textPrimaryColor: "#9367E6"
+}
+const textPage8Both = {
+  type: "newTextPage",
+  title: "Your turn, Goal Sheet",
+  text: [
+    "Grab a blank Goal & Earning Plan from your Piggles Box for each kid and fill in the sections below.",
+  ],
+  audience: "kid",
+  instructions: "Take Action",
+  instructionsTT: "Pick your goal.",
+  instructionIcon: "fas fa-tasks",
+  backgroundImage: 'EarningPlan.jpg',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1028,15 +1299,16 @@ const textPage8 = {
 // Page9 Your Turn: First Goal Contribution
 const textPage9 = {
   type: "newTextPage",
-  title: "Your turn, Update your goal",
+  title: "YOUR PIGGLES DAY",
   text: [
-    "Add a coin to your goals, on us!",
+    "You’ve selected Friday’s as your Piggles Day.",
+    "As a reward for completing Lesson 2, head on over to the Goals page and add your first Piggles Coin to your goals! ",
   ],
   audience: "kid",
-  instructions: "Read Aloud",
-  instructionsTT: "Read this section out loud with your kid(s).",
-  instructionIcon: "fab fa-readme",
-  backgroundImage: 'GoalPage.png',
+  instructions: "Take Action",
+  instructionsTT: "Pick your goal.",
+  instructionIcon: "fas fa-tasks",
+  backgroundImage: 'PigglesCoin1.png',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1065,8 +1337,11 @@ export default {
       textPage5Both,
       textPage6Allowance,
       textPage7Incentive,
-      textPage8,
+      textPage8Allowance,
+      textPage8Incentive,
+      textPage8Both,
       textPage9,
+      page5a,
       loading: false,
       allowanceOptions:[
         1,
@@ -1132,6 +1407,15 @@ export default {
       } else {
         return this.textPage5Both
       }
+    },
+    page8: function() {
+      if (this.device.settings.earningSystem == 'Allowance'){
+        return this.textPage8Allowance
+      } else if (this.device.settings.earningSystem == 'Incentive'){
+        return this.textPage8Incentive
+      } else {
+        return this.textPage8Both
+      }
     }
   },
   methods: {
@@ -1149,7 +1433,7 @@ export default {
         selectedKid.tasks.push(task);
       }
     },
-    async saveGoals() {
+    async saveTasksAndBehaviors() {
       this.loading = true;
       const device = {
         deviceId: this.device.deviceId,
@@ -1158,32 +1442,30 @@ export default {
         settings: this.device.settings,
         goalCatalog: this.device.goalCatalog,
         status: this.device.status,
-        goals: this.goals.map((g, i)=> {
-          if (this.activeGoals[i]){
-            const currentReward = this.device.goalCatalog.find(reward => reward.name == g.name)
-            return {
-              name: this.activeGoals[i].name,
-              enabled: g.enabled,
-              color: +g.color,
-              percentage: +g.percentage / 100,
-              total: currentReward.coins,
-              current: +g.current,
-              promise: +g.promise,
-              promises: g.promises
-            };
-          } else {
-            return {
-              name: g.name,
-              enabled: g.enabled,
-              color: +g.color,
-              percentage: +g.percentage / 100,
-              total: +g.total,
-              current: +g.current,
-              promise: +g.promise,
-              promises: g.promises
-            };
-          }
-        })
+        goals: this.device.goals
+      };
+
+      if (await this.updateDevice(device)) {
+        this.displayMessage({ text: 'Goals saved', color: 'info' });
+      } else {
+        this.displayMessage({ text: 'Failed to save goals', color: 'error' });
+      }
+
+      this.loading = false;
+    },
+    async saveAllowance() {
+      this.loading = true;
+      const device = {
+        deviceId: this.device.deviceId,
+        deviceCode: this.device.deviceCode,
+        kids: this.device.kids,
+        settings: {
+          ...this.device.settings,
+          goalAllowance: this.allowanceAmount
+        },
+        goalCatalog: this.device.goalCatalog,
+        status: this.device.status,
+        goals: this.device.goals
       };
 
       if (await this.updateDevice(device)) {

@@ -1,7 +1,7 @@
 <template>
   <v-card class="elevation-3 pa-5">
-    <p class="text-h6 font-weight-regular mb-0" >My DigiPig</p>
-    <p class="text-caption font-weight-regular" >Device Code: {{device.deviceCode}} </p>
+    <p class="text-h6 font-weight-regular mb-0" >Our Family's Goals</p>
+    <p class="text-caption font-weight-regular" >DigiPig Device Code: {{device.deviceCode}} </p>
 
     <v-row v-if="activeGoals.length == 0" class="mt-2">
       <p class="ml-2 mb-2">Goals have not been set yet. Set your goals in Lesson One. Get started now!</p>
