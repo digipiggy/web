@@ -357,22 +357,22 @@
       <v-col cols="12" class="d-flex justify-center pa-0">
         <v-icon 
           :size="isDesktop ? 70 : 40"
-          @click="$vuetify.goTo('#page4')"
+          @click="$vuetify.goTo('#page6')"
           color="#9367E6"
         >mdi-chevron-down</v-icon>
       </v-col>
     </v-row>
 
     <!-- Page Divider for Mobile -->
-    <v-row 
+    <!-- <v-row 
       :style="{
         borderBottom: isDesktop ? '' : '3px dashed #AAA'
       }"
     >
-    </v-row>
+    </v-row> -->
 
     <!-- Page 4 --> 
-    <v-row 
+    <!-- <v-row 
       :style="{
         minHeight: '100vh',
         color: textPage4.textPrimaryColor,
@@ -382,13 +382,6 @@
       class=" flex-column"
       id="page4"
     >
-      <!-- <v-col cols="12" class="d-flex justify-center pa-0">
-        <v-icon 
-          :size="isDesktop ? 70 : 40"
-          @click="$vuetify.goTo('#page3')"
-          color="#9367E6"
-        >mdi-chevron-up</v-icon>
-      </v-col> -->
       <v-spacer>
       </v-spacer>
       <v-col
@@ -469,7 +462,7 @@
           color="#9367E6"
         >mdi-chevron-down</v-icon>
       </v-col>
-    </v-row>
+    </v-row> -->
 
     <!-- Page Divider for Mobile -->
     <v-row 
@@ -568,7 +561,7 @@
               </v-select>
             </div>
             <v-btn
-              color="#A0E667"
+              color="#9367E6"
               class="ma-2 white--text"
               :loading="loading"
               :disabled="loading"
@@ -622,8 +615,16 @@
             class="pa-5"
           >
             <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
-              <v-icon color="#A0E667" size="30" >fab fa-readme{{textPage7.instructionIcon}}</v-icon>
-              {{textPage7.instructions}}
+              <v-icon color="#A0E667" size="30" >{{textPage7.instructionIcon}}</v-icon>
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <span
+                    v-bind="attrs"
+                    v-on="on"
+                  > {{textPage7.instructions}}</span>
+                </template>
+                <span>{{textPage7.instructionsTT}}</span>
+              </v-tooltip>
             </p>
             <p class="text-h6 text-uppercase">
               {{textPage7.title}}
@@ -634,8 +635,9 @@
               {{textPage7.text[0]}}
             </p>
             <v-btn
-              to="/lessons"
-              color="#A0E667"
+              to="/lessons/lesson/2"
+              color="#48A182"
+              dark
               class="ma-2 white--text"
             >
               Start Lesson 2
@@ -729,26 +731,26 @@ const textPage3 = {
   quoteImg: "RexPiggleHeadshot.png",
   textPrimaryColor: "#9367E6"
 }
-const textPage4 = {
-  type: "newTextPage",
-  title: "Rex's Goals",
-  text: [
-    "Rex wants to buy a pirate costume. It costs 8 Piggle coins, but he only has 3.",
-    "Rex sets a goal to get 8 coins to buy the costume. He plans to save his 3 coins and will ask his family how he can earn 5 more.",
-    "Mama Piggle tells Rex how he could earn one coin a week, if he sets up an earning plan with her.",
-    "If Rex earns one coin a week, how many weeks will it take for him to reach his goal?",
-    "Why is it important for Rex to set his money goal?"
-  ],
-  audience: "kid",
-  instructions: "Read and Share",
-  instructionsTT: "Read and discuss the italicized questions with your kid(s)",
-  instructionIcon: "fas fa-book-reader",
-  backgroundImage: 'MomSearchCorner.png',
-  backgroundColor: "#FFFFFF",
-  quote: "“I wanted a pirate costume for Halloween. I didn’t have the money yet, so I made a paper eye patch.” -Rex Piggle",
-  quoteImg: "RexPiggleHeadshot.png",
-  textPrimaryColor: "#9367E6"
-}
+// const textPage4 = {
+//   type: "newTextPage",
+//   title: "Rex's Goals",
+//   text: [
+//     "Rex wants to buy a pirate costume. It costs 8 Piggle coins, but he only has 3.",
+//     "Rex sets a goal to get 8 coins to buy the costume. He plans to save his 3 coins and will ask his family how he can earn 5 more.",
+//     "Mama Piggle tells Rex how he could earn one coin a week, if he sets up an earning plan with her.",
+//     "If Rex earns one coin a week, how many weeks will it take for him to reach his goal?",
+//     "Why is it important for Rex to set his money goal?"
+//   ],
+//   audience: "kid",
+//   instructions: "Read and Share",
+//   instructionsTT: "Read and discuss the italicized questions with your kid(s)",
+//   instructionIcon: "fas fa-book-reader",
+//   backgroundImage: 'MomSearchCorner.png',
+//   backgroundColor: "#FFFFFF",
+//   quote: "“I wanted a pirate costume for Halloween. I didn’t have the money yet, so I made a paper eye patch.” -Rex Piggle",
+//   quoteImg: "RexPiggleHeadshot.png",
+//   textPrimaryColor: "#9367E6"
+// }
 // const textPage5 = {
 //   type: "newTextPage",
 //   title: "Your Time To Shine",
@@ -772,7 +774,7 @@ const textPage6 = {
   ],
   audience: "kid",
   instructions: "Take Action",
-  instructionsTT: "Something else",
+  instructionsTT: "Pick your goal.",
   instructionIcon: "fas fa-tasks",
   imageTitle: "Goals Page Example:",
   backgroundImage: 'GoalPage.png',
@@ -824,7 +826,7 @@ export default {
       textPage1,
       textPage2,
       textPage3,
-      textPage4,
+      // textPage4,
       // textPage5,
       textPage6,
       textPage7,
@@ -851,8 +853,8 @@ export default {
               enabled: g.enabled,
               color: +g.color,
               percentage: +g.percentage / 100,
-              total: currentGoal.coins,
-              current: +g.current,
+              total: +currentGoal.coins,
+              current: 0,
               promise: +g.promise,
               promises: g.promises
             };
@@ -863,7 +865,7 @@ export default {
               color: +g.color,
               percentage: +g.percentage / 100,
               total: +g.total,
-              current: +g.current,
+              current: 0,
               promise: +g.promise,
               promises: g.promises
             };

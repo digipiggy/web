@@ -1,28 +1,34 @@
 <template>
-  <v-card v-if="!device.status.completedPreferences" class="elevation-4 pa-5 d-flex align-center" color="#A0E667">
+  <v-card v-if="!device.status.completedPreferences" class="elevation-4 pa-5" >
     <v-img 
-      style="display: inline-block;" 
-      class=""
+      class="my-5 mx-auto"
       :src="require(`@/assets/PigHello.gif`)" 
       max-width="30px" >
     </v-img>
-    <p class="text-h5 mb-0" style="display: inline-block; padding-left: 5px; color: white;">Welcome to DigiPig! Get started by setting your family's values.</p>
-    <v-spacer></v-spacer>
-    <v-btn
-      dense
-      to="/settings"
-    >
-      Family Settings
-    </v-btn>
+    <p class="text-h5 mb-5 text-center" >Welcome to DigiPig! Get started by setting your family's values.</p>
+    <p class="text-h5 mb-5 text-center">
+      <v-btn
+        dense
+        dark
+        to="/settings"
+        color="#48A182"
+        elevation="4"
+      >
+        Family Settings
+        <v-icon right>
+          mdi-arrow-right
+        </v-icon>
+      </v-btn>
+    </p>
   </v-card>
-  <v-card v-else class="elevation-4 pa-5" color="#A0E667">
+  <v-card v-else class="elevation-4 pa-5" >
     <v-img 
       style="display: inline-block;" 
       class=""
       :src="require(`@/assets/${welcomeMessage.icon}.gif`)" 
-      width="30px" >
+      width="20px" >
     </v-img>
-    <p class="text-h5 mb-0" style="display: inline-block; padding-left: 5px; color: white;">{{welcomeMessage.text}}</p>
+    <p class="text-h5 mb-0" style="display: inline-block; padding-left: 5px;">{{welcomeMessage.text}}</p>
   </v-card>
 </template>
 

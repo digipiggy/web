@@ -188,15 +188,16 @@ export default new Vuex.Store({
           return false;
         }
 
-        const updatedDevice = cloneDevice(state.device);
-        updatedDevice.goals.forEach((g, i) => {
-          g.total = values[i].total,
-            g.current = values[i].current,
-            g.promise = values[i].promise
-        });
+        // const updatedDevice = cloneDevice(state.device);
+        // console.log("updatedDevice", updatedDevice)
+        // updatedDevice.goals.forEach((g, i) => {
+        //   g.total = values[i].total,
+        //     g.current = values[i].current,
+        //     g.promise = values[i].promise
+        // });
 
-        Vue.ls.set('device', updatedDevice);
-        commit('setDevice', updatedDevice);
+        // Vue.ls.set('device', updatedDevice);
+        // commit('setDevice', updatedDevice);
         return true;
       } catch (err) {
         console.error(err);

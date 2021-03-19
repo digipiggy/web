@@ -37,8 +37,8 @@
             </v-btn>
             <v-row justify="center" >
               <v-col cols="12" md="8">
-                <p class="text-h6 font-weight-regular text-center mb-3" style="color: #9367E6">Enter your kid(s) names.</p>
-                <p class="text-body-1 font-weight-light text-center mb-6">We recommend this system for kids ages 5 - 10. This system supports up to 4 kids in the system at a time.</p>
+                <p class="text-h6 font-weight-regular text-center my-4" style="color: #9367E6">Enter your kid(s) names.</p>
+                <p class="text-body-1 font-weight-light text-center mb-4">We recommend this system for kids ages 5 - 10. This system supports up to 4 kids in the system at a time.</p>
               </v-col>
             </v-row>
             <v-row no-gutters justify="center">
@@ -415,15 +415,18 @@
     <v-row justify="center">
       <v-col cols="12" md="8">
         <p class="text-h6 font-weight-regular text-center mb-4">Fantastic, you're all set!</p>
-        <p class="text-body-1 font-weight-light text-center mb-4">When you're ready, take a stroll over to the lesson section and dive into lesson 1 with your kid(s).</p>
-        <p class="text-body-1 font-weight-light text-center mb-4">Lesson 1 is an introduction to Goals for your kids. They will learn what a goal is, how The Piggles Family sets their goals, and choose their first goal to work towards.</p>
+        <p class="text-body-1 font-weight-light text-center mb-4">When you're ready, take a stroll over to the lesson page and dive into lesson 1 with your kid(s).</p>
+        <p class="text-body-1 font-weight-light text-center mb-4">Lesson 1 is an introduction to Goals for your kids. They will learn what a goal is, how the Piggles family sets their goals, and choose their first goal to work towards.</p>
         <p class="text-center">
           <v-btn
-            color="#9367E6"
+            color="#48A182"
             class="ma-2 white--text"
             to="/lessons"
           >
             Lessons
+            <v-icon right>
+              mdi-arrow-right
+            </v-icon>
           </v-btn>
           <v-btn
             color="grey lighten-3"
