@@ -11,6 +11,7 @@
             to="/settings"
           >
             Family Settings
+            <v-icon right dark>arrow_forward</v-icon>
           </v-btn>
         </v-card>
       </v-col>

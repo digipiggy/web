@@ -663,6 +663,7 @@
               color="#9367E6"
             >
               Save Tasks and Behaviors (mocked)
+              <v-icon right dark>cloud_upload</v-icon>
             </v-btn>
 
           </v-col>
@@ -744,6 +745,7 @@
                 color="#9367E6"
               >
                 Save Allowance
+                <v-icon right dark>cloud_upload</v-icon>
               </v-btn>
           </v-col>
 
@@ -1002,7 +1004,7 @@ const titlePage = {
   type: "newTitlePage",
   title: "Lesson 2",
   subtitle: "Earning",
-  readTime: "20",
+  readTime: "15",
   audience: "Family reads together.",
   backgroundImage: "Lesson2Title.png",
   backgroundImageMobile: "Lesson2Title.png",

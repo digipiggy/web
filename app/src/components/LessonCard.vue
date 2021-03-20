@@ -17,6 +17,7 @@
       :to="lesson.route"
     >
       Start {{lesson.title}}
+      <v-icon right dark>fas fa-book-reader</v-icon>
     </v-btn>
   </v-card>
 </template>

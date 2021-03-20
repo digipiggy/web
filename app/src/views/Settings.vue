@@ -6,8 +6,8 @@
           <v-window-item >
               <v-row justify="center" >
                 <v-col cols="12" md="10">
-                  <p class="text-h5 font-weight-regular text-center my-8">👋 Hi there! We're excited you're on this journey with us. </p>
-                  <p class="text-body-1 font-weight-light text-center my-8" >This guide will help you customize the Digi-Pig experience to your family's unique situation and values. The guide takes about 10 minutes to complete, and should be completed by parents before starting lessons or setting goals.</p>
+                  <p class="text-h5 font-weight-regular text-center my-8" style="color: #9367E6">👋 Hi there! We're excited you're on this journey with us. </p>
+                  <p class="text-body-1 font-weight-light text-center my-8" >This guide will help you customize the Piggles Family experience to your family's unique situation and values. The guide takes about 10 minutes to complete, and should be completed by parents before starting lessons or setting goals.</p>
                 </v-col>
               </v-row>
             <p class="text-center" >
@@ -37,7 +37,7 @@
             </v-btn>
             <v-row justify="center" >
               <v-col cols="12" md="8">
-                <p class="text-h6 font-weight-regular text-center my-4" style="color: #9367E6">Enter your kid(s) names.</p>
+                <p class="text-h6 font-weight-regular text-center my-4" style="color: #9367E6">Enter your kid(s) names</p>
                 <p class="text-body-1 font-weight-light text-center mb-4">We recommend this system for kids ages 5 - 10. This system supports up to 4 kids in the system at a time.</p>
               </v-col>
             </v-row>
@@ -71,6 +71,7 @@
               <v-col cols="9" md="4">
                 <p class="text-center" >
                   <v-btn
+                    v-if="kids.length <= 3"
                     color="#FFFFFF"
                     class="black--text"
                     @click="addKid"
@@ -114,7 +115,7 @@
             </v-btn>
             <v-row justify="center" >
               <v-col cols="12" md="8">
-                <p class="text-h6 font-weight-regular text-center mt-10 mb-3" style="color: #9367E6">Earning Philosophies.</p>
+                <p class="text-h6 font-weight-regular text-center mt-10 mb-3" style="color: #9367E6">Earning Philosophies</p>
                 <p class="text-body-1 font-weight-light text-center mb-8">The Piggles Family system uses Piggles Coins as a way to show progress towards a goal. This in-app currency is represented by lights that appear on the DigiPig. On the next screen, you'll chose which of our 3 custom Earning Philosophies you'd like your children to use.</p>
               </v-col>
             </v-row>
@@ -143,7 +144,7 @@
                 mdi-chevron-left
               </v-icon>
             </v-btn>
-            <p class="text-h6 font-weight-regular text-center mt-10 mb-3" style="color: #9367E6">Select your family's Earning Philosophy.</p>
+            <p class="text-h6 font-weight-regular text-center mt-10 mb-3" style="color: #9367E6">Select your family's Earning Philosophy</p>
             <v-container class="mb-6">
               <v-row justify="center">
                 <v-col 
@@ -194,8 +195,9 @@
             </v-btn>
             <v-row justify="center" >
               <v-col cols="12" md="8">
-                <p class="text-h6 font-weight-regular text-center mb-3" style="color: #9367E6">Create your Goal Catalog. </p>
-                <p class="text-body-1 font-weight-light text-center mb-8">The Goal Catalog is your curated list of goals that your kid(s) will choose from in lesson 1. In this step, select the goals that you would like to include in your catalog. Goals don't have to cost money. They can be experiences as well. Pick from our pre-defined list, or create your own!</p>
+                <p class="text-h6 font-weight-regular text-center mb-3" style="color: #9367E6">Create your Goal Catalog</p>
+                <p class="text-body-1 font-weight-light text-center mb-3">The Goal Catalog is your curated list of goals that your kid(s) will choose from in lesson 1. In this step, select the goals that you would like to include in your catalog. </p>
+                <p class="text-body-1 font-weight-light text-center mb-8">A Goal is the combination of the reward your kid will receive, and the number of Piggles Coins it costs to get that reward. Goals don't have to cost you money. They can be experiences as well. Pick from our pre-defined list, or create your own!</p>
               </v-col>
             </v-row>
             <v-container class="mb-5">
@@ -261,16 +263,19 @@
                     <p class="text-h2 font-weight-bold text-center mb-0" style="color: #9367E6">{{newGoalTotal}}</p>
                     <p class="text-caption text-center my-0">Piggles Coins</p>
                     <v-btn
+                      min-width="100%"
                       @click="cancelNewGoal"
                       outlined
-                      color="#A0E667"
-                      class="ma-2"
+                      color="#9367E6"
+                      class="mb-2"
                     >
                       Cancel
                     </v-btn>
                     <v-btn
+                      min-width="100%"
                       @click="saveNewGoal"
-                      color="#A0E667"
+                      class="white--text"
+                      color="#9367E6"
                     >
                       Save
                     </v-btn>
@@ -324,7 +329,7 @@
             </v-btn>
             <v-row justify="center" >
               <v-col cols="12" md="8">
-                <p class="text-h6 font-weight-regular text-center mb-3" style="color: #9367E6">Select tasks and/or behaviors</p>
+                <p class="text-h6 font-weight-regular text-center mb-3" style="color: #9367E6">Select Tasks and/or Behaviors</p>
                 <p class="text-body-1 font-weight-light text-center mb-6">Your kid(s) will earn Piggles Coins every week based on the completion of the tasks and behaviors you select. Choose from our list, or feel free to add your own!</p>
               </v-col>
             </v-row>
@@ -371,8 +376,8 @@
             </v-btn>
             <v-row justify="center" >
               <v-col cols="12" md="8">
-                <p class="text-h6 font-weight-regular text-center mb-3" style="color: #9367E6">Pick your Piggles Day.</p>
-                <p class="text-body-1 font-weight-light text-center mb-5">Piggles Day is when you and your kid(s) will review goal progress, reward Piggles Coins, and do the next lesson.</p>
+                <p class="text-h6 font-weight-regular text-center mb-3" style="color: #9367E6">Pick your Piggles Day</p>
+                <p class="text-body-1 font-weight-light text-center mb-5">Piggles Day is when you and your kid(s) will review goal progress, reward Piggles Coins, and read the next lesson.</p>
               </v-col>
             </v-row>
             <v-row justify="center" >
@@ -399,7 +404,7 @@
           <!--Success 7-->
           <v-window-item>
             <div v-if="loading">
-              <p class="text-h6 font-weight-regular text-center mb-0" style="color: #9367E6">Saving your settings.</p>
+              <p class="text-h6 font-weight-regular text-center mb-0" style="color: #9367E6">Saving your settings</p>
               <v-container class="pt-12">
                 <v-row align="center" justify="center">
                   <loader color="#9367E6"/>
@@ -410,11 +415,10 @@
       </v-window>
   </v-container>
 
-
   <v-container v-else-if="showFirstSetupCompletion">
     <v-row justify="center">
       <v-col cols="12" md="8">
-        <p class="text-h6 font-weight-regular text-center mb-4">Fantastic, you're all set!</p>
+        <p class="ttext-h5 font-weight-regular text-center mb-4" style="color: #9367E6">Fantastic, you're all set!</p>
         <p class="text-body-1 font-weight-light text-center mb-4">When you're ready, take a stroll over to the lesson page and dive into lesson 1 with your kid(s).</p>
         <p class="text-body-1 font-weight-light text-center mb-4">Lesson 1 is an introduction to Goals for your kids. They will learn what a goal is, how the Piggles family sets their goals, and choose their first goal to work towards.</p>
         <p class="text-center">
@@ -439,7 +443,6 @@
       </v-col>
     </v-row>
   </v-container>
-
 
   <v-container v-else>
     <!--Title Text & Kid Entry--> 
@@ -476,6 +479,7 @@
           </v-col >
         </v-row >
         <v-btn
+          v-if="kids.length <= 3"
           color="#FFFFFF"
           class="black--text"
           @click="addKid"
@@ -527,8 +531,8 @@
     <v-row justify="center">
       <v-col cols="11">
         <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Our Family's Goal Catalog</p>
-        <p class="text-body-1 font-weight-light mb-8">The Goal Catalog is your curated list of goals that your kid(s) will choose from in lesson 1. In this step, select the goals that you would like to include in your catalog. Goals don't have to cost money. They can be experiences as well. Choose from our list, or feel free to add your own!</p>
-        <v-container class="mb-10">
+          <p class="text-body-1 font-weight-light mb-3">The Goal Catalog is your curated list of goals that your kid(s) will choose from in lesson 1. In this step, select the goals that you would like to include in your catalog. </p>
+          <p class="text-body-1 font-weight-light mb-8">A Goal is the combination of the reward your kid will receive, and the number of Piggles Coins it costs to get that reward. Goals don't have to cost you money. They can be experiences as well. Pick from our pre-defined list, or create your own!</p>        <v-container class="mb-10">
           <v-row class="mb-5">
             <v-col 
               cols="12"
@@ -589,18 +593,21 @@
                   ></v-img>
                 </v-row>
                 <p class="text-h2 font-weight-bold text-center mb-0" style="color: #9367E6">{{newGoalTotal}}</p>
-                <p class="text-caption text-center my-0">Piggles Coins</p>
+                <p class="text-caption text-center mt-0 mb-2">Piggles Coins</p>
                 <v-btn
+                  min-width="100%"
                   @click="cancelNewGoal"
                   outlined
-                  color="#A0E667"
-                  class="ma-2"
+                  color="#9367E6"
+                  class="mb-2"
                 >
                   Cancel
                 </v-btn>
                 <v-btn
+                  min-width="100%"
                   @click="saveNewGoal"
-                  color="#A0E667"
+                  class="white--text"
+                  color="#9367E6"
                 >
                   Save
                 </v-btn>
@@ -660,7 +667,7 @@
     <v-row justify="center">
       <v-col cols="11">
         <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Our Piggles Day</p>
-        <p class="text-body-1 font-weight-light mb-8">Piggles Day is when you and your kid(s) will review goal progress, reward Piggles Coins, and do the next lesson.</p>
+        <p class="text-body-1 font-weight-light mb-8">Piggles Day is when you and your kid(s) will review goal progress, reward Piggles Coins, and read the next lesson.</p>
         <v-row>
           <v-col cols="10" md="4">
             <v-select
@@ -716,11 +723,11 @@ const earningSystems = [
   },
   {
     title: "Incentive",
-    text: "The kids(s) will earn a varying number of Piggles Coins on a weekly basis, for completing certain tasks and behaviors.",
+    text: "The kid(s) will earn a varying number of Piggles Coins for completing certain Tasks and Behaviors on a weekly basis",
   },
   {
     title: "Allowance + Incentive",
-    text: "The kid(s) will earn both a set number of Piggles Coins on a weekly basis, and can earn more for completing certain tasks and behaviors.",
+    text: "The kid(s) will earn both a set number of Piggles Coins, and can earn more for completing certain Tasks and Behaviors on a weekly basis.",
   }
 ];
 const tasks = [

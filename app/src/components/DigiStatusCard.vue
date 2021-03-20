@@ -8,6 +8,7 @@
       <p class="ml-2">
         <v-btn color="#48A182" dark to="/lessons/lesson/1">
           Lesson 1
+          <v-icon right dark>arrow_forward</v-icon>
         </v-btn>
       </p>
     </v-row>
@@ -58,6 +59,7 @@
 
     <v-btn v-if="!activeGoals.length == 0" color="#48A182" dark to="/goals">
       Update My Goals
+      <v-icon right dark>arrow_forward</v-icon>
     </v-btn>
 
   </v-card>

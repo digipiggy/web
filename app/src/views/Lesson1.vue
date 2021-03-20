@@ -566,8 +566,8 @@
               :loading="loading"
               :disabled="loading"
               @click="saveGoals"
-            >
-              Save Goals
+            >Save Goals
+              <v-icon right dark>cloud_upload</v-icon>
             </v-btn>
           </v-col>
         </v-row>
@@ -641,6 +641,7 @@
               class="ma-2 white--text"
             >
               Start Lesson 2
+              <v-icon right dark>arrow_forward</v-icon>
             </v-btn>
           </v-col>
           <v-col
@@ -770,7 +771,7 @@ const textPage6 = {
   type: "newTextPage",
   title: "It's your turn!",
   text: [
-    "Kids, choose a goal from the Goal Catalog that you would like to save up for."
+    "Kids, choose your first goal from the Goal Catalog that you would like to save up for."
   ],
   audience: "kid",
   instructions: "Take Action",
@@ -785,7 +786,7 @@ const textPage7 = {
   type: "newTextPage",
   title: "Get ready to earn",
   text: [
-    "Congratulations on completing Lesson 1 - Goals! Now that your Goal has been set and your child has a Reward in sight, it’s time to learn how to earn Piggles Coins. Find out how in Lesson 2 - Earning!",
+    "Congratulations on completing Lesson 1 - Goals! Now that your goal has been set and your child has a reward in sight, it’s time to learn how to earn Piggles Coins. Find out how in Lesson 2 - Earning!",
   ],
   audience: "kid",
   instructions: "Take Action",
