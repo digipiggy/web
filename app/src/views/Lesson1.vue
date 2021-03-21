@@ -790,7 +790,7 @@ const textPage7 = {
   ],
   audience: "kid",
   instructions: "Take Action",
-  instructionIcon: "fab fa-tasks",
+  instructionIcon: "fas fa-tasks",
   backgroundImage: 'rex&Penny.jpg',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"

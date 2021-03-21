@@ -160,13 +160,6 @@
       class=" flex-column"
       id="page2"
     >
-      <!-- <v-col cols="12" class="d-flex justify-center  pa-0">
-        <v-icon 
-          :size="isDesktop ? 70 : 40"
-          @click="$vuetify.goTo(0)"
-          color="#9367E6"
-        >mdi-chevron-up</v-icon>
-      </v-col> -->
       <v-spacer>
       </v-spacer>
       <v-col
@@ -198,6 +191,11 @@
             {{paragraph}}
           </p>
         </div>
+      </v-col>
+      <v-col v-if="!isDesktop">
+        <v-img 
+          :src="require(`@/assets/${page2.backgroundImage}`)" 
+        ></v-img>       
       </v-col>
       <v-spacer>
       </v-spacer>
@@ -319,6 +317,7 @@
 
           </v-col>
           <v-col
+            v-if="isDesktop"
             cols="12"
             md="6"
             class="pa-5"
@@ -364,7 +363,7 @@
       <v-spacer>
       </v-spacer>
       <v-col cols="12" >
-        <v-row>
+        <v-row align="center">
           <v-col
             cols="12"
             md="6"
@@ -404,6 +403,7 @@
               {{page4.imageTitle}}
             </p>
             <v-img 
+              
               :src="require(`@/assets/${page4.backgroundImage}`)" 
             ></v-img>
           </v-col>
@@ -441,7 +441,7 @@
       <v-spacer>
       </v-spacer>
       <v-col cols="12" >
-        <v-row>
+        <v-row align="center">
           <v-col
             cols="12"
             md="6"
@@ -472,6 +472,7 @@
               </p>
             </div>
             <v-img 
+              class="mx-15 my-2 my-md-15"
               :src="require(`@/assets/${page5.pigImage}`)" 
             ></v-img>
             
@@ -479,7 +480,7 @@
           <v-col
             cols="12"
             md="6"
-            class="pa-5"
+            class="pa-5 pa-md-15"
           >
             <p class="text-body-1 font-weight-light" style="color: black">
               {{page5.imageTitle}}
@@ -522,7 +523,7 @@
       <v-spacer>
       </v-spacer>
       <v-col cols="12" >
-        <v-row>
+        <v-row  align="center">
           <v-col
             cols="12"
             md="6"
@@ -543,9 +544,9 @@
             <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
               {{page5a.title}}
             </p>
-            <div class="mb-8 mb-md-14">
+            <div class="mb-0 mb-md-8">
               <p 
-                class="text-body-1 text-md-h6 font-weight-light mb-6"
+                class="text-body-1 text-md-h6 font-weight-light mb-0"
                 v-for="paragraph in page5a.text"
                 :key="paragraph"
               >
@@ -601,7 +602,7 @@
       <v-spacer>
       </v-spacer>
       <v-col cols="12" >
-        <v-row>
+        <v-row align="center">
           <v-col
             cols="12"
             md="6"
@@ -622,9 +623,9 @@
             <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
               {{textPage7Incentive.title}}
             </p>
-            <div class="mb-8 mb-md-14">
+            <div class="mb-3 ">
               <p 
-                class="text-body-1 text-md-h6 font-weight-light mb-6"
+                class="text-body-1 text-md-h6 font-weight-light mb-0"
                 v-for="paragraph in textPage7Incentive.text"
                 :key="paragraph"
               >
@@ -637,8 +638,6 @@
             md="6"
             class="pa-5"
           >
-            <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Tasks and/or Behaviors</p>
-            <p class="text-body-1 font-weight-light mb-8">Your kid(s) will earn Piggles Coins every week based on the completion of the tasks and behaviors you select. Choose from our list, or feel free to add your own!</p>
             <div 
               class="mb-10"
               v-for="(kid, kidIndex) in device.kids"
@@ -646,7 +645,7 @@
             >
               <v-row>
                 <v-col cols="12" >
-                  <p>Review and Modify tasks and/or behaviors for {{kid.name}}</p>
+                  <p style="color: #191919">Review and Modify tasks and/or behaviors for {{kid.name}}</p>
                   <taskchips
                     :defaultChips="kid.tasks"
                     :kid="kid"
@@ -659,8 +658,9 @@
               @click="saveTasksAndBehaviors"
               class="white--text"
               color="#9367E6"
+              :loading="loading"
             >
-              Save Tasks and Behaviors (mocked)
+              Save Tasks and Behaviors
               <v-icon right dark>cloud_upload</v-icon>
             </v-btn>
 
@@ -700,7 +700,7 @@
       <v-spacer>
       </v-spacer>
       <v-col cols="12" >
-        <v-row>
+        <v-row align="center">
           <v-col
             cols="12"
             md="6"
@@ -741,17 +741,16 @@
                 @click="saveAllowance"
                 class="white--text"
                 color="#9367E6"
+                :loading="loading"
               >
                 Save Allowance
                 <v-icon right dark>cloud_upload</v-icon>
               </v-btn>
           </v-col>
-
-          <!--Allowance--> 
           <v-col
             cols="12"
             md="6"
-            class="pa-5"
+            class="px-15"
           >
             <p class="text-body-1 font-weight-light" style="color: black">
               {{textPage6Allowance.imageTitle}}
@@ -1031,7 +1030,7 @@ const textPage2Allowance = {
   type: "newTextPage",
   title: "Rex's Allowance",
   text: [
-    "Mama Piggle offers to help Rex reach his pirate costume goal by giving him 2 coins each week.",
+    "Mama Piggle offers to help Rex reach his pirate costume goal by giving him an allowance of 2 coins each week.",
     "He can redeem his coins for the costume when he has saved enough.",
   ],
   audience: "kid",
@@ -1063,7 +1062,7 @@ const textPage2Both = {
   title: "REX WANTS TO EARN TOO!",
   text: [
     "Mama Piggle offers to help Rex earn enough coins for his pirate costume goal.",
-    "Each week, Mama will give Rex coins. He will receive one coin each week, but he can also receive extra coins in exchange for good behaviors and completing tasks.",
+    "Each week, Mama will give Rex coins. He will receive an allowance of one coin each week, but he can also receive extra coins in exchange for good behaviors and completing tasks.",
     "Together, Mama Piggle and Rex agree on what Rex could do to earn extra coins. Let’s see what they decided."
   ],
   audience: "kid",
@@ -1118,7 +1117,8 @@ const textPage4Allowance = {
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexAndMomma.jpg',
+  backgroundImage: 'RexEarningPlan-Allowance.jpg',
+  imageTitle: 'Rex\'s Goal & Earning Plan:',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1135,6 +1135,7 @@ const textPage4Incentive = {
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
   backgroundImage: 'RexEarningPlan-Incentive.jpg',
+  imageTitle: 'Rex\'s Goal & Earning Plan:',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1151,6 +1152,7 @@ const textPage4Both = {
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
   backgroundImage: 'RexEarningPlan-Both.jpg',
+  imageTitle: 'Rex\'s Goal & Earning Plan:',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1158,7 +1160,7 @@ const textPage4Both = {
 // Page5 How Rex is Rewarded
 const textPage5Allowance = {
   type: "newTextPage",
-  title: "LIGHT IT UP",
+  title: "Piggles Day is here!",
   text: [
     "On their Piggle Day, Mama and Rex look at their Goal and Earning Plan.",
     "Rex receives 2 Piggle Coins! He can now add them to his goal in his DigiPig bank and watch it light up!"
@@ -1183,14 +1185,14 @@ const textPage5Incentive = {
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexGoalsCard.png',
-  pigImage: 'DigiPigBlueLights.gif',
+  backgroundImage: 'RexGoalBank.png',
+  pigImage: 'DigiPigBlueLightsTransparent.gif',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
 const textPage5Both = {
   type: "newTextPage",
-  title: "Piggles Day, how Rex is rewarded",
+  title: "LIGHT IT UP",
   text: [
     "Rex earns 2 Piggles Coins, which he can now add to his goal in his DigiPig bank!",
     "Then he watches the DigiPig light up!",
@@ -1199,8 +1201,8 @@ const textPage5Both = {
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexGoalsCard.png',
-  pigImage: 'DigiPigBlueLights.gif',
+  backgroundImage: 'RexGoalBank.png',
+  pigImage: 'DigiPigBlueLightsTransparent.gif',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1216,6 +1218,7 @@ const page5a = {
   instructionsTT: "Pick your goal.",
   instructionIcon: "fas fa-tasks",
   backgroundImage: 'EarningPlan.jpg',
+  imageTitle: 'Printed Goal & Earning Plan:',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1229,7 +1232,7 @@ const textPage6Allowance = {
   ],
   audience: "kid",
   instructions: "Take Action",
-  instructionsTT: "Pick your goal.",
+  instructionsTT: "Set your allowance.",
   instructionIcon: "fas fa-tasks",
   backgroundImage: 'RexStanding.png',
   backgroundColor: "#FFFFFF",
@@ -1239,14 +1242,14 @@ const textPage6Allowance = {
 // Page7 Your Turn: Update Tasks and Behaviors
 const textPage7Incentive = {
   type: "newTextPage",
-  title: "Your turn, Incentives",
+  title: "Tasks and Behaviors",
   text: [
-    "Review your incentives",
+    "Here are the tasks and behaviors that you are going to do to earn coins towards your goal. Let’s review them together.",
   ],
   audience: "kid",
-  instructions: "Read Aloud",
-  instructionsTT: "Read this section out loud with your kid(s).",
-  instructionIcon: "fab fa-readme",
+  instructions: "Take Action",
+  instructionsTT: "Review your tasks and behaviors",
+  instructionIcon: "fas fa-tasks",
   backgroundImage: 'TaskBehaviorSelector.png',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
@@ -1438,6 +1441,7 @@ export default {
       const device = {
         deviceId: this.device.deviceId,
         deviceCode: this.device.deviceCode,
+        piggySleep: this.device.piggySleep,
         kids: this.device.kids,
         settings: this.device.settings,
         goalCatalog: this.device.goalCatalog,
@@ -1458,6 +1462,7 @@ export default {
       const device = {
         deviceId: this.device.deviceId,
         deviceCode: this.device.deviceCode,
+        piggySleep: this.device.piggySleep,
         kids: this.device.kids,
         settings: {
           ...this.device.settings,
