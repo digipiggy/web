@@ -32,14 +32,14 @@ import Halt from '@/components/Halt';
 const lessons = [
   {
     title: "Lesson 1 - Goals",
-    image: "kitchenEnter.jpg",
+    image: "familyKitchen2.png",
     subtitle: "Let's talk about Goals",
     body: "Set your goals with help from the Piggles family.",
     route: "/lessons/lesson/1"
   },
   {
     title: "Lesson 2 - Earning",
-    image: "rex&Penny.jpg",
+    image: "Lesson2Title.png",
     subtitle: "Start your earning",
     body: "Learn to earn and track goal progress.",
     route: "/lessons/lesson/2"

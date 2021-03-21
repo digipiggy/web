@@ -124,6 +124,7 @@
           :loading="busy"
         >
           Save
+          <v-icon right dark>fas fa-piggy-bank</v-icon>
         </v-btn>
 
       </div>

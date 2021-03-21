@@ -10,6 +10,7 @@
     <p class="text-body-1 font-weight-light">We've all been there: you're in the toy isle at target, and the latest Paw Patrol plushy catches your daughters eye. Unfortunatley for her, she's... </p>
     <v-btn color="#48A182" dark to="/articles">
       Continue Reading
+      <v-icon right dark>arrow_forward</v-icon>
     </v-btn>
   </v-card>
 </template>

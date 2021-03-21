@@ -18,6 +18,7 @@
             to="/"
           >
             Return Home
+          <v-icon right dark>arrow_forward</v-icon>
           </v-btn>
         </v-card>
         </v-col>

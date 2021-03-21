@@ -1,7 +1,7 @@
 <template>
   <v-container fluid >
     <v-layout align-center justify-center>
-      <v-flex xs12 sm8 md4>
+      <v-flex xs12 sm8 md6>
         <div>
           <v-card class="elevation-12 mb-4">
             <v-toolbar dark color="#9367E6">
@@ -48,9 +48,9 @@
                   </v-btn>
                 </v-stepper-content>
               </v-stepper>
+              <div class="mt-4 text-xs-center"><a href="/Setup_Doc_V2.pdf" target="_blank">Click here for full setup instructions.</a></div>
             </v-card-text>
           </v-card>
-          <setupInstructions />
         </div>
       </v-flex>
     </v-layout>
@@ -60,13 +60,11 @@
 <script>
 import DeviceCode from '@/components/DeviceCode';
 import Account from '@/components/Account';
-import SetupInstructions from '@/components/SetupInstructions';
 
 export default {
   components: {
     deviceCode: DeviceCode,
     account: Account,
-    setupInstructions: SetupInstructions
   },
   data() {
     return {

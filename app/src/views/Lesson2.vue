@@ -579,8 +579,6 @@
       </v-col>
     </v-row>
 
-
-
     <!-- Divider for Mobile -->
     <v-row 
       :style="{
@@ -663,6 +661,7 @@
               color="#9367E6"
             >
               Save Tasks and Behaviors (mocked)
+              <v-icon right dark>cloud_upload</v-icon>
             </v-btn>
 
           </v-col>
@@ -679,7 +678,7 @@
       </v-col>
     </v-row>
 
-        <!-- Divider for Mobile -->
+    <!-- Divider for Mobile -->
     <v-row 
       :style="{
         borderBottom: isDesktop ? '' : '3px dashed #AAA'
@@ -744,6 +743,7 @@
                 color="#9367E6"
               >
                 Save Allowance
+                <v-icon right dark>cloud_upload</v-icon>
               </v-btn>
           </v-col>
 
@@ -1002,7 +1002,7 @@ const titlePage = {
   type: "newTitlePage",
   title: "Lesson 2",
   subtitle: "Earning",
-  readTime: "20",
+  readTime: "15",
   audience: "Family reads together.",
   backgroundImage: "Lesson2Title.png",
   backgroundImageMobile: "Lesson2Title.png",

@@ -17,6 +17,7 @@
               to="/lessons/lesson/1"
             >
               Lesson 1
+              <v-icon right dark>fas fa-book-reader</v-icon>
             </v-btn>
           </v-card>
         </v-col>
@@ -24,13 +25,15 @@
     </v-container>
 
     <v-container v-else>
+
       <v-dialog
         v-model="showCelebration"
         width="90%"
         min-height="90%"
+        @click:outside="stopConfetti"
       >
       <v-card >
-        <p @click="showCelebration = false" >             
+        <p @click="closeCelebration" >             
           <v-icon >
                 mdi-close
           </v-icon>
@@ -42,11 +45,13 @@
             class="ma-2  white--text"
             @click="closeCelebration"
           >
-            Select a new goal
+            Select a new goal 
+            <v-icon right dark>mdi-cursor-pointer</v-icon>
           </v-btn>
         </p>
         </v-card>
       </v-dialog>
+
       <v-row>
         <v-col cols="12">
           <v-card class="pa-5 rounded-sm">
@@ -72,7 +77,7 @@
                   (your family's Piggles Day), sit down as a family and discuss you kids progress towards their goals. 
                 </p>
                 <p class="text-body-1 font-weight-light mb-1">
-                  As you kid(s) earn Piggles Coins towards goals, add them to their bank using the 
+                  As your kid(s) earn Piggles Coins towards goals, add them to their bank using the 
                   <v-icon color="#9367E6">
                     mdi-plus-circle
                   </v-icon>
@@ -90,7 +95,7 @@
       <v-row>
         <v-col cols="12">
           <v-card class="pa-5 rounded-sm" v-if="isTodayPiggleDay">
-              <p class="text-h6 font-weight-regular mb-5" style="color: #9367E6">OMGsh, it's your family's Piggle Day!</p>
+              <p class="text-h6 font-weight-regular mb-5" style="color: #9367E6">OMGsh, it's your family's Piggles Day!</p>
               <div v-if="device.settings.earningSystem == 'Allowance'" >
                 <p class="text-body-1 font-weight-light mb-5">
                   Because you've chosen the Allowance Earning Philosophy, and set an allowance of {{device.settings.goalAllowance || 2}} Piggles Coins a week, add {{device.settings.goalAllowance || 2 }} to your kid(s) goals.
@@ -108,7 +113,7 @@
                       max-width="20px"
                       max-height="20px"
                     ></v-img>
-                  <p class="text-body-1 font-weight-light mb-0">
+                  <p class="text-body-1 font-weight-light mb-0 ml-1">
                     Reward 1 Piggles Coin for a Good job.             
                   </p>
                 </div>
@@ -120,7 +125,7 @@
                       max-width="20px"
                       max-height="20px"
                     ></v-img>
-                  <p class="text-body-1 font-weight-light mb-0">
+                  <p class="text-body-1 font-weight-light mb-0 ml-1">
                     Reward 2 Piggles Coins for a Great job.            
                   </p>
                 </div>
@@ -132,7 +137,7 @@
                       max-width="20px"
                       max-height="20px"
                     ></v-img>
-                  <p class="text-body-1 font-weight-light mb-0">
+                  <p class="text-body-1 font-weight-light mb-0 ml-1">
                     Reward 3 Piggles Coins for an Amazing job.             
                   </p>
                 </div>
@@ -149,7 +154,7 @@
                       max-width="20px"
                       max-height="20px"
                     ></v-img>
-                  <p class="text-body-1 font-weight-light mb-0">
+                  <p class="text-body-1 font-weight-light mb-0 ml-1">
                     Reward 1 Piggles Coin for a Good job.             
                   </p>
                 </div>
@@ -161,7 +166,7 @@
                       max-width="20px"
                       max-height="20px"
                     ></v-img>
-                  <p class="text-body-1 font-weight-light mb-0">
+                  <p class="text-body-1 font-weight-light mb-0 ml-1">
                     Reward 2 Piggles Coins for a Great job.            
                   </p>
                 </div>
@@ -173,7 +178,7 @@
                       max-width="20px"
                       max-height="20px"
                     ></v-img>
-                  <p class="text-body-1 font-weight-light mb-0">
+                  <p class="text-body-1 font-weight-light mb-0 ml-1">
                     Reward 3 Piggles Coins for an Amazing job.             
                   </p>
                 </div>
@@ -263,6 +268,9 @@ export default {
     onValid(index, isValid) {
       this.valid[index] = isValid;
       this.allGoalsValid = this.valid.every(x => x);
+    },
+    stopConfetti() {
+      this.$confetti.stop();
     },
     startCelebration() {
       this.showCelebration = true;
