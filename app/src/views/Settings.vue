@@ -116,7 +116,7 @@
             <v-row justify="center" >
               <v-col cols="12" md="8">
                 <p class="text-h6 font-weight-regular text-center mt-10 mb-3" style="color: #9367E6">Earning Philosophies</p>
-                <p class="text-body-1 font-weight-light text-center mb-8">The Piggles Family system uses Piggles Coins as a way to show progress towards a goal. This in-app currency is represented by lights that appear on the DigiPig. On the next screen, you'll chose which of our 3 custom Earning Philosophies you'd like your children to use.</p>
+                <p class="text-body-1 font-weight-light text-center mb-8">The Piggles Family system uses Piggles Coins as a way to show progress towards a goal. This in-app currency is represented by lights that appear on the DigiPig. On the next screen, you'll choose which of our 3 custom Earning Philosophies you'd like your children to use.</p>
               </v-col>
             </v-row>
             <p class="text-center" >
@@ -500,7 +500,7 @@
     <v-row justify="center" class="mb-8">
       <v-col cols="11">
         <p class="text-h6 font-weight-regular mt-10 mb-0" style="color: #9367E6">Our Family's Earning Philosophy</p>
-        <p class="text-body-1 font-weight-light mb-8">The Piggles Family system uses Piggles Coins as a way to show progress towards a goal. This in-app currency is represented by lights that appear on the DigiPig. On the next screen, you'll chose which of our 3 custom Earning Philosophies you'd like your children to use.</p>
+        <p class="text-body-1 font-weight-light mb-8">The Piggles Family system uses Piggles Coins as a way to show progress towards a goal. This in-app currency is represented by lights that appear on the DigiPig. On the next screen, you'll choose which of our 3 custom Earning Philosophies you'd like your children to use.</p>
         <v-container >
           <v-row justify="center">
             <v-col 

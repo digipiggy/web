@@ -579,8 +579,6 @@
       </v-col>
     </v-row>
 
-
-
     <!-- Divider for Mobile -->
     <v-row 
       :style="{
@@ -680,7 +678,7 @@
       </v-col>
     </v-row>
 
-        <!-- Divider for Mobile -->
+    <!-- Divider for Mobile -->
     <v-row 
       :style="{
         borderBottom: isDesktop ? '' : '3px dashed #AAA'

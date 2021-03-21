@@ -1,7 +1,10 @@
 <template>
   <v-card class="pa-5 rounded-sm">
     <div class="d-flex justify-space-between">
-      <p class="text-h6 font-weight-regular mb-5" style="color: #9367E6">Welcome to the Lesson Hub!</p>
+      <p 
+        class="text-h6 font-weight-regular mb-5"
+        style="color: #9367E6"
+      >Welcome to the Lesson Hub!</p>
       <v-btn
         icon
         @click="showIntro = !showIntro"
