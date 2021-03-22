@@ -1275,7 +1275,7 @@ const page5a = {
   type: "newTextPage",
   title: "Now it’s your turn!",
   text: [
-    "Lets setup your Goal & Earning Plan.",
+    "Let's setup your Goal & Earning Plan. Look in your “Lesson Materials” envelope for a blank Goals & Earning Plan page.",
   ],
   audience: "kid",
   instructions: "Take Action",

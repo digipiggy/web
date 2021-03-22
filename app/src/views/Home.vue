@@ -10,8 +10,8 @@
         <lessonCard 
           :lesson="lesson"
         />
-        <div class="mb-6"></div>
-        <articleCard />
+        <!-- <div class="mb-6"></div>
+        <articleCard /> -->
       </v-col>
       <v-col cols="12" md="6" :order="isDesktop ? 2 : 1">
         <digiStatusCard />
@@ -24,7 +24,7 @@
 import { mapState } from 'vuex';
 
 import LessonCard from '@/components/LessonCard';
-import ArticleCard from '@/components/ArticleCard';
+// import ArticleCard from '@/components/ArticleCard';
 import WelcomeCard from '@/components/WelcomeCard';
 import DigiStatusCard from '@/components/DigiStatusCard';
 
@@ -42,7 +42,7 @@ export default {
     lessonCard: LessonCard,
     welcomeCard: WelcomeCard,
     digiStatusCard: DigiStatusCard,
-    articleCard: ArticleCard
+    // articleCard: ArticleCard
   },
   data() {
     return {

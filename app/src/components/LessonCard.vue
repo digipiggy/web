@@ -1,5 +1,5 @@
 <template>
-  <v-card class="elevation-3 pa-5">
+  <v-card class="elevation-3 pa-5" min-height="100%">
     <p v-if="lesson.comingSoon" class="text-h6 font-weight-regular" style="color: #9367E6">Coming Soon!</p>
     <p class="text-h6 font-weight-regular">{{lesson.title}}</p>
     <v-img 

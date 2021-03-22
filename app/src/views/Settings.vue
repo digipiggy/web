@@ -424,7 +424,7 @@
     <v-row justify="center">
       <v-col cols="12" md="8">
         <p class="text-h5 font-weight-regular text-center mb-4" style="color: #9367E6">Fantastic, you're all set!</p>
-        <p class="text-body-1 font-weight-light text-center mb-4">You might have noticed that the lights on you DigiPig went out. That is normal, and your kids will be lighting it back up in no time!</p>
+        <p class="text-body-1 font-weight-light text-center mb-4">You might have noticed that the lights on your DigiPig went out. That is normal, and your kids will be lighting it back up in no time!</p>
         <p class="text-body-1 font-weight-light text-center mb-4">When you're ready, take a stroll over to the lesson page and dive into lesson 1 with your kid(s).</p>
         <p class="text-body-1 font-weight-light text-center mb-4">Lesson 1 is an introduction to Goals for your kids. They will learn what a goal is, how the Piggles family sets their goals, and choose their first goal to work towards.</p>
         <p class="text-center">
