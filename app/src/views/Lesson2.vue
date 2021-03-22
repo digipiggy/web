@@ -84,7 +84,7 @@
       <v-spacer>
       </v-spacer>
       <v-col cols="12" >
-        <v-row>
+        <v-row align="center">
           <v-col
             cols="12"
             md="6"
@@ -105,7 +105,7 @@
             <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 text-uppercase mb-1">
               {{textPage1.title}}
             </p>
-            <div class="mb-8 mb-md-14">
+            <div class="mb-0 ">
               <p 
                 class="text-body-1 text-md-h6 font-weight-light mb-6"
                 v-for="paragraph in textPage1.text"
@@ -202,7 +202,7 @@
       <v-col cols="12" class="d-flex justify-center pa-0 ">
         <v-icon 
           :size="isDesktop ? 70 : 40"
-          @click="$vuetify.goTo(isEarningAllowance ? '#page6' : '#page3')"
+          @click="$vuetify.goTo(isEarningAllowance ? '#page5' : '#page3')"
           color="#9367E6"
         >mdi-chevron-down</v-icon>
       </v-col>
@@ -216,7 +216,7 @@
     >
     </v-row>
 
-    <!-- Page3 How Rex Earns -->
+    <!-- Page3 How Rex Earns (tasks and behaviors) -->
     <v-row 
       v-if="isEarningIncentive || isEarningAllowanceAndIncentive"
       :style="{
@@ -344,6 +344,7 @@
 
     <!-- Divider for Mobile -->
     <v-row 
+      v-if="isEarningIncentive || isEarningAllowanceAndIncentive"
       :style="{
         borderBottom: isDesktop ? '' : '3px dashed #AAA'
       }"
@@ -352,6 +353,7 @@
 
     <!-- Page4 How Rex is Evaluated-->
     <v-row 
+      v-if="isEarningIncentive || isEarningAllowanceAndIncentive"
       :style="{
         minHeight: '100vh',
         color: page4.textPrimaryColor,
@@ -421,7 +423,8 @@
     </v-row>
 
     <!-- Divider for Mobile -->
-    <v-row 
+    <v-row
+      v-if="isEarningIncentive || isEarningAllowanceAndIncentive"
       :style="{
         borderBottom: isDesktop ? '' : '3px dashed #AAA'
       }"
@@ -679,7 +682,8 @@
     </v-row>
 
     <!-- Divider for Mobile -->
-    <v-row 
+    <v-row
+      v-if="isEarningIncentive || isEarningAllowanceAndIncentive"
       :style="{
         borderBottom: isDesktop ? '' : '3px dashed #AAA'
       }"
@@ -775,6 +779,7 @@
 
     <!-- Divider for Mobile -->
     <v-row 
+      v-if="isEarningAllowance || isEarningAllowanceAndIncentive"
       :style="{
         borderBottom: isDesktop ? '' : '3px dashed #AAA'
       }"
@@ -828,60 +833,116 @@
               <p 
                 class="text-body-1 text-md-h6 font-weight-light mb-6"
               >
-                Here's an example of {{device.kids[0].name}}'s Earning Plan:
+                Here's an example of {{device.kids[0].name || 'Kid 1\'s'}}'s Earning Plan:
               </p>
             </div>
 
-            <div class="mb-8 mb-md-14" v-if="isEarningAllowance">
-              <p 
-                class="text-body-1 text-md-h6 font-weight-light mb-6"
-              >
-                <b>I would like to buy:</b> {{device.goals[0].name}}.
-              </p>
-              <p 
-                class="text-body-1 text-md-h6 font-weight-light mb-6"
-              >
-                <b>Cross out this section.</b>
-              </p>
-              <p 
-                class="text-body-1 text-md-h6 font-weight-light mb-6"
-              >
-                <b>I receive:</b> {{device.settings.goalAllowance}} Piggles Coin(s).
-              </p>
+            <div v-if="isEarningAllowance">
+              <div class="mb-3 mb-md-4" >
+                <p class="white--text text-center text-h4" style="background-color: #9367E6; border-radius: 50%; width: 40px; height: 40px; display: inline-block;">
+                  1
+                </p>
+                <p 
+                  class="text-body-1 text-md-h6 font-weight-light mb-6 ml-3"
+                  style="display: inline-block"
+                >
+                  <b>I would like to buy:</b> {{device.goals[0].name}}
+                </p>
+              </div>
+              <div class="mb-3 mb-md-4" >
+                <p class="white--text text-center text-h4" style="background-color: #9367E6; border-radius: 50%; width: 40px; height: 40px; display: inline-block;">
+                  2
+                </p>
+                <p 
+                  class="text-body-1 text-md-h6 font-weight-light mb-6 ml-3"
+                  style="display: inline-block"
+                >
+                  <b>By Doing:</b> Cross out this section
+                </p>
+              </div>
+              <div class="mb-3 mb-md-4" >
+                <p class="white--text text-center text-h4" style="background-color: #9367E6; border-radius: 50%; width: 40px; height: 40px; display: inline-block;">
+                  3
+                </p>
+                <p 
+                  class="text-body-1 text-md-h6 font-weight-light mb-6 ml-3"
+                  style="display: inline-block"
+                >
+                  <b>I receive:</b> {{device.settings.goalAllowance}} Piggles Coin(s)
+                </p>
+              </div>
             </div>
-            <div class="mb-8 mb-md-14" v-if="isEarningIncentive">
-              <p 
-                class="text-body-1 text-md-h6 font-weight-light mb-6"
-              >
-                <b>I would like to buy:</b> {{device.goals[0].name}}.
-              </p>
-              <p 
-                class="text-body-1 text-md-h6 font-weight-light mb-6"
-              >
-                <b>By Doing:</b> {{device.kids[0].tasks[0]}}.
-              </p>
-              <p 
-                class="text-body-1 text-md-h6 font-weight-light mb-6"
-              >
-                <b>Cross out this section.</b>
-              </p>
+
+            <div v-if="isEarningIncentive">
+              <div class="mb-3 mb-md-4" >
+                <p class="white--text text-center text-h4" style="background-color: #9367E6; border-radius: 50%; width: 40px; height: 40px; display: inline-block;">
+                  1
+                </p>
+                <p 
+                  class="text-body-1 text-md-h6 font-weight-light mb-6 ml-3"
+                  style="display: inline-block"
+                >
+                  <b>I would like to buy:</b> {{device.goals[0].name}}
+                </p>
+              </div>
+              <div class="mb-3 mb-md-4" >
+                <p class="white--text text-center text-h4" style="background-color: #9367E6; border-radius: 50%; width: 40px; height: 40px; display: inline-block;">
+                  2
+                </p>
+                <p 
+                  class="text-body-1 text-md-h6 font-weight-light mb-6 ml-3"
+                  style="display: inline-block"
+                >
+                  <b>By Doing:</b> {{device.kids[0].tasks[0]}}
+                </p>
+              </div>
+              <div class="mb-3 mb-md-4" >
+                <p class="white--text text-center text-h4" style="background-color: #9367E6; border-radius: 50%; width: 40px; height: 40px; display: inline-block;">
+                  3
+                </p>
+                <p 
+                  class="text-body-1 text-md-h6 font-weight-light mb-6 ml-3"
+                  style="display: inline-block"
+                >
+                  <b>I receive:</b> Cross out this section
+                </p>
+              </div>
             </div>
-            <div class="mb-8 mb-md-14" v-if="isEarningAllowanceAndIncentive">
-              <p 
-                class="text-body-1 text-md-h6 font-weight-light mb-6"
-              >
-                <b>I would like to buy:</b> {{device.goals[0].name}}.
-              </p>
-              <p 
-                class="text-body-1 text-md-h6 font-weight-light mb-6"
-              >
-                <b>By Doing:</b> {{device.kids[0].tasks[0]}}.
-              </p>
-              <p 
-                class="text-body-1 text-md-h6 font-weight-light mb-6"
-              >
-                <b>I receive:</b> {{device.settings.goalAllowance || 2}} Piggles Coin(s).
-              </p>
+
+            <div v-if="isEarningAllowanceAndIncentive">
+              <div class="mb-3 mb-md-4" >
+                <p class="white--text text-center text-h4" style="background-color: #9367E6; border-radius: 50%; width: 40px; height: 40px; display: inline-block;">
+                  1
+                </p>
+                <p 
+                  class="text-body-1 text-md-h6 font-weight-light mb-6 ml-3"
+                  style="display: inline-block"
+                >
+                  <b>I would like to buy:</b> {{device.goals[0].name}}
+                </p>
+              </div>
+              <div class="mb-3 mb-md-4" >
+                <p class="white--text text-center text-h4" style="background-color: #9367E6; border-radius: 50%; width: 40px; height: 40px; display: inline-block;">
+                  2
+                </p>
+                <p 
+                  class="text-body-1 text-md-h6 font-weight-light mb-6 ml-3"
+                  style="display: inline-block"
+                >
+                  <b>By Doing:</b> {{device.kids[0].tasks[0]}}
+                </p>
+              </div>
+              <div class="mb-3 mb-md-4" >
+                <p class="white--text text-center text-h4" style="background-color: #9367E6; border-radius: 50%; width: 40px; height: 40px; display: inline-block;">
+                  3
+                </p>
+                <p 
+                  class="text-body-1 text-md-h6 font-weight-light mb-6 ml-3"
+                  style="display: inline-block"
+                >
+                  <b>I receive:</b> {{device.settings.goalAllowance || 2}} Piggles Coin(s)
+                </p>
+              </div>
             </div>
           </v-col>
           <v-col
@@ -930,7 +991,7 @@
       <v-spacer>
       </v-spacer>
       <v-col cols="12" >
-        <v-row>
+        <v-row align="center">
           <v-col
             cols="12"
             md="6"
@@ -952,6 +1013,9 @@
               {{textPage9.title}}
             </p>
             <div class="mb-8 mb-md-14">
+              <p class="text-body-1 text-md-h6 font-weight-light mb-6">
+                You've selected {{device.settings.rewardDay}}'s as your Piggles Day.
+              </p>
               <p 
                 class="text-body-1 text-md-h6 font-weight-light mb-6"
                 v-for="paragraph in textPage9.text"
@@ -975,7 +1039,7 @@
           <v-col
             cols="12"
             md="6"
-            class="pa-5"
+            class="px-16"
           >
             <p class="text-body-1 font-weight-light" style="color: black">
               {{textPage9.imageTitle}}
@@ -1107,21 +1171,21 @@ const textPage3Both = {
 }
 
 // Page4 How Rex is Evaluated
-const textPage4Allowance = {
-  type: "newTextPage",
-  title: "Piggles Day, how Rex is evaluated",
-  text: [
-    "Allowance Variation",
-  ],
-  audience: "kid",
-  instructions: "Read Aloud",
-  instructionsTT: "Read this section out loud with your kid(s).",
-  instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexEarningPlan-Allowance.jpg',
-  imageTitle: 'Rex\'s Goal & Earning Plan:',
-  backgroundColor: "#FFFFFF",
-  textPrimaryColor: "#9367E6"
-}
+// const textPage4Allowance = {
+//   type: "newTextPage",
+//   title: "Piggles Day, how Rex is evaluated",
+//   text: [
+//     "Allowance Variation",
+//   ],
+//   audience: "kid",
+//   instructions: "Read Aloud",
+//   instructionsTT: "Read this section out loud with your kid(s).",
+//   instructionIcon: "fab fa-readme",
+//   backgroundImage: 'RexEarningPlan-Allowance.jpg',
+//   imageTitle: 'Rex\'s Goal & Earning Plan:',
+//   backgroundColor: "#FFFFFF",
+//   textPrimaryColor: "#9367E6"
+// }
 const textPage4Incentive = {
   type: "newTextPage",
   title: "PIGGLES DAY IS HERE!",
@@ -1272,7 +1336,7 @@ const textPage8Allowance = {
 }
 const textPage8Incentive = {
   type: "newTextPage",
-  title: "Your turn, Goal Sheet",
+  title: "GOAL & EARNING PLAN",
   text: [
     "Grab a blank Goal & Earning Plan from your Piggles Box for each kid and fill in the sections below.",
   ],
@@ -1286,7 +1350,7 @@ const textPage8Incentive = {
 }
 const textPage8Both = {
   type: "newTextPage",
-  title: "Your turn, Goal Sheet",
+  title: "GOAL & EARNING PLAN",
   text: [
     "Grab a blank Goal & Earning Plan from your Piggles Box for each kid and fill in the sections below.",
   ],
@@ -1304,7 +1368,6 @@ const textPage9 = {
   type: "newTextPage",
   title: "YOUR PIGGLES DAY",
   text: [
-    "You’ve selected Friday’s as your Piggles Day.",
     "As a reward for completing Lesson 2, head on over to the Goals page and add your first Piggles Coin to your goals! ",
   ],
   audience: "kid",
@@ -1332,7 +1395,7 @@ export default {
       textPage2Both,
       textPage3Incentive,
       textPage3Both,
-      textPage4Allowance,
+      // textPage4Allowance,
       textPage4Incentive,
       textPage4Both,
       textPage5Allowance,
@@ -1394,9 +1457,10 @@ export default {
       }
     },
     page4: function() {
-      if (this.device.settings.earningSystem == 'Allowance'){
-        return this.textPage4Allowance
-      } else if (this.device.settings.earningSystem == 'Incentive'){
+      // if (this.device.settings.earningSystem == 'Allowance'){
+      //   return this.textPage4Allowance
+      // } else 
+      if (this.device.settings.earningSystem == 'Incentive'){
         return this.textPage4Incentive
       } else {
         return this.textPage4Both
