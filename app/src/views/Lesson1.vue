@@ -16,7 +16,7 @@
       class=" flex-column"
       justify="center"
     >
-      <!--TODO componitize the contents of the if/else here-->
+      <!--TODO component-ize the contents of the if/else here-->
       <!--newTitlePage-->
       <template> 
         <v-col
@@ -60,7 +60,7 @@
           </p>
           <p class="text-h6 text-center">
             <v-icon 
-              class="bounceyArrow"
+              class="bouncyArrow"
               size="70"
               @click="$vuetify.goTo('#page1')"
               :color="titlePage.textPrimaryColor" 
@@ -790,7 +790,7 @@ const textPage7 = {
   ],
   audience: "kid",
   instructions: "Take Action",
-  instructionIcon: "fab fa-tasks",
+  instructionIcon: "fas fa-tasks",
   backgroundImage: 'rex&Penny.jpg',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
@@ -915,11 +915,8 @@ export default {
 </script>
 
 <style scoped>
-  .backback {
-    background-image: linear-gradient(90deg, rgba(255, 255, 255) 35%, rgb(255, 255, 255,0) 100%), url(../assets/PennyGoal.png)
-  }
 
-  .bounceyArrow {
+  .bouncyArrow {
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-name: bounce-7;
