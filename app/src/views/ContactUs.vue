@@ -5,15 +5,7 @@
         <p class="text-h4" style="color: #48A182">Need help? We are here 24/7.</p>
         <p class="text-body-1 mb-0">Please reach out to us with any questions, however big or small.</p>
         <p class="text-body-1 mb-3">You can find us at the following channels:</p>
-        <!-- <div>
-          <v-img 
-            :src="require('@/assets/slack.png')" 
-            aspect-ratio="1"
-            class="mb-4"
-            width="20"
-          ></v-img>
-          <p class="text-center" style="display: inline;">digipiggy-support</p>
-        </div> -->
+
         <div >
           <!-- <v-icon class="text-center" color="grey lighten-1" >mdi-email</v-icon> -->
           <p class="pl-3"><b>Email:</b> DL-INN-DIGIPIG-TEAM@northwesternmutual.com</p>

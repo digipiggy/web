@@ -7,7 +7,7 @@
     </v-row>
     <v-row justify="center">
       <v-col cols="12" md="5" >
-        <!--TODO: componitizet these questions-->
+        <!--TODO: component-ize these questions-->
         <div
           class="mb-6"
           v-for="question in questions.slice(0, Math.floor(questions.length / 2))"

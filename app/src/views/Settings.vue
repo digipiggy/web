@@ -90,8 +90,9 @@
             </v-row>
             <p class="text-center" >
               <v-btn
-                dark
+                class="white--text"
                 color="#9367E6"
+                :disabled="validateKids"
                 @click="e1 = 2"
               >
                 Next
@@ -170,7 +171,8 @@
             </v-container>
             <p class="text-center" >
               <v-btn
-                dark
+                class="white--text"
+                :disabled="validateEarningPhilosophy"
                 color="#9367E6"
                 @click="e1 = 4"
               >
@@ -304,7 +306,8 @@
 
             <p class="text-center" >
               <v-btn
-                dark
+                class="white--text"
+                :disabled="validateGoalCatalog"
                 color="#9367E6"
                 @click="showTasksAndBehaviors ? e1 = 5 : e1 = 6"
               >
@@ -351,7 +354,8 @@
             </div>
             <p class="text-center" >
               <v-btn
-                dark
+                class="white--text"
+                :disabled="validateTasksAndBehaviors"
                 color="#9367E6"
                 @click="e1 = 6"
               >
@@ -392,7 +396,8 @@
             </v-row>
             <p class="text-center" >
               <v-btn
-                dark
+                class="white--text"
+                :disabled="validateRewardDay"                
                 color="#9367E6"
                 @click="showFinalSlide"
               >
@@ -418,7 +423,8 @@
   <v-container v-else-if="showFirstSetupCompletion">
     <v-row justify="center">
       <v-col cols="12" md="8">
-        <p class="ttext-h5 font-weight-regular text-center mb-4" style="color: #9367E6">Fantastic, you're all set!</p>
+        <p class="text-h5 font-weight-regular text-center mb-4" style="color: #9367E6">Fantastic, you're all set!</p>
+        <p class="text-body-1 font-weight-light text-center mb-4">You might have noticed that the lights on you DigiPig went out. That is normal, and your kids will be lighting it back up in no time!</p>
         <p class="text-body-1 font-weight-light text-center mb-4">When you're ready, take a stroll over to the lesson page and dive into lesson 1 with your kid(s).</p>
         <p class="text-body-1 font-weight-light text-center mb-4">Lesson 1 is an introduction to Goals for your kids. They will learn what a goal is, how the Piggles family sets their goals, and choose their first goal to work towards.</p>
         <p class="text-center">
@@ -829,6 +835,21 @@ export default {
         return this.earningSystem == 'Incentive' || this.earningSystem == 'Allowance + Incentive';
       } 
       return false;
+    },
+    validateKids: function() {
+      return this.kids.some(kid => kid.name == "")
+    },
+    validateEarningPhilosophy: function() {
+      return !this.earningSystem
+    },
+    validateGoalCatalog: function() {
+      return !this.selectedGoals.length > 0
+    },
+    validateTasksAndBehaviors: function() {
+      return this.kids.some(kid => kid.tasks.length == 0)
+    },
+    validateRewardDay: function() {
+      return !this.rewardDay
     },
   },
   methods: {
