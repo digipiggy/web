@@ -3,6 +3,16 @@
     "deviceId": "290023001847393035313137",
     "goals": [],
     "status": {
-      "completedPreferences": false
+      "completedPreferences": false,
+      "lessons": {
+        "lesson1": {
+          "completed": false,
+          "started": false
+        },
+        "lesson2": {
+          "completed": false,
+          "started": false
+        }
+      }
     }
   }

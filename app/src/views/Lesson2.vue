@@ -980,6 +980,7 @@
 
     <!-- Page9 Your Turn: First Goal Contribution-->
     <v-row 
+      v-intersect.once="updateLessonStatusCompleted"
       :style="{
         minHeight: '100vh',
         color: textPage9.textPrimaryColor,
@@ -1275,7 +1276,7 @@ const page5a = {
   type: "newTextPage",
   title: "Now it’s your turn!",
   text: [
-    "Lets setup your Goal & Earning Plan.",
+    "Let's setup your Goal & Earning Plan. Look in your “Lesson Materials” envelope for a blank Goals & Earning Plan page.",
   ],
   audience: "kid",
   instructions: "Take Action",
@@ -1523,6 +1524,7 @@ export default {
     },
     async saveAllowance() {
       this.loading = true;
+
       const device = {
         deviceId: this.device.deviceId,
         deviceCode: this.device.deviceCode,
@@ -1579,10 +1581,41 @@ export default {
           };
         }
       });
-    }
+    },
+    async updateLessonStatusCompleted(entries) {
+      if (entries[0].isIntersecting){
+        if (this.device.status.lessons.lesson2.completed == false) {
+          const device = this.device
+          device.status.lessons.lesson2.completed = true;
+          if (await !this.updateDevice(device)) {
+            console.log("Error updating device with lesson completion")
+          }
+        }
+      }
+    },
+    async updateLessonStatusStarted() {
+      const device = {
+        ...this.device,
+        status: {
+          ...this.device.status,
+          lessons: {
+            ...this.device.status.lessons,
+            lesson2: {
+              ... this.device.status.lessons.lesson2,
+              started: true
+            }
+          }
+        }
+      }
+
+      if (await !this.updateDevice(device)) {
+        console.log("Error updating device with lesson started")
+      }
+    },
   },
   mounted() {
     this.initialize();
+    if (this.device.status.lessons.lesson2.started == false) this.updateLessonStatusStarted();
   },
 
 };

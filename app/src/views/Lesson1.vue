@@ -634,11 +634,17 @@
             >
               {{textPage7.text[0]}}
             </p>
+            <p 
+              v-if="!device.status.lessons.lesson1.completed"
+              class="text-h6 font-weight-light mb-14"
+            >
+              Make sure you pick and save a goal with your kid(s) from the Goal Catalog above before moving on to lesson 2.
+            </p>
             <v-btn
               to="/lessons/lesson/2"
               color="#48A182"
-              dark
               class="ma-2 white--text"
+              :disabled="!device.status.lessons.lesson1.completed"
             >
               Start Lesson 2
               <v-icon right dark>arrow_forward</v-icon>
@@ -845,7 +851,17 @@ export default {
         kids: this.device.kids,
         settings: this.device.settings,
         goalCatalog: this.device.goalCatalog,
-        status: this.device.status,
+        // update the status to complete when the user saves their goals
+        status: {
+          ...this.device.status,
+          lessons: {
+            ...this.device.status.lessons,
+            lesson1: {
+              ... this.device.status.lessons.lesson1,
+              completed: true
+            }
+          }
+        },
         goals: this.goals.map((g, i)=> {
           if (this.activeGoals[i]){
             const currentGoal = this.device.goalCatalog.find(goal => goal.name == g.name)
@@ -883,7 +899,6 @@ export default {
       this.loading = false;
     },
     initialize() {
-
       // if there are already goals, keep them, otherwise initialize a goal for each kid.
       this.goals = this.device.kids.map((kid, i) => {
         const goal = this.device.goals[i];
@@ -905,10 +920,31 @@ export default {
           };
         }
       });
-    }
+    },
+    async updateLessonStatusStarted() {
+      const device = {
+        ...this.device,
+        status: {
+          ...this.device.status,
+          lessons: {
+            ...this.device.status.lessons,
+            lesson1: {
+              ... this.device.status.lessons.lesson1,
+              started: true
+            }
+          }
+        }
+      }
+
+      if (await !this.updateDevice(device)) {
+        console.log("Error updating device with lesson status")
+      }
+    },
   },
   mounted() {
     this.initialize();
+    // update the lesson 1 status to started on load if it's false
+    if (this.device.status.lessons.lesson1.started == false) this.updateLessonStatusStarted();
   },
 
 };

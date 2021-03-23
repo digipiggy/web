@@ -119,7 +119,11 @@
             </v-btn>
           </v-card-actions>
         </v-card> -->
+
+        <!-- <p lass="text-h6 font-weight-regular" style="color: #9367E6"> Coming Soon </p> -->
         <sleep class="mb-4" />
+
+
       </v-col>
     </v-row>
   </v-container>

@@ -18,6 +18,7 @@ import ContactUs from './views/ContactUs';
 import Chapter from './views/Chapter';
 import Settings from './views/Settings';
 import Page404 from './views/Page404';
+import Printables from './views/Printables';
 
 Vue.use(Router);
 
@@ -108,6 +109,11 @@ const router = new Router({
       path: '/404',
       name: '404 - Page not Found',
       component: Page404
+    },
+    {
+      path: '/printables',
+      name: 'Piggles Printables',
+      component: Printables
     },
     {
       path: '*',
