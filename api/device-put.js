@@ -45,8 +45,19 @@ const schema = Joi.object().keys({
     goalAllowance: Joi.number().allow(null),
   }),
   status: Joi.object().keys({
-    completedPreferences: Joi.boolean()
-  })
+    completedPreferences: Joi.boolean(),
+    lessons: Joi.object().keys({
+      lesson1: Joi.object().keys({
+        started: Joi.boolean(),
+        completed: Joi.boolean()
+      }),
+      lesson2: Joi.object().keys({
+        started: Joi.boolean(),
+        completed: Joi.boolean()
+      }),
+    })
+  }),
+
 });
 
 module.exports = async (req, res) => {
