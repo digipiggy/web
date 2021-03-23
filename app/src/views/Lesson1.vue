@@ -883,7 +883,6 @@ export default {
       this.loading = false;
     },
     initialize() {
-
       // if there are already goals, keep them, otherwise initialize a goal for each kid.
       this.goals = this.device.kids.map((kid, i) => {
         const goal = this.device.goals[i];
@@ -907,8 +906,27 @@ export default {
       });
     }
   },
+  async updateLessonProgressStarted() {
+    const device = {
+      ...this.device,
+      status: {
+        ...this.device.status,
+        lesson1: {
+          ... this.device.status.lesson1,
+          started: true
+        }
+      }
+    }
+
+    if (await this.updateDevice(device)) {
+      console.log("sweet it updated")
+    } else {
+      console.log("crap it didn't update")
+    }
+  },
   mounted() {
     this.initialize();
+    if (this.device.status.lessons.lesson1.started == false) this.updateLessonProgressStarted();
   },
 
 };
