@@ -131,11 +131,11 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import Sleep from '@/components/Sleep';
+// import Sleep from '@/components/Sleep';
 
 export default {
   components: {
-    sleep: Sleep,
+    // sleep: Sleep,
   },
   data() {
     return {

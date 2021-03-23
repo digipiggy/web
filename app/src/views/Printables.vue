@@ -43,7 +43,7 @@ const resources = [
     img: "SetupInstructions.jpg",
   },
   {
-    name: "Add DigiPig App To Your Phone",
+    name: "App on Your Phone",
     pdf: "Mobile_App_Doc_V2.pdf",
     img: "MobileLogin.jpg",
   },

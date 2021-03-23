@@ -13,7 +13,7 @@
     <v-btn 
       color="#48A182" 
       class="white--text"
-      :disabled="lesson.comingSoon" 
+      :disabled="lesson.disabled" 
       :to="lesson.route"
     >
       Start {{lesson.title}}

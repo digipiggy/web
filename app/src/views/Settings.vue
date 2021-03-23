@@ -1019,7 +1019,7 @@ export default {
 
       // organize the status
       const status = {
-        firstLogin: this.firstLogin,
+        ...this.device.status,
         completedPreferences: true
       };
 

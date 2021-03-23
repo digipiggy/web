@@ -12,7 +12,7 @@
       <v-col 
         cols="12" 
         md="5" 
-        v-for="lesson in lessons"
+        v-for="lesson in computedLessons"
         :key="lesson.title"
       >
         <lessonCard 
@@ -42,14 +42,16 @@ const lessons = [
     image: "Lesson2Title.png",
     subtitle: "Start your earning",
     body: "Learn to earn and track goal progress.",
-    route: "/lessons/lesson/2"
-  },
+    route: "/lessons/lesson/2",
+    disabled: true
+    },
   {
     title: "Lesson 3 - Saving",
     image: "rexPirate.jpg",
     subtitle: "Save vs Spend",
     body: "Smart saving made easy.",
     route: "/lessons/lesson/3",
+    disabled: true,
     comingSoon: true
   },
   {
@@ -58,6 +60,7 @@ const lessons = [
     subtitle: "Reward time!",
     body: "You've worked for this, now it's time to celebrate!",
     route: "/lessons/lesson/4",
+    disabled: true,
     comingSoon: true
   }
 ]
@@ -76,6 +79,12 @@ export default {
   },
   computed: {
     ...mapState(['device']),
+    computedLessons () {
+      const newLessons = this.lessons
+      //temporary hopefully
+      newLessons[1].disabled = !this.device.status.lessons.lesson1.completed
+      return newLessons
+    }
   }
 
 };
