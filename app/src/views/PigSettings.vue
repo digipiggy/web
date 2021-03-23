@@ -120,8 +120,8 @@
           </v-card-actions>
         </v-card> -->
 
-        <p lass="text-h6 font-weight-regular" style="color: #9367E6"> Coming Soon </p>
-        <!-- <sleep class="mb-4" /> -->
+        <!-- <p lass="text-h6 font-weight-regular" style="color: #9367E6"> Coming Soon </p> -->
+        <sleep class="mb-4" />
 
 
       </v-col>
@@ -131,11 +131,11 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-// import Sleep from '@/components/Sleep';
+import Sleep from '@/components/Sleep';
 
 export default {
   components: {
-    // sleep: Sleep,
+    sleep: Sleep,
   },
   data() {
     return {

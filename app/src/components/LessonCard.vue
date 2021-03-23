@@ -4,8 +4,10 @@
     <p class="text-h6 font-weight-regular">{{lesson.title}}</p>
     <v-img 
       :src="require(`@/assets/${lesson.image}`)" 
+      :lazy-src="require(`@/assets/${lesson.image}`)" 
       :gradient="lesson.comingSoon ? '90deg, rgba(68,68,68,0.48144841269841265) 35%, rgba(68,68,68,0.4973214285714286) 78%' : ''"
       aspect-ratio="1.9"
+      transition="none"
       class="mb-4"
     ></v-img>
     <p class="text-caption ">{{lesson.subtitle}}</p>

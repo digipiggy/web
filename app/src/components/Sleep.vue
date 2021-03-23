@@ -7,6 +7,10 @@
         <v-switch label="" hide-details v-model="piggySleep.enabled" ></v-switch>
       </div>
     </v-toolbar>
+    <p 
+      class="text-body-1 mx-4 mt-3 mb-0" 
+      :style="{color: !piggySleep.enabled ? 'rgba(0, 0, 0, 0.38)' : ''}"
+    >Even DigiPigs have a bedtime. Put your DigiPig to sleep at night, by setting the options below.</p>
     <v-card-text>
       <v-form ref="form" lazy-validation>
         <v-text-field
