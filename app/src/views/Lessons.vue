@@ -41,7 +41,6 @@ const lessons = [
   {
     title: "Lesson 2 - Earning",
     image: "lessons/lesson2/lesson2Title.png",
-    imageLazy: "familyKitchen2Grey.png",
     subtitle: "Start your earning",
     body: "Learn to earn and track goal progress.",
     route: "/lessons/lesson/2",
@@ -50,6 +49,7 @@ const lessons = [
   {
     title: "Lesson 3 - Saving",
     image: "rexPirate.jpg",
+    imageLazy: "familyKitchen2Grey.png",
     subtitle: "Save vs Spend",
     body: "Smart saving made easy.",
     route: "/lessons/lesson/3",
