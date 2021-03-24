@@ -81,7 +81,7 @@ const newTitlePage = {
   subtitle: "Goals",
   readTime: "15",
   audience: "Family reads together.",
-  backgroundImage: "familyKitchen2.png",
+  backgroundImage: "common/familyKitchen.png",
   backgroundImageMobile: "familyKitchenMobile.png",
   textPrimaryColor: "#FFFFFF"
 }

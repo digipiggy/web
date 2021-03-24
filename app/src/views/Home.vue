@@ -30,7 +30,8 @@ import DigiStatusCard from '@/components/DigiStatusCard';
 
 const lesson1 = {
   title: "Lesson 1",
-  image: "kitchenEnter.jpg",
+  image: "common/familyKitchen.png",
+  imageLazy: "common/familyKitchenSmall.png",
   subtitle: "Let's talk about Goals",
   body: "Set your goals with help from the piggles family.",
   route: "/lessons/lesson/1"
@@ -39,6 +40,7 @@ const lesson1 = {
 const lesson2 = {
   title: "Lesson 2 - Earning",
   image: "lessons/lesson2/lesson2Title.png",
+  imageLazy: "lessons/lesson2/lesson2TitleSmall.png",
   subtitle: "Start your earning",
   body: "Learn to earn and track goal progress.",
   route: "/lessons/lesson/2",
