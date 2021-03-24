@@ -43,7 +43,7 @@
             max-width="200px"
             class="mx-auto"
             style="cursor: pointer;"
-            :src="require(`@/assets/startCoin.png`)" 
+            :src="require(`@/assets/lessons/startCoin.png`)" 
             @click="$vuetify.goTo('#page1')"
           ></v-img>
         </v-col>
@@ -1068,8 +1068,8 @@ const titlePage = {
   subtitle: "Earning",
   readTime: "15",
   audience: "Family reads together.",
-  backgroundImage: "Lesson2Title.png",
-  backgroundImageMobile: "Lesson2Title.png",
+  backgroundImage: "lessons/lesson2/lesson2Title.png",
+  backgroundImageMobile: "lessons/lesson2/lesson2Title.png",
   textPrimaryColor: "#FFFFFF"
 }
 
@@ -1151,7 +1151,7 @@ const textPage3Incentive = {
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'MommaPiggleHeadshot.png',
+  backgroundImage: 'lessons/MommaPiggleHeadshot.png',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1166,7 +1166,7 @@ const textPage3Both = {
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'MommaPiggleHeadshot.png',
+  backgroundImage: 'lessons/MommaPiggleHeadshot.png',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }

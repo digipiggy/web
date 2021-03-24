@@ -78,7 +78,7 @@
             <v-img 
               v-for="coinDot in goal.current"
               :key="`coinDot-${coinDot}`"
-              :src="require('@/assets/PigglesCoin.png')" 
+              :src="require('@/assets/common/pigglesCoin.png')" 
               aspect-ratio="1"
               max-width="12%"
             ></v-img>

@@ -43,7 +43,8 @@
             max-width="200px"
             class="mx-auto"
             style="cursor: pointer;"
-            :src="require(`@/assets/startCoin.png`)" 
+            :src="require(`@/assets/lessons/startCoin.png`)"
+            :lazy-src="require(`@/assets/lessons/startCoin.png`)" 
             @click="$vuetify.goTo('#page1')"
           ></v-img>
         </v-col>
@@ -125,7 +126,8 @@
           <v-row>
             <v-col cols="4">
               <v-img 
-                :src="require(`@/assets/${textPage1.quoteImg}`)" 
+                :src="require(`@/assets/${textPage1.quoteImg}`)"
+                :lazy-src="require(`@/assets/${textPage1.quoteImg}`)"  
                 style="border-radius: 50%; border: 1px solid #9367E6"
                 aspect-ratio="1"
                 width="100"
@@ -230,7 +232,8 @@
           <v-row>
             <v-col cols="4">
               <v-img 
-                :src="require(`@/assets/${textPage2.quoteImg}`)" 
+                :src="require(`@/assets/${textPage2.quoteImg}`)"
+                :lazy-src="require(`@/assets/${textPage2.quoteImg}`)"  
                 style="border-radius: 50%; border: 1px solid #9367E6"
                 aspect-ratio="1"
                 width="100"
@@ -335,7 +338,8 @@
           <v-row>
             <v-col cols="4">
               <v-img 
-                :src="require(`@/assets/${textPage3.quoteImg}`)" 
+                :src="require(`@/assets/${textPage3.quoteImg}`)"
+                :lazy-src="require(`@/assets/${textPage3.quoteImg}`)"  
                 style="border-radius: 50%; border: 1px solid #9367E6"
                 aspect-ratio="1"
                 width="100"
@@ -413,7 +417,7 @@
           <v-img 
             v-for="coinDot in 3"
             :key="`coinDot-${coinDot}`"
-            :src="require('@/assets/PigglesCoin.png')" 
+            :src="require('@/assets/common/pigglesCoin.png')" 
             aspect-ratio="1"
           ></v-img>
           <v-img 
@@ -435,7 +439,7 @@
         </p>
         <v-row class=" d-flex align-center justify-center mb-5">
           <v-img 
-            :src="require('@/assets/PigglesCoin.png')" 
+            :src="require('@/assets/common/pigglesCoin.png')" 
             aspect-ratio="1"
             max-width="30px"
           ></v-img>
@@ -658,7 +662,7 @@
               class=" white--text"
               :disabled="!device.status.lessons.lesson1.completed"
             >
-              Start Lesson 2
+              Start Lesson 2 - Earning
               <v-icon right dark>arrow_forward</v-icon>
             </v-btn>
           </v-col>
@@ -668,7 +672,8 @@
             class="pa-5"
           >
             <v-img 
-              :src="require(`@/assets/${textPage7.backgroundImage}`)" 
+              :src="require(`@/assets/${textPage7.backgroundImage}`)"
+              :lazy-src="require(`@/assets/${textPage7.backgroundImage}`)"  
             ></v-img>
           </v-col>
         </v-row>  
@@ -705,7 +710,7 @@ const textPage1 = {
   backgroundColor: "#FFFFFF",
   quote: '"I try to make goals when I play soccer"',
   quoteAttrib: 'Penny Piggle',
-  quoteImg: "PennyHeadshotSquare.png",
+  quoteImg: "lessons/lesson1/PennyHeadshotSquare.png",
   textPrimaryColor: "#9367E6"
 }
 const textPage2 = {
@@ -726,7 +731,7 @@ const textPage2 = {
   backgroundColor: "#FFFFFF",
   quote: '"My goal was to start a business, but I wasn’t sure how. I made a list of things to learn. Then I talked to people who helped me with my ideas."',
   quoteAttrib: 'Momma Piggle',
-  quoteImg: "MommaPiggleHeadshot.png",
+  quoteImg: "lessons/MommaPiggleHeadshot.png",
   textPrimaryColor: "#9367E6"
 }
 const textPage3 = {
@@ -747,7 +752,7 @@ const textPage3 = {
   backgroundColor: "#FFFFFF",
   quote: 'I wanted a pirate costume for Halloween. I didn’t have the money yet, so I made a paper eye patch."',
   quoteAttrib: 'Rex Piggle',
-  quoteImg: "RexPiggleHeadshot.png",
+  quoteImg: "lessons/lesson1/RexPiggleHeadshot.png",
   textPrimaryColor: "#9367E6"
 }
 // const textPage4 = {
@@ -809,7 +814,7 @@ const textPage7 = {
   audience: "kid",
   instructions: "Take Action",
   instructionIcon: "fas fa-tasks",
-  backgroundImage: 'Lesson2Title.png',
+  backgroundImage: 'lessons/lesson2/lesson2Title.png',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }

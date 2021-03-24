@@ -221,7 +221,7 @@
                       <v-img 
                         v-for="coinDot in goal.coins"
                         :key="`coinDot-${coinDot}`"
-                        :src="require('@/assets/PigglesCoin.png')" 
+                        :src="require('@/assets/common/pigglesCoin.png')" 
                         aspect-ratio="1"
                         max-width="12%"
                       ></v-img>
@@ -250,7 +250,7 @@
                       <v-img 
                         v-for="coinDot in newGoalTotal"
                         :key="`coinDot-${coinDot}`"
-                        :src="require('@/assets/PigglesCoin.png')" 
+                        :src="require('@/assets/common/pigglesCoin.png')" 
                         @click="updateNewGoalAmount('coin', coinDot)"
                         aspect-ratio="1"
                       ></v-img>
@@ -557,7 +557,7 @@
                   <v-img 
                     v-for="coinDot in goal.coins"
                     :key="`coinDot-${coinDot}`"
-                    :src="require('@/assets/PigglesCoin.png')" 
+                    :src="require('@/assets/common/pigglesCoin.png')" 
                     aspect-ratio="1"
                     max-width="12%"
                   ></v-img>
@@ -586,7 +586,7 @@
                   <v-img 
                     v-for="coinDot in newGoalTotal"
                     :key="`coinDot-${coinDot}`"
-                    :src="require('@/assets/PigglesCoin.png')" 
+                    :src="require('@/assets/common/pigglesCoin.png')" 
                     @click="updateNewGoalAmount('coin', coinDot)"
                     aspect-ratio="1"
                   ></v-img>
