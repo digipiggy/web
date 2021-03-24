@@ -50,7 +50,7 @@ const resources = [
   {
     name: "Goal & Earning Plan",
     pdf: "Goal_and_Earning_Plan.pdf",
-    img: "EarningPlan.jpg",
+    img: "common/goalAndEarningPlan.jpg",
   },
   {
     name: "A-Maze-ing DigiPig",

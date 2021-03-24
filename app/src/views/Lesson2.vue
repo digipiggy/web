@@ -43,7 +43,8 @@
             max-width="200px"
             class="mx-auto"
             style="cursor: pointer;"
-            :src="require(`@/assets/lessons/startCoin.png`)" 
+            :src="require(`@/assets/lessons/startCoin.png`)"
+            :lazy-src="require(`@/assets/lessons/startCoin.png`)"  
             @click="$vuetify.goTo('#page1')"
           ></v-img>
         </v-col>
@@ -125,6 +126,7 @@
             </p>
             <v-img 
               :src="require(`@/assets/${textPage1.backgroundImage}`)" 
+              :lazy-src="require(`@/assets/${textPage1.backgroundImage}`)"  
             ></v-img>
           </v-col>
         </v-row>
@@ -194,7 +196,8 @@
       </v-col>
       <v-col v-if="!isDesktop">
         <v-img 
-          :src="require(`@/assets/${page2.backgroundImage}`)" 
+          :src="require(`@/assets/${page2.backgroundImage}`)"
+          :lazy-src="require(`@/assets/${page2.backgroundImage}`)"
         ></v-img>       
       </v-col>
       <v-spacer>
@@ -327,6 +330,7 @@
             </p>
             <v-img 
               :src="require(`@/assets/${page3.backgroundImage}`)" 
+              :lazy-src="require(`@/assets/${page3.backgroundImage}`)" 
             ></v-img>
           </v-col>
         </v-row>
@@ -405,8 +409,8 @@
               {{page4.imageTitle}}
             </p>
             <v-img 
-              
               :src="require(`@/assets/${page4.backgroundImage}`)" 
+              :lazy-src="require(`@/assets/${page4.backgroundImage}`)" 
             ></v-img>
           </v-col>
         </v-row>
@@ -477,6 +481,7 @@
             <v-img 
               class="mx-15 my-2 my-md-15"
               :src="require(`@/assets/${page5.pigImage}`)" 
+              :lazy-src="require(`@/assets/${page5.pigImage}`)" 
             ></v-img>
             
           </v-col>
@@ -490,6 +495,7 @@
             </p>
             <v-img 
               :src="require(`@/assets/${page5.backgroundImage}`)" 
+              :lazy-src="require(`@/assets/${page5.backgroundImage}`)" 
             ></v-img>
           </v-col>
         </v-row>
@@ -568,6 +574,7 @@
             </p>
             <v-img 
               :src="require(`@/assets/${page5a.backgroundImage}`)" 
+              :lazy-src="require(`@/assets/${page5a.backgroundImage}`)" 
             ></v-img>
           </v-col>
         </v-row>
@@ -761,6 +768,7 @@
             </p>
             <v-img 
               :src="require(`@/assets/${textPage6Allowance.backgroundImage}`)" 
+              :lazy-src="require(`@/assets/${textPage6Allowance.backgroundImage}`)" 
             ></v-img>
           </v-col>
 
@@ -955,6 +963,7 @@
             </p>
             <v-img 
               :src="require(`@/assets/${page8.backgroundImage}`)" 
+              :lazy-src="require(`@/assets/${page8.backgroundImage}`)" 
             ></v-img>
           </v-col>
         </v-row>
@@ -1047,6 +1056,7 @@
             </p>
             <v-img 
               :src="require(`@/assets/${textPage9.backgroundImage}`)" 
+              :lazy-src="require(`@/assets/${textPage9.backgroundImage}`)" 
             ></v-img>
           </v-col>
         </v-row>
@@ -1085,7 +1095,7 @@ const textPage1 = {
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'PigglesBankCoins.png',
+  backgroundImage: 'lessons/lesson2/pigglesBankCoins.png',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1102,7 +1112,7 @@ const textPage2Allowance = {
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexEarningAllowance.jpg',
+  backgroundImage: 'lessons/lesson2/rexEarningAllowance.jpg',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1118,7 +1128,7 @@ const textPage2Incentive = {
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexEarningBoth.jpg',
+  backgroundImage: 'lessons/lesson2/rexEarningBoth.jpg',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1134,7 +1144,7 @@ const textPage2Both = {
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexEarningBoth.jpg',
+  backgroundImage: 'lessons/lesson2/rexEarningBoth.jpg',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1182,7 +1192,7 @@ const textPage3Both = {
 //   instructions: "Read Aloud",
 //   instructionsTT: "Read this section out loud with your kid(s).",
 //   instructionIcon: "fab fa-readme",
-//   backgroundImage: 'RexEarningPlan-Allowance.jpg',
+//   backgroundImage: 'lessons/lesson2/rexEarningPlanAllowance.jpg',
 //   imageTitle: 'Rex\'s Goal & Earning Plan:',
 //   backgroundColor: "#FFFFFF",
 //   textPrimaryColor: "#9367E6"
@@ -1199,7 +1209,7 @@ const textPage4Incentive = {
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexEarningPlan-Incentive.jpg',
+  backgroundImage: 'lessons/lesson2/rexEarningPlanIncentive.jpg',
   imageTitle: 'Rex\'s Goal & Earning Plan:',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
@@ -1216,7 +1226,7 @@ const textPage4Both = {
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexEarningPlan-Both.jpg',
+  backgroundImage: 'lessons/lesson2/rexEarningPlanBoth.jpg',
   imageTitle: 'Rex\'s Goal & Earning Plan:',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
@@ -1234,8 +1244,8 @@ const textPage5Allowance = {
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexEarningPlan-Allowance.jpg',
-  pigImage: 'DigiPigBlueLights.gif',
+  backgroundImage: 'lessons/lesson2/rexEarningPlanAllowance.jpg',
+  pigImage: 'lessons/lesson2/digiPigBlueLightsTransparent.gif',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1250,8 +1260,8 @@ const textPage5Incentive = {
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexGoalBank.png',
-  pigImage: 'DigiPigBlueLightsTransparent.gif',
+  backgroundImage: 'lessons/lesson2/rexGoalBank.png',
+  pigImage: 'lessons/lesson2/digiPigBlueLightsTransparent.gif',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1266,8 +1276,8 @@ const textPage5Both = {
   instructions: "Read Aloud",
   instructionsTT: "Read this section out loud with your kid(s).",
   instructionIcon: "fab fa-readme",
-  backgroundImage: 'RexGoalBank.png',
-  pigImage: 'DigiPigBlueLightsTransparent.gif',
+  backgroundImage: 'lessons/lesson2/rexGoalBank.png',
+  pigImage: 'lessons/lesson2/digiPigBlueLightsTransparent.gif',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1282,7 +1292,7 @@ const page5a = {
   instructions: "Take Action",
   instructionsTT: "Pick your goal.",
   instructionIcon: "fas fa-tasks",
-  backgroundImage: 'EarningPlan.jpg',
+  backgroundImage: 'common/goalAndEarningPlan.jpg',
   imageTitle: 'Printed Goal & Earning Plan:',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
@@ -1299,7 +1309,7 @@ const textPage6Allowance = {
   instructions: "Take Action",
   instructionsTT: "Set your allowance.",
   instructionIcon: "fas fa-tasks",
-  backgroundImage: 'RexStanding.png',
+  backgroundImage: 'lessons/lesson2/rexStanding.png',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1315,7 +1325,7 @@ const textPage7Incentive = {
   instructions: "Take Action",
   instructionsTT: "Review your tasks and behaviors",
   instructionIcon: "fas fa-tasks",
-  backgroundImage: 'TaskBehaviorSelector.png',
+  backgroundImage: 'lessons/lesson2/rexTaskAndBehaviorChips.png',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1331,7 +1341,7 @@ const textPage8Allowance = {
   instructions: "Take Action",
   instructionsTT: "Pick your goal.",
   instructionIcon: "fas fa-tasks",
-  backgroundImage: 'EarningPlanAllowance.png',
+  backgroundImage: 'common/goalAndEarningPlanAllowance.png',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1345,7 +1355,7 @@ const textPage8Incentive = {
   instructions: "Take Action",
   instructionsTT: "Pick your goal.",
   instructionIcon: "fas fa-tasks",
-  backgroundImage: 'EarningPlanIncentive.png',
+  backgroundImage: 'common/goalAndEarningPlanIncentive.png',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1359,7 +1369,7 @@ const textPage8Both = {
   instructions: "Take Action",
   instructionsTT: "Pick your goal.",
   instructionIcon: "fas fa-tasks",
-  backgroundImage: 'EarningPlan.jpg',
+  backgroundImage: 'common/goalAndEarningPlan.jpg',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
@@ -1375,7 +1385,7 @@ const textPage9 = {
   instructions: "Take Action",
   instructionsTT: "Pick your goal.",
   instructionIcon: "fas fa-tasks",
-  backgroundImage: 'PigglesCoin1.png',
+  backgroundImage: 'common/pigglesCoin1.png',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
