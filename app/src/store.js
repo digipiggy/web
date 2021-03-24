@@ -26,13 +26,24 @@ export default new Vuex.Store({
     device: {
       deviceId: null,
       deviceCode: null,
+      piggySleep: {},
+      goalCatalog: [],
       goals: [],
       kids: [],
-      preferences: {},
+      settings: {},
       rewards: [],
       status: {
-        firstLogin: true,
-        completedPreferences: false
+        completedPreferences: false,
+        lessons: {
+          lesson1: {
+            completed: false,
+            started: false
+          },
+          lesson2: {
+            completed: false,
+            started: false
+          }
+        }
       }
     },
     chapters
