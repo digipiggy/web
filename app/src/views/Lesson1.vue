@@ -562,7 +562,7 @@
             </div>
             <v-btn
               color="#9367E6"
-              class="ma-2 white--text"
+              class=" white--text"
               :loading="loading"
               :disabled="loading"
               @click="saveGoals"
@@ -634,6 +634,18 @@
             >
               {{textPage7.text[0]}}
             </p>
+            <p class="text-body-1 font-weight-light mt-3 mb-8" style="color: black">
+              <v-icon color="#A0E667" size="30" >fas fa-battery-three-quarters</v-icon>
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <span
+                    v-bind="attrs"
+                    v-on="on"
+                  > Check your kids energy level</span>
+                </template>
+                <span>Take a break if they need one, lesson 2 will be here when they're ready.</span>
+              </v-tooltip>
+            </p>
             <p 
               v-if="!device.status.lessons.lesson1.completed"
               class="text-h6 font-weight-light mb-14"
@@ -643,7 +655,7 @@
             <v-btn
               to="/lessons/lesson/2"
               color="#48A182"
-              class="ma-2 white--text"
+              class=" white--text"
               :disabled="!device.status.lessons.lesson1.completed"
             >
               Start Lesson 2
@@ -792,12 +804,12 @@ const textPage7 = {
   type: "newTextPage",
   title: "Get ready to earn",
   text: [
-    "Congratulations on completing Lesson 1 - Goals! Now that your goal has been set and your child has a reward in sight, it’s time to learn how to earn Piggles Coins. Find out how in Lesson 2 - Earning!",
+    "Congratulations on completing Lesson 1 - Goals! Now that your goal has been set, it’s time to learn how to earn Piggles Coins and watch your DigiPig light up. Find out how in Lesson 2 - Earning!",
   ],
   audience: "kid",
   instructions: "Take Action",
   instructionIcon: "fas fa-tasks",
-  backgroundImage: 'rex&Penny.jpg',
+  backgroundImage: 'Lesson2Title.png',
   backgroundColor: "#FFFFFF",
   textPrimaryColor: "#9367E6"
 }
