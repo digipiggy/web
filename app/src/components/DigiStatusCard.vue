@@ -1,7 +1,7 @@
 <template>
   <v-card class="elevation-3 pa-5">
     <p class="text-h6 font-weight-regular mb-0" >Our Family's Goals</p>
-    <p class="text-caption font-weight-regular" >DigiPig Device Code: {{device.deviceCode}} </p>
+    <p class="text-caption font-weight-regular" >Our Piggles Day: <span class="font-weight-medium" style="color: #9367E6">{{`${device.settings.rewardDay}s` || 'Not set. Configure on the family settings page'}}</span> </p>
 
     <v-row v-if="activeGoals.length == 0" class="mt-2">
       <p class="ml-2 mb-2">Goals have not been set yet. Set your goals in Lesson One. Get started now!</p>
@@ -39,7 +39,7 @@
               <v-img 
                 v-for="coinDot in goal.current"
                 :key="`coinDot-${coinDot}`"
-                :src="require('@/assets/PigglesCoin.png')" 
+                :src="require('@/assets/common/pigglesCoin.png')" 
                 aspect-ratio="1"
                 max-width="12%"
               ></v-img>

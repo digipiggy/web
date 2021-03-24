@@ -26,12 +26,6 @@
 
     <v-container v-else>
 
-      <!-- <v-btn 
-        class="white--text"
-        style="position: fixed;bottom: 10px;right: 10px;z-index: 1;"
-        color="#9367E6">
-        Save Goals Mocked
-      </v-btn> -->
 
       <v-dialog
         v-model="showCelebration"
@@ -116,7 +110,7 @@
                     <v-img 
                       v-for="n in 1"
                       :key="`good-${n}`"
-                      :src="require('@/assets/PigglesCoin.png')" 
+                      :src="require('@/assets/common/pigglesCoin.png')" 
                       max-width="20px"
                       max-height="20px"
                     ></v-img>
@@ -128,7 +122,7 @@
                     <v-img 
                       v-for="n in 2"
                       :key="`great-${n}`"
-                      :src="require('@/assets/PigglesCoin.png')" 
+                      :src="require('@/assets/common/pigglesCoin.png')" 
                       max-width="20px"
                       max-height="20px"
                     ></v-img>
@@ -140,7 +134,7 @@
                     <v-img 
                       v-for="n in 3"
                       :key="`amazing-${n}`"
-                      :src="require('@/assets/PigglesCoin.png')" 
+                      :src="require('@/assets/common/pigglesCoin.png')" 
                       max-width="20px"
                       max-height="20px"
                     ></v-img>
@@ -157,7 +151,7 @@
                     <v-img 
                       v-for="n in 1"
                       :key="`good-${n}`"
-                      :src="require('@/assets/PigglesCoin.png')" 
+                      :src="require('@/assets/common/pigglesCoin.png')" 
                       max-width="20px"
                       max-height="20px"
                     ></v-img>
@@ -169,7 +163,7 @@
                     <v-img 
                       v-for="n in 2"
                       :key="`great-${n}`"
-                      :src="require('@/assets/PigglesCoin.png')" 
+                      :src="require('@/assets/common/pigglesCoin.png')" 
                       max-width="20px"
                       max-height="20px"
                     ></v-img>
@@ -181,7 +175,7 @@
                     <v-img 
                       v-for="n in 3"
                       :key="`amazing-${n}`"
-                      :src="require('@/assets/PigglesCoin.png')" 
+                      :src="require('@/assets/common/pigglesCoin.png')" 
                       max-width="20px"
                       max-height="20px"
                     ></v-img>

@@ -39,7 +39,7 @@ const lessons = [
   },
   {
     title: "Lesson 2 - Earning",
-    image: "Lesson2Title.png",
+    image: "lessons/lesson2/lesson2Title.png",
     subtitle: "Start your earning",
     body: "Learn to earn and track goal progress.",
     route: "/lessons/lesson/2",
