@@ -544,7 +544,7 @@
                 <template slot="selection" slot-scope="data">
                   <template >
                     <v-list-item-avatar >
-                      <v-img :src="require(`@/assets/PigglesCoin${data.item.coins}.png`)" ></v-img>
+                      <v-img :src="require(`@/assets/common/pigglesCoin${data.item.coins}.png`)" ></v-img>
                       <!-- <p style="position: relative; right: 20px">{{device.goalCatalog[i].coins}}</p> -->
                     </v-list-item-avatar>
                     <v-list-item-content>
@@ -555,7 +555,7 @@
                 <template slot="item" slot-scope="data">
                   <template >
                     <v-list-item-avatar >
-                      <v-img :src="require(`@/assets/PigglesCoin${data.item.coins}.png`)" ></v-img>
+                      <v-img :src="require(`@/assets/common/pigglesCoin${data.item.coins}.png`)" ></v-img>
                     </v-list-item-avatar>
                     <v-list-item-content>
                       <v-list-item-title >{{data.item.name}}</v-list-item-title>

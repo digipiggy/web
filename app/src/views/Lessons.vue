@@ -33,6 +33,7 @@ const lessons = [
   {
     title: "Lesson 1 - Goals",
     image: "familyKitchen2.png",
+    imageLazy: "familyKitchen2Small.png",
     subtitle: "Let's talk about Goals",
     body: "Set your goals with help from the Piggles family.",
     route: "/lessons/lesson/1"
@@ -40,6 +41,7 @@ const lessons = [
   {
     title: "Lesson 2 - Earning",
     image: "lessons/lesson2/lesson2Title.png",
+    imageLazy: "familyKitchen2Grey.png",
     subtitle: "Start your earning",
     body: "Learn to earn and track goal progress.",
     route: "/lessons/lesson/2",
