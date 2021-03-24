@@ -32,8 +32,8 @@ import Halt from '@/components/Halt';
 const lessons = [
   {
     title: "Lesson 1 - Goals",
-    image: "familyKitchen2.png",
-    imageLazy: "familyKitchen2Small.png",
+    image: "common/familyKitchen.png",
+    imageLazy: "common/familyKitchenSmall.png",
     subtitle: "Let's talk about Goals",
     body: "Set your goals with help from the Piggles family.",
     route: "/lessons/lesson/1"
@@ -41,6 +41,7 @@ const lessons = [
   {
     title: "Lesson 2 - Earning",
     image: "lessons/lesson2/lesson2Title.png",
+    imageLazy: "lessons/lesson2/lesson2TitleSmall.png",
     subtitle: "Start your earning",
     body: "Learn to earn and track goal progress.",
     route: "/lessons/lesson/2",
@@ -48,8 +49,8 @@ const lessons = [
     },
   {
     title: "Lesson 3 - Saving",
-    image: "rexPirate.jpg",
-    imageLazy: "familyKitchen2Grey.png",
+    image: "common/rexPirate.jpg",
+    imageLazy: "common/rexPirateSmall.jpg",
     subtitle: "Save vs Spend",
     body: "Smart saving made easy.",
     route: "/lessons/lesson/3",
@@ -58,7 +59,8 @@ const lessons = [
   },
   {
     title: "Lesson 4 - Spending",
-    image: "digiStanding.png",
+    image: "common/digiStanding.png",
+    imageLazy: "common/digiStandingSmall.png",
     subtitle: "Reward time!",
     body: "You've worked for this, now it's time to celebrate!",
     route: "/lessons/lesson/4",

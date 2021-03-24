@@ -691,7 +691,7 @@ const titlePage = {
   subtitle: "Goals",
   readTime: "15",
   audience: "Family reads together.",
-  backgroundImage: "familyKitchen2.png",
+  backgroundImage: "common/familyKitchen.png",
   backgroundImageMobile: "familyKitchenMobile.png",
   textPrimaryColor: "#FFFFFF"
 }
@@ -748,7 +748,7 @@ const textPage3 = {
   instructions: "Read and Share",
   instructionsTT: "Read and discuss the italicized questions with your kid(s)",
   instructionIcon: "fas fa-book-reader",
-  backgroundImage: 'rexPirate.jpg',
+  backgroundImage: 'common/rexPirate.jpg',
   backgroundColor: "#FFFFFF",
   quote: 'I wanted a pirate costume for Halloween. I didn’t have the money yet, so I made a paper eye patch."',
   quoteAttrib: 'Rex Piggle',
