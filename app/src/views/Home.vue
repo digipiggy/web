@@ -10,8 +10,8 @@
         <lessonCard 
           :lesson="lessonToShow"
         />
-        <!-- <div class="mb-6"></div>
-        <articleCard /> -->
+        <div class="mb-6"></div>
+        <articleCard :article="articleToShow"/>
       </v-col>
       <v-col cols="12" md="6" :order="isDesktop ? 2 : 1">
         <digiStatusCard />
@@ -24,7 +24,7 @@
 import { mapState } from 'vuex';
 
 import LessonCard from '@/components/LessonCard';
-// import ArticleCard from '@/components/ArticleCard';
+import ArticleCard from '@/components/ArticleCard';
 import WelcomeCard from '@/components/WelcomeCard';
 import DigiStatusCard from '@/components/DigiStatusCard';
 
@@ -46,6 +46,33 @@ const lesson2 = {
   route: "/lessons/lesson/2",
 }
 
+const familyAndMoneyArticles = [
+  {
+    title: "How to Teach Good Money Habits to Young Kids",
+    subtitle: "From Toddlerhood to elementary school, these ideas will engage and delight the family!",
+    source: "Northwestern Mutual",
+    type: "Article",
+    link: "https://www.northwesternmutual.com/life-and-money/how-to-teach-good-money-habits-to-young-kid/",
+    image: "articles/howToTeachGood.jpg"
+  },
+  {
+    title: "These Games will Teach the Basics of Finance to Kids",
+    subtitle: "Game night and life skills, for the win!",
+    source: "Northwestern Mutual",
+    type: "Article",
+    link: "https://www.northwesternmutual.com/life-and-money/these-games-will-help-teach-the-basics-of-finance-to-children/",
+    image: "articles/theseGames.jpg"
+  },
+  {
+    title: "5 Ways to Raise Non-Materialistic Kids",
+    subtitle: "Offer non-monetary rewards, model generosity, and foster gratitude in your children.​",
+    source: "Northwestern Mutual",
+    type: "Article",
+    link: "https://www.northwesternmutual.com/life-and-money/how-to-raise-non-materialistic-kids/",
+    image: "articles/fiveWays.jpg"
+  }
+]
+
 
 export default {
   name: "Home",
@@ -53,12 +80,13 @@ export default {
     lessonCard: LessonCard,
     welcomeCard: WelcomeCard,
     digiStatusCard: DigiStatusCard,
-    // articleCard: ArticleCard
+    articleCard: ArticleCard
   },
   data() {
     return {
       lesson1,
-      lesson2
+      lesson2,
+      familyAndMoneyArticles
     }
   },
   computed: {
@@ -69,6 +97,9 @@ export default {
     },
     lessonToShow() {
       return this.device.status.lessons.lesson1.completed ? this.lesson2 : this.lesson1
+    },
+    articleToShow() {
+      return familyAndMoneyArticles[Math.floor(Math.random() * familyAndMoneyArticles.length)]
     }
   }
 };
