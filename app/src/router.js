@@ -87,7 +87,7 @@ const router = new Router({
     },
     {
       path: '/articles',
-      name: 'Articles',
+      name: 'Learning Links',
       component: Articles
     },
     {

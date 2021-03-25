@@ -36,6 +36,7 @@ const lessons = [
     imageLazy: "common/familyKitchenSmall.png",
     subtitle: "Let's talk about Goals",
     body: "Set your goals with help from the Piggles family.",
+    parentComponent: "Lessons",
     route: "/lessons/lesson/1"
   },
   {
@@ -44,6 +45,7 @@ const lessons = [
     imageLazy: "lessons/lesson2/lesson2TitleSmall.png",
     subtitle: "Start your earning",
     body: "Learn to earn and track goal progress.",
+    parentComponent: "Lessons",
     route: "/lessons/lesson/2",
     disabled: true
     },
@@ -53,6 +55,7 @@ const lessons = [
     imageLazy: "common/rexPirateSmall.jpg",
     subtitle: "Save vs Spend",
     body: "Smart saving made easy.",
+    parentComponent: "Lessons",
     route: "/lessons/lesson/3",
     disabled: true,
     comingSoon: true
@@ -63,6 +66,7 @@ const lessons = [
     imageLazy: "common/digiStandingSmall.png",
     subtitle: "Reward time!",
     body: "You've worked for this, now it's time to celebrate!",
+    parentComponent: "Lessons",
     route: "/lessons/lesson/4",
     disabled: true,
     comingSoon: true

@@ -1,29 +1,33 @@
 <template>
   <v-container fluid>
     <v-row justify="center">
-      <v-col cols="12">
-        <p class="text-h5 my-5" style="color: #9367E6">Piggles Printables </p>
+      <v-col cols="12" md="10">
+        <p class="text-h5 mt-5 mb-0" style="color: #9367E6">Piggles Printables </p>
         <p class="text-body-1 font-weight-light mb-0">Need an extra copy of a Piggles Family document? No worries! We've put extra copies of our printed resources down below.</p>  
       </v-col>
     </v-row>
-    <v-row >
-      <v-col 
-        cols="6"
-        md="3"
-        v-for="resource in resources"
-        :key="resource.name"
-      >
-        <p class="text-subtitle-1 text-center mb-0"><a :href="resource.pdf" target="_blank">{{resource.name}}</a></p>  
-        <a :href="resource.pdf" target="_blank">
-          <v-card >
-            <v-img
-              class="white--text align-end"
-              :src="require(`@/assets/${resource.img}`)"
-            >
-              <!-- <v-card-title>Top 10 Australian beaches</v-card-title> -->
-            </v-img>
-          </v-card>
-        </a>
+    <v-row justify="center">
+      <v-col cols="12" md="10">
+        <v-row >
+          <v-col 
+            cols="6"
+            md="3"
+            v-for="resource in resources"
+            :key="resource.name"
+          >
+            <p class="text-subtitle-1 text-center mb-0"><a :href="resource.pdf" target="_blank">{{resource.name}}</a></p>  
+            <a :href="resource.pdf" target="_blank">
+              <v-card >
+                <v-img
+                  class="white--text align-end"
+                  aspect-ratio="0.75"
+                  :src="require(`@/assets/${resource.img}`)"
+                >
+                </v-img>
+              </v-card>
+            </a>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>

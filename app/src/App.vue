@@ -86,12 +86,12 @@
             <v-list-item-title>Digi Pig Controls</v-list-item-title>
           </v-list-item>
 
-          <!-- <v-list-item to="/articles">
+          <v-list-item to="/articles">
             <v-list-item-icon>
               <v-icon>mdi-newspaper</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Articles</v-list-item-title>
-          </v-list-item> -->
+            <v-list-item-title>Learning Links</v-list-item-title>
+          </v-list-item>
 
           <v-divider ></v-divider>
 

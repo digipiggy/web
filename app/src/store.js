@@ -26,7 +26,24 @@ export default new Vuex.Store({
     device: {
       deviceId: null,
       deviceCode: null,
-      goals: []
+      piggySleep: {},
+      goalCatalog: [],
+      goals: [],
+      kids: [],
+      settings: {},
+      status: {
+        completedPreferences: false,
+        lessons: {
+          lesson1: {
+            completed: false,
+            started: false
+          },
+          lesson2: {
+            completed: false,
+            started: false
+          }
+        }
+      }
     },
     chapters
   },
@@ -36,7 +53,12 @@ export default new Vuex.Store({
       state.message.color = options.color;
     },
     setDevice(state, device) {
-      state.device = device;
+      // Assign Value if they exist in both objects
+      // This won't overwrite defaults
+      for (var i in device) {
+        if (device.hasOwnProperty(i))
+          state.device[i] = device[i]
+      }
     }
   },
   getters: {
@@ -175,7 +197,7 @@ export default new Vuex.Store({
         return false;
       }
     },
-    async updateValues({ state, commit }, values) {
+    async updateValues({ state }, values) {
       try {
         const response = await axios.post(`https://api.particle.io/v1/devices/${state.device.deviceId}/update`,
           qs.stringify({
