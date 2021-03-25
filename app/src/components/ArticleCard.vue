@@ -1,11 +1,21 @@
 <template>
-  <v-card class="elevation-3 pa-5 " :min-height="minHeight">
-    <a :href="article.link" target="_blank">
+  <v-card class="elevation-3 pa-5 d-flex flex-column" :min-height="minHeight">
+    <a :href="article.link" target="_blank" style="text-decoration: none;">
       <v-img 
         :src="require(`@/assets/${article.image}`)" 
+        :lazy-src="require(`@/assets/${article.image}`)" 
         aspect-ratio="1.9"
-        class="mb-4"
-      ></v-img>
+        class="mb-4 d-flex align-center justify-center"
+      >
+      <v-icon 
+        v-if="article.type == 'YouTube Video'"
+        style="color: #F5F5F5; opacity: 0.5; display: block;"
+        size='80px'
+        class='text-center'
+      >
+        mdi-play
+      </v-icon>
+      </v-img>
     </a>
     <p class="text-subtitle-1 font-weight-regular mb-0">{{article.title}}</p>
     <p class="text-caption">{{article.type}} from {{article.source}}</p>
