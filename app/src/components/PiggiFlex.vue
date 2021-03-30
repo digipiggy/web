@@ -1,14 +1,15 @@
 <template>
-    <div>
+  <!-- <v-container fluid class="wrapper"> -->
+    <div >
       <h3>Piggy</h3>
       <v-card>
-        <v-container fluid class="wrapper fill-height">
+        <!-- <v-container fluid class="wrapper"> -->
             <!-- <v-layout align-start justify-center> -->
-                <v-flex> <!--  xs3 offset-xs9 align-end (moved to end of column) -->
-                  <v-row>
+                <!-- <v-flex>  xs3 offset-xs9 align-end (moved to end of column) -->
+
                     <!-- <v-layout column md="12"> -->
-                    <v-col cols="2">
-                        <v-card class="wrapper coinstack"
+
+                        <v-card class="coinstack"
                             @drop='onDrop($event,1)'
                             @dragover.prevent
                             @dragenter.prevent
@@ -25,9 +26,7 @@
                                 </v-img> -->
                             </div>
                         </v-card>
-                    </v-col>
-                    <v-col cols="10">
-                        <v-card class="wrapper piggi"
+                        <v-card class="piggi"
                             @drop='onDrop($event,2)'
                             @dragover.prevent
                             @dragenter.prevent
@@ -51,12 +50,12 @@
                                 src="../assets/Piggy.svg">
                             </v-img> -->
                         </v-card>
-                    </v-col>
+
                     <!-- </v-layout> -->
-                  </v-row>
-                </v-flex>
+
+                <!-- </v-flex> -->
             <!-- </v-layout> -->
-        </v-container>
+        <!-- </v-container> -->
       </v-card>
 	</div>
 </template>
@@ -122,18 +121,21 @@
         /* display: inline-block;
         width: auto;
         height: auto; */
-        max-height: 100px;
+        max-height: 50px;
     }
     .piggi {
         top: 0;
-        left: 0;
+        /* left: 0; */
+        /* width: 880px;
+        height: 100%; */
+        height: 100vh;
         background-image: url(../assets/Piggy.svg);
-        background-size: contain;
-        background-color: darkgreen;
+        /* background-color: darkgreen; */
     }
    .coinstack {
         top: 0;
         left: 0;
+        height: 100vh;
         background-image: url(../assets/CoinStack.svg);
         background-size: contain;
         background-color: darkgoldenrod;

@@ -1,22 +1,16 @@
 <template>
-  <v-container fluid>
-        <v-row>
-            <v-col>
-                <v-row>
-                    <v-col>
-                        <h1 class="mb-5">Piggy Bank</h1>
-                        <v-divider />
-                    </v-col>
-                </v-row>
-                <v-row>
-                    <v-col>
-                        <Piggi />
-                        <v-divider />
-                    </v-col>
-                </v-row>
-            </v-col>
-
-        </v-row>
+  <v-main>
+    <v-container fluid class="wrapper">
+      <v-row>
+          <v-col>
+              <h1 class="mb-5">Piggy Bank</h1>
+              <v-divider />
+          </v-col>
+      </v-row>
+      <v-layout>
+              <!-- <Piggi /> -->
+              <PiggiFlex />
+      </v-layout>
         <!-- <div>coin stack
             <CoinStack/>
         </div> -->
@@ -118,7 +112,8 @@
             </v-layout>
           </v-container>
         </div> -->
-  </v-container>
+    </v-container>
+  </v-main>
 </template>
 
 <script>
@@ -126,13 +121,16 @@ import { mapState, mapActions } from 'vuex';
 import Auth from '../auth';
 // import Promises from '@/components/Promises';
 // import Coins from '@/components/Coins';
-import Piggi from '@/components/Piggi';
+// import Piggi from '@/components/Piggi';
+// import App from '@/components/Piggi-dnd';
 // import CoinStack from '@/components/CoinStack';
+import PiggiFlex from '@/components/PiggiFlex';
 
 export default {
 //   components: {Promises, Coins},
 //  components: {CoinStack, Piggi, Coins},
-  components: {Piggi},
+  components: {PiggiFlex},
+  // components: { Piggi },
   data() {
     return {
       logoutDialogDisplayed: false,
@@ -183,18 +181,8 @@ export default {
 
 <style>
 .wrapper {
-  position: relative;
-  padding: 15px;
-  height: 580px;
+  background-color: aqua;
+  height: 100vh;
   width: auto;
-}
-.piggi {
-    height: auto;
-    width: auto;
-}
-.coinstack {
-    position: relative;
-    height: 200px;
-    width: 150px;
 }
 </style>
