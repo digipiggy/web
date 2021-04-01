@@ -11,7 +11,9 @@ import Story from './views/Story';
 import Lessons from './views/Lessons';
 import Lesson1 from './views/Lesson1';
 import Lesson2 from './views/Lesson2';
+import Lesson3 from './views/Lesson3';
 import LessonX from './views/LessonX';
+import LessonViewer from './views/LessonViewer';
 import Articles from './views/Articles';
 import FAQ from './views/Faq';
 import ContactUs from './views/ContactUs';
@@ -81,9 +83,19 @@ const router = new Router({
       component: Lesson2
     },
     {
+      path: '/lessons/lesson/3',
+      name: 'Lesson 3 - Needs vs Wants',
+      component: Lesson3
+    },
+    {
       path: '/lessons/lesson/:title',
       name: 'Lesson Coming Soon',
       component: LessonX
+    },
+    {
+      path: '/lessonViewer/lesson/:title',
+      name: 'Lesson',
+      component: LessonViewer
     },
     {
       path: '/articles',

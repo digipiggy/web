@@ -25,8 +25,8 @@
 
 <script>
 import { mapState } from 'vuex';
-import LessonStatusIndicator from '@/components/LessonStatusIndicator';
-import LessonCard from '@/components/LessonCard';
+import LessonStatusIndicator from '@/components/lessons/LessonStatusIndicator';
+import LessonCard from '@/components/lessons/LessonCard';
 import Halt from '@/components/Halt';
 
 const lessons = [
@@ -47,7 +47,6 @@ const lessons = [
     body: "Learn to earn and track goal progress.",
     parentComponent: "Lessons",
     route: "/lessons/lesson/2",
-    disabled: true
     },
   {
     title: "Lesson 3 - Saving",
@@ -57,8 +56,6 @@ const lessons = [
     body: "Smart saving made easy.",
     parentComponent: "Lessons",
     route: "/lessons/lesson/3",
-    disabled: true,
-    comingSoon: true
   },
   {
     title: "Lesson 4 - Spending",

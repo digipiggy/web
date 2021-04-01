@@ -750,7 +750,7 @@ const textPage3 = {
   instructionIcon: "fas fa-book-reader",
   backgroundImage: 'common/rexPirate.jpg',
   backgroundColor: "#FFFFFF",
-  quote: 'I wanted a pirate costume for Halloween. I didn’t have the money yet, so I made a paper eye patch."',
+  quote: '"I wanted a pirate costume for Halloween. I didn’t have the money yet, so I made a paper eye patch."',
   quoteAttrib: 'Rex Piggle',
   quoteImg: "lessons/lesson1/RexPiggleHeadshot.png",
   textPrimaryColor: "#9367E6"

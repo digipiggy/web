@@ -23,7 +23,7 @@
 <script>
 import { mapState } from 'vuex';
 
-import LessonCard from '@/components/LessonCard';
+import LessonCard from '@/components/lessons/LessonCard';
 import ArticleCard from '@/components/ArticleCard';
 import WelcomeCard from '@/components/WelcomeCard';
 import DigiStatusCard from '@/components/DigiStatusCard';
