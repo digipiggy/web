@@ -42,7 +42,7 @@
           {{paragraph}}
         </p>
       </div>
-      <v-container >
+      <v-container v-if="lessonPage.quote">
         <v-row>
           <v-col cols="4">
             <v-img 
@@ -63,6 +63,11 @@
           </v-col>
         </v-row>
       </v-container >
+      <v-img 
+        v-if="!isDesktop"
+        :src="require(`@/assets/${lessonPage.mobileBackgroundImage}`)" 
+        :lazy-src="require(`@/assets/${lessonPage.mobileBackgroundImage}`)"  
+      ></v-img>
     </v-col>
     <!--Spacers are used to center lesson content and keep arrow at the bottom-->
     <v-spacer>
@@ -71,7 +76,7 @@
     <v-col cols="12" class="d-flex justify-center pa-0">
       <v-icon 
         :size="isDesktop ? 70 : 40"
-        @click="$vuetify.goTo('#page2')"
+        @click="$vuetify.goTo(`#${lessonPage.nextPage}`)"
         color="#9367E6"
       >mdi-chevron-down</v-icon>
     </v-col>

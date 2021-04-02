@@ -38,11 +38,18 @@
         :isDesktop="isDesktop"
         :lessonPage="page"
       />
+      <contentPageFlipCards
+        v-if="page.type == 'contentPageFlipCards'"
+        :key="`page-${i}`"
+        :isDesktop="isDesktop"
+        :lessonPage="page"
+      />
       <contentPageTakeAction
         v-if="page.type == 'contentPageTakeAction'"
         :key="`page-${i}`"
         :isDesktop="isDesktop"
         :lessonPage="page"
+        @lessonComplete="lessonComplete"
       />
 
       <!-- Page Divider for Mobile -->
@@ -65,6 +72,7 @@ import ContentPageBasicText from '@/components/lessons/ContentPageBasicText';
 import ContentPageQuestions from '@/components/lessons/ContentPageQuestions';
 import ContentPageGoalSelector from '@/components/lessons/ContentPageGoalSelector';
 import ContentPageTextWithSideImage from '@/components/lessons/ContentPageTextWithSideImage';
+import ContentPageFlipCards from '@/components/lessons/ContentPageFlipCards';
 import ContentPageTakeAction from '@/components/lessons/ContentPageTakeAction';
 import Lesson3 from '@/data/lessons/lesson3'
 
@@ -76,6 +84,7 @@ export default {
     contentPageQuestions: ContentPageQuestions,
     contentPageGoalSelector: ContentPageGoalSelector,
     contentPageTextWithSideImage: ContentPageTextWithSideImage,
+    contentPageFlipCards: ContentPageFlipCards,
     contentPageTakeAction: ContentPageTakeAction
   },
   data() {
@@ -92,30 +101,42 @@ export default {
   },
   methods: {
     ...mapActions(['updateDevice']),
-    // async updateLessonStatusStarted() {
-    //   const device = {
-    //     ...this.device,
-    //     status: {
-    //       ...this.device.status,
-    //       lessons: {
-    //         ...this.device.status.lessons,
-    //         lesson3: {
-    //           ... this.device.status.lessons.lesson3,
-    //           started: true
-    //         }
-    //       }
-    //     }
-    //   }
+    async updateLessonStatusStarted() {
+      const device = {
+        ...this.device,
+        status: {
+          ...this.device.status,
+          lessons: {
+            ...this.device.status.lessons,
+            lesson3: {
+              ... this.device.status.lessons.lesson3,
+              started: true
+            }
+          }
+        }
+      }
 
-    //   if (await !this.updateDevice(device)) {
-    //     console.log("Error updating device with lesson status")
-    //   }
-    // },
-  }
-  // mounted() {
-  //   // update the lesson 3 status to started on load if it's false
-  //   if (this.device.status.lessons.lesson3.started == false) this.updateLessonStatusStarted();
-  // },
+      if (await !this.updateDevice(device)) {
+        console.log("Error updating device with lesson status")
+      }
+    },
+    async lessonComplete(entries) {
+      if (entries[0].isIntersecting){
+        if (this.device.status.lessons.lesson3.completed == false) {
+          const device = this.device
+          device.status.lessons.lesson3.completed = true;
+          if (await !this.updateDevice(device)) {
+            console.log("Error updating device with lesson completion")
+          }
+        }
+      }
+    }
+  },
+  mounted() {
+    // update the lesson 3 status to started on load if it's false
+    const hasLessonStarted = this.device.status.lessons.lesson3.started;
+    if (hasLessonStarted === false) this.updateLessonStatusStarted();
+  },
 
 };
 </script>

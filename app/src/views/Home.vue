@@ -48,10 +48,10 @@ const lesson2 = {
 
 const lesson3 = {
   title: "Lesson 3 - Needs vs Wants",
-  image: "placeHolderImage.jpg",
-  imageLazy: "placeHolderImage.jpg",
+  image: "lessons/lesson3/lesson3Title.jpg",
+  imageLazy: "lessons/lesson3/lesson3TitleSmall.jpg",
   subtitle: "Lorem ipsum dolor sit amet",
-  body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+  body: "Learn about the difference between Needs and Wants.",
   route: "/lessons/lesson/3",
 }
 
