@@ -452,7 +452,7 @@
 
   <v-container v-else>
     <!--Title Text & Kid Entry--> 
-    <v-row justify="center" class="mb-8">
+    <v-row justify="center" class="mb-8" id="tipTop">
       <v-col cols="11">
         <p class="text-h5 font-weight-regular my-10" >Update your settings</p>
         <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Kids</p>
@@ -534,9 +534,9 @@
     </v-row>
 
     <!--Goal Catalog--> 
-    <v-row justify="center">
+    <v-row justify="center" >
       <v-col cols="11">
-        <p class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Our Family's Goal Catalog</p>
+        <p id="goalCatalog" class="text-h6 font-weight-regular mb-0" style="color: #9367E6">Our Family's Goal Catalog</p>
           <p class="text-body-1 font-weight-light mb-3">The Goal Catalog is your curated list of goals that your kid(s) will choose from in lesson 1. In this step, select the goals that you would like to include in your catalog. </p>
           <p class="text-body-1 font-weight-light mb-8">A Goal is the combination of the reward your kid will receive, and the number of Piggles Coins it costs to get that reward. Goals don't have to cost you money. They can be experiences as well. Pick from our pre-defined list, or create your own!</p>        <v-container class="mb-10">
           <v-row class="mb-5">

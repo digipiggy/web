@@ -1,7 +1,7 @@
 const titlePage = {
     type: "titlePage",
     title: "Lesson 3",
-    subtitle: "Needs vs Wants",
+    subtitle: "NEEDS vs WANTS",
     readTime: "10",
     audience: "Family reads together.",
     backgroundImage: "placeHolderImage.jpg",
@@ -102,7 +102,7 @@ const contentPage5 = {
     backgroundColor: "#FFFFFF",
     textPrimaryColor: "#9367E6",
     id: "page5",
-    ctaLink: "/settings",
+    ctaLink: "/settings#goalCatalog",
     ctaText: "Open Goals Catalog",
     ctaIcon: "arrow_forward"
 }

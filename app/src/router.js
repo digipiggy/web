@@ -132,12 +132,20 @@ const router = new Router({
       redirect: { name: '404 - Page not Found' }
     }
   ],
-  scrollBehavior (to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    } else {
-      return { x: 0, y: 0 }
-    }
+  async scrollBehavior (to, from, savedPosition) {
+    return await new Promise((resolve) => {
+      this.app.$root.$once('transitionComplete', () => {
+        let position = {}
+        if (to.hash) {
+          position.selector = to.hash
+        } else if (savedPosition) {
+          position = savedPosition
+        } else {
+          position = { x: 0, y: 0 }
+        }
+        resolve(position)
+      })
+    })
   }
 });
 

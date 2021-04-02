@@ -46,6 +46,15 @@ const lesson2 = {
   route: "/lessons/lesson/2",
 }
 
+const lesson3 = {
+  title: "Lesson 3 - Needs vs Wants",
+  image: "placeHolderImage.jpg",
+  imageLazy: "placeHolderImage.jpg",
+  subtitle: "Lorem ipsum dolor sit amet",
+  body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+  route: "/lessons/lesson/3",
+}
+
 const familyAndMoneyArticles = [
   {
     title: "How to Teach Good Money Habits to Young Kids",
@@ -86,6 +95,7 @@ export default {
     return {
       lesson1,
       lesson2,
+      lesson3,
       familyAndMoneyArticles
     }
   },
@@ -96,7 +106,25 @@ export default {
       return name == 'md' || name == 'lg' || name == 'xl';
     },
     lessonToShow() {
-      return this.device.status.lessons.lesson1.completed ? this.lesson2 : this.lesson1
+      // create an array of all the lesson objects. Ex: [{started: true, completed: true}, {}...]
+      const lessons = Object.values(this.device.status.lessons)
+      // create an array of all the lesson object keys. Ex: ["lesson1", "lesson2", ...]
+      const lessonNames = Object.keys(this.device.status.lessons)
+      // find the index of the first lesson in the lessons array that hasn't started that lesson.
+      const nextLessonIndex = lessons.findIndex(lesson => lesson.started == false)
+      let lesson = {}
+
+      // if it found an index of a lesson that hasn't been started
+      if (nextLessonIndex >= 0) {
+        // get the name of that lesson
+        const lessonName = lessonNames[nextLessonIndex]
+        // set the lesson to return to the lesson in the component state.
+        lesson = this[lessonName] 
+      } else {
+        // else always return the latest lesson.
+        lesson = this.lesson3
+      }
+      return lesson
     },
     articleToShow() {
       return familyAndMoneyArticles[Math.floor(Math.random() * familyAndMoneyArticles.length)]

@@ -21,9 +21,10 @@
           {{titlePage.title}}
         </p>
         <p 
-          class="text-uppercase text-center font-weight-bold my-n5 my-md-n9" 
+          class="text-center font-weight-bold mb-2" 
           :style="{
-            fontSize: isDesktop ? '140px' : '90px'
+            fontSize: isDesktop ? '140px' : '70px',
+            lineHeight: 1.0
           }">
           {{titlePage.subtitle}}
         </p>

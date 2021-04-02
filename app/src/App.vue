@@ -119,7 +119,10 @@
       </v-list>
     </v-navigation-drawer>
     <v-main style="background-color: #F7F8FA">
-      <transition name="component-fade" mode="out-in">
+      <transition 
+        name="component-fade"
+        mode="out-in" 
+        @after-leave="afterLeave">
         <router-view/>
       </transition>
     </v-main>
@@ -194,6 +197,9 @@ export default {
     ...mapActions(['initialize']),
     onLogout() {
       Auth.logout();
+    },
+    afterLeave () {
+      this.$root.$emit('transitionComplete')
     }
   }
 };

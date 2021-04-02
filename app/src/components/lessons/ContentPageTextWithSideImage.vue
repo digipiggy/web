@@ -4,10 +4,12 @@
         minHeight: '100vh',
         color: lessonPage.textPrimaryColor,
       }"
-      class="flex-column"
+      class=" flex-column"
       :id="lessonPage.id"
       align="center"
     >
+      <v-spacer>
+      </v-spacer>
       <v-col cols="12" >
         <v-row align="center">
           <v-col
