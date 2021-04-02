@@ -41,6 +41,10 @@ export default new Vuex.Store({
           lesson2: {
             completed: false,
             started: false
+          },
+          lesson3: {
+            completed: false,
+            started: false
           }
         }
       }
