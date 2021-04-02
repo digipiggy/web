@@ -409,6 +409,8 @@
               {{page4.imageTitle}}
             </p>
             <v-img 
+              max-height="80vh"
+              contain
               :src="require(`@/assets/${page4.backgroundImage}`)" 
               :lazy-src="require(`@/assets/${page4.backgroundImage}`)" 
             ></v-img>
@@ -494,6 +496,8 @@
               {{page5.imageTitle}}
             </p>
             <v-img 
+              max-height="80vh"
+              contain
               :src="require(`@/assets/${page5.backgroundImage}`)" 
               :lazy-src="require(`@/assets/${page5.backgroundImage}`)" 
             ></v-img>
@@ -573,6 +577,8 @@
               {{page5a.imageTitle}}
             </p>
             <v-img 
+              max-height="80vh"
+              contain
               :src="require(`@/assets/${page5a.backgroundImage}`)" 
               :lazy-src="require(`@/assets/${page5a.backgroundImage}`)" 
             ></v-img>
@@ -767,6 +773,8 @@
               {{textPage6Allowance.imageTitle}}
             </p>
             <v-img 
+              max-height="60vh"
+              contain
               :src="require(`@/assets/${textPage6Allowance.backgroundImage}`)" 
               :lazy-src="require(`@/assets/${textPage6Allowance.backgroundImage}`)" 
             ></v-img>
@@ -962,6 +970,8 @@
               {{page8.imageTitle}}
             </p>
             <v-img 
+              max-height="80vh"
+              contain
               :src="require(`@/assets/${page8.backgroundImage}`)" 
               :lazy-src="require(`@/assets/${page8.backgroundImage}`)" 
             ></v-img>
@@ -1049,12 +1059,13 @@
           <v-col
             cols="12"
             md="6"
-            class="px-16"
+            class="d-flex px-16 justify-center"
           >
             <p class="text-body-1 font-weight-light" style="color: black">
               {{textPage9.imageTitle}}
             </p>
             <v-img 
+              max-width="200px"
               :src="require(`@/assets/${textPage9.backgroundImage}`)" 
               :lazy-src="require(`@/assets/${textPage9.backgroundImage}`)" 
             ></v-img>
