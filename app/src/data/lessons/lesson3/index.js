@@ -33,7 +33,7 @@ const contentPage2 = {
     title: "NEEDS vs WANTS",
     text: [
         "Sometimes when we consider buying things, it helps to compare what we Need and Want.",
-        "A Need keeps you healthy, safe or helps you live like food, water, and a home.",
+        "A Need keeps you healthy or safe, like food, water, and a home.",
         "A Want is something fun or enjoyable that makes you feel happy like ice cream, video games, or a new bike."
     ],
     audience: "kid",

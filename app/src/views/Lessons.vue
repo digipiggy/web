@@ -86,8 +86,9 @@ export default {
     ...mapState(['device']),
     computedLessons () {
       const newLessons = this.lessons
-      //temporary hopefully
+      //TODO: this feels janky
       newLessons[1].disabled = !this.device.status.lessons.lesson1.completed
+      newLessons[2].disabled = !this.device.status.lessons.lesson2.completed
       return newLessons
     }
   }
