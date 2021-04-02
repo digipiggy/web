@@ -23,7 +23,7 @@
 <script>
 import { mapState } from 'vuex';
 
-import LessonCard from '@/components/LessonCard';
+import LessonCard from '@/components/lessons/LessonCard';
 import ArticleCard from '@/components/ArticleCard';
 import WelcomeCard from '@/components/WelcomeCard';
 import DigiStatusCard from '@/components/DigiStatusCard';
@@ -44,6 +44,15 @@ const lesson2 = {
   subtitle: "Start your earning",
   body: "Learn to earn and track goal progress.",
   route: "/lessons/lesson/2",
+}
+
+const lesson3 = {
+  title: "Lesson 3 - Needs vs Wants",
+  image: "lessons/lesson3/lesson3Title.jpg",
+  imageLazy: "lessons/lesson3/lesson3TitleSmall.jpg",
+  subtitle: "Lorem ipsum dolor sit amet",
+  body: "Learn about the difference between Needs and Wants.",
+  route: "/lessons/lesson/3",
 }
 
 const familyAndMoneyArticles = [
@@ -86,6 +95,7 @@ export default {
     return {
       lesson1,
       lesson2,
+      lesson3,
       familyAndMoneyArticles
     }
   },
@@ -96,7 +106,25 @@ export default {
       return name == 'md' || name == 'lg' || name == 'xl';
     },
     lessonToShow() {
-      return this.device.status.lessons.lesson1.completed ? this.lesson2 : this.lesson1
+      // create an array of all the lesson objects. Ex: [{started: true, completed: true}, {}...]
+      const lessons = Object.values(this.device.status.lessons)
+      // create an array of all the lesson object keys. Ex: ["lesson1", "lesson2", ...]
+      const lessonNames = Object.keys(this.device.status.lessons)
+      // find the index of the first lesson in the lessons array that hasn't started that lesson.
+      const nextLessonIndex = lessons.findIndex(lesson => lesson.started == false)
+      let lesson = {}
+
+      // if it found an index of a lesson that hasn't been started
+      if (nextLessonIndex >= 0) {
+        // get the name of that lesson
+        const lessonName = lessonNames[nextLessonIndex]
+        // set the lesson to return to the lesson in the component state.
+        lesson = this[lessonName] 
+      } else {
+        // else always return the latest lesson.
+        lesson = this.lesson3
+      }
+      return lesson
     },
     articleToShow() {
       return familyAndMoneyArticles[Math.floor(Math.random() * familyAndMoneyArticles.length)]

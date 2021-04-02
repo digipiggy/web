@@ -25,8 +25,8 @@
 
 <script>
 import { mapState } from 'vuex';
-import LessonStatusIndicator from '@/components/LessonStatusIndicator';
-import LessonCard from '@/components/LessonCard';
+import LessonStatusIndicator from '@/components/lessons/LessonStatusIndicator';
+import LessonCard from '@/components/lessons/LessonCard';
 import Halt from '@/components/Halt';
 
 const lessons = [
@@ -47,25 +47,22 @@ const lessons = [
     body: "Learn to earn and track goal progress.",
     parentComponent: "Lessons",
     route: "/lessons/lesson/2",
-    disabled: true
     },
   {
-    title: "Lesson 3 - Saving",
-    image: "common/rexPirate.jpg",
-    imageLazy: "common/rexPirateSmall.jpg",
-    subtitle: "Save vs Spend",
-    body: "Smart saving made easy.",
+    title: "Lesson 3 - Needs vs Wants",
+    image: "lessons/lesson3/lesson3Title.jpg",
+    imageLazy: "lessons/lesson3/lesson3TitleSmall.jpg",
+    subtitle: "The difference between Needs and Wants",
+    body: "Learn about the difference between Needs and Wants.",
     parentComponent: "Lessons",
     route: "/lessons/lesson/3",
-    disabled: true,
-    comingSoon: true
   },
   {
-    title: "Lesson 4 - Spending",
+    title: "Lesson 4 - Goal Priority",
     image: "common/digiStanding.png",
     imageLazy: "common/digiStandingSmall.png",
     subtitle: "Reward time!",
-    body: "You've worked for this, now it's time to celebrate!",
+    body: "How do you choose which goal to work towards?",
     parentComponent: "Lessons",
     route: "/lessons/lesson/4",
     disabled: true,

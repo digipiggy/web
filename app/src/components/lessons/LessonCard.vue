@@ -10,7 +10,7 @@
       transition="none"
       class="mb-4"
     ></v-img>
-    <p class="text-caption ">{{lesson.subtitle}}</p>
+    <!-- <p class="text-caption ">{{lesson.subtitle}}</p> -->
     <p class="text-body-1 font-weight-light">{{lesson.body}}</p>
     <v-spacer></v-spacer>
     <div>
