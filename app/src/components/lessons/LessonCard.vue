@@ -16,11 +16,14 @@
     <div>
       <v-btn 
         color="#48A182" 
-        class="white--text"
+        class="white--text lessonBtn"
         :disabled="lesson.disabled" 
         :to="lesson.route"
-      >
-        Start {{lesson.title}}
+        max-width="100%"
+      > 
+        <span class="btnText">
+          Start {{lesson.title}}
+        </span>
         <v-icon right dark>fas fa-book-reader</v-icon>
       </v-btn>
     </div>
@@ -40,3 +43,17 @@ export default {
   }
 };
 </script>
+
+<style >
+.lessonBtn .v-btn__content {
+  max-width:100%
+}
+.btnText {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+</style>
