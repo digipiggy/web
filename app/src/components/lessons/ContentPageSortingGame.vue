@@ -47,15 +47,35 @@
             md="6"
             class="pa-5"
           >
-            <v-row>
-              <v-col
-                cols="4"
-                v-for="(flipCard, i) in lessonPage.flipCards"
-                :key="`flipCard-${i}`"
-              >
-                <flipCard :cardInfo="flipCard" />
-              </v-col>
-            </v-row>
+            <draggable
+              v-model="wantItems"
+              v-bind="dragOptions"
+              @start="drag = true"
+              @end="drag = false"
+            >
+              <transition-group type="transition" :name="!drag ? 'flip-list' : null">
+                <v-card 
+                  class="ma-2 pa-3 d-flex" 
+                  v-for="(element, i) in wantItems" 
+                  :key="element.name"
+                  :style="{cursor: drag ? 'grabbing' : 'grab'}"
+                >
+                    <v-list-item-avatar  >
+                      <v-icon color="#9367E6">
+                        mdi-view-headline
+                      </v-icon>
+                    </v-list-item-avatar>
+
+                    <v-list-item-content> 
+                      <v-list-item-title >{{i+1}} {{element.name}}</v-list-item-title>
+                    </v-list-item-content>
+
+                    <v-list-item-avatar class="ml-auto" >
+                      <v-img :src="require(`@/assets/common/pigglesCoin${element.coins}.png`)" ></v-img>
+                    </v-list-item-avatar>
+                </v-card>
+              </transition-group>
+            </draggable>
           </v-col>
         </v-row>
       </v-col>
@@ -72,19 +92,53 @@
 </template>
 
 <script>
-import FlipCard from '@/components/FlipCard';
+import draggable from 'vuedraggable';
 
 export default {
-  name: 'ContentPageFlipCards',
+  name: 'ContentPageSortingGame',
   components: {
-    flipCard: FlipCard
+    draggable
   },
   props: {
     isDesktop: Boolean,
     lessonPage: Object
   },
+  computed: {
+    dragOptions() {
+      return {
+        animation: 400,
+        group: "description",
+        disabled: false,
+        ghostClass: "ghost"
+      };
+    }
+  },
   data() {
-    return {};
+    return {
+      wantItems: [
+        {name: "Paint Brush", coins: 6},
+        {name: "Extra Canvases", coins: 4},
+        {name: "Green Paint", coins: 2},
+        {name: "New Apron", coins: 8},
+      ],
+      drag: false
+    };
   }
 };
 </script>
+
+<style>
+.button {
+  margin-top: 35px;
+}
+.flip-list-move {
+  transition: transform 0.5s;
+}
+.no-move {
+  transition: transform 0s;
+}
+.ghost {
+  opacity: 0.5;
+  background: #c8ebfb;
+}
+</style>

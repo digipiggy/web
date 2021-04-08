@@ -65,8 +65,6 @@ const lessons = [
     body: "How do you choose which goal to work towards?",
     parentComponent: "Lessons",
     route: "/lessons/lesson/4",
-    disabled: true,
-    comingSoon: true
   }
 ]
 
