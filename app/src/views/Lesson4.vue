@@ -20,32 +20,14 @@
         :isDesktop="isDesktop"
         :lessonPage="page"
       />
-      <contentPageGoalSelector
-        v-if="page.type == 'contentPageGoalSelector'"
-        :key="`page-${i}`"
-        :isDesktop="isDesktop"
-        :lessonPage="page"
-      />
-      <contentPageNextLesson
-        v-if="page.type == 'contentPageNextLesson'"
-        :key="`page-${i}`"
-        :isDesktop="isDesktop"
-        :lessonPage="page"
-      />
-      <contentPageTextWithSideImage
-        v-if="page.type == 'contentPageTextWithSideImage'"
-        :key="`page-${i}`"
-        :isDesktop="isDesktop"
-        :lessonPage="page"
-      />
       <contentPageSortingGame
         v-if="page.type == 'contentPageSortingGame'"
         :key="`page-${i}`"
         :isDesktop="isDesktop"
         :lessonPage="page"
       />
-      <contentPageTakeAction
-        v-if="page.type == 'contentPageTakeAction'"
+      <contentPageSortingCTA
+        v-if="page.type == 'contentPageSortingCTA'"
         :key="`page-${i}`"
         :isDesktop="isDesktop"
         :lessonPage="page"
@@ -70,10 +52,8 @@ import { mapState, mapActions } from 'vuex';
 import LessonTitle from '@/components/lessons/LessonTitle';
 import ContentPageBasicText from '@/components/lessons/ContentPageBasicText';
 import ContentPageQuestions from '@/components/lessons/ContentPageQuestions';
-import ContentPageGoalSelector from '@/components/lessons/ContentPageGoalSelector';
-import ContentPageTextWithSideImage from '@/components/lessons/ContentPageTextWithSideImage';
 import ContentPageSortingGame from '@/components/lessons/ContentPageSortingGame';
-import ContentPageTakeAction from '@/components/lessons/ContentPageTakeAction';
+import ContentPageSortingCTA from '@/components/lessons/ContentPageSortingCTA';
 import Lesson4 from '@/data/lessons/lesson4'
 
 export default {
@@ -82,10 +62,8 @@ export default {
     lessonTitle: LessonTitle,
     contentPageBasicText: ContentPageBasicText,
     contentPageQuestions: ContentPageQuestions,
-    contentPageGoalSelector: ContentPageGoalSelector,
-    contentPageTextWithSideImage: ContentPageTextWithSideImage,
     contentPageSortingGame: ContentPageSortingGame,
-    contentPageTakeAction: ContentPageTakeAction
+    contentPageSortingCTA: ContentPageSortingCTA
   },
   data() {
     return {
