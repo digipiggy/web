@@ -59,6 +59,10 @@ const schema = Joi.object().keys({
         started: Joi.boolean(),
         completed: Joi.boolean()
       }),
+      lesson4: Joi.object().keys({
+        started: Joi.boolean(),
+        completed: Joi.boolean()
+      }),
     })
   }),
 
