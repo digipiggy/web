@@ -14,7 +14,7 @@ const contentPage1 = {
     title: "PENNY’S LIST OF WANTS",
     text: [
         "In lesson 3 we learned that Penny’s  art supplies are Wants and not  Needs.",
-        "Papa notices that Penny’s list is long. He tells Penny that this is normal. Penny has trouble deciding which thing to get first.",
+        "Papa noticed that Penny's list of Wants is long. He told Penny that this is normal. Penny is having trouble deciding which thing to get first.",
         "Let’s explore how Penny decides which Wants she should work towards."
     ],
     audience: "kid",
@@ -73,7 +73,7 @@ const contentPage4 = {
     type: "contentPageBasicText",
     title: "PENNY’S MASTERPIECE",
     text: [
-        "Penny decided to put the missing paint at the top of her list of list. She spent 4 of her 8 Piggles Coins on the missing paint, and now has 4 coins left for to save for the next item on her list."
+        "Penny decided to put the missing paint at the top of her list. She spent 4 of her 8 Piggles Coins on the missing paint, and now has 4 coins left to save for the next item on her list."
     ],
     audience: "kid",
     instructions: "Read Aloud",
