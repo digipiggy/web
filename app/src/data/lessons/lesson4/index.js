@@ -73,7 +73,7 @@ const contentPage4 = {
     type: "contentPageBasicText",
     title: "PENNY’S MASTERPIECE",
     text: [
-        "Penny decided to put the missing paint at the top of her list of list. She spent 4 of her 8 Piggles Coins on the missing paint, and now has 4 coins left for to save for the next item on her list."
+        "Penny decided to put the missing paint at the top of her list. She spent 4 of her 8 Piggles Coins on the missing paint, and now has 4 coins left to save for the next item on her list."
     ],
     audience: "kid",
     instructions: "Read Aloud",
