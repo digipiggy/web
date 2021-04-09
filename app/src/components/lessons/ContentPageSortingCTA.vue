@@ -1,5 +1,6 @@
 <template>
     <v-row 
+      v-intersect.once="updateLessonStatusCompleted"
       :style="{
         minHeight: '100vh',
         color: lessonPage.textPrimaryColor,
@@ -71,16 +72,16 @@
                   :key="element.name"
                   :style="{cursor: drag ? 'grabbing' : 'grab'}"
                 >
+                    <v-list-item-avatar class="mr-0 font-weight-bold"> 
+                      <span>{{i+1}}</span>
+                    </v-list-item-avatar>
                     <v-list-item-avatar  >
                       <v-icon color="#9367E6">
                         mdi-view-headline
                       </v-icon>
                     </v-list-item-avatar>
-
-                    <v-list-item-content> 
-                      <!-- <span style="display: inline-block;">{{i+1}}</span>
-                      <span style="display: inline-block;">{{element.name}}</span> -->
-                      <v-list-item-title >{{i+1}} {{element.name}}</v-list-item-title>
+                    <v-list-item-content class="ml-3"> 
+                      <span >{{element.name}}</span>
                     </v-list-item-content>
 
                     <v-list-item-avatar class="ml-auto" >
@@ -130,6 +131,9 @@ export default {
   methods: {
     fetchGoalCatalog(){
       this.wantItems = this.device.goalCatalog
+    },
+    updateLessonStatusCompleted(entries) {
+      this.$emit('lessonComplete', entries)
     }
   },
   mounted() {

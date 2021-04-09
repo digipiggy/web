@@ -132,7 +132,7 @@ export default {
         lesson = this[lessonName] 
       } else {
         // else always return the latest lesson.
-        lesson = this.lesson3
+        lesson = this.lesson4
       }
       return lesson
     },

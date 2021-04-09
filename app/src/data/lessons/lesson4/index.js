@@ -58,9 +58,9 @@ const contentPage3 = {
         "Drag and drop the items on Penny’s list with the most important items at the top."
     ],
     audience: "kid",
-    instructions: "Read Aloud",
-    instructionsTT: "Read this section out loud with your kid(s).",
-    instructionIcon: "fab fa-readme",
+    instructions: "Try It Out",
+    instructionsTT: "Drag and Drop the items in Penny's list.",
+    instructionIcon: "fas fa-list-ol",
     backgroundImage: 'lessons/lesson4/pennysPainting.jpg',
     mobileBackgroundImage: 'lessons/lesson4/pennysPainting.jpg',
     backgroundColor: "#FFFFFF",

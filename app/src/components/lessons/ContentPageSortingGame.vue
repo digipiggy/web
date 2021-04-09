@@ -63,14 +63,16 @@
                   :key="element.name"
                   :style="{cursor: drag ? 'grabbing' : 'grab'}"
                 >
+                    <v-list-item-avatar class="mr-0 font-weight-bold"> 
+                      <span>{{i+1}}</span>
+                    </v-list-item-avatar>
                     <v-list-item-avatar  >
                       <v-icon color="#9367E6">
                         mdi-view-headline
                       </v-icon>
                     </v-list-item-avatar>
-
-                    <v-list-item-content> 
-                      <v-list-item-title >{{i+1}} {{element.name}}</v-list-item-title>
+                    <v-list-item-content class="ml-3"> 
+                      <span >{{element.name}}</span>
                     </v-list-item-content>
 
                     <v-list-item-avatar class="ml-auto" >
@@ -119,10 +121,10 @@ export default {
   data() {
     return {
       wantItems: [
-        {name: "Paint Brush", coins: 6},
-        {name: "Extra Canvases", coins: 4},
-        {name: "Green Paint", coins: 2},
-        {name: "New Apron", coins: 8},
+        {name: "Extra Canvases", coins: 8},
+        {name: "New Brushes", coins: 5},
+        {name: "Missing Paint", coins: 4},
+        {name: "Clean Apron", coins: 6},
       ],
       drag: false
     };
