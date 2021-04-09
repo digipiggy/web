@@ -110,11 +110,11 @@ export default {
       }
     }
   },
-  // mounted() {
-  //   // update the lesson 3 status to started on load if it's false
-  //   const hasLessonStarted = this.device.status.lessons.lesson4.started;
-  //   if (hasLessonStarted === false) this.updateLessonStatusStarted();
-  // },
+  mounted() {
+    // update the lesson 4 status to started on load if it's false
+    const hasLessonStarted = this.device.status.lessons.lesson4.started;
+    if (hasLessonStarted === false) this.updateLessonStatusStarted();
+  },
 
 };
 </script>

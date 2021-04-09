@@ -55,8 +55,9 @@
             md="6"
             class="pa-5"
           >
-
-
+            <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6  mx-2 mb-1">
+              Our Family's Goal Catalog:
+            </p>
             <draggable
               v-model="wantItems"
               v-bind="dragOptions"
@@ -88,20 +89,11 @@
                 </v-card>
               </transition-group>
             </draggable>
-
-
           </v-col>
         </v-row>
       </v-col>
       <v-spacer>
       </v-spacer>
-      <v-col cols="12" class="d-flex justify-center pa-0">
-        <v-icon 
-          :size="isDesktop ? 70 : 40"
-          @click="$vuetify.goTo(`#${lessonPage.nextPage}`)"
-          color="#9367E6"
-        >mdi-chevron-down</v-icon>
-      </v-col>
     </v-row>
 </template>
 
@@ -141,9 +133,6 @@ export default {
     }
   },
   mounted() {
-    // update the lesson 3 status to started on load if it's false
-    // const hasLessonStarted = this.device.status.lessons.lesson4.started;
-    // if (hasLessonStarted === false) this.updateLessonStatusStarted();
     this.fetchGoalCatalog();
   },
 };

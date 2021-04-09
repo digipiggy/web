@@ -55,6 +55,15 @@ const lesson3 = {
   route: "/lessons/lesson/3",
 }
 
+const lesson4 = {
+  title: "Lesson 4 - Making Choices",
+  image: "lessons/lesson4/lesson4Title.jpg",
+  imageLazy: "lessons/lesson4/lesson4TitleSmall.jpg",
+  subtitle: "Lorem ipsum dolor sit amet",
+  body: "How do you decide between the things that you want?",
+  route: "/lessons/lesson/4",
+}
+
 const familyAndMoneyArticles = [
   {
     title: "How to Teach Good Money Habits to Young Kids",
@@ -96,6 +105,7 @@ export default {
       lesson1,
       lesson2,
       lesson3,
+      lesson4,
       familyAndMoneyArticles
     }
   },

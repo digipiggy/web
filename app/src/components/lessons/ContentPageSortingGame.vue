@@ -47,6 +47,9 @@
             md="6"
             class="pa-5"
           >
+            <p class="text-body-1 font-weight-medium font-weight-md-regular text-md-h6 mx-2 mb-1">
+              Penny's List:
+            </p>
             <draggable
               v-model="wantItems"
               v-bind="dragOptions"
