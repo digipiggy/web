@@ -58,15 +58,13 @@ const lessons = [
     route: "/lessons/lesson/3",
   },
   {
-    title: "Lesson 4 - Goal Priority",
-    image: "common/digiStanding.png",
-    imageLazy: "common/digiStandingSmall.png",
-    subtitle: "Reward time!",
-    body: "How do you choose which goal to work towards?",
-    parentComponent: "Lessons",
+    title: "Lesson 4 - Making Choices",
+    image: "lessons/lesson4/lesson4Title.jpg",
+    imageLazy: "lessons/lesson4/lesson4TitleSmall.jpg",
+    subtitle: "Lorem ipsum dolor sit amet",
+    body: "How do you decide between the things that you want?",
     route: "/lessons/lesson/4",
-    disabled: true,
-    comingSoon: true
+    parentComponent: "Lessons",
   }
 ]
 
@@ -89,6 +87,7 @@ export default {
       //TODO: this feels janky
       newLessons[1].disabled = !this.device.status.lessons.lesson1.completed
       newLessons[2].disabled = !this.device.status.lessons.lesson2.completed
+      newLessons[3].disabled = !this.device.status.lessons.lesson3.completed
       return newLessons
     }
   }

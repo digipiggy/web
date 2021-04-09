@@ -12,6 +12,7 @@ import Lessons from './views/Lessons';
 import Lesson1 from './views/Lesson1';
 import Lesson2 from './views/Lesson2';
 import Lesson3 from './views/Lesson3';
+import Lesson4 from './views/Lesson4';
 import LessonX from './views/LessonX';
 import LessonViewer from './views/LessonViewer';
 import Articles from './views/Articles';
@@ -86,6 +87,11 @@ const router = new Router({
       path: '/lessons/lesson/3',
       name: 'Lesson 3 - Needs vs Wants',
       component: Lesson3
+    },
+    {
+      path: '/lessons/lesson/4',
+      name: 'Lesson 4 - Making Choices',
+      component: Lesson4
     },
     {
       path: '/lessons/lesson/:title',
